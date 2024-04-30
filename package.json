@@ -6,14 +6,20 @@
     "deploy": "wrangler deploy",
     "dev": "wrangler dev",
     "start": "wrangler dev",
-    "test": "vitest",
     "cf-typegen": "wrangler types"
   },
   "devDependencies": {
-    "@cloudflare/vitest-pool-workers": "^0.1.0",
     "@cloudflare/workers-types": "^4.20240423.0",
     "typescript": "^5.0.4",
-    "vitest": "1.3.0",
     "wrangler": "^3.0.0"
+  },
+  "dependencies": {
+    "telegraf": "^4.16.3"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "telegraf@4.16.3": "patches/telegraf@4.16.3.patch",
+      "rollup-plugin-node-polyfills@0.2.1": "patches/rollup-plugin-node-polyfills@0.2.1.patch"
+    }
   }
 }

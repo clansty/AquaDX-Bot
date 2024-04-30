@@ -1,0 +1,47 @@
+diff --git a/lib/core/network/client.js b/lib/core/network/client.js
+index 25fbbbb47c7f88e83ae26f629e5ae1a0c141725c..d86f32fe91123daf1145fa9397eb18c2136b576f 100644
+--- a/lib/core/network/client.js
++++ b/lib/core/network/client.js
+@@ -29,7 +29,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
+ /* eslint @typescript-eslint/restrict-template-expressions: [ "error", { "allowNumber": true, "allowBoolean": true } ] */
+ const crypto = __importStar(require("crypto"));
+ const fs = __importStar(require("fs"));
+-const promises_1 = require("fs/promises");
+ const https = __importStar(require("https"));
+ const path = __importStar(require("path"));
+ const node_fetch_1 = __importDefault(require("node-fetch"));
+@@ -205,14 +204,7 @@ async function attachFormMedia(form, media, id, agent) {
+     if ('source' in media && media.source) {
+         let mediaSource = media.source;
+         if (typeof media.source === 'string') {
+-            const source = await (0, promises_1.realpath)(media.source);
+-            if ((await (0, promises_1.stat)(source)).isFile()) {
+-                fileName = (_c = media.filename) !== null && _c !== void 0 ? _c : path.basename(media.source);
+-                mediaSource = await fs.createReadStream(media.source);
+-            }
+-            else {
+                 throw new TypeError(`Unable to upload '${media.source}', not a file`);
+-            }
+         }
+         if (isStream(mediaSource) || Buffer.isBuffer(mediaSource)) {
+             form.addPart({
+diff --git a/lib/telegraf.js b/lib/telegraf.js
+index 23d021c3d5f98493bd714a2114ec8fa853560e5c..b981d7d7311e927486b3869e4b665b12cc43a562 100644
+--- a/lib/telegraf.js
++++ b/lib/telegraf.js
+@@ -35,7 +35,6 @@ const compact_1 = require("./core/helpers/compact");
+ const context_1 = __importDefault(require("./context"));
+ const debug_1 = __importDefault(require("debug"));
+ const webhook_1 = __importDefault(require("./core/network/webhook"));
+-const polling_1 = require("./core/network/polling");
+ const p_timeout_1 = __importDefault(require("p-timeout"));
+ const telegram_1 = __importDefault(require("./telegram"));
+ const url_1 = require("url");
+@@ -147,6 +146,7 @@ class Telegraf extends composer_1.Composer {
+         });
+     }
+     startPolling(allowedUpdates = []) {
++        throw new Error()
+         this.polling = new polling_1.Polling(this.telegram, allowedUpdates);
+         return this.polling.loop(async (update) => {
+             await this.handleUpdate(update);

@@ -1,0 +1,21 @@
+diff --git a/polyfills/http-lib/capability.js b/polyfills/http-lib/capability.js
+index 05210b966416d772057509a8bb6ec92f8098e856..d1b6c280a19b1185d33652d0616c551d3e2a7886 100644
+--- a/polyfills/http-lib/capability.js
++++ b/polyfills/http-lib/capability.js
+@@ -16,6 +16,7 @@ export function blobConstructor() {
+ var xhr;
+ 
+ function checkTypeSupport(type) {
++  return false
+   if (!xhr) {
+     xhr = new global.XMLHttpRequest()
+     // If location.host is empty, e.g. if this page/worker was loaded
+@@ -42,7 +43,7 @@ export var arraybuffer = haveArrayBuffer && checkTypeSupport('arraybuffer')
+ export var msstream = !hasFetch && haveSlice && checkTypeSupport('ms-stream')
+ export var mozchunkedarraybuffer = !hasFetch && haveArrayBuffer &&
+   checkTypeSupport('moz-chunked-arraybuffer')
+-export var overrideMimeType = isFunction(xhr.overrideMimeType)
++export var overrideMimeType = false
+ export var vbArray = isFunction(global.VBArray)
+ 
+ function isFunction(value) {

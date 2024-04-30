@@ -10,9 +10,41 @@
  *
  * Learn more at https://developers.cloudflare.com/workers/
  */
+import { Telegraf } from 'telegraf';
+import AquaApi from './api';
+import compute from './compute';
 
 export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-		return new Response('Hello World!');
-	},
+		if (request.headers.get('X-Telegram-Bot-Api-Secret-Token') !== env.API_SECRET) {
+			console.log('Secret-Token 错误');
+			return new Response();
+		}
+		const bot = new Telegraf(env.BOT_TOKEN);
+
+
+		bot.start(Telegraf.reply('Hello'));
+		bot.command('bind', async (ctx) => {
+			if (ctx.args.length < 1) {
+				await ctx.reply('请输入要绑定的用户名');
+				return;
+			}
+
+			await env.KV.put(`bind:${ctx.from.id}`, ctx.args[0]);
+			await ctx.reply(`绑定用户名 ${ctx.args[0]} 成功`);
+		});
+		bot.command('test', async (ctx) => {
+			const api = new AquaApi(env.API_BASE);
+			const userId = Number(await env.KV.get(`bind:${ctx.from.id}`));
+			await ctx.reply(compute.getAllMusicScore(await api.getUserMusic(userId)));
+		});
+
+
+		try {
+			await bot.handleUpdate(await request.json());
+		} catch (e) {
+			console.log(e);
+		}
+		return new Response();
+	}
 };
