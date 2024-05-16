@@ -13,7 +13,7 @@
 import { Telegraf } from 'telegraf';
 import AquaApi from './api';
 import compute from './compute';
-import { BA_VE } from './consts';
+import { BA_VE, PLATE_TYPE, PLATE_VER } from './consts';
 
 export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
@@ -24,7 +24,6 @@ export default {
 		try {
 			const bot = new Telegraf(env.BOT_TOKEN);
 			const api = await AquaApi.create(env.KV, env.API_BASE, env.POWERON_TOKEN);
-
 
 			bot.start(Telegraf.reply('Hello'));
 			bot.command('bind', async (ctx) => {
@@ -37,10 +36,24 @@ export default {
 				await ctx.reply(`绑定用户名 ${ctx.args[0]} 成功`);
 			});
 
+			for (const version of PLATE_VER) {
+				for (const type of PLATE_TYPE) {
+					bot.hears(['/', ''].map(it => it + version + type + '进度'), async (ctx) => {
+						const userId = Number(await env.KV.get(`bind:${ctx.from.id}`));
+						const userMusic = await api.getUserMusic(userId);
+						await ctx.reply(compute.calcProgress(userMusic, version, type));
+					});
+				}
+			}
 			bot.hears(['/', ''].map(it => it + '霸者进度'), async (ctx) => {
 				const userId = Number(await env.KV.get(`bind:${ctx.from.id}`));
 				const userMusic = await api.getUserMusic(userId);
 				await ctx.reply(compute.calcProgress(userMusic, BA_VE));
+			});
+
+			bot.catch(async (err: any, ctx) => {
+				console.log(err);
+				await ctx.reply('发生错误：' + err.message);
 			});
 
 

@@ -4,7 +4,7 @@ export const LEVEL = ['绿', '黄', '红', '紫', '白'] as const;
 export const LEVEL_EN = [DifficultyEnum.Basic, DifficultyEnum.Advanced, DifficultyEnum.Expert, DifficultyEnum.Master, DifficultyEnum.ReMaster] as const;
 export const FC = ['', 'FC', 'FC+', 'AP', 'AP+'] as const;
 export const PLATE_VER = ['真', '超', '檄', '橙', '晓', '桃', '樱', '紫', '堇', '白', '雪', '辉', '舞', '熊', '华', '爽',
-	'煌', '宙', '星'] as const;
+	'煌', '宙', '星', '祭', '祝'] as const;
 export const PLATE_TYPE = ['极', '将', '神', '舞舞'] as const;
 export const BA_VE = '霸者';
 export const PLATE_VER_LIST = {
@@ -26,6 +26,8 @@ export const PLATE_VER_LIST = {
 	'煌': ['Splash PLUS'],
 	'宙': ['UNiVERSE'],
 	'星': ['UNiVERSE PLUS'],
+	'祭': ['FESTiVAL'],
+	'祝': ['FESTiVAL PLUS'],
 	'舞': ['maimai', 'maimai PLUS', 'GreeN', 'GreeN PLUS', 'ORANGE',
 		'ORANGE PLUS', 'PiNK', 'PiNK PLUS', 'MURASAKi', 'MURASAKi PLUS',
 		'MiLK', 'MiLK PLUS', 'FiNALE'],
