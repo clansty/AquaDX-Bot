@@ -14,6 +14,7 @@ import { Telegraf } from 'telegraf';
 import AquaApi from './api';
 import compute from './compute';
 import { BA_VE, PLATE_TYPE, PLATE_VER } from './consts';
+import BotContext from './BotContext';
 
 export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
@@ -22,33 +23,45 @@ export default {
 			return new Response();
 		}
 		try {
-			const bot = new Telegraf(env.BOT_TOKEN);
-			const api = await AquaApi.create(env.KV, env.API_BASE, env.POWERON_TOKEN);
+			const bot = new Telegraf<BotContext>(env.BOT_TOKEN);
+
+			// 覆盖 reply，quote 原消息
+			bot.context.reply = function(message) {
+				return this.sendMessage(message, { reply_parameters: { message_id: this.message.message_id } });
+			};
 
 			bot.start(Telegraf.reply('Hello'));
 			bot.command('bind', async (ctx) => {
 				if (ctx.args.length < 1) {
-					await ctx.reply('请输入要绑定的用户名');
+					await ctx.reply('请输入要绑定的 ID');
 					return;
 				}
 
 				await env.KV.put(`bind:${ctx.from.id}`, ctx.args[0]);
-				await ctx.reply(`绑定用户名 ${ctx.args[0]} 成功`);
+				await ctx.reply(`绑定 ID ${ctx.args[0]} 成功`);
 			});
 
+			bot.use(async (ctx, next) => {
+				ctx.aquaUserId = Number(await env.KV.get(`bind:${ctx.from.id}`));
+				if (!ctx.aquaUserId) {
+					await ctx.reply('请先绑定用户');
+					return;
+				}
+				ctx.aqua = await AquaApi.create(env.KV, env.API_BASE, env.POWERON_TOKEN);
+				ctx.userMusic = await ctx.aqua.getUserMusic(ctx.aquaUserId);
+				await next();
+			});
+
+			// 以下的方法会验证绑定，建立 AquaApi 实例和获取 UserMusic
 			for (const version of PLATE_VER) {
 				for (const type of PLATE_TYPE) {
 					bot.hears(['/', ''].map(it => it + version + type + '进度'), async (ctx) => {
-						const userId = Number(await env.KV.get(`bind:${ctx.from.id}`));
-						const userMusic = await api.getUserMusic(userId);
-						await ctx.reply(compute.calcProgress(userMusic, version, type));
+						await ctx.reply(compute.calcProgress(ctx.userMusic, version, type));
 					});
 				}
 			}
 			bot.hears(['/', ''].map(it => it + '霸者进度'), async (ctx) => {
-				const userId = Number(await env.KV.get(`bind:${ctx.from.id}`));
-				const userMusic = await api.getUserMusic(userId);
-				await ctx.reply(compute.calcProgress(userMusic, BA_VE));
+				await ctx.reply(compute.calcProgress(ctx.userMusic, BA_VE));
 			});
 
 			bot.catch(async (err: any, ctx) => {
