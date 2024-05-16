@@ -18,6 +18,15 @@ export default class Song implements DataSong {
 	private constructor() {
 	}
 
+	public get id() {
+		const std = this.sheets.find(it => it.type === TypeEnum.STD);
+		const dx = this.sheets.find(it => it.type === TypeEnum.DX);
+
+		const id = std ? std.internalId : (dx?.internalId - 1e4);
+
+		return id || null;
+	}
+
 	public get coverUrl() {
 		return 'https://shama.dxrating.net/images/cover/v2/' + this.imageName;
 	}
@@ -32,14 +41,14 @@ export default class Song implements DataSong {
 			if (reg.cn) message += '🇨🇳';
 			if (reg.jp) message += '🇯🇵';
 			if (reg.intl) message += '🌍';
+			if (!Object.values(reg).some(it => it)) message += '🗑';
 		};
 
 		const std = this.sheets.find(it => it.type === TypeEnum.STD);
 		const dx = this.sheets.find(it => it.type === TypeEnum.DX);
 
-		const id = std ? std.internalId : (dx?.internalId - 1e4);
-		if (id) {
-			message = id + ' ' + message;
+		if (this.id) {
+			message = this.id + ' ' + message;
 		}
 
 		if (std) {
