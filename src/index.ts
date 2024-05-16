@@ -21,32 +21,32 @@ export default {
 			console.log('Secret-Token 错误');
 			return new Response();
 		}
-		const bot = new Telegraf(env.BOT_TOKEN);
-		const api = new AquaApi(env.API_BASE);
-
-
-		bot.start(Telegraf.reply('Hello'));
-		bot.command('bind', async (ctx) => {
-			if (ctx.args.length < 1) {
-				await ctx.reply('请输入要绑定的用户名');
-				return;
-			}
-
-			await env.KV.put(`bind:${ctx.from.id}`, ctx.args[0]);
-			await ctx.reply(`绑定用户名 ${ctx.args[0]} 成功`);
-		});
-		bot.command('test', async (ctx) => {
-			const userId = Number(await env.KV.get(`bind:${ctx.from.id}`));
-			await ctx.reply(compute.getAllMusicScore(await api.getUserMusic(userId)));
-		});
-		bot.hears(['/', ''].map(it => it + '霸者进度'), async (ctx) => {
-			const userId = Number(await env.KV.get(`bind:${ctx.from.id}`));
-			const userMusic = await api.getUserMusic(userId);
-			await ctx.reply(compute.calcProgress(userMusic, BA_VE));
-		});
-
-
 		try {
+			const bot = new Telegraf(env.BOT_TOKEN);
+			const api = await AquaApi.create(env.KV, env.API_BASE, env.POWERON_TOKEN);
+
+
+			bot.start(Telegraf.reply('Hello'));
+			bot.command('bind', async (ctx) => {
+				if (ctx.args.length < 1) {
+					await ctx.reply('请输入要绑定的用户名');
+					return;
+				}
+
+				await env.KV.put(`bind:${ctx.from.id}`, ctx.args[0]);
+				await ctx.reply(`绑定用户名 ${ctx.args[0]} 成功`);
+			});
+			bot.command('test', async (ctx) => {
+				const userId = Number(await env.KV.get(`bind:${ctx.from.id}`));
+				await ctx.reply(compute.getAllMusicScore(await api.getUserMusic(userId)));
+			});
+			bot.hears(['/', ''].map(it => it + '霸者进度'), async (ctx) => {
+				const userId = Number(await env.KV.get(`bind:${ctx.from.id}`));
+				const userMusic = await api.getUserMusic(userId);
+				await ctx.reply(compute.calcProgress(userMusic, BA_VE));
+			});
+
+
 			const req = await request.json();
 			console.log(req);
 			await bot.handleUpdate(req as any);
