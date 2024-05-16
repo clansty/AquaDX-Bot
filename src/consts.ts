@@ -1,3 +1,6 @@
+import allMusic from './data/all-music.json';
+
+export const ALL_MUSIC = allMusic as Record<string, typeof allMusic[8]>;
 export const LEVEL = ['绿', '黄', '红', '紫', '白'] as const;
 export const FC = ['', 'FC', 'FC+', 'AP', 'AP+'] as const;
 export const PLATE_VER = ['真', '超', '檄', '橙', '晓', '桃', '樱', '紫', '堇', '白', '雪', '辉', '舞', '熊', '华', '爽',
@@ -26,13 +29,13 @@ export const PLATE_VER_LIST = {
 	'舞': ['maimai', 'maimai PLUS', 'GreeN', 'GreeN PLUS', 'ORANGE',
 		'ORANGE PLUS', 'PiNK', 'PiNK PLUS', 'MURASAKi', 'MURASAKi PLUS',
 		'MiLK', 'MiLK PLUS', 'FiNALE'],
-	BA_VE: ['maimai', 'maimai PLUS', 'GreeN', 'GreeN PLUS', 'ORANGE',
+	'霸者': ['maimai', 'maimai PLUS', 'GreeN', 'GreeN PLUS', 'ORANGE',
 		'ORANGE PLUS', 'PiNK', 'PiNK PLUS', 'MURASAKi', 'MURASAKi PLUS',
 		'MiLK', 'MiLK PLUS', 'FiNALE']
 } as const;
 export const VER_MUSIC_LIST = {
 	maimai: [
-		8,  9, 17, 18, 22, 23, 24, 25, 27, 30,
+		8, 9, 17, 18, 22, 23, 24, 25, 27, 30,
 		31, 35, 38, 40, 42, 44, 46, 47, 53, 56,
 		61, 62, 63, 64, 65, 66, 67, 68, 69, 70,
 		71, 73, 75, 76, 77, 78, 79, 80, 81, 82,
@@ -188,7 +191,7 @@ export const VER_MUSIC_LIST = {
 		11289, 11290, 11291, 11292, 11293
 	],
 	UNiVERSE: [
-		1020,  1051, 10552, 10602, 11294, 11295, 11296,
+		1020, 1051, 10552, 10602, 11294, 11295, 11296,
 		11297, 11298, 11299, 11300, 11301, 11302, 11303,
 		11304, 11305, 11306, 11307, 11308, 11309, 11310,
 		11311, 11312, 11313, 11314, 11315, 11316, 11317,
@@ -201,7 +204,7 @@ export const VER_MUSIC_LIST = {
 		11369, 11370, 11371, 11372, 11373, 11374
 	],
 	'UNiVERSE PLUS': [
-		1081,  1085, 10145, 10193, 10202, 11346, 11375,
+		1081, 1085, 10145, 10193, 10202, 11346, 11375,
 		11376, 11377, 11378, 11379, 11380, 11381, 11382,
 		11383, 11384, 11385, 11386, 11387, 11388, 11389,
 		11390, 11391, 11392, 11393, 11394, 11395, 11396,
@@ -240,4 +243,4 @@ export const VER_MUSIC_LIST = {
 		11598, 11599, 11600, 11601, 11602, 11603, 11604,
 		11605, 11606, 11607
 	]
-} as const
+} as const;

@@ -13,6 +13,7 @@
 import { Telegraf } from 'telegraf';
 import AquaApi from './api';
 import compute from './compute';
+import { BA_VE } from './consts';
 
 export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
@@ -38,11 +39,10 @@ export default {
 			const userId = Number(await env.KV.get(`bind:${ctx.from.id}`));
 			await ctx.reply(compute.getAllMusicScore(await api.getUserMusic(userId)));
 		});
-		bot.command('progress', async (ctx) => {
+		bot.hears(['/', ''].map(it => it + '霸者进度'), async (ctx) => {
 			const userId = Number(await env.KV.get(`bind:${ctx.from.id}`));
-			await ctx.reply(compute.getAllMusicScore(await api.getUserMusic(userId)));
-
-
+			const userMusic = await api.getUserMusic(userId);
+			await ctx.reply(compute.calcProgress(userMusic, BA_VE));
 		});
 
 
