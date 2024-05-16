@@ -35,18 +35,18 @@ export const createBot = (env: Env) => {
 	for (const version of PLATE_VER) {
 		for (const type of PLATE_TYPE) {
 			bot.hears(['/', ''].map(it => it + version + type + '进度'), async (ctx) => {
-				await ctx.useUserMusic();
+				if (await ctx.useUserMusic()) return;
 				await ctx.reply(compute.calcProgress(ctx.userMusic, version, type));
 			});
 		}
 	}
 	bot.hears(['/', ''].map(it => it + '霸者进度'), async (ctx) => {
-		await ctx.useUserMusic();
+		if (await ctx.useUserMusic()) return;
 		await ctx.reply(compute.calcProgress(ctx.userMusic, BA_VE));
 	});
 
 	bot.command('query', async (ctx) => {
-		await ctx.useUserMusic();
+		if (await ctx.useUserMusic()) return;
 		const results = Song.search(ctx.payload.trim().toLowerCase());
 
 		if (!results.length) {

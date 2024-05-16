@@ -33,34 +33,36 @@ export default class Song implements DataSong {
 
 	public get display() {
 		let message = this.title + '\n\n' +
-			this.artist + '\n' +
-			'BPM ' + this.bpm + '\n' +
-			this.category;
+			`作曲:\t${this.artist}\n` +
+			`BPM:\t${this.bpm}\n` +
+			`分类:\t${this.category}`;
 
-		const addRegionDisplay = (reg: Regions) => {
-			if (reg.cn) message += '🇨🇳';
-			if (reg.jp) message += '🇯🇵';
-			if (reg.intl) message += '🌍';
-			if (!Object.values(reg).some(it => it)) message += '🗑';
+		const regionDisplay = (reg: Regions) => {
+			let toAdd = '';
+			if (reg.cn) toAdd += '🇨🇳';
+			if (reg.jp) toAdd += '🇯🇵';
+			if (reg.intl) toAdd += '🌍';
+			if (toAdd) {
+				return `可玩区域:\t${toAdd}`;
+			}
+			return '🗑 删除曲';
 		};
 
 		const std = this.sheets.find(it => it.type === TypeEnum.STD);
 		const dx = this.sheets.find(it => it.type === TypeEnum.DX);
 
 		if (this.id) {
-			message = this.id + ' ' + message;
+			message = this.id + '. ' + message;
 		}
 
 		if (std) {
-			message += '\n\n标准谱面 ' + std.version + ' ';
-			addRegionDisplay(std.regions);
+			message += `\n\n标准谱面\n添加版本:\t${std.version}\n${regionDisplay(std.regions)}`;
 		}
 		for (const chart of this.sheets.filter(it => it.type === TypeEnum.STD)) {
 			message += `\n${LEVEL_EMOJI[LEVEL_EN.indexOf(chart.difficulty)]} ${chart.internalLevelValue} ${chart.noteDesigner}`;
 		}
 		if (dx) {
-			message += '\n\nDX 谱面 ' + dx.version + ' ';
-			addRegionDisplay(dx.regions);
+			message += `\n\nDX 谱面\n添加版本:\t${dx.version}\n${regionDisplay(dx.regions)}`;
 		}
 		for (const chart of this.sheets.filter(it => it.type === TypeEnum.DX)) {
 			message += `\n${LEVEL_EMOJI[LEVEL_EN.indexOf(chart.difficulty)]} ${chart.internalLevelValue} ${chart.noteDesigner}`;
