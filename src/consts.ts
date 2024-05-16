@@ -244,3 +244,4 @@ export const VER_MUSIC_LIST = {
 		11605, 11606, 11607
 	]
 } as const;
+export const MAIMAI_DX_RELEASE_DATE = new Date('2019-07-11');

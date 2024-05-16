@@ -26,13 +26,16 @@ export default class Song implements DataSong {
 		return Object.assign(inst, song);
 	}
 
-	public getChart(difficulty: DifficultyEnum | number | typeof LEVEL[number]) {
+	public getChart(difficulty: DifficultyEnum | number | typeof LEVEL[number], dx = this.dx) {
 		if (LEVEL.includes(difficulty as any)) {
 			difficulty = LEVEL.indexOf(difficulty as any);
 		}
 		if (typeof difficulty === 'number') {
 			difficulty = LEVEL_EN[difficulty];
 		}
-		return this.sheets.find(sheet => sheet.type === (this.dx ? 'dx' : 'std') && sheet.difficulty === difficulty);
+		if (dx === undefined) {
+			return this.sheets.find(sheet => sheet.difficulty === difficulty);
+		}
+		return this.sheets.find(sheet => sheet.type === (dx ? 'dx' : 'std') && sheet.difficulty === difficulty);
 	}
 }

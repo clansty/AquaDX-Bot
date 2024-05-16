@@ -1,5 +1,5 @@
 import { UserMusic } from './types';
-import { LEVEL, PLATE_VER, PLATE_TYPE, BA_VE, PLATE_VER_LIST, VER_MUSIC_LIST } from './consts';
+import { LEVEL, PLATE_VER, PLATE_TYPE, BA_VE, PLATE_VER_LIST, VER_MUSIC_LIST, MAIMAI_DX_RELEASE_DATE } from './consts';
 import Song from './data/Song';
 
 export default {
@@ -10,7 +10,10 @@ export default {
 		for (let lv = 0; lv < 5; lv++) {
 			let all = 0, done = 0;
 			for (const required of requiredSongList) {
-				if (!Song.fromId(required).getChart(lv)) continue;
+				const chart = Song.fromId(required).getChart(lv);
+				if (!chart) continue;
+				// 屏蔽追加谱面
+				if (chart.releaseDate && new Date(chart.releaseDate) >= MAIMAI_DX_RELEASE_DATE) continue;
 				all++;
 				let userScore = musicList.find(it => it.musicId === required && it.level === lv);
 				if (!userScore) continue;
