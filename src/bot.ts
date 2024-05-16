@@ -3,6 +3,7 @@ import BotContext from './BotContext';
 import AquaApi from './api';
 import { BA_VE, PLATE_TYPE, PLATE_VER } from './consts';
 import compute from './compute';
+import Song from './data/Song';
 
 export const createBot = (env: Env) => {
 	const bot = new Telegraf(env.BOT_TOKEN, { contextType: BotContext });
@@ -16,6 +17,18 @@ export const createBot = (env: Env) => {
 
 		await env.KV.put(`bind:${ctx.from.id}`, ctx.args[0]);
 		await ctx.reply(`绑定 ID ${ctx.args[0]} 成功`);
+	});
+
+	bot.command(['search', 'maimai'], async (ctx) => {
+		const results = Song.search(ctx.payload.trim().toLowerCase());
+		const foundMessage = await ctx.reply(`共找到 ${results.length} 个结果：\n\n` + results.map(song => song.title).join('\n'));
+
+		for (const song of results.slice(0, 3)) {
+			await ctx.replyWithPhoto(song.coverUrl, {
+				caption: song.display,
+				reply_parameters: { message_id: foundMessage.message_id }
+			});
+		}
 	});
 
 	bot.use(async (ctx, next) => {
