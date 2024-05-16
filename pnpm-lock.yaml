@@ -13,6 +13,9 @@ patchedDependencies:
     path: patches/telegraf@4.16.3.patch
 
 dependencies:
+  '@gekichumai/dxdata':
+    specifier: https://gitpkg.now.sh/gekichumai/dxrating/packages/dxdata?main
+    version: '@gitpkg.now.sh/gekichumai/dxrating/packages/dxdata?main'
   telegraf:
     specifier: ^4.16.3
     version: 4.16.3(patch_hash=wukmvsj3vqa6edh433bdstuqmi)
@@ -899,3 +902,9 @@ packages:
   /zod@3.23.5:
     resolution: {integrity: sha512-fkwiq0VIQTksNNA131rDOsVJcns0pfVUjHzLrNBiF/O/Xxb5lQyEXkhZWcJ7npWsYlvs+h0jFWXXy4X46Em1JA==}
     dev: true
+
+  '@gitpkg.now.sh/gekichumai/dxrating/packages/dxdata?main':
+    resolution: {tarball: https://gitpkg.now.sh/gekichumai/dxrating/packages/dxdata?main}
+    name: '@gekichumai/dxdata'
+    version: 0.0.0
+    dev: false

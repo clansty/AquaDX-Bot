@@ -36,10 +36,7 @@ export default {
 				await env.KV.put(`bind:${ctx.from.id}`, ctx.args[0]);
 				await ctx.reply(`绑定用户名 ${ctx.args[0]} 成功`);
 			});
-			bot.command('test', async (ctx) => {
-				const userId = Number(await env.KV.get(`bind:${ctx.from.id}`));
-				await ctx.reply(compute.getAllMusicScore(await api.getUserMusic(userId)));
-			});
+
 			bot.hears(['/', ''].map(it => it + '霸者进度'), async (ctx) => {
 				const userId = Number(await env.KV.get(`bind:${ctx.from.id}`));
 				const userMusic = await api.getUserMusic(userId);

@@ -6,6 +6,7 @@
     "deploy": "wrangler deploy",
     "dev": "wrangler dev --ip 0.0.0.0 --port 8080",
     "start": "wrangler dev",
+    "tail": "wrangler tail",
     "cf-typegen": "wrangler types"
   },
   "devDependencies": {
@@ -14,6 +15,7 @@
     "wrangler": "^3.0.0"
   },
   "dependencies": {
+    "@gekichumai/dxdata": "https://gitpkg.now.sh/gekichumai/dxrating/packages/dxdata?main",
     "telegraf": "^4.16.3"
   },
   "pnpm": {

@@ -1,7 +1,7 @@
-import allMusic from './data/all-music.json';
+import { DifficultyEnum } from '@gekichumai/dxdata';
 
-export const ALL_MUSIC = allMusic as Record<string, typeof allMusic[8]>;
 export const LEVEL = ['绿', '黄', '红', '紫', '白'] as const;
+export const LEVEL_EN = [DifficultyEnum.Basic, DifficultyEnum.Advanced, DifficultyEnum.Expert, DifficultyEnum.Master, DifficultyEnum.ReMaster] as const;
 export const FC = ['', 'FC', 'FC+', 'AP', 'AP+'] as const;
 export const PLATE_VER = ['真', '超', '檄', '橙', '晓', '桃', '樱', '紫', '堇', '白', '雪', '辉', '舞', '熊', '华', '爽',
 	'煌', '宙', '星'] as const;
