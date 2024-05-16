@@ -7,6 +7,7 @@ import Song from './data/Song';
 
 export const createBot = (env: Env) => {
 	const bot = new Telegraf(env.BOT_TOKEN, { contextType: BotContext });
+	bot.context.env = env;
 
 	bot.start(Telegraf.reply('Hello'));
 	bot.command('bind', async (ctx) => {
@@ -31,30 +32,21 @@ export const createBot = (env: Env) => {
 		}
 	});
 
-	bot.use(async (ctx, next) => {
-		ctx.aquaUserId = Number(await env.KV.get(`bind:${ctx.from.id}`));
-		if (!ctx.aquaUserId) {
-			await ctx.reply('请先绑定用户');
-			return;
-		}
-		ctx.aqua = await AquaApi.create(env.KV, env.API_BASE, env.POWERON_TOKEN);
-		ctx.userMusic = await ctx.aqua.getUserMusic(ctx.aquaUserId);
-		await next();
-	});
-
-	// 以下的方法会验证绑定，建立 AquaApi 实例和获取 UserMusic
 	for (const version of PLATE_VER) {
 		for (const type of PLATE_TYPE) {
 			bot.hears(['/', ''].map(it => it + version + type + '进度'), async (ctx) => {
+				await ctx.useUserMusic();
 				await ctx.reply(compute.calcProgress(ctx.userMusic, version, type));
 			});
 		}
 	}
 	bot.hears(['/', ''].map(it => it + '霸者进度'), async (ctx) => {
+		await ctx.useUserMusic();
 		await ctx.reply(compute.calcProgress(ctx.userMusic, BA_VE));
 	});
 
 	bot.command('query', async (ctx) => {
+		await ctx.useUserMusic();
 		const results = Song.search(ctx.payload.trim().toLowerCase());
 
 		if (!results.length) {
