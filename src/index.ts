@@ -21,6 +21,7 @@ export default {
 			return new Response();
 		}
 		const bot = new Telegraf(env.BOT_TOKEN);
+		const api = new AquaApi(env.API_BASE);
 
 
 		bot.start(Telegraf.reply('Hello'));
@@ -34,14 +35,21 @@ export default {
 			await ctx.reply(`绑定用户名 ${ctx.args[0]} 成功`);
 		});
 		bot.command('test', async (ctx) => {
-			const api = new AquaApi(env.API_BASE);
 			const userId = Number(await env.KV.get(`bind:${ctx.from.id}`));
 			await ctx.reply(compute.getAllMusicScore(await api.getUserMusic(userId)));
+		});
+		bot.command('progress', async (ctx) => {
+			const userId = Number(await env.KV.get(`bind:${ctx.from.id}`));
+			await ctx.reply(compute.getAllMusicScore(await api.getUserMusic(userId)));
+
+
 		});
 
 
 		try {
-			await bot.handleUpdate(await request.json());
+			const req = await request.json();
+			console.log(req);
+			await bot.handleUpdate(req as any);
 		} catch (e) {
 			console.log(e);
 		}

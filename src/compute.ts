@@ -1,8 +1,6 @@
 import { UserMusic } from './types';
 import allMusic from './all-music.json';
-
-const LEVEL = ['绿', '黄', '红', '紫', '白'];
-const FC = ['', 'FC', 'FC+', 'AP', 'AP+'];
+import { FC, LEVEL } from './consts';
 
 export default {
 	getAllMusicScore(musicList: UserMusic[]) {
@@ -13,7 +11,12 @@ export default {
 				result.push('未知歌曲');
 				continue;
 			}
-			result.push(`${musicData.name} ${LEVEL[userMusic.level]} ${musicData.notes[userMusic.level].lv} ${userMusic.achievement / 10000} ${FC[userMusic.comboStatus]}`);
+			try {
+				result.push(`${musicData.name} ${LEVEL[userMusic.level]} ${musicData.notes[userMusic.level].lv} ${userMusic.achievement / 10000} ${FC[userMusic.comboStatus]}`);
+			} catch (e) {
+				result.push('出错');
+				console.log('歌曲解析出错', userMusic, musicData);
+			}
 		}
 		return result.join('\n');
 	}
