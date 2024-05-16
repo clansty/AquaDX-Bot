@@ -23,12 +23,7 @@ export default {
 			return new Response();
 		}
 		try {
-			const bot = new Telegraf<BotContext>(env.BOT_TOKEN);
-
-			// 覆盖 reply，quote 原消息
-			bot.context.reply = function(message) {
-				return this.sendMessage(message, { reply_parameters: { message_id: this.message.message_id } });
-			};
+			const bot = new Telegraf(env.BOT_TOKEN, { contextType: BotContext });
 
 			bot.start(Telegraf.reply('Hello'));
 			bot.command('bind', async (ctx) => {
