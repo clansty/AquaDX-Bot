@@ -5,6 +5,7 @@ import Song from './data/Song';
 const checkPlateMusic = (music: UserMusic, type?: typeof PLATE_TYPE[number]) => {
 	switch (type) {
 		case undefined: // 霸者
+		case 'clear':
 			return music.achievement >= 8e5;
 		case '将':
 			return music.achievement >= 1e6;

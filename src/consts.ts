@@ -6,7 +6,7 @@ export const LEVEL_EN = [DifficultyEnum.Basic, DifficultyEnum.Advanced, Difficul
 export const FC = ['', 'FC', 'FC+', 'AP', 'AP+'] as const;
 export const PLATE_VER = ['真', '超', '檄', '橙', '晓', '桃', '樱', '紫', '堇', '白', '雪', '辉', '舞', '熊', '华', '爽',
 	'煌', '宙', '星', '祭', '祝'] as const;
-export const PLATE_TYPE = ['极', '将', '神', '舞舞'] as const;
+export const PLATE_TYPE = ['极', '将', '神', '舞舞', 'clear'] as const;
 export const BA_VE = '霸者';
 export const PLATE_VER_LIST = {
 	'真': ['maimai', 'maimai PLUS'],
