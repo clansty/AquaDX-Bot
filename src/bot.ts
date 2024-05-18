@@ -1,9 +1,10 @@
 import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
-import AquaApi from './api';
 import { BA_VE, FC, LEVEL_EMOJI, PLATE_TYPE, PLATE_VER } from './consts';
 import compute from './compute';
 import Song from './data/Song';
+import Renderer from './render';
+import { Env } from '../worker-configuration';
 
 export const createBot = (env: Env) => {
 	const bot = new Telegraf(env.BOT_TOKEN, { contextType: BotContext });
@@ -36,13 +37,20 @@ export const createBot = (env: Env) => {
 		for (const type of PLATE_TYPE) {
 			bot.hears(['/', ''].map(it => it + version + type + '进度'), async (ctx) => {
 				if (await ctx.useUserMusic()) return;
-				await ctx.reply(compute.calcProgress(ctx.userMusic, version, type));
+				await ctx.reply(compute.calcProgressText(ctx.userMusic, version, type));
 			});
 		}
 	}
 	bot.hears(['/', ''].map(it => it + '霸者进度'), async (ctx) => {
 		if (await ctx.useUserMusic()) return;
-		await ctx.reply(compute.calcProgress(ctx.userMusic, BA_VE));
+		await ctx.reply(compute.calcProgressText(ctx.userMusic, BA_VE));
+	});
+
+	bot.hears(['/', ''].map(it => it + '霸者完成图'), async (ctx) => {
+		if (await ctx.useUserMusic()) return;
+		await ctx.replyWithPhoto({ source: await new Renderer(env.MYBROWSER).renderBaVeProgress(ctx.userMusic) }, {
+			reply_parameters: { message_id: ctx.message.message_id }
+		});
 	});
 
 	bot.command('query', async (ctx) => {

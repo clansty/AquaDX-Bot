@@ -4,6 +4,8 @@ main = "src/index.ts"
 compatibility_date = "2024-04-23"
 node_compat = true
 
+browser = { binding = "MYBROWSER" }
+
 # Automatically place your workloads in an optimal location to minimize latency.
 # If you are running back-end logic in a Worker, running it closer to your back-end infrastructure
 # rather than the end user may result in better performance.
@@ -71,6 +73,7 @@ node_compat = true
 [[kv_namespaces]]
 binding = "KV"
 id = "16a7f633b5374174a3e44a4ebd4abac6"
+preview_id = "16a7f633b5374174a3e44a4ebd4abac6"
 
 # Bind an mTLS certificate. Use to present a client certificate when communicating with another service.
 # Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#mtls-certificates

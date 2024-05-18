@@ -1,4 +1,4 @@
-import { UserMusic } from './types';
+import { ProgressCalcResult, UserMusic } from './types';
 import { LEVEL, PLATE_VER, PLATE_TYPE, BA_VE, PLATE_VER_LIST, VER_MUSIC_LIST, MAIMAI_DX_RELEASE_DATE } from './consts';
 import Song from './data/Song';
 
@@ -19,10 +19,10 @@ const checkPlateMusic = (music: UserMusic, type?: typeof PLATE_TYPE[number]) => 
 	}
 };
 
-export default {
-	calcProgress(musicList: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type?: typeof PLATE_TYPE[number]): string {
+const compute = {
+	calcProgress(musicList: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type?: typeof PLATE_TYPE[number]): ProgressCalcResult[] {
 		const requiredSongList: number[] = PLATE_VER_LIST[ver].flatMap(ver => VER_MUSIC_LIST[ver]);
-		const result = [] as string[];
+		const result = [] as ProgressCalcResult[];
 		let total = 0, totalDone = 0;
 		for (let lv = 0; lv < 5; lv++) {
 			let all = 0, done = 0;
@@ -41,9 +41,15 @@ export default {
 
 			total += all;
 			totalDone += done;
-			result.push(`${LEVEL[lv]} ${done}/${all}`);
+			result.push({ done, all });
 		}
-		result.push('', `总计 ${totalDone}/${total}`);
-		return result.join('\n');
+		result.push({ done: totalDone, all: total });
+		return result;
+	},
+	calcProgressText(musicList: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type?: typeof PLATE_TYPE[number]): string {
+		const result = compute.calcProgress(musicList, ver, type);
+		return result.map(({ done, all }, lv) => `${LEVEL[lv] || '总计'} ${done}/${all}`).join('\n');
 	}
 };
+
+export default compute;

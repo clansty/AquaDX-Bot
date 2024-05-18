@@ -1,16 +1,119 @@
 diff --git a/lib/core/network/client.js b/lib/core/network/client.js
-index 25fbbbb47c7f88e83ae26f629e5ae1a0c141725c..d86f32fe91123daf1145fa9397eb18c2136b576f 100644
+index 25fbbbb47c7f88e83ae26f629e5ae1a0c141725c..ab7f898cbe025f6538c8646574050e4958493693 100644
 --- a/lib/core/network/client.js
 +++ b/lib/core/network/client.js
-@@ -29,7 +29,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
+@@ -27,9 +27,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
+ };
+ Object.defineProperty(exports, "__esModule", { value: true });
  /* eslint @typescript-eslint/restrict-template-expressions: [ "error", { "allowNumber": true, "allowBoolean": true } ] */
- const crypto = __importStar(require("crypto"));
+-const crypto = __importStar(require("crypto"));
  const fs = __importStar(require("fs"));
 -const promises_1 = require("fs/promises");
  const https = __importStar(require("https"));
  const path = __importStar(require("path"));
  const node_fetch_1 = __importDefault(require("node-fetch"));
-@@ -205,14 +204,7 @@ async function attachFormMedia(form, media, id, agent) {
+@@ -110,18 +108,12 @@ async function buildFormDataConfig(payload, agent) {
+             payload[field] = JSON.stringify(payload[field]);
+         }
+     }
+-    const boundary = crypto.randomBytes(32).toString('hex');
+-    const formData = new multipart_stream_1.default(boundary);
++    const formData = new FormData();
+     await Promise.all(Object.keys(payload).map((key) => 
+     // @ts-expect-error payload[key] can obviously index payload, but TS doesn't trust us
+     attachFormValue(formData, key, payload[key], agent)));
+     return {
+         method: 'POST',
+-        compress: true,
+-        headers: {
+-            'content-type': `multipart/form-data; boundary=${boundary}`,
+-            connection: 'keep-alive',
+-        },
+         body: formData,
+     };
+ }
+@@ -132,19 +124,13 @@ async function attachFormValue(form, id, value, agent) {
+     if (typeof value === 'string' ||
+         typeof value === 'boolean' ||
+         typeof value === 'number') {
+-        form.addPart({
+-            headers: { 'content-disposition': `form-data; name="${id}"` },
+-            body: `${value}`,
+-        });
++        form.append(id, value.toString());
+         return;
+     }
+     if (id === 'thumb' || id === 'thumbnail') {
+-        const attachmentId = crypto.randomBytes(16).toString('hex');
++        const attachmentId = crypto.randomUUID();
+         await attachFormMedia(form, value, attachmentId, agent);
+-        return form.addPart({
+-            headers: { 'content-disposition': `form-data; name="${id}"` },
+-            body: `attach://${attachmentId}`,
+-        });
++        return form.append(id, `attach://${attachmentId}`);
+     }
+     if (Array.isArray(value)) {
+         const items = await Promise.all(value.map(async (item) => {
+@@ -152,11 +138,11 @@ async function attachFormValue(form, id, value, agent) {
+             if (typeof item.media !== 'object') {
+                 return await Promise.resolve(item);
+             }
+-            const attachmentId = crypto.randomBytes(16).toString('hex');
++            const attachmentId = crypto.randomUUID();
+             await attachFormMedia(form, item.media, attachmentId, agent);
+             const thumb = (_a = item.thumb) !== null && _a !== void 0 ? _a : item.thumbnail;
+             if (typeof thumb === 'object') {
+-                const thumbAttachmentId = crypto.randomBytes(16).toString('hex');
++                const thumbAttachmentId = crypto.randomUUID();
+                 await attachFormMedia(form, thumb, thumbAttachmentId, agent);
+                 return {
+                     ...item,
+@@ -166,10 +152,7 @@ async function attachFormValue(form, id, value, agent) {
+             }
+             return { ...item, media: `attach://${attachmentId}` };
+         }));
+-        return form.addPart({
+-            headers: { 'content-disposition': `form-data; name="${id}"` },
+-            body: JSON.stringify(items),
+-        });
++        return form.append(id, JSON.stringify(items));
+     }
+     if (value &&
+         typeof value === 'object' &&
+@@ -177,15 +160,12 @@ async function attachFormValue(form, id, value, agent) {
+         (0, check_1.hasProp)(value, 'type') &&
+         typeof value.media !== 'undefined' &&
+         typeof value.type !== 'undefined') {
+-        const attachmentId = crypto.randomBytes(16).toString('hex');
++        const attachmentId = crypto.randomUUID();
+         await attachFormMedia(form, value.media, attachmentId, agent);
+-        return form.addPart({
+-            headers: { 'content-disposition': `form-data; name="${id}"` },
+-            body: JSON.stringify({
+-                ...value,
+-                media: `attach://${attachmentId}`,
+-            }),
+-        });
++        return form.append(id, JSON.stringify({
++            ...value,
++            media: `attach://${attachmentId}`,
++        }));
+     }
+     return await attachFormMedia(form, value, id, agent);
+ }
+@@ -195,32 +175,15 @@ async function attachFormMedia(form, media, id, agent) {
+     if ('url' in media && media.url !== undefined) {
+         const timeout = 500000; // ms
+         const res = await (0, node_fetch_1.default)(media.url, { agent, timeout });
+-        return form.addPart({
+-            headers: {
+-                'content-disposition': `form-data; name="${id}"; filename="${fileName}"`,
+-            },
+-            body: res.body,
+-        });
++        return form.append(id, new Blob([res.body]), fileName);
+     }
      if ('source' in media && media.source) {
          let mediaSource = media.source;
          if (typeof media.source === 'string') {
@@ -24,7 +127,16 @@ index 25fbbbb47c7f88e83ae26f629e5ae1a0c141725c..d86f32fe91123daf1145fa9397eb18c2
 -            }
          }
          if (isStream(mediaSource) || Buffer.isBuffer(mediaSource)) {
-             form.addPart({
+-            form.addPart({
+-                headers: {
+-                    'content-disposition': `form-data; name="${id}"; filename="${fileName}"`,
+-                },
+-                body: mediaSource,
+-            });
++            form.append(id, new Blob([mediaSource]), fileName);
+         }
+     }
+ }
 diff --git a/lib/telegraf.js b/lib/telegraf.js
 index 23d021c3d5f98493bd714a2114ec8fa853560e5c..b981d7d7311e927486b3869e4b665b12cc43a562 100644
 --- a/lib/telegraf.js
