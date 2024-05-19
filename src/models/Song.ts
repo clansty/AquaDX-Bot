@@ -77,13 +77,13 @@ export default class Song implements DataSong {
 			message += `\n\n标准谱面\n添加版本:\t${std.version}\n${regionDisplay(std.regions)}`;
 		}
 		for (const chart of this.sheets.filter(it => it.type === TypeEnum.STD)) {
-			message += `\n${LEVEL_EMOJI[LEVEL_EN.indexOf(chart.difficulty)]} ${chart.internalLevelValue} ${chart.noteDesigner}`;
+			message += `\n${LEVEL_EMOJI[LEVEL_EN.indexOf(chart.difficulty)]} ${chart.internalLevelValue.toFixed(1)} ${chart.noteDesigner}`;
 		}
 		if (dx) {
 			message += `\n\nDX 谱面\n添加版本:\t${dx.version}\n${regionDisplay(dx.regions)}`;
 		}
 		for (const chart of this.sheets.filter(it => it.type === TypeEnum.DX)) {
-			message += `\n${LEVEL_EMOJI[LEVEL_EN.indexOf(chart.difficulty)]} ${chart.internalLevelValue} ${chart.noteDesigner}`;
+			message += `\n${LEVEL_EMOJI[LEVEL_EN.indexOf(chart.difficulty)]} ${chart.internalLevelValue.toFixed(1)} ${chart.noteDesigner}`;
 		}
 		return message;
 	}

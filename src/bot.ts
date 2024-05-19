@@ -80,8 +80,9 @@ export const createBot = (env: Env) => {
 
 			const message = [song.title, ''];
 			for (const userScore of userScores) {
-				const chart = song.getChart(userScore.level);
-				message.push(`${userScore.musicId > 1e4 ? 'DX' : 'STD'} ${LEVEL_EMOJI[userScore.level]} ${chart.internalLevelValue} ${userScore.achievement / 1e4}% ${FC[userScore.comboStatus]}`);
+				const chart = song.getChart(userScore.level, userScore.musicId > 1e4);
+				message.push(`${userScore.musicId > 1e4 ? 'DX' : 'STD'} ${LEVEL_EMOJI[userScore.level]} ${chart.internalLevelValue.toFixed(1)} ` +
+					`${(userScore.achievement / 1e4).toFixed(4)}% ${FC[userScore.comboStatus]}`);
 			}
 
 			await ctx.replyWithPhoto(song.coverUrl, {
