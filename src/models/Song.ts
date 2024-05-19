@@ -28,14 +28,18 @@ export default class Song implements DataSong {
 			// DXRating.net 中一些歌，比如说 LOSER 和俊达萌起床歌，没有 ID
 			const findId = Object.entries(ALL_MUSIC).find(([id, dataFromAllMusic]) => dataFromAllMusic.name === data.title);
 			if (findId) {
-				this.id = Number(findId[0]);
+				this.id = Number(findId[0]) % 1e4;
+				console.log('修复了 ID 丢失', data.title, this.id);
+			}
+			else {
+				console.log('修复不了 ID 丢失', data.title);
 			}
 		}
 
 		const stdDataFromAllMusic = ALL_MUSIC[this.id];
 		const dxDataFromAllMusic = ALL_MUSIC[this.id + 1e4];
 
-		this.sheets = data.sheets.map(sheet => new Chart(sheet, data.title,
+		this.sheets = data.sheets.map(sheet => new Chart(sheet,
 			// 缓解 DXRating.net 定数错误
 			sheet.type === TypeEnum.DX ? dxDataFromAllMusic : stdDataFromAllMusic,
 			this.id && (sheet.type === TypeEnum.DX ? this.id + 1e4 : this.id)));
