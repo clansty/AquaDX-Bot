@@ -2,7 +2,7 @@ import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
 import { BA_VE, FC, LEVEL_EMOJI, LEVELS, PLATE_TYPE, PLATE_VER } from './consts';
 import compute from './compute';
-import Song from './data/Song';
+import Song from './models/Song';
 import Renderer from './render';
 import { Env } from '../worker-configuration';
 

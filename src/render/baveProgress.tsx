@@ -1,6 +1,6 @@
 import { TableContentRenderData, TableContentRenderRow, UserMusic } from '../types';
 import { BA_VE, BUDDIED_LOGO, MAIMAI_DX_RELEASE_DATE, PLATE_IMAGES, PLATE_VER_LIST, VER_MUSIC_LIST } from '../consts';
-import Song from '../data/Song';
+import Song from '../models/Song';
 import React from 'react';
 import TableContent from './components/TableContent';
 import _ from 'lodash';

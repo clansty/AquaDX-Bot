@@ -9,7 +9,7 @@ export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
 		if (request.headers.get('X-Telegram-Bot-Api-Secret-Token') !== env.API_SECRET) {
 			console.log('Secret-Token 错误');
-			return new Response(renderToStaticMarkup(warpBasicReactElement(levelProgress(SAMPLE_USER_MUSIC, '11'))), {
+			return new Response(renderToStaticMarkup(warpBasicReactElement(levelProgress(SAMPLE_USER_MUSIC, '11+'))), {
 				headers: { 'Content-Type': 'text/html' }
 			});
 		}

@@ -1,6 +1,8 @@
 import { DifficultyEnum } from '@gekichumai/dxdata';
 import { UserMusic } from './types';
+import allMusic from './data/all-music.json';
 
+export const ALL_MUSIC = allMusic as Record<string | number, typeof allMusic[8]>;
 export const LEVEL = ['绿', '黄', '红', '紫', '白'] as const;
 export const LEVEL_COLOR = ['rgb(34, 187, 91)', 'rgb(251, 156, 45)', 'rgb(246, 72, 97)', 'rgb(158, 69, 226)',
 	'rgb(228, 166, 255)'] as const;

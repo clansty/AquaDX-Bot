@@ -1,5 +1,5 @@
-import { CategoryEnum, DifficultyEnum, dxdata, Regions, Sheet, Song as DataSong, TypeEnum } from '@gekichumai/dxdata';
-import { LEVEL, LEVEL_EMOJI, LEVEL_EN } from '../consts';
+import { CategoryEnum, DifficultyEnum, dxdata, Regions, Song as DataSong, TypeEnum } from '@gekichumai/dxdata';
+import { ALL_MUSIC, LEVEL, LEVEL_EMOJI, LEVEL_EN } from '../consts';
 import Chart from './Chart';
 
 export default class Song implements DataSong {
@@ -14,18 +14,31 @@ export default class Song implements DataSong {
 	isLocked: boolean;
 	sheets: Chart[];
 
+	public readonly id: number;
+
 	private constructor(data: DataSong, public dx?: boolean) {
 		Object.assign(this, data);
-		this.sheets = data.sheets.map(sheet => new Chart(sheet));
-	}
 
-	public get id() {
-		const std = this.sheets.find(it => it.type === TypeEnum.STD);
-		const dx = this.sheets.find(it => it.type === TypeEnum.DX);
+		const stdChart = data.sheets.find(it => it.type === TypeEnum.STD);
+		const dxChart = data.sheets.find(it => it.type === TypeEnum.DX);
 
-		const id = std ? std.internalId : (dx?.internalId - 1e4);
+		this.id = stdChart ? stdChart.internalId : (dxChart?.internalId - 1e4);
 
-		return id || null;
+		if (!this.id) {
+			// DXRating.net 中一些歌，比如说 LOSER 和俊达萌起床歌，没有 ID
+			const findId = Object.entries(ALL_MUSIC).find(([id, dataFromAllMusic]) => dataFromAllMusic.name === data.title);
+			if (findId) {
+				this.id = Number(findId[0]);
+			}
+		}
+
+		const stdDataFromAllMusic = ALL_MUSIC[this.id];
+		const dxDataFromAllMusic = ALL_MUSIC[this.id + 1e4];
+
+		this.sheets = data.sheets.map(sheet => new Chart(sheet, data.title,
+			// 缓解 DXRating.net 定数错误
+			sheet.type === TypeEnum.DX ? dxDataFromAllMusic : stdDataFromAllMusic,
+			this.id && (sheet.type === TypeEnum.DX ? this.id + 1e4 : this.id)));
 	}
 
 	public get coverUrl() {

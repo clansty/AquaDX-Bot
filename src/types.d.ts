@@ -1,4 +1,4 @@
-import Song from './data/Song';
+import Song from './models/Song';
 import { Sheet } from '@gekichumai/dxdata';
 
 export type UserMusic = {

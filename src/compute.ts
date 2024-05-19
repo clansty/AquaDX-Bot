@@ -1,6 +1,6 @@
 import { ProgressCalcResult, UserMusic } from './types';
 import { LEVEL, PLATE_VER, PLATE_TYPE, BA_VE, PLATE_VER_LIST, VER_MUSIC_LIST, MAIMAI_DX_RELEASE_DATE } from './consts';
-import Song from './data/Song';
+import Song from './models/Song';
 
 const checkPlateMusic = (music: UserMusic, type?: typeof PLATE_TYPE[number]) => {
 	switch (type) {
