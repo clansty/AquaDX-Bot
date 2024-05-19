@@ -9,7 +9,7 @@ patchedDependencies:
     hash: h5ds5csqjpdvsndz6yipxstrlm
     path: patches/rollup-plugin-node-polyfills@0.2.1.patch
   telegraf@4.16.3:
-    hash: d57z2bl3txaabirrwjjuphb3yq
+    hash: eh53c7bcourv6ij2lrebty4tii
     path: patches/telegraf@4.16.3.patch
 
 dependencies:
@@ -30,7 +30,7 @@ dependencies:
     version: 18.3.1(react@18.3.1)
   telegraf:
     specifier: ^4.16.3
-    version: 4.16.3(patch_hash=d57z2bl3txaabirrwjjuphb3yq)
+    version: 4.16.3(patch_hash=eh53c7bcourv6ij2lrebty4tii)
 
 devDependencies:
   '@cloudflare/workers-types':
@@ -1024,7 +1024,7 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /telegraf@4.16.3(patch_hash=d57z2bl3txaabirrwjjuphb3yq):
+  /telegraf@4.16.3(patch_hash=eh53c7bcourv6ij2lrebty4tii):
     resolution: {integrity: sha512-yjEu2NwkHlXu0OARWoNhJlIjX09dRktiMQFsM678BAH/PEPVwctzL67+tvXqLCRQQvm3SDtki2saGO9hLlz68w==}
     engines: {node: ^12.20.0 || >=14.13.1}
     hasBin: true

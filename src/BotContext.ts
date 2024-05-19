@@ -10,11 +10,6 @@ export default class BotContext extends Context {
 	userMusic: UserMusic[];
 	env: Env;
 
-	// 覆盖 reply，quote 原消息
-	override reply(message: string | FmtString) {
-		return super.reply(message, { reply_parameters: { message_id: this.message.message_id } });
-	}
-
 	async useUserMusic() {
 		if (this.userMusic) return;
 		this.aquaUserId = Number(await this.env.KV.get(`bind:${this.from.id}`));

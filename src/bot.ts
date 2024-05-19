@@ -5,12 +5,17 @@ import compute from './compute';
 import Song from './models/Song';
 import Renderer from './render';
 import { Env } from '../worker-configuration';
+import { useNewReplies } from 'telegraf/future';
 
 export const createBot = (env: Env) => {
 	const bot = new Telegraf(env.BOT_TOKEN, { contextType: BotContext });
 	bot.context.env = env;
+	bot.use(useNewReplies());
 
 	bot.start(Telegraf.reply('Hello'));
+	bot.command('test', async(ctx)=>{
+		await ctx.replyWithDocument({source: Buffer.from('Hello'), filename: 'hello.txt'});
+	})
 	bot.command('bind', async (ctx) => {
 		if (ctx.args.length < 1) {
 			await ctx.reply('请输入要绑定的 ID');
@@ -49,9 +54,7 @@ export const createBot = (env: Env) => {
 	bot.hears(/^\/?霸者完成[图表]$/, async (ctx) => {
 		if (await ctx.useUserMusic()) return;
 		const genMsg = ctx.reply('图片生成中...');
-		await ctx.replyWithDocument({ source: await new Renderer(env.MYBROWSER).renderBaVeProgress(ctx.userMusic), filename: '霸者完成图.png' }, {
-			reply_parameters: { message_id: ctx.message.message_id }
-		});
+		await ctx.replyWithDocument({ source: await new Renderer(env.MYBROWSER).renderBaVeProgress(ctx.userMusic), filename: '霸者完成图.png' });
 		await ctx.deleteMessage((await genMsg).message_id);
 	});
 
@@ -59,9 +62,7 @@ export const createBot = (env: Env) => {
 		bot.hears(RegExp(`^\\/?${level.replace('+', '\\+')} ?完成[图表]$`), async (ctx) => {
 			if (await ctx.useUserMusic()) return;
 			const genMsg = ctx.reply('图片生成中...');
-			await ctx.replyWithDocument({ source: await new Renderer(env.MYBROWSER).renderLevelProgress(ctx.userMusic, level), filename: `LV ${level} 完成图.png` }, {
-				reply_parameters: { message_id: ctx.message.message_id }
-			});
+			await ctx.replyWithDocument({ source: await new Renderer(env.MYBROWSER).renderLevelProgress(ctx.userMusic, level), filename: `LV ${level} 完成图.png` });
 			await ctx.deleteMessage((await genMsg).message_id);
 		});
 	}
@@ -86,8 +87,7 @@ export const createBot = (env: Env) => {
 			}
 
 			await ctx.replyWithPhoto(song.coverUrl, {
-				caption: message.join('\n'),
-				reply_parameters: { message_id: ctx.message.message_id }
+				caption: message.join('\n')
 			});
 			return;
 		}

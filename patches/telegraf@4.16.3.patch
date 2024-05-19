@@ -1,5 +1,5 @@
 diff --git a/lib/core/network/client.js b/lib/core/network/client.js
-index 25fbbbb47c7f88e83ae26f629e5ae1a0c141725c..ab7f898cbe025f6538c8646574050e4958493693 100644
+index 25fbbbb47c7f88e83ae26f629e5ae1a0c141725c..12413d45069d7eb1ccda415cfaa0730a2e8c904b 100644
 --- a/lib/core/network/client.js
 +++ b/lib/core/network/client.js
 @@ -27,9 +27,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
@@ -12,6 +12,15 @@ index 25fbbbb47c7f88e83ae26f629e5ae1a0c141725c..ab7f898cbe025f6538c8646574050e49
  const https = __importStar(require("https"));
  const path = __importStar(require("path"));
  const node_fetch_1 = __importDefault(require("node-fetch"));
+@@ -39,7 +37,7 @@ const multipart_stream_1 = __importDefault(require("./multipart-stream"));
+ const error_1 = __importDefault(require("./error"));
+ const url_1 = require("url");
+ // eslint-disable-next-line @typescript-eslint/no-var-requires
+-const debug = require('debug')('telegraf:client');
++const debug = (...args) => console.log('telegraf:client', ...args);
+ const { isStream } = multipart_stream_1.default;
+ const WEBHOOK_REPLY_METHOD_ALLOWLIST = new Set([
+     'answerCallbackQuery',
 @@ -110,18 +108,12 @@ async function buildFormDataConfig(payload, agent) {
              payload[field] = JSON.stringify(payload[field]);
          }
@@ -102,7 +111,7 @@ index 25fbbbb47c7f88e83ae26f629e5ae1a0c141725c..ab7f898cbe025f6538c8646574050e49
      }
      return await attachFormMedia(form, value, id, agent);
  }
-@@ -195,32 +175,15 @@ async function attachFormMedia(form, media, id, agent) {
+@@ -195,34 +175,20 @@ async function attachFormMedia(form, media, id, agent) {
      if ('url' in media && media.url !== undefined) {
          const timeout = 500000; // ms
          const res = await (0, node_fetch_1.default)(media.url, { agent, timeout });
@@ -136,7 +145,12 @@ index 25fbbbb47c7f88e83ae26f629e5ae1a0c141725c..ab7f898cbe025f6538c8646574050e49
 +            form.append(id, new Blob([mediaSource]), fileName);
          }
      }
++    else {
++        form.append(id, JSON.stringify(media));
++    }
  }
+ async function answerToWebhook(response, payload, options) {
+     if (!includesMedia(payload)) {
 diff --git a/lib/telegraf.js b/lib/telegraf.js
 index 23d021c3d5f98493bd714a2114ec8fa853560e5c..b981d7d7311e927486b3869e4b665b12cc43a562 100644
 --- a/lib/telegraf.js
