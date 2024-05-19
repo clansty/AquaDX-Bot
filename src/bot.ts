@@ -48,7 +48,7 @@ export const createBot = (env: Env) => {
 
 	bot.hears(['/', ''].map(it => it + '霸者完成图'), async (ctx) => {
 		if (await ctx.useUserMusic()) return;
-		await ctx.replyWithPhoto({ source: await new Renderer(env.MYBROWSER).renderBaVeProgress(ctx.userMusic) }, {
+		await ctx.replyWithDocument({ source: await new Renderer(env.MYBROWSER).renderBaVeProgress(ctx.userMusic), filename: '霸者完成图.png' }, {
 			reply_parameters: { message_id: ctx.message.message_id }
 		});
 	});
