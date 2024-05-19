@@ -1,6 +1,6 @@
 import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
-import { BA_VE, FC, LEVEL, LEVEL_EMOJI, LEVELS, PLATE_TYPE, PLATE_VER } from './consts';
+import { BA_VE, FC, LEVEL_EMOJI, LEVELS, PLATE_TYPE, PLATE_VER } from './consts';
 import compute from './compute';
 import Song from './data/Song';
 import Renderer from './render';
@@ -48,17 +48,21 @@ export const createBot = (env: Env) => {
 
 	bot.hears(/^\/?霸者完成[图表]$/, async (ctx) => {
 		if (await ctx.useUserMusic()) return;
+		const genMsg = ctx.reply('图片生成中...');
 		await ctx.replyWithDocument({ source: await new Renderer(env.MYBROWSER).renderBaVeProgress(ctx.userMusic), filename: '霸者完成图.png' }, {
 			reply_parameters: { message_id: ctx.message.message_id }
 		});
+		await ctx.deleteMessage((await genMsg).message_id);
 	});
 
 	for (const level of LEVELS) {
-		bot.hears(RegExp(`^\\/?${level} ?完成[图表]$`), async (ctx) => {
+		bot.hears(RegExp(`^\\/?${level.replace('+', '\\+')} ?完成[图表]$`), async (ctx) => {
 			if (await ctx.useUserMusic()) return;
-			await ctx.replyWithDocument({ source: await new Renderer(env.MYBROWSER).renderLevelProgress(ctx.userMusic, level), filename: `${level} 完成图.png` }, {
+			const genMsg = ctx.reply('图片生成中...');
+			await ctx.replyWithDocument({ source: await new Renderer(env.MYBROWSER).renderLevelProgress(ctx.userMusic, level), filename: `LV ${level} 完成图.png` }, {
 				reply_parameters: { message_id: ctx.message.message_id }
 			});
+			await ctx.deleteMessage((await genMsg).message_id);
 		});
 	}
 

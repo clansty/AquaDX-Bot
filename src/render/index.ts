@@ -14,11 +14,10 @@ export default class Renderer {
 	private async renderHtml(html: string, width: number) {
 		const browser = await puppeteer.launch(this.browser);
 		const page = await browser.newPage();
-		await page.setViewport({ width, height: 500 });
+		await page.setViewport({ width, height: 300 });
 		await page.setContent(html, { waitUntil: 'networkidle0' });
 		const data = await page.screenshot({ encoding: 'binary', fullPage: true }) as Buffer;
-		await page.close();
-		await browser.close();
+		page.close().then(browser.close);
 		return data;
 	}
 
