@@ -6,6 +6,7 @@ export const LEVEL_COLOR = ['rgb(34, 187, 91)', 'rgb(251, 156, 45)', 'rgb(246, 7
 	'rgb(228, 166, 255)'] as const;
 export const LEVEL_EMOJI = ['🟢', '🟡', '🔴', '🟣', '⚪️'] as const;
 export const LEVEL_EN = [DifficultyEnum.Basic, DifficultyEnum.Advanced, DifficultyEnum.Expert, DifficultyEnum.Master, DifficultyEnum.ReMaster] as const;
+export const LEVELS = ['1', '2', '3', '4', '5', '6', '7', '7+', '8', '8+', '9', '9+', '10', '10+', '11', '11+', '12', '12+', '13', '13+', '14', '14+', '15'] as const;
 export const FC = ['', 'FC', 'FC+', 'AP', 'AP+'] as const;
 export const PLATE_VER = ['真', '超', '檄', '橙', '晓', '桃', '樱', '紫', '堇', '白', '雪', '辉', '舞', '熊', '华', '爽',
 	'煌', '宙', '星', '祭', '祝'] as const;

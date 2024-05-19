@@ -13,15 +13,15 @@
 import { createBot } from './bot';
 import { Env } from '../worker-configuration';
 import { renderToStaticMarkup } from 'react-dom/server';
-import warpBasicReactElement from './render/warpBasicReactElement';
-import baveProgress from './render/baveProgress';
+import warpBasicReactElement from './render/wrapBasicReactElement';
 import { SAMPLE_USER_MUSIC } from './consts';
+import levelProgress from './render/levelProgress';
 
 export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
 		if (request.headers.get('X-Telegram-Bot-Api-Secret-Token') !== env.API_SECRET) {
 			console.log('Secret-Token 错误');
-			return new Response(renderToStaticMarkup(warpBasicReactElement(baveProgress(SAMPLE_USER_MUSIC))), {
+			return new Response(renderToStaticMarkup(warpBasicReactElement(levelProgress(SAMPLE_USER_MUSIC, '12'))), {
 				headers: {
 					'Content-Type': 'text/html'
 				}

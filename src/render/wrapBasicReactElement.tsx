@@ -5,12 +5,12 @@ export default (element: React.ReactElement) =>
 	<head>
 		<meta charSet="utf-8" />
 		<meta name="referrer" content="no-referrer" />
-		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet" />
 	</head>
 	<body style={{
 		padding: 0, margin: 0,
 		background: '#51bcf3',
-		fontFamily: 'Quicksand, sans-serif'
+		fontFamily: 'Quicksand, "Noto Sans SC", sans-serif'
 	}}>
 	{element}
 	<div style={{ backgroundColor: '#55ab37', marginTop: 50 }}>

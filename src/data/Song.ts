@@ -92,6 +92,10 @@ export default class Song implements DataSong {
 		return results;
 	}
 
+	public static getByCondition(condition: (song: DataSong) => boolean) {
+		return dxdata.songs.filter(condition).map(songRaw => Object.assign(new this(), songRaw));
+	}
+
 	public getChart(difficulty: DifficultyEnum | number | typeof LEVEL[number], dx = this.dx) {
 		if (LEVEL.includes(difficulty as any)) {
 			difficulty = LEVEL.indexOf(difficulty as any);

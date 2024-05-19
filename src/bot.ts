@@ -1,6 +1,6 @@
 import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
-import { BA_VE, FC, LEVEL_EMOJI, PLATE_TYPE, PLATE_VER } from './consts';
+import { BA_VE, FC, LEVEL, LEVEL_EMOJI, LEVELS, PLATE_TYPE, PLATE_VER } from './consts';
 import compute from './compute';
 import Song from './data/Song';
 import Renderer from './render';
@@ -46,12 +46,21 @@ export const createBot = (env: Env) => {
 		await ctx.reply(compute.calcProgressText(ctx.userMusic, BA_VE));
 	});
 
-	bot.hears(['/', ''].map(it => it + '霸者完成图'), async (ctx) => {
+	bot.hears(/^\/?霸者完成[图表]$/, async (ctx) => {
 		if (await ctx.useUserMusic()) return;
 		await ctx.replyWithDocument({ source: await new Renderer(env.MYBROWSER).renderBaVeProgress(ctx.userMusic), filename: '霸者完成图.png' }, {
 			reply_parameters: { message_id: ctx.message.message_id }
 		});
 	});
+
+	for (const level of LEVELS) {
+		bot.hears(RegExp(`^\\/?${level} ?完成[图表]$`), async (ctx) => {
+			if (await ctx.useUserMusic()) return;
+			await ctx.replyWithDocument({ source: await new Renderer(env.MYBROWSER).renderLevelProgress(ctx.userMusic, level), filename: `${level} 完成图.png` }, {
+				reply_parameters: { message_id: ctx.message.message_id }
+			});
+		});
+	}
 
 	bot.command('query', async (ctx) => {
 		if (await ctx.useUserMusic()) return;
