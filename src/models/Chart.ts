@@ -27,6 +27,7 @@ export default class Chart implements Sheet {
 		if (internalId && !this.internalId) {
 			this.internalId = internalId;
 		}
+		this.internalId %= 1e5;
 	}
 
 	get level(): typeof LEVELS[number] {

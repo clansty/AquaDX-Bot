@@ -1,7 +1,6 @@
 import { Context } from 'telegraf';
 import AquaApi from './api';
 import { UserMusic } from './types';
-import { FmtString } from 'telegraf/format';
 import { Env } from '../worker-configuration';
 
 export default class BotContext extends Context {

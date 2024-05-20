@@ -22,16 +22,17 @@ export default class Song implements DataSong {
 		const stdChart = data.sheets.find(it => it.type === TypeEnum.STD);
 		const dxChart = data.sheets.find(it => it.type === TypeEnum.DX);
 
-		this.id = stdChart ? stdChart.internalId : (dxChart?.internalId - 1e4);
+		this.id = stdChart ? stdChart.internalId : dxChart?.internalId;
 
-		if (!this.id) {
+		if (this.id) {
+			this.id %= 1e4;
+		} else {
 			// DXRating.net 中一些歌，比如说 LOSER 和俊达萌起床歌，没有 ID
 			const findId = Object.entries(ALL_MUSIC).find(([id, dataFromAllMusic]) => dataFromAllMusic.name === data.title);
 			if (findId) {
 				this.id = Number(findId[0]) % 1e4;
 				console.log('修复了 ID 丢失', data.title, this.id);
-			}
-			else {
+			} else {
 				console.log('修复不了 ID 丢失', data.title);
 			}
 		}
@@ -97,7 +98,7 @@ export default class Song implements DataSong {
 	public static search(kw: string) {
 		const results = [] as Song[];
 		for (const songRaw of dxdata.songs) {
-			if (songRaw.sheets[0].internalId === Number(kw)) {
+			if (songRaw.sheets[0].internalId % 1e4 === Number(kw) % 1e4) {
 				results.push(new this(songRaw));
 			} else if (songRaw.title.toLowerCase().includes(kw)) {
 				results.push(new this(songRaw));

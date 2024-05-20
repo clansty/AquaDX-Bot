@@ -13,9 +13,6 @@ export const createBot = (env: Env) => {
 	bot.use(useNewReplies());
 
 	bot.start(Telegraf.reply('Hello'));
-	bot.command('test', async(ctx)=>{
-		await ctx.replyWithDocument({source: Buffer.from('Hello'), filename: 'hello.txt'});
-	})
 	bot.command('bind', async (ctx) => {
 		if (ctx.args.length < 1) {
 			await ctx.reply('请输入要绑定的 ID');
