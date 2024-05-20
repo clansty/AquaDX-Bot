@@ -14,6 +14,7 @@ export default class Song implements DataSong {
 	isLocked: boolean;
 	sheets: Chart[];
 
+	// 一定是 1e4 以内的数
 	public readonly id: number;
 
 	private constructor(data: DataSong, public dx?: boolean) {
@@ -46,15 +47,30 @@ export default class Song implements DataSong {
 			this.id && (sheet.type === TypeEnum.DX ? this.id + 1e4 : this.id)));
 	}
 
+	public get dxId() {
+		if (this.dx) return this.id + 1e4;
+		return this.id;
+	}
+
 	public get coverUrl() {
 		return 'https://shama.dxrating.net/images/cover/v2/' + this.imageName;
 	}
 
-	public get display() {
+	public get basicInfo() {
 		let message = this.title + '\n\n' +
 			`作曲:\t${this.artist}\n` +
 			`BPM:\t${this.bpm}\n` +
 			`分类:\t${this.category}`;
+
+		if (this.id) {
+			message = this.id + '. ' + message;
+		}
+
+		return message;
+	}
+
+	public get display() {
+		let message = this.basicInfo;
 
 		const regionDisplay = (reg: Regions) => {
 			let toAdd = '';
@@ -70,21 +86,17 @@ export default class Song implements DataSong {
 		const std = this.sheets.find(it => it.type === TypeEnum.STD);
 		const dx = this.sheets.find(it => it.type === TypeEnum.DX);
 
-		if (this.id) {
-			message = this.id + '. ' + message;
-		}
-
 		if (std) {
 			message += `\n\n标准谱面\n添加版本:\t${std.version}\n${regionDisplay(std.regions)}`;
 		}
 		for (const chart of this.sheets.filter(it => it.type === TypeEnum.STD)) {
-			message += `\n${LEVEL_EMOJI[LEVEL_EN.indexOf(chart.difficulty)]} ${chart.internalLevelValue.toFixed(1)} ${chart.noteDesigner}`;
+			message += '\n' + chart.displayInline;
 		}
 		if (dx) {
 			message += `\n\nDX 谱面\n添加版本:\t${dx.version}\n${regionDisplay(dx.regions)}`;
 		}
 		for (const chart of this.sheets.filter(it => it.type === TypeEnum.DX)) {
-			message += `\n${LEVEL_EMOJI[LEVEL_EN.indexOf(chart.difficulty)]} ${chart.internalLevelValue.toFixed(1)} ${chart.noteDesigner}`;
+			message += '\n' + chart.displayInline;
 		}
 		return message;
 	}

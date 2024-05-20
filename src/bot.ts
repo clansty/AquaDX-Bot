@@ -1,11 +1,14 @@
 import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
-import { BA_VE, FC, LEVEL_EMOJI, LEVELS, PLATE_TYPE, PLATE_VER } from './consts';
+import { BA_VE, FC, LEVEL, LEVEL_EMOJI, LEVEL_EN, LEVELS, PLATE_TYPE, PLATE_VER } from './consts';
 import compute from './compute';
 import Song from './models/Song';
 import Renderer from './render';
 import { Env } from '../worker-configuration';
 import { useNewReplies } from 'telegraf/future';
+import { TypeEnum } from '@gekichumai/dxdata';
+import { InlineKeyboardButton } from 'telegraf/types';
+import genSongInfoButtons from './utils/genSongInfoButtons';
 
 export const createBot = (env: Env) => {
 	const bot = new Telegraf(env.BOT_TOKEN, { contextType: BotContext });
@@ -30,9 +33,33 @@ export const createBot = (env: Env) => {
 		for (const song of results.slice(0, 3)) {
 			await ctx.replyWithPhoto(song.coverUrl, {
 				caption: song.display,
-				reply_parameters: { message_id: foundMessage.message_id }
+				reply_parameters: { message_id: foundMessage.message_id },
+				reply_markup: { inline_keyboard: genSongInfoButtons(song) }
 			});
 		}
+	});
+
+	bot.action(/^song:(\d+):(\d)$/, async (ctx) => {
+		const song = Song.fromId(Number(ctx.match[1]));
+		if (!song) return;
+
+		const chart = song.getChart(Number(ctx.match[2]));
+		if (!chart) return;
+
+		const buttons = genSongInfoButtons(song);
+		buttons.push([{ text: '🔙 返回', callback_data: `song:${song.dxId}` }]);
+		await ctx.editMessageCaption(song.basicInfo + '\n\n' + chart.display, {
+			reply_markup: { inline_keyboard: buttons }
+		});
+	});
+
+	bot.action(/^song:(\d+)$/, async (ctx) => {
+		const song = Song.fromId(Number(ctx.match[1]));
+		if (!song) return;
+
+		await ctx.editMessageCaption(song.display, {
+			reply_markup: { inline_keyboard: genSongInfoButtons(song) }
+		});
 	});
 
 	for (const version of PLATE_VER) {
@@ -97,6 +124,7 @@ export const createBot = (env: Env) => {
 
 	bot.catch(async (err: any, ctx) => {
 		console.error(err);
+		if (err.message.includes('message is not modified')) return;
 		await ctx.reply('发生错误：' + err.message);
 	});
 

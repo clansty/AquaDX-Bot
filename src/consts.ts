@@ -1,4 +1,4 @@
-import { DifficultyEnum } from '@gekichumai/dxdata';
+import { DifficultyEnum, VersionEnum } from '@gekichumai/dxdata';
 import { UserMusic } from './types';
 import allMusic from './data/all-music.json';
 
@@ -10,6 +10,8 @@ export const LEVEL_EMOJI = ['🟢', '🟡', '🔴', '🟣', '⚪️'] as const;
 export const LEVEL_EN = [DifficultyEnum.Basic, DifficultyEnum.Advanced, DifficultyEnum.Expert, DifficultyEnum.Master, DifficultyEnum.ReMaster] as const;
 export const LEVELS = ['1', '2', '3', '4', '5', '6', '7', '7+', '8', '8+', '9', '9+', '10', '10+', '11', '11+', '12', '12+', '13', '13+', '14', '14+', '15'] as const;
 export const FC = ['', 'FC', 'FC+', 'AP', 'AP+'] as const;
+export const DX_VERSIONS = [VersionEnum.Maimaiでらっくす, VersionEnum.MaimaiでらっくすPLUS, VersionEnum.Splash, VersionEnum.SplashPLUS, VersionEnum.UNiVERSE, VersionEnum.UNiVERSEPLUS,
+	VersionEnum.FESTiVAL, VersionEnum.FESTiVALPLUS, VersionEnum.BUDDiES, VersionEnum.BUDDiESPLUS] as const;
 export const PLATE_VER = ['真', '超', '檄', '橙', '晓', '桃', '樱', '紫', '堇', '白', '雪', '辉', '舞', '熊', '华', '爽',
 	'煌', '宙', '星', '祭', '祝'] as const;
 export const PLATE_TYPE = ['极', '将', '神', '舞舞', 'clear'] as const;

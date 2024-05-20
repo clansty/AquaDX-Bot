@@ -1,5 +1,6 @@
 import { DifficultyEnum, NoteCounts, Regions, Sheet, TypeEnum, VersionEnum } from '@gekichumai/dxdata';
-import { ALL_MUSIC, LEVEL_EN, LEVELS } from '../consts';
+import { ALL_MUSIC, DX_VERSIONS, LEVEL_EMOJI, LEVEL_EN, LEVELS } from '../consts';
+import _ from 'lodash';
 
 export default class Chart implements Sheet {
 	internalId?: number;
@@ -37,5 +38,44 @@ export default class Chart implements Sheet {
 			return `${base}+` as typeof LEVELS[number];
 		}
 		return base.toString() as typeof LEVELS[number];
+	}
+
+	get displayInline(): string {
+		let trend = '';
+		if (this.multiverInternalLevelValue) {
+			const values = Object.values(this.multiverInternalLevelValue);
+			trend = values[0] > values[values.length - 1] ? ' 📉' : ' 📈';
+		}
+
+		return `${LEVEL_EMOJI[LEVEL_EN.indexOf(this.difficulty)]} ${this.internalLevelValue.toFixed(1)}${trend} ${this.noteDesigner}`;
+	}
+
+	get display() {
+		let message = `${LEVEL_EMOJI[LEVEL_EN.indexOf(this.difficulty)]} ${this.level} ${this.internalLevelValue.toFixed(1)}\n` +
+			`谱师:\t${this.noteDesigner}\n\n`;
+
+		for (const type in this.noteCounts) {
+			if (!this.noteCounts[type]) continue;
+			message += `${_.capitalize(type)}:\t${this.noteCounts[type]}\n`;
+		}
+
+		if (this.multiverInternalLevelValue) {
+			message += '\n不同版本定数:\n';
+			let last = 0;
+			for (const version of DX_VERSIONS) {
+				if (!this.multiverInternalLevelValue[version]) continue;
+				if (!last) last = this.multiverInternalLevelValue[version];
+				let trend = '';
+				if (this.multiverInternalLevelValue[version] > last) {
+					trend = ' 🔺';
+				} else if (this.multiverInternalLevelValue[version] < last) {
+					trend = ' 🔻';
+				}
+				last = this.multiverInternalLevelValue[version];
+				message += `${version}:\t${this.multiverInternalLevelValue[version].toFixed(1)} ${trend}\n`;
+			}
+		}
+
+		return message;
 	}
 }
