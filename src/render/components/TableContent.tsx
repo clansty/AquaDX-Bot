@@ -29,7 +29,7 @@ const Cell = ({ scoreType, data, showSdDx }: { scoreType: ScoreRenderType, data:
 	}}>
 		{showSdDx && <img src={data.chart.type === 'dx' ? IMG_DX : IMG_STD} alt="" style={{ position: 'absolute', top: 1, left: 1, width: SD_DX_SIZE }} />}
 		{data.score &&
-			<div style={{ backgroundColor: 'rgba(0,0,0,0.6)', height: '100%', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: 20 }}>
+			<div style={{ backgroundColor: 'rgba(0,0,0,0.7)', height: '100%', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: 20 }}>
 				<DisplayScore scoreType={scoreType} score={data.score} />
 			</div>}
 	</div>;

@@ -1,11 +1,11 @@
 import { ProgressCalcResult, TableContentRenderData, TableContentRenderRow, UserMusic } from '../types';
-import { BA_VE, BUDDIED_LOGO, LEVEL_EN, LEVELS, MAIMAI_DX_RELEASE_DATE, PLATE_IMAGES, PLATE_VER_LIST, VER_MUSIC_LIST } from '../consts';
+import { BUDDIED_LOGO, LEVEL_EN, LEVELS } from '../consts';
 import Song from '../models/Song';
 import React from 'react';
 import TableContent from './components/TableContent';
 import _ from 'lodash';
-import compute from '../compute';
 import LevelProgress from './components/LevelProgress';
+import { VersionEnum } from '@gekichumai/dxdata';
 
 export default (userMusic: UserMusic[], level: typeof LEVELS[number]) => {
 	let displayData = [] as TableContentRenderData[];
@@ -18,6 +18,8 @@ export default (userMusic: UserMusic[], level: typeof LEVELS[number]) => {
 		for (const chart of charts) {
 			// 不包括删除曲
 			if (!chart.regions.jp) continue;
+			// 不含 BUDDiES PLUS 的歌
+			if (chart.version === VersionEnum.BUDDiESPLUS) continue;
 			const score = userMusic.find(it => it.musicId === chart.internalId && it.level === LEVEL_EN.indexOf(chart.difficulty));
 			progress[LEVEL_EN.indexOf(chart.difficulty)].all++;
 			// TODO: 检查成绩，比如说 12 鸟加完成图
