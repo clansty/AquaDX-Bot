@@ -1,4 +1,4 @@
-import { UserMusic } from './types';
+import { UserMusic, UserPreview, UserRating } from '../types';
 
 export default class AquaApi {
 	private constructor(private readonly baseUrl: string) {
@@ -36,5 +36,26 @@ export default class AquaApi {
 
 		const data = await req.json() as any;
 		return data.userMusicList[0].userMusicDetailList as UserMusic[];
+	}
+
+	public async getUserRating(userId: number) {
+		const req = await fetch(this.baseUrl + 'GetUserRatingApi', {
+			method: 'POST',
+			body: JSON.stringify({ userId }),
+			headers: { 'Content-Type': 'application/json' }
+		});
+
+		const data = await req.json() as any;
+		return data.userRating as UserRating;
+	}
+
+	public async getUserPreview(userId: number) {
+		const req = await fetch(this.baseUrl + 'GetUserPreviewApi', {
+			method: 'POST',
+			body: JSON.stringify({ userId }),
+			headers: { 'Content-Type': 'application/json' }
+		});
+
+		return await req.json() as UserPreview;
 	}
 }

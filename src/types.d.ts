@@ -13,6 +13,43 @@ export type UserMusic = {
 	'extNum1': number
 }
 
+export type RatingListEntry = {
+	'musicId': number,
+	'level': number,
+	'romVersion': number,
+	'achievement': number
+}
+
+export type UserRating = {
+	rating: number,
+	ratingList: RatingListEntry[],
+	newRatingList: RatingListEntry[]
+}
+
+export type UserPreview = {
+	'userId': number,
+	'userName': string,
+	'isLogin': boolean,
+	'lastGameId': string,
+	'lastDataVersion': string,
+	'lastRomVersion': string,
+	'lastLoginDate': string,
+	'lastPlayDate': string,
+	'playerRating': number,
+	'nameplateId': number,
+	'iconId': number,
+	'trophyId': number,
+	'partnerId': number,
+	'frameId': number,
+	'totalAwake': number,
+	'isNetMember': number,
+	'dailyBonusDate': number,
+	'headPhoneVolume': number,
+	'dispRate': number,
+	'isInherit': number,
+	'banState': number
+}
+
 export type TableContentRenderData = {
 	song: Song,
 	chart: Sheet,

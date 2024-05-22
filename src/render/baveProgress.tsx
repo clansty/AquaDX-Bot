@@ -1,5 +1,5 @@
 import { TableContentRenderData, TableContentRenderRow, UserMusic } from '../types';
-import { BA_VE, BUDDIED_LOGO, MAIMAI_DX_RELEASE_DATE, PLATE_IMAGES, PLATE_VER_LIST, VER_MUSIC_LIST } from '../consts';
+import { BA_VE, BUDDIES_LOGO, MAIMAI_DX_RELEASE_DATE, PLATE_IMAGES, PLATE_VER_LIST, VER_MUSIC_LIST } from '../consts';
 import Song from '../models/Song';
 import React from 'react';
 import TableContent from './components/TableContent';
@@ -36,7 +36,7 @@ export default (userMusic: UserMusic[]) => {
 
 	return <div>
 		<div style={{ display: 'flex', alignItems: 'center', padding: 40, gap: 50 }}>
-			<img src={BUDDIED_LOGO} alt="" height={120} />
+			<img src={BUDDIES_LOGO} alt="" height={120} />
 			<div style={{ flexGrow: 1 }} />
 			<img src={PLATE_IMAGES[BA_VE]} alt="" height={80} />
 			<LevelProgress progress={compute.calcProgress(userMusic, BA_VE)} />

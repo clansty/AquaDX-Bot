@@ -22,7 +22,7 @@ export default class Chart implements Sheet {
 		Object.assign(this, dataCopy);
 		const valueFromAllMusic = dataFromAllMusic?.notes[LEVEL_EN.indexOf(data.difficulty)]?.lv;
 		if (valueFromAllMusic && this.internalLevelValue !== valueFromAllMusic) {
-			console.log('发现了定数错误', dataFromAllMusic.name, data.type, data.difficulty, '来自 DXRating.net 的定数:', data.internalLevelValue, '来自 all-music.json 的定数:', valueFromAllMusic);
+			false && console.log('发现了定数错误', dataFromAllMusic.name, data.type, data.difficulty, '来自 DXRating.net 的定数:', data.internalLevelValue, '来自 all-music.json 的定数:', valueFromAllMusic);
 			this.internalLevelValue = valueFromAllMusic;
 		}
 		if (internalId && !this.internalId) {

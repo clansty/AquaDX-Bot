@@ -1,5 +1,5 @@
 import { ProgressCalcResult, TableContentRenderData, TableContentRenderRow, UserMusic } from '../types';
-import { BUDDIED_LOGO, LEVEL_EN, LEVELS } from '../consts';
+import { BUDDIES_LOGO, LEVEL_EN, LEVELS } from '../consts';
 import Song from '../models/Song';
 import React from 'react';
 import TableContent from './components/TableContent';
@@ -45,7 +45,7 @@ export default (userMusic: UserMusic[], level: typeof LEVELS[number]) => {
 
 	return <div>
 		<div style={{ display: 'flex', alignItems: 'center', padding: 40, gap: 50 }}>
-			<img src={BUDDIED_LOGO} alt="" height={120} />
+			<img src={BUDDIES_LOGO} alt="" height={120} />
 			<div style={{ flexGrow: 1 }} />
 			<div style={{ fontSize: 60, textShadow: '1px 1px 2px #fff', marginTop: '-.1em' }}>
 				LV {level} 完成进度

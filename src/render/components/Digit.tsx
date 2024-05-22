@@ -1,0 +1,103 @@
+import React from 'react';
+
+const IMG_BLUE = 'https://cdn.0w.al/UI_Num_Score_1110000_Blue.png';
+const IMG_GOLD = 'https://cdn.0w.al/UI_Num_Score_1110000_Gold.png';
+const IMG_Red = 'https://cdn.0w.al/UI_Num_Score_1110000_Red.png';
+
+const IMG_PERCENT_BLUE = 'https://cdn.0w.al/UI_RSL_Score_Per_Blue.png';
+const IMG_PERCENT_GOLD = 'https://cdn.0w.al/UI_RSL_Score_Per_Gold.png';
+const IMG_PERCENT_RED = 'https://cdn.0w.al/UI_RSL_Score_Per_Red.png';
+
+const IMG_H = 472;
+const IMG_W = 344;
+
+const Percent = ({ color, width }: { color: 'blue' | 'gold' | 'red', width: number }) => {
+	const css: React.CSSProperties = {
+		width,
+		height: width,
+		backgroundSize: '120%',
+		backgroundPosition: 'center'
+	};
+
+	switch (color) {
+		case 'blue':
+			return <div style={{ ...css, backgroundImage: `url(${IMG_PERCENT_BLUE})` }} />;
+		case 'gold':
+			return <div style={{ ...css, backgroundImage: `url(${IMG_PERCENT_GOLD})` }} />;
+		case 'red':
+			return <div style={{ ...css, backgroundImage: `url(${IMG_PERCENT_RED})` }} />;
+	}
+};
+
+export default ({ color, digit, width }: { color: 'blue' | 'gold' | 'red', digit: '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '+' | '-' | ',' | '.' | '%', width: number }) => {
+	if (digit === '%') return <Percent color={color} width={width} />;
+
+	let position: string;
+	switch (digit) {
+		case '0':
+			position = '0 0';
+			break;
+		case '1':
+			position = '-100% 0';
+			break;
+		case '2':
+			position = '-200% 0';
+			break;
+		case '3':
+			position = '-300% 0';
+			break;
+		case '4':
+			position = '0 -100%';
+			break;
+		case '5':
+			position = '-100% -100%';
+			break;
+		case '6':
+			position = '-200% -100%';
+			break;
+		case '7':
+			position = '-300% -100%';
+			break;
+		case '8':
+			position = '0 -200%';
+			break;
+		case '9':
+			position = '-100% -200%';
+			break;
+		case '+':
+			position = '-200% -200%';
+			break;
+		case '-':
+			position = '-300% -200%';
+			break;
+		case ',':
+			position = '0 -300%';
+			break;
+		case '.':
+			position = '-100% -300%';
+			break;
+	}
+
+	const height = width * IMG_H / IMG_W;
+	const css: React.CSSProperties = {
+		width,
+		height,
+		backgroundSize: '400%',
+		backgroundPosition: position,
+		margin: '0 -.3%'
+	};
+
+	if (digit === '.') {
+		css.transform = 'translateY(13%)';
+		css.margin = '0 -1.9%';
+	}
+
+	switch (color) {
+		case 'blue':
+			return <div style={{ ...css, backgroundImage: `url(${IMG_BLUE})` }} />;
+		case 'gold':
+			return <div style={{ ...css, backgroundImage: `url(${IMG_GOLD})` }} />;
+		case 'red':
+			return <div style={{ ...css, backgroundImage: `url(${IMG_Red})` }} />;
+	}
+}

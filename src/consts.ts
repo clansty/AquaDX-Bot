@@ -1,5 +1,5 @@
 import { DifficultyEnum, VersionEnum } from '@gekichumai/dxdata';
-import { UserMusic } from './types';
+import { UserMusic, UserRating } from './types';
 import allMusic from './data/all-music.json';
 
 export const ALL_MUSIC = allMusic as Record<string | number, typeof allMusic[8]>;
@@ -44,12 +44,20 @@ export const PLATE_VER_LIST = {
 		'ORANGE PLUS', 'PiNK', 'PiNK PLUS', 'MURASAKi', 'MURASAKi PLUS',
 		'MiLK', 'MiLK PLUS', 'FiNALE']
 } as const;
-export const BUDDIED_LOGO = 'https://shama.dxrating.net/images/version-logo/buddies.webp';
+export const BUDDIES_LOGO = 'https://shama.dxrating.net/images/version-logo/buddies.webp';
 export const PLATE_IMAGES = {
 	'霸者': 'https://static.wikia.nocookie.net/maimai/images/b/b8/Namep_覇者.png/revision/latest?path-prefix=zh'
 } as const;
 export const IMG_STD = 'https://shama.dxrating.net/images/type_sd.png';
 export const IMG_DX = 'https://shama.dxrating.net/images/type_dx.png';
+export const IMG_SONG_MISSING = 'https://cdn.0w.al/maimai-error.webp';
+export const IMG_MOON_CAKE = [
+	undefined,
+	'https://cdn.0w.al/UI_RSL_FC_Text_01.png',
+	'https://cdn.0w.al/UI_RSL_FCp_Text_01.png',
+	'https://cdn.0w.al/UI_RSL_AP_Text_01.png',
+	'https://cdn.0w.al/UI_RSL_APp_Text_01.png'
+];
 export const VER_MUSIC_LIST = {
 	maimai: [
 		8, 9, 17, 18, 22, 23, 24, 25, 27, 30,
@@ -273,10 +281,10 @@ export const SAMPLE_USER_MUSIC: UserMusic[] = [
 	{ 'musicId': 10204, 'level': 2, 'playCount': 2, 'achievement': 966452, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1320, 'scoreRank': 7, 'extNum1': 0 },
 	{ 'musicId': 11472, 'level': 2, 'playCount': 2, 'achievement': 964851, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1764, 'scoreRank': 7, 'extNum1': 0 },
 	{ 'musicId': 11572, 'level': 3, 'playCount': 1, 'achievement': 973824, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1382, 'scoreRank': 8, 'extNum1': 0 },
-	{ 'musicId': 11558, 'level': 3, 'playCount': 2, 'achievement': 992894, 'comboStatus': 1, 'syncStatus': 0, 'deluxscoreMax': 1195, 'scoreRank': 10, 'extNum1': 0 },
+	{ 'musicId': 11558, 'level': 3, 'playCount': 3, 'achievement': 992894, 'comboStatus': 1, 'syncStatus': 0, 'deluxscoreMax': 1195, 'scoreRank': 10, 'extNum1': 0 },
 	{ 'musicId': 11225, 'level': 2, 'playCount': 1, 'achievement': 989056, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1263, 'scoreRank': 9, 'extNum1': 0 },
 	{ 'musicId': 11527, 'level': 2, 'playCount': 1, 'achievement': 995962, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1155, 'scoreRank': 11, 'extNum1': 0 },
-	{ 'musicId': 11300, 'level': 2, 'playCount': 2, 'achievement': 981489, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1724, 'scoreRank': 9, 'extNum1': 0 },
+	{ 'musicId': 11300, 'level': 2, 'playCount': 3, 'achievement': 981489, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1724, 'scoreRank': 9, 'extNum1': 0 },
 	{ 'musicId': 11422, 'level': 3, 'playCount': 3, 'achievement': 969594, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1498, 'scoreRank': 7, 'extNum1': 0 },
 	{ 'musicId': 11226, 'level': 2, 'playCount': 2, 'achievement': 989439, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1226, 'scoreRank': 9, 'extNum1': 0 },
 	{ 'musicId': 11376, 'level': 2, 'playCount': 1, 'achievement': 995944, 'comboStatus': 1, 'syncStatus': 0, 'deluxscoreMax': 1135, 'scoreRank': 11, 'extNum1': 0 },
@@ -320,7 +328,7 @@ export const SAMPLE_USER_MUSIC: UserMusic[] = [
 	{ 'musicId': 11663, 'level': 1, 'playCount': 2, 'achievement': 980283, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1226, 'scoreRank': 9, 'extNum1': 0 },
 	{ 'musicId': 750, 'level': 2, 'playCount': 1, 'achievement': 966546, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1233, 'scoreRank': 7, 'extNum1': 0 },
 	{ 'musicId': 11650, 'level': 2, 'playCount': 2, 'achievement': 994897, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1284, 'scoreRank': 10, 'extNum1': 0 },
-	{ 'musicId': 15001, 'level': 3, 'playCount': 4, 'achievement': 991220, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1857, 'scoreRank': 10, 'extNum1': 0 },
+	{ 'musicId': 15001, 'level': 3, 'playCount': 5, 'achievement': 995701, 'comboStatus': 1, 'syncStatus': 0, 'deluxscoreMax': 1866, 'scoreRank': 11, 'extNum1': 0 },
 	{ 'musicId': 11425, 'level': 2, 'playCount': 5, 'achievement': 994344, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1524, 'scoreRank': 10, 'extNum1': 0 },
 	{ 'musicId': 830, 'level': 2, 'playCount': 1, 'achievement': 991447, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1379, 'scoreRank': 10, 'extNum1': 0 },
 	{ 'musicId': 587, 'level': 2, 'playCount': 2, 'achievement': 1002180, 'comboStatus': 2, 'syncStatus': 0, 'deluxscoreMax': 1097, 'scoreRank': 12, 'extNum1': 0 },
@@ -350,7 +358,7 @@ export const SAMPLE_USER_MUSIC: UserMusic[] = [
 	{ 'musicId': 11491, 'level': 2, 'playCount': 1, 'achievement': 985811, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1728, 'scoreRank': 9, 'extNum1': 0 },
 	{ 'musicId': 11288, 'level': 2, 'playCount': 1, 'achievement': 977867, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1797, 'scoreRank': 8, 'extNum1': 0 },
 	{ 'musicId': 1085, 'level': 2, 'playCount': 1, 'achievement': 961119, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1613, 'scoreRank': 7, 'extNum1': 0 },
-	{ 'musicId': 592, 'level': 2, 'playCount': 1, 'achievement': 968390, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 777, 'scoreRank': 7, 'extNum1': 0 },
+	{ 'musicId': 592, 'level': 2, 'playCount': 2, 'achievement': 970448, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 777, 'scoreRank': 8, 'extNum1': 0 },
 	{ 'musicId': 551, 'level': 2, 'playCount': 1, 'achievement': 993983, 'comboStatus': 1, 'syncStatus': 0, 'deluxscoreMax': 1009, 'scoreRank': 10, 'extNum1': 0 },
 	{ 'musicId': 475, 'level': 3, 'playCount': 1, 'achievement': 883750, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1030, 'scoreRank': 5, 'extNum1': 0 },
 	{ 'musicId': 837, 'level': 3, 'playCount': 1, 'achievement': 905288, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 990, 'scoreRank': 6, 'extNum1': 0 },
@@ -381,7 +389,7 @@ export const SAMPLE_USER_MUSIC: UserMusic[] = [
 	{ 'musicId': 848, 'level': 2, 'playCount': 1, 'achievement': 996867, 'comboStatus': 1, 'syncStatus': 0, 'deluxscoreMax': 1321, 'scoreRank': 11, 'extNum1': 0 },
 	{ 'musicId': 11504, 'level': 2, 'playCount': 4, 'achievement': 1004869, 'comboStatus': 2, 'syncStatus': 0, 'deluxscoreMax': 554, 'scoreRank': 12, 'extNum1': 0 },
 	{ 'musicId': 11165, 'level': 2, 'playCount': 1, 'achievement': 961963, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1445, 'scoreRank': 7, 'extNum1': 0 },
-	{ 'musicId': 772, 'level': 2, 'playCount': 1, 'achievement': 982881, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1602, 'scoreRank': 9, 'extNum1': 0 },
+	{ 'musicId': 772, 'level': 2, 'playCount': 2, 'achievement': 988831, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1629, 'scoreRank': 9, 'extNum1': 0 },
 	{ 'musicId': 212, 'level': 2, 'playCount': 1, 'achievement': 982772, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 293, 'scoreRank': 9, 'extNum1': 0 },
 	{ 'musicId': 11296, 'level': 2, 'playCount': 1, 'achievement': 970662, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1811, 'scoreRank': 8, 'extNum1': 0 },
 	{ 'musicId': 11385, 'level': 2, 'playCount': 1, 'achievement': 972270, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1194, 'scoreRank': 8, 'extNum1': 0 },
@@ -437,17 +445,79 @@ export const SAMPLE_USER_MUSIC: UserMusic[] = [
 	{ 'musicId': 631, 'level': 2, 'playCount': 1, 'achievement': 1002975, 'comboStatus': 1, 'syncStatus': 0, 'deluxscoreMax': 1354, 'scoreRank': 12, 'extNum1': 0 },
 	{ 'musicId': 11023, 'level': 2, 'playCount': 1, 'achievement': 978544, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1810, 'scoreRank': 8, 'extNum1': 0 },
 	{ 'musicId': 451, 'level': 2, 'playCount': 1, 'achievement': 962801, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1400, 'scoreRank': 7, 'extNum1': 0 },
-	{ 'musicId': 678, 'level': 2, 'playCount': 1, 'achievement': 992329, 'comboStatus': 1, 'syncStatus': 0, 'deluxscoreMax': 848, 'scoreRank': 10, 'extNum1': 0 },
+	{ 'musicId': 678, 'level': 2, 'playCount': 2, 'achievement': 994415, 'comboStatus': 1, 'syncStatus': 0, 'deluxscoreMax': 864, 'scoreRank': 10, 'extNum1': 0 },
 	{ 'musicId': 843, 'level': 2, 'playCount': 1, 'achievement': 953170, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1466, 'scoreRank': 7, 'extNum1': 0 },
 	{ 'musicId': 717, 'level': 2, 'playCount': 1, 'achievement': 977532, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 956, 'scoreRank': 8, 'extNum1': 0 },
 	{ 'musicId': 11058, 'level': 2, 'playCount': 1, 'achievement': 959660, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1683, 'scoreRank': 7, 'extNum1': 0 },
 	{ 'musicId': 198, 'level': 2, 'playCount': 1, 'achievement': 989190, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 955, 'scoreRank': 9, 'extNum1': 0 },
 	{ 'musicId': 805, 'level': 2, 'playCount': 1, 'achievement': 983029, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1309, 'scoreRank': 9, 'extNum1': 0 },
-	{ 'musicId': 801, 'level': 2, 'playCount': 1, 'achievement': 1000637, 'comboStatus': 1, 'syncStatus': 0, 'deluxscoreMax': 1490, 'scoreRank': 12, 'extNum1': 0 },
+	{ 'musicId': 801, 'level': 2, 'playCount': 2, 'achievement': 1000637, 'comboStatus': 1, 'syncStatus': 0, 'deluxscoreMax': 1513, 'scoreRank': 12, 'extNum1': 0 },
 	{ 'musicId': 519, 'level': 2, 'playCount': 1, 'achievement': 993030, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1405, 'scoreRank': 10, 'extNum1': 0 },
 	{ 'musicId': 258, 'level': 2, 'playCount': 1, 'achievement': 932067, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 981, 'scoreRank': 6, 'extNum1': 0 },
 	{ 'musicId': 285, 'level': 2, 'playCount': 1, 'achievement': 954377, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 821, 'scoreRank': 7, 'extNum1': 0 },
 	{ 'musicId': 11656, 'level': 2, 'playCount': 1, 'achievement': 1001420, 'comboStatus': 2, 'syncStatus': 0, 'deluxscoreMax': 1268, 'scoreRank': 12, 'extNum1': 0 },
-	{ 'musicId': 700, 'level': 2, 'playCount': 1, 'achievement': 989381, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1480, 'scoreRank': 9, 'extNum1': 0 }
+	{ 'musicId': 700, 'level': 2, 'playCount': 1, 'achievement': 989381, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1480, 'scoreRank': 9, 'extNum1': 0 },
+	{ 'musicId': 585, 'level': 2, 'playCount': 1, 'achievement': 1000827, 'comboStatus': 1, 'syncStatus': 0, 'deluxscoreMax': 1294, 'scoreRank': 12, 'extNum1': 0 },
+	{ 'musicId': 15020, 'level': 3, 'playCount': 5, 'achievement': 994483, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1767, 'scoreRank': 10, 'extNum1': 0 },
+	{ 'musicId': 15019, 'level': 3, 'playCount': 1, 'achievement': 934716, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 2401, 'scoreRank': 6, 'extNum1': 0 },
+	{ 'musicId': 699, 'level': 2, 'playCount': 1, 'achievement': 988362, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1030, 'scoreRank': 9, 'extNum1': 0 },
+	{ 'musicId': 817, 'level': 2, 'playCount': 1, 'achievement': 997666, 'comboStatus': 1, 'syncStatus': 0, 'deluxscoreMax': 1393, 'scoreRank': 11, 'extNum1': 0 },
+	{ 'musicId': 756, 'level': 2, 'playCount': 1, 'achievement': 984755, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1302, 'scoreRank': 9, 'extNum1': 0 },
+	{ 'musicId': 839, 'level': 2, 'playCount': 1, 'achievement': 999221, 'comboStatus': 1, 'syncStatus': 0, 'deluxscoreMax': 1447, 'scoreRank': 11, 'extNum1': 0 },
+	{ 'musicId': 11166, 'level': 2, 'playCount': 1, 'achievement': 995819, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1134, 'scoreRank': 11, 'extNum1': 0 },
+	{ 'musicId': 146, 'level': 2, 'playCount': 1, 'achievement': 982412, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 710, 'scoreRank': 9, 'extNum1': 0 },
+	{ 'musicId': 628, 'level': 2, 'playCount': 1, 'achievement': 1004589, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1617, 'scoreRank': 12, 'extNum1': 0 },
+	{ 'musicId': 460, 'level': 2, 'playCount': 1, 'achievement': 972810, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1279, 'scoreRank': 8, 'extNum1': 0 },
+	{ 'musicId': 694, 'level': 2, 'playCount': 1, 'achievement': 1002737, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1309, 'scoreRank': 12, 'extNum1': 0 },
+	{ 'musicId': 11637, 'level': 3, 'playCount': 1, 'achievement': 983158, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1823, 'scoreRank': 9, 'extNum1': 0 },
+	{ 'musicId': 648, 'level': 2, 'playCount': 1, 'achievement': 1002471, 'comboStatus': 2, 'syncStatus': 0, 'deluxscoreMax': 1197, 'scoreRank': 12, 'extNum1': 0 },
+	{ 'musicId': 11314, 'level': 2, 'playCount': 1, 'achievement': 974707, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1543, 'scoreRank': 8, 'extNum1': 0 },
+	{ 'musicId': 11402, 'level': 2, 'playCount': 1, 'achievement': 994185, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1818, 'scoreRank': 10, 'extNum1': 0 },
+	{ 'musicId': 530, 'level': 2, 'playCount': 1, 'achievement': 988574, 'comboStatus': 1, 'syncStatus': 0, 'deluxscoreMax': 1454, 'scoreRank': 9, 'extNum1': 0 },
+	{ 'musicId': 462, 'level': 2, 'playCount': 1, 'achievement': 978289, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1302, 'scoreRank': 8, 'extNum1': 0 },
+	{ 'musicId': 11103, 'level': 2, 'playCount': 1, 'achievement': 979847, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1322, 'scoreRank': 8, 'extNum1': 0 },
+	{ 'musicId': 11301, 'level': 2, 'playCount': 1, 'achievement': 973801, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1359, 'scoreRank': 8, 'extNum1': 0 },
+	{ 'musicId': 11542, 'level': 2, 'playCount': 1, 'achievement': 1004187, 'comboStatus': 1, 'syncStatus': 0, 'deluxscoreMax': 1522, 'scoreRank': 12, 'extNum1': 0 },
+	{ 'musicId': 134, 'level': 2, 'playCount': 2, 'achievement': 944706, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 489, 'scoreRank': 7, 'extNum1': 0 },
+	{ 'musicId': 264, 'level': 2, 'playCount': 1, 'achievement': 988940, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1162, 'scoreRank': 9, 'extNum1': 0 },
+	{ 'musicId': 574, 'level': 2, 'playCount': 1, 'achievement': 993582, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1180, 'scoreRank': 10, 'extNum1': 0 },
+	{ 'musicId': 11419, 'level': 2, 'playCount': 1, 'achievement': 975994, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 827, 'scoreRank': 8, 'extNum1': 0 },
+	{ 'musicId': 834, 'level': 4, 'playCount': 1, 'achievement': 710136, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1667, 'scoreRank': 3, 'extNum1': 0 },
+	{ 'musicId': 11379, 'level': 0, 'playCount': 1, 'achievement': 559438, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 313, 'scoreRank': 1, 'extNum1': 0 },
+	{ 'musicId': 11662, 'level': 1, 'playCount': 1, 'achievement': 1002520, 'comboStatus': 2, 'syncStatus': 0, 'deluxscoreMax': 1111, 'scoreRank': 12, 'extNum1': 0 },
+	{ 'musicId': 11086, 'level': 3, 'playCount': 1, 'achievement': 979001, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1799, 'scoreRank': 8, 'extNum1': 0 },
+	{ 'musicId': 11642, 'level': 2, 'playCount': 1, 'achievement': 1004202, 'comboStatus': 1, 'syncStatus': 0, 'deluxscoreMax': 1409, 'scoreRank': 12, 'extNum1': 0 },
+	{ 'musicId': 11633, 'level': 2, 'playCount': 1, 'achievement': 982906, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1135, 'scoreRank': 9, 'extNum1': 0 },
+	{ 'musicId': 11514, 'level': 2, 'playCount': 1, 'achievement': 998283, 'comboStatus': 0, 'syncStatus': 0, 'deluxscoreMax': 1474, 'scoreRank': 11, 'extNum1': 0 }
 ] as const;
-
+export const SAMPLE_USER_RATING: UserRating = {
+	'rating': 12719,
+	'ratingList': [
+		{ 'musicId': 837, 'level': 2, 'romVersion': 19910, 'achievement': 1005634 }, { 'musicId': 11592, 'level': 3, 'romVersion': 23505, 'achievement': 1006308 },
+		{ 'musicId': 701, 'level': 2, 'romVersion': 19011, 'achievement': 1005288 }, { 'musicId': 670, 'level': 2, 'romVersion': 19004, 'achievement': 1005369 },
+		{ 'musicId': 432, 'level': 2, 'romVersion': 18511, 'achievement': 995100 }, { 'musicId': 705, 'level': 2, 'romVersion': 19012, 'achievement': 996080 },
+		{ 'musicId': 189, 'level': 3, 'romVersion': 12008, 'achievement': 993827 }, { 'musicId': 621, 'level': 2, 'romVersion': 18502, 'achievement': 1002346 },
+		{ 'musicId': 841, 'level': 2, 'romVersion': 19912, 'achievement': 997568 }, { 'musicId': 11504, 'level': 2, 'romVersion': 23009, 'achievement': 1004869 },
+		{ 'musicId': 848, 'level': 2, 'romVersion': 19904, 'achievement': 996867 }, { 'musicId': 11331, 'level': 2, 'romVersion': 22000, 'achievement': 1002802 },
+		{ 'musicId': 11591, 'level': 2, 'romVersion': 23508, 'achievement': 1002075 }, { 'musicId': 631, 'level': 2, 'romVersion': 18505, 'achievement': 1002975 },
+		{ 'musicId': 681, 'level': 2, 'romVersion': 19003, 'achievement': 992782 }, { 'musicId': 772, 'level': 2, 'romVersion': 19511, 'achievement': 988831 },
+		{ 'musicId': 11542, 'level': 2, 'romVersion': 23508, 'achievement': 1004187 }, { 'musicId': 829, 'level': 2, 'romVersion': 19909, 'achievement': 1003279 },
+		{ 'musicId': 694, 'level': 2, 'romVersion': 19008, 'achievement': 1002737 }, { 'musicId': 648, 'level': 2, 'romVersion': 18509, 'achievement': 1002471 },
+		{ 'musicId': 628, 'level': 2, 'romVersion': 18504, 'achievement': 1004589 }, { 'musicId': 587, 'level': 2, 'romVersion': 18511, 'achievement': 1002180 },
+		{ 'musicId': 11466, 'level': 2, 'romVersion': 23008, 'achievement': 1000888 }, { 'musicId': 585, 'level': 2, 'romVersion': 18021, 'achievement': 1000827 },
+		{ 'musicId': 11565, 'level': 2, 'romVersion': 23500, 'achievement': 1000780 }, { 'musicId': 675, 'level': 2, 'romVersion': 19002, 'achievement': 1000662 },
+		{ 'musicId': 801, 'level': 2, 'romVersion': 19901, 'achievement': 1000637 }, { 'musicId': 11527, 'level': 2, 'romVersion': 23500, 'achievement': 995962 },
+		{ 'musicId': 15007, 'level': 2, 'romVersion': 22001, 'achievement': 989940 }, { 'musicId': 11035, 'level': 3, 'romVersion': 20000, 'achievement': 998730 },
+		{ 'musicId': 11190, 'level': 3, 'romVersion': 21001, 'achievement': 997126 }, { 'musicId': 15001, 'level': 3, 'romVersion': 22001, 'achievement': 995701 },
+		{ 'musicId': 11425, 'level': 2, 'romVersion': 22506, 'achievement': 994344 }, { 'musicId': 11576, 'level': 2, 'romVersion': 23502, 'achievement': 988869 },
+		{ 'musicId': 11230, 'level': 2, 'romVersion': 21506, 'achievement': 988847 }],
+	'newRatingList': [
+		{ 'musicId': 11655, 'level': 3, 'romVersion': 24014, 'achievement': 1000383 }, { 'musicId': 11621, 'level': 2, 'romVersion': 24009, 'achievement': 1005467 },
+		{ 'musicId': 11642, 'level': 2, 'romVersion': 24006, 'achievement': 1004202 }, { 'musicId': 11656, 'level': 2, 'romVersion': 24014, 'achievement': 1001420 },
+		{ 'musicId': 11623, 'level': 2, 'romVersion': 24009, 'achievement': 1006532 }, { 'musicId': 11643, 'level': 2, 'romVersion': 24006, 'achievement': 985601 },
+		{ 'musicId': 11612, 'level': 2, 'romVersion': 24002, 'achievement': 979238 }, { 'musicId': 10366, 'level': 2, 'romVersion': 24002, 'achievement': 1008091 },
+		{ 'musicId': 10242, 'level': 2, 'romVersion': 24007, 'achievement': 1006106 }, { 'musicId': 11627, 'level': 2, 'romVersion': 24015, 'achievement': 998658 },
+		{ 'musicId': 10411, 'level': 2, 'romVersion': 24000, 'achievement': 986172 }, { 'musicId': 11638, 'level': 2, 'romVersion': 24002, 'achievement': 985834 },
+		{ 'musicId': 11668, 'level': 2, 'romVersion': 24008, 'achievement': 1000821 }, { 'musicId': 11610, 'level': 2, 'romVersion': 24000, 'achievement': 991446 },
+		{ 'musicId': 11633, 'level': 2, 'romVersion': 24000, 'achievement': 982906 }]
+} as const;

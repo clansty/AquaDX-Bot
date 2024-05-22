@@ -1,5 +1,5 @@
 import { Telegraf } from 'telegraf';
-import BotContext from './BotContext';
+import BotContext from './models/BotContext';
 import { BA_VE, FC, LEVEL, LEVEL_EMOJI, LEVEL_EN, LEVELS, PLATE_TYPE, PLATE_VER } from './consts';
 import compute from './compute';
 import Song from './models/Song';
@@ -65,34 +65,49 @@ export const createBot = (env: Env) => {
 	for (const version of PLATE_VER) {
 		for (const type of PLATE_TYPE) {
 			bot.hears(['/', ''].map(it => it + version + type + '进度'), async (ctx) => {
-				if (await ctx.useUserMusic()) return;
-				await ctx.reply(compute.calcProgressText(ctx.userMusic, version, type));
+				await ctx.reply(compute.calcProgressText(await ctx.getUserMusic(), version, type));
 			});
 		}
 	}
 	bot.hears(['/', ''].map(it => it + '霸者进度'), async (ctx) => {
-		if (await ctx.useUserMusic()) return;
-		await ctx.reply(compute.calcProgressText(ctx.userMusic, BA_VE));
+		await ctx.reply(compute.calcProgressText(await ctx.getUserMusic(), BA_VE));
 	});
 
 	bot.hears(/^\/?霸者完成[图表]$/, async (ctx) => {
-		if (await ctx.useUserMusic()) return;
 		const genMsg = ctx.reply('图片生成中...');
-		await ctx.replyWithDocument({ source: await new Renderer(env.MYBROWSER).renderBaVeProgress(ctx.userMusic), filename: '霸者完成图.png' });
+		await ctx.replyWithDocument({ source: await new Renderer(env.MYBROWSER).renderBaVeProgress(await ctx.getUserMusic()), filename: '霸者完成表.png' });
 		await ctx.deleteMessage((await genMsg).message_id);
 	});
 
 	for (const level of LEVELS) {
 		bot.hears(RegExp(`^\\/?${level.replace('+', '\\+')} ?完成[图表]$`), async (ctx) => {
-			if (await ctx.useUserMusic()) return;
 			const genMsg = ctx.reply('图片生成中...');
-			await ctx.replyWithDocument({ source: await new Renderer(env.MYBROWSER).renderLevelProgress(ctx.userMusic, level), filename: `LV ${level} 完成图.png` });
+			await ctx.replyWithDocument({ source: await new Renderer(env.MYBROWSER).renderLevelProgress(await ctx.getUserMusic(), level), filename: `LV ${level} 完成表.png` });
 			await ctx.deleteMessage((await genMsg).message_id);
 		});
 	}
 
+	bot.command('b50', async (ctx) => {
+		const genMsg = ctx.reply('图片生成中...');
+
+		const userMusic = await ctx.getUserMusic();
+		const rating = await ctx.getUserRating();
+		const userPreview = await ctx.getUserPreview();
+
+		let avatar = await ctx.telegram.getUserProfilePhotos(ctx.from.id, 0, 1).then(it => it.photos[0]?.[0].file_id);
+		if (avatar) {
+			avatar = (await ctx.telegram.getFileLink(avatar)).toString();
+		} else {
+			avatar = 'https://nyac.at/api/telegram/avatar/' + ctx.from.id;
+			const res = await fetch(avatar, { method: 'HEAD' });
+			if (!res.ok) avatar = '';
+		}
+
+		await ctx.replyWithDocument({ source: await new Renderer(env.MYBROWSER).renderB50(rating, userMusic, userPreview.userName, avatar), filename: 'B50.png' });
+		await ctx.deleteMessage((await genMsg).message_id);
+	});
+
 	bot.command('query', async (ctx) => {
-		if (await ctx.useUserMusic()) return;
 		const results = Song.search(ctx.payload.trim().toLowerCase());
 
 		if (!results.length) {
@@ -100,7 +115,7 @@ export const createBot = (env: Env) => {
 			return;
 		}
 		for (const song of results) {
-			const userScores = ctx.userMusic.filter(it => it.musicId === song.id || it.musicId === song.id + 1e4);
+			const userScores = (await ctx.getUserMusic()).filter(it => it.musicId === song.id || it.musicId === song.id + 1e4);
 			if (!userScores.length) continue;
 
 			const message = [song.title, ''];
@@ -124,7 +139,7 @@ export const createBot = (env: Env) => {
 
 	bot.catch(async (err: any, ctx) => {
 		console.error(err);
-		if (err.message.includes('message is not modified')) return;
+		if (['message is not modified', 'User not bound'].some(it => err?.message?.includes?.(it))) return;
 		await ctx.reply('发生错误：' + err.message);
 	});
 
