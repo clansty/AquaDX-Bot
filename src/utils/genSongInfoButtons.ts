@@ -20,5 +20,8 @@ export default (song: Song) => {
 			callback_data: `song:${song.id + 1e4}:${LEVEL_EN.indexOf(it.difficulty)}`
 		})));
 	}
+	if (song.searchAcronyms?.length) {
+		buttons.push([{ text: '查看别名', callback_data: `song:${song.id}:alias` }]);
+	}
 	return buttons;
 }

@@ -43,8 +43,10 @@ export default class Chart implements Sheet {
 	get displayInline(): string {
 		let trend = '';
 		if (this.multiverInternalLevelValue) {
-			const values = Object.values(this.multiverInternalLevelValue);
-			trend = values[0] > values[values.length - 1] ? ' 📉' : ' 📈';
+			const values = _.sortBy(Object.entries(this.multiverInternalLevelValue), ([key, value]) => DX_VERSIONS.indexOf(key as any))
+				.map(([key, value]) => value);
+			if (values[0] !== values[values.length - 1])
+				trend = values[0] > values[values.length - 1] ? ' 📉' : ' 📈';
 		}
 
 		return `${LEVEL_EMOJI[LEVEL_EN.indexOf(this.difficulty)]} ${this.internalLevelValue.toFixed(1)}${trend} ${this.noteDesigner}`;

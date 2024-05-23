@@ -68,6 +68,23 @@ export const createBot = (env: Env) => {
 		});
 	});
 
+	bot.action(/^song:(\d+):alias$/, async (ctx) => {
+		const song = Song.fromId(Number(ctx.match[1]));
+		if (!song) return;
+
+		const message = '歌曲别名:\n' + song.searchAcronyms.join(', ');
+		if (message.length <= 200) {
+			await ctx.answerCbQuery(message, { show_alert: true, cache_time: 3600 });
+			return;
+		}
+
+		const buttons = genSongInfoButtons(song);
+		buttons.push([{ text: '🔙 返回', callback_data: `song:${song.dxId}` }]);
+		await ctx.editMessageCaption(song.basicInfo + '\n\n' + message, {
+			reply_markup: { inline_keyboard: buttons }
+		});
+	});
+
 	for (const version of PLATE_VER) {
 		for (const type of PLATE_TYPE) {
 			bot.hears(['/', ''].map(it => it + version + type + '进度'), async (ctx) => {
