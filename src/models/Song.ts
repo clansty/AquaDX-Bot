@@ -102,14 +102,16 @@ export default class Song implements DataSong {
 	}
 
 	public static fromId(id: number) {
+		const dx = id > 1e4;
+		id %= 1e4;
 		let song = dxdata.songs.find(song => song.sheets.some(sheet => sheet.internalId === id || sheet.internalId === id + 1e4));
-		if (song) return new this(song, id > 1e4);
+		if (song) return new this(song, dx);
 
-		const dataFromAllMusic = ALL_MUSIC[id];
+		const dataFromAllMusic = ALL_MUSIC[id] || ALL_MUSIC[id];
 		if (!dataFromAllMusic) return null;
 
 		song = dxdata.songs.find(song => song.title === dataFromAllMusic.name);
-		if (song) return new this(song, id > 1e4);
+		if (song) return new this(song, dx);
 		return null;
 	}
 
