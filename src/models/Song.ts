@@ -107,7 +107,7 @@ export default class Song implements DataSong {
 		let song = dxdata.songs.find(song => song.sheets.some(sheet => sheet.internalId === id || sheet.internalId === id + 1e4));
 		if (song) return new this(song, dx);
 
-		const dataFromAllMusic = ALL_MUSIC[id] || ALL_MUSIC[id];
+		const dataFromAllMusic = ALL_MUSIC[id] || ALL_MUSIC[id + 1e4];
 		if (!dataFromAllMusic) return null;
 
 		song = dxdata.songs.find(song => song.title === dataFromAllMusic.name);
