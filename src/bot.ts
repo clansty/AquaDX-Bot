@@ -85,6 +85,27 @@ export const createBot = (env: Env) => {
 		});
 	});
 
+	bot.inlineQuery(/^$/, async (ctx) => {
+		await ctx.answerInlineQuery([]);
+	});
+
+	bot.inlineQuery(/.+/, async (ctx) => {
+		if (ctx.inlineQuery.query.trim() === '') {
+			await ctx.answerInlineQuery([]);
+		}
+		const results = Song.search(ctx.inlineQuery.query.trim().toLowerCase());
+		await ctx.answerInlineQuery(results.map(song => ({
+			type: 'photo',
+			title: song.title,
+			description: song.title,
+			id: song.dxId?.toString() || song.title,
+			photo_url: song.coverUrl,
+			thumbnail_url: song.coverUrl,
+			caption: song.display,
+			reply_markup: { inline_keyboard: genSongInfoButtons(song) }
+		})));
+	});
+
 	for (const version of PLATE_VER) {
 		for (const type of PLATE_TYPE) {
 			bot.hears(['/', ''].map(it => it + version + type + '进度'), async (ctx) => {
@@ -163,7 +184,7 @@ export const createBot = (env: Env) => {
 	bot.catch(async (err: any, ctx) => {
 		console.error(err);
 		if (['message is not modified', 'User not bound'].some(it => err?.message?.includes?.(it))) return;
-		await ctx.reply('发生错误：' + err.message);
+		ctx.reply && await ctx.reply('发生错误：' + err.message);
 	});
 
 	return bot;

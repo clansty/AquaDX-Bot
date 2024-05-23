@@ -49,6 +49,7 @@ export default class Song implements DataSong {
 
 	public get dxId() {
 		if (this.dx) return this.id + 1e4;
+		if (this.dx === undefined && !this.sheets.find(it => it.type === TypeEnum.STD)) return this.id + 1e4;
 		return this.id;
 	}
 
