@@ -46,6 +46,12 @@ export const createBot = (env: Env) => {
 		const chart = song.getChart(Number(ctx.match[2]));
 		if (!chart) return;
 
+		if (chart.display.length <= 200) {
+			await ctx.answerCbQuery(chart.display, { show_alert: true, cache_time: 3600 });
+			return;
+		}
+		await ctx.answerCbQuery();
+
 		const buttons = genSongInfoButtons(song);
 		buttons.push([{ text: '🔙 返回', callback_data: `song:${song.dxId}` }]);
 		await ctx.editMessageCaption(song.basicInfo + '\n\n' + chart.display, {
