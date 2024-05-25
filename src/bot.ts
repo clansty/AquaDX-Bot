@@ -28,15 +28,26 @@ export const createBot = (env: Env) => {
 
 	bot.command(['search', 'maimai'], async (ctx) => {
 		const results = Song.search(ctx.payload.trim().toLowerCase());
-		const foundMessage = await ctx.reply(`共找到 ${results.length} 个结果：\n\n` + results.map(song => song.title).join('\n'));
-
-		for (const song of results.slice(0, 3)) {
-			await ctx.replyWithPhoto(song.coverUrl, {
-				caption: song.display,
-				reply_parameters: { message_id: foundMessage.message_id },
-				reply_markup: { inline_keyboard: genSongInfoButtons(song) }
-			});
+		if (!results.length) {
+			await ctx.reply('找不到匹配的歌');
+			return;
 		}
+		if (results.length > 1) {
+			await ctx.reply(`共找到 ${results.length} 个结果：\n\n` + results.map(song => (song.id ? song.id + '. ' : '') + song.title).join('\n'), {
+				reply_markup: {
+					inline_keyboard: [[
+						{ text: '选择结果', switch_inline_query_current_chat: ctx.payload.trim() }
+					]]
+				}
+			});
+			return;
+		}
+
+		const song = results[0];
+		await ctx.replyWithPhoto(song.coverUrl, {
+			caption: song.display,
+			reply_markup: { inline_keyboard: genSongInfoButtons(song) }
+		});
 	});
 
 	bot.action(/^song:(\d+):(\d)$/, async (ctx) => {
