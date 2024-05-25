@@ -30,7 +30,7 @@ const compute = {
 				const chart = Song.fromId(required).getChart(lv);
 				if (!chart) continue;
 				// 屏蔽追加谱面
-				if (ver === BA_VE || PLATE_VER.indexOf(ver) < PLATE_VER.indexOf('熊')) {
+				if (type !== 'clear' && (ver === BA_VE || PLATE_VER.indexOf(ver) < PLATE_VER.indexOf('熊'))) {
 					if (chart.releaseDate && new Date(chart.releaseDate) >= MAIMAI_DX_RELEASE_DATE) continue;
 				}
 				all++;
