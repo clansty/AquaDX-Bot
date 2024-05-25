@@ -7,7 +7,7 @@ import Renderer from './render';
 import { Env } from '../worker-configuration';
 import { useNewReplies } from 'telegraf/future';
 import { TypeEnum } from '@gekichumai/dxdata';
-import { InlineKeyboardButton } from 'telegraf/types';
+import { InlineKeyboardButton, InlineQueryResult } from 'telegraf/types';
 import genSongInfoButtons from './utils/genSongInfoButtons';
 
 export const createBot = (env: Env) => {
@@ -100,6 +100,53 @@ export const createBot = (env: Env) => {
 		await ctx.answerInlineQuery([]);
 	});
 
+	bot.inlineQuery(/query (.+)/, async (ctx) => {
+		const userMusic = await ctx.getUserMusic(false);
+		if (!userMusic) {
+			await ctx.answerInlineQuery([], {
+				button: { text: '请绑定用户', start_parameter: 'bind' }
+			});
+			return;
+		}
+
+		const query = ctx.match[1].trim().toLowerCase();
+		if (query === '') {
+			await ctx.answerInlineQuery([]);
+		}
+		const results = Song.search(query);
+		const ret = [] as InlineQueryResult[];
+		for (const song of results) {
+			const userScores = (await ctx.getUserMusic()).filter(it => it.musicId === song.id || it.musicId === song.id + 1e4);
+			if (!userScores.length) continue;
+
+			const message = [song.id + '. ' + song.title, ''];
+			for (const userScore of userScores) {
+				const chart = song.getChart(userScore.level, userScore.musicId > 1e4);
+				message.push(`${userScore.musicId > 1e4 ? 'DX' : 'STD'} ${LEVEL_EMOJI[userScore.level]} ${chart.internalLevelValue.toFixed(1)} ` +
+					`${(userScore.achievement / 1e4).toFixed(4)}% ${FC[userScore.comboStatus]}`);
+			}
+
+			ret.push({
+				type: 'photo',
+				title: song.title,
+				description: song.title,
+				id: song.dxId?.toString() || song.title,
+				photo_url: song.coverUrl,
+				thumbnail_url: song.coverUrl,
+				caption: message.join('\n'),
+				reply_markup: {
+					inline_keyboard: [[
+						{ text: '歌曲详情', switch_inline_query_current_chat: song.id.toString() }
+					]]
+				}
+			});
+		}
+
+		await ctx.answerInlineQuery(ret, {
+			is_personal: true
+		});
+	});
+
 	bot.inlineQuery(/.+/, async (ctx) => {
 		if (ctx.inlineQuery.query.trim() === '') {
 			await ctx.answerInlineQuery([]);
@@ -114,7 +161,7 @@ export const createBot = (env: Env) => {
 			thumbnail_url: song.coverUrl,
 			caption: song.display,
 			reply_markup: { inline_keyboard: genSongInfoButtons(song) }
-		})));
+		})), { cache_time: 3600 });
 	});
 
 	for (const version of PLATE_VER) {
@@ -122,14 +169,6 @@ export const createBot = (env: Env) => {
 			bot.hears(RegExp(`^\\/?${version} ?${type} ?进度$`), async (ctx) => {
 				await ctx.reply(compute.calcProgressText(await ctx.getUserMusic(), version, type));
 			});
-		}
-	}
-	bot.hears(['/', ''].map(it => it + '霸者进度'), async (ctx) => {
-		await ctx.reply(compute.calcProgressText(await ctx.getUserMusic(), BA_VE));
-	});
-
-	for (const version of PLATE_VER) {
-		for (const type of PLATE_TYPE) {
 			bot.hears(RegExp(`^\\/?${version} ?${type} ?完成[图表]$`), async (ctx) => {
 				const genMsg = ctx.reply('图片生成中...');
 				await ctx.replyWithDocument({ source: await new Renderer(env.MYBROWSER).renderPlateProgress(await ctx.getUserMusic(), version, type), filename: `${version}${type}完成表.png` });
@@ -137,6 +176,9 @@ export const createBot = (env: Env) => {
 			});
 		}
 	}
+	bot.hears(['/', ''].map(it => it + '霸者进度'), async (ctx) => {
+		await ctx.reply(compute.calcProgressText(await ctx.getUserMusic(), BA_VE));
+	});
 	bot.hears(/^\/?霸者完成[图表]$/, async (ctx) => {
 		const genMsg = ctx.reply('图片生成中...');
 		await ctx.replyWithDocument({ source: await new Renderer(env.MYBROWSER).renderPlateProgress(await ctx.getUserMusic(), BA_VE), filename: '霸者完成表.png' });
@@ -193,7 +235,7 @@ export const createBot = (env: Env) => {
 				caption: message.join('\n'),
 				reply_markup: {
 					inline_keyboard: [[
-						{ text: '歌曲详情', switch_inline_query_current_chat: song.dxId.toString() }
+						{ text: '歌曲详情', switch_inline_query_current_chat: song.id.toString() }
 					]]
 				}
 			});
