@@ -3,9 +3,9 @@ import { ReactElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import warpBasicReactElement from './wrapBasicReactElement';
 import { UserMusic, UserRating } from '../types';
-import baveProgress from './baveProgress';
+import plateProgress from './plateProgress';
 import levelProgress from './levelProgress';
-import { LEVELS } from '../consts';
+import { BA_VE, LEVELS, PLATE_TYPE, PLATE_VER } from '../consts';
 import b50 from './b50';
 
 export default class Renderer {
@@ -34,8 +34,8 @@ export default class Renderer {
 		return this.renderHtml(renderToStaticMarkup(warpBasicReactElement(element)), width);
 	}
 
-	public renderBaVeProgress(score: UserMusic[]) {
-		return this.renderReact(baveProgress(score), 1500);
+	public renderPlateProgress(score: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type?: typeof PLATE_TYPE[number]) {
+		return this.renderReact(plateProgress(score, ver, type), 1500);
 	}
 
 	public renderLevelProgress(score: UserMusic[], level: typeof LEVELS[number]) {

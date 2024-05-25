@@ -108,7 +108,7 @@ export const createBot = (env: Env) => {
 
 	for (const version of PLATE_VER) {
 		for (const type of PLATE_TYPE) {
-			bot.hears(['/', ''].map(it => it + version + type + '进度'), async (ctx) => {
+			bot.hears(RegExp(`^\\/?${version} ?${type} ?进度$`), async (ctx) => {
 				await ctx.reply(compute.calcProgressText(await ctx.getUserMusic(), version, type));
 			});
 		}
@@ -117,9 +117,18 @@ export const createBot = (env: Env) => {
 		await ctx.reply(compute.calcProgressText(await ctx.getUserMusic(), BA_VE));
 	});
 
+	for (const version of PLATE_VER) {
+		for (const type of PLATE_TYPE) {
+			bot.hears(RegExp(`^\\/?${version} ?${type} ?完成[图表]$`), async (ctx) => {
+				const genMsg = ctx.reply('图片生成中...');
+				await ctx.replyWithDocument({ source: await new Renderer(env.MYBROWSER).renderPlateProgress(await ctx.getUserMusic(), version, type), filename: `${version}${type}完成表.png` });
+				await ctx.deleteMessage((await genMsg).message_id);
+			});
+		}
+	}
 	bot.hears(/^\/?霸者完成[图表]$/, async (ctx) => {
 		const genMsg = ctx.reply('图片生成中...');
-		await ctx.replyWithDocument({ source: await new Renderer(env.MYBROWSER).renderBaVeProgress(await ctx.getUserMusic()), filename: '霸者完成表.png' });
+		await ctx.replyWithDocument({ source: await new Renderer(env.MYBROWSER).renderPlateProgress(await ctx.getUserMusic(), BA_VE), filename: '霸者完成表.png' });
 		await ctx.deleteMessage((await genMsg).message_id);
 	});
 

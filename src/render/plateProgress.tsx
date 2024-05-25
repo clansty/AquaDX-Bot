@@ -1,5 +1,5 @@
 import { TableContentRenderData, TableContentRenderRow, UserMusic } from '../types';
-import { BA_VE, BUDDIES_LOGO, MAIMAI_DX_RELEASE_DATE, PLATE_IMAGES, PLATE_VER_LIST, VER_MUSIC_LIST } from '../consts';
+import { BA_VE, BUDDIES_LOGO, MAIMAI_DX_RELEASE_DATE, PLATE_IMAGES, PLATE_TYPE, PLATE_VER, PLATE_VER_LIST, VER_MUSIC_LIST } from '../consts';
 import Song from '../models/Song';
 import React from 'react';
 import TableContent from './components/TableContent';
@@ -7,14 +7,16 @@ import _ from 'lodash';
 import compute from '../compute';
 import LevelProgress from './components/LevelProgress';
 
-export default (userMusic: UserMusic[]) => {
+export default (userMusic: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type?: typeof PLATE_TYPE[number]) => {
 	let displayData = [] as TableContentRenderData[];
-	const requiredSongList = PLATE_VER_LIST[BA_VE].flatMap(ver => VER_MUSIC_LIST[ver]).map(id => Song.fromId(id));
+	const requiredSongList = PLATE_VER_LIST[ver].flatMap(ver => VER_MUSIC_LIST[ver]).map(id => Song.fromId(id));
 	for (const song of requiredSongList) {
 		for (const level of [3, 4]) {
-			const chart = song.getChart(level, false);
+			const chart = song.getChart(level);
 			if (!chart) continue;
-			if (chart.releaseDate && new Date(chart.releaseDate) >= MAIMAI_DX_RELEASE_DATE) continue;
+			if (type !== 'clear' && (ver === BA_VE || PLATE_VER.indexOf(ver) < PLATE_VER.indexOf('熊'))) {
+				if (chart.releaseDate && new Date(chart.releaseDate) >= MAIMAI_DX_RELEASE_DATE) continue;
+			}
 			displayData.push({
 				song,
 				chart,
@@ -38,8 +40,14 @@ export default (userMusic: UserMusic[]) => {
 		<div style={{ display: 'flex', alignItems: 'center', padding: 40, gap: 50 }}>
 			<img src={BUDDIES_LOGO} alt="" height={120} />
 			<div style={{ flexGrow: 1 }} />
-			<img src={PLATE_IMAGES[BA_VE]} alt="" height={80} />
-			<LevelProgress progress={compute.calcProgress(userMusic, BA_VE)} />
+			{
+				PLATE_IMAGES[ver + (type || '')] ?
+					<img src={PLATE_IMAGES[BA_VE]} alt="" height={80} /> :
+					<div style={{ fontSize: 60, textShadow: '1px 1px 2px #fff', marginTop: '-.1em' }}>
+						{ver}{type} 完成进度
+					</div>
+			}
+			<LevelProgress progress={compute.calcProgress(userMusic, ver, type)} />
 		</div>
 		<TableContent data={displayDataRows} scoreType={'rank'} showSdDx={false} />
 	</div>;

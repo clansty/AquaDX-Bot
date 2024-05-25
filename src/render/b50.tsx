@@ -9,7 +9,7 @@ import convert from '../convert';
 export default (rating: UserRating, userMusic: UserMusic[], username: string, avatar: string) =>
 	<div style={{ padding: '0 20px' }}>
 		<div style={{ display: 'flex', alignItems: 'center', padding: '20px 20px', gap: 40 }}>
-			<img src={avatar} alt="" height={100} width={100} style={{ borderRadius: 10 }} />
+			{avatar && <img src={avatar} alt="" height={100} width={100} style={{ borderRadius: 10 }} />}
 			<div style={{ fontSize: 60, textShadow: '1px 1px 2px #fff', marginTop: '-.1em' }}>
 				{username}
 			</div>
