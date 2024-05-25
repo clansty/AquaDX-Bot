@@ -1,14 +1,14 @@
 import { Telegraf } from 'telegraf';
 import BotContext from './models/BotContext';
-import { BA_VE, FC, LEVEL, LEVEL_EMOJI, LEVEL_EN, LEVELS, PLATE_TYPE, PLATE_VER } from './consts';
+import { BA_VE, FC, INLINE_HELP, LEVEL_EMOJI, LEVELS, PLATE_TYPE, PLATE_VER } from './consts';
 import compute from './compute';
 import Song from './models/Song';
 import Renderer from './render';
 import { Env } from '../worker-configuration';
 import { useNewReplies } from 'telegraf/future';
-import { TypeEnum } from '@gekichumai/dxdata';
-import { InlineKeyboardButton, InlineQueryResult } from 'telegraf/types';
+import { InlineQueryResult } from 'telegraf/types';
 import genSongInfoButtons from './utils/genSongInfoButtons';
+import _ from 'lodash';
 
 export const createBot = (env: Env) => {
 	const bot = new Telegraf(env.BOT_TOKEN, { contextType: BotContext });
@@ -97,14 +97,21 @@ export const createBot = (env: Env) => {
 	});
 
 	bot.inlineQuery(/^$/, async (ctx) => {
-		await ctx.answerInlineQuery([]);
+		// @ts-ignore ???
+		await ctx.answerInlineQuery(INLINE_HELP.map((text, seq) => ({
+			type: 'article',
+			id: seq,
+			title: text,
+			input_message_content: { message_text: '喵' }
+		})));
 	});
 
 	bot.inlineQuery(/query (.+)/, async (ctx) => {
 		const userMusic = await ctx.getUserMusic(false);
-		if (!userMusic) {
+		if (!userMusic?.length) {
 			await ctx.answerInlineQuery([], {
-				button: { text: '请绑定用户', start_parameter: 'bind' }
+				button: { text: '请绑定用户', start_parameter: 'bind' },
+				is_personal: true
 			});
 			return;
 		}
@@ -118,6 +125,7 @@ export const createBot = (env: Env) => {
 		for (const song of results) {
 			const userScores = (await ctx.getUserMusic()).filter(it => it.musicId === song.id || it.musicId === song.id + 1e4);
 			if (!userScores.length) continue;
+			_.sortBy(userScores, it => it.level);
 
 			const message = [song.id + '. ' + song.title, ''];
 			for (const userScore of userScores) {
@@ -223,6 +231,7 @@ export const createBot = (env: Env) => {
 		for (const song of results) {
 			const userScores = (await ctx.getUserMusic()).filter(it => it.musicId === song.id || it.musicId === song.id + 1e4);
 			if (!userScores.length) continue;
+			_.sortBy(userScores, it => it.level);
 
 			const message = [song.id + '. ' + song.title, ''];
 			for (const userScore of userScores) {
