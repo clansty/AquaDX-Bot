@@ -23,8 +23,10 @@ const compute = {
 	calcProgress(musicList: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type?: typeof PLATE_TYPE[number]): ProgressCalcResult[] {
 		const requiredSongList: number[] = PLATE_VER_LIST[ver].flatMap(ver => VER_MUSIC_LIST[ver]);
 		const result = [] as ProgressCalcResult[];
-		let total = 0, totalDone = 0;
-		for (let lv = 0; lv < 5; lv++) {
+		let total = 0, totalDone = 0, maxLevel = 4;
+		// 只有舞x 和霸者需要打白谱
+		if (ver === BA_VE || ver === '舞') maxLevel = 5;
+		for (let lv = 0; lv < maxLevel; lv++) {
 			let all = 0, done = 0;
 			for (const required of requiredSongList) {
 				const chart = Song.fromId(required).getChart(lv);
@@ -43,12 +45,13 @@ const compute = {
 			totalDone += done;
 			result.push({ done, all });
 		}
-		result.push({ done: totalDone, all: total });
 		return result;
 	},
 	calcProgressText(musicList: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type?: typeof PLATE_TYPE[number]): string {
 		const result = compute.calcProgress(musicList, ver, type);
-		return result.map(({ done, all }, lv) => `${LEVEL[lv] || '总计'} ${done}/${all}`).join('\n');
+		const ret = result.map(({ done, all }, lv) => `${LEVEL[lv]} ${done}/${all}`);
+		ret.push(`总计 ${result.reduce((acc, { done }) => acc + done, 0)}/${result.reduce((acc, { all }) => acc + all, 0)}`);
+		return ret.join('\n');
 	},
 	ra(ds: number, achievement: number): number {
 		let baseRa: number = 22.4;

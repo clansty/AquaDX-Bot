@@ -10,8 +10,11 @@ import LevelProgress from './components/LevelProgress';
 export default (userMusic: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type?: typeof PLATE_TYPE[number]) => {
 	let displayData = [] as TableContentRenderData[];
 	const requiredSongList = PLATE_VER_LIST[ver].flatMap(ver => VER_MUSIC_LIST[ver]).map(id => Song.fromId(id));
+	const levelsRequired = [3];
+	// 只有舞x 和霸者需要打白谱
+	if (ver === BA_VE || ver === '舞') levelsRequired.push(4);
 	for (const song of requiredSongList) {
-		for (const level of [3, 4]) {
+		for (const level of levelsRequired) {
 			const chart = song.getChart(level);
 			if (!chart) continue;
 			if (type !== 'clear' && (ver === BA_VE || PLATE_VER.indexOf(ver) < PLATE_VER.indexOf('熊'))) {
