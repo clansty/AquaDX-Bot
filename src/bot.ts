@@ -171,7 +171,7 @@ export const createBot = (env: Env) => {
 			const userScores = (await ctx.getUserMusic()).filter(it => it.musicId === song.id || it.musicId === song.id + 1e4);
 			if (!userScores.length) continue;
 
-			const message = [song.title, ''];
+			const message = [song.id + '. ' + song.title, ''];
 			for (const userScore of userScores) {
 				const chart = song.getChart(userScore.level, userScore.musicId > 1e4);
 				message.push(`${userScore.musicId > 1e4 ? 'DX' : 'STD'} ${LEVEL_EMOJI[userScore.level]} ${chart.internalLevelValue.toFixed(1)} ` +
@@ -179,7 +179,12 @@ export const createBot = (env: Env) => {
 			}
 
 			await ctx.replyWithPhoto(song.coverUrl, {
-				caption: message.join('\n')
+				caption: message.join('\n'),
+				reply_markup: {
+					inline_keyboard: [[
+						{ text: '歌曲详情', switch_inline_query_current_chat: song.dxId.toString() }
+					]]
+				}
 			});
 			return;
 		}
