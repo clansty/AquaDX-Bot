@@ -5,7 +5,8 @@ import allMusic from './data/all-music.json';
 export const INLINE_HELP = [
 	'行内模式说明',
 	'直接输入 [歌曲ID | 歌曲名称的一部分 | 歌曲别名] 即可搜索歌曲的基本信息',
-	'输入 "query [搜索内容]" 来搜索自己的成绩'
+	'输入 "query [搜索内容]" 来搜索自己的成绩',
+	'输入牌子名称（霸者/真极/…）来查询牌子进度'
 ] as const;
 export const ALL_MUSIC = allMusic as Record<string | number, typeof allMusic[11534]>;
 export const LEVEL = ['绿', '黄', '红', '紫', '白'] as const;
