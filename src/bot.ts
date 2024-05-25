@@ -173,7 +173,7 @@ export const createBot = (env: Env) => {
 					id: '0',
 					title: `${version}${type}进度`,
 					description: '牌子进度 ' + text.split('\n').pop(),
-					input_message_content: { message_text: text }
+					input_message_content: { message_text: `${version}${type}进度\n\n` + text }
 				}], { is_personal: true });
 			});
 			bot.hears(RegExp(`^\\/?${version} ?${type} ?进度$`), async (ctx) => {
@@ -202,7 +202,7 @@ export const createBot = (env: Env) => {
 			id: '0',
 			title: `霸者进度`,
 			description: '牌子进度 ' + text.split('\n').pop(),
-			input_message_content: { message_text: text }
+			input_message_content: { message_text: `霸者进度\n\n` + text }
 		}], { is_personal: true });
 	});
 	bot.hears(['/', ''].map(it => it + '霸者进度'), async (ctx) => {
