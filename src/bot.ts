@@ -44,10 +44,15 @@ export const createBot = (env: Env) => {
 		}
 
 		const song = results[0];
-		await ctx.replyWithPhoto(song.coverUrl, {
+		const extra = {
 			caption: song.display,
 			reply_markup: { inline_keyboard: genSongInfoButtons(song) }
-		});
+		};
+		if (song.tgMusicId) {
+			await ctx.replyWithAudio(song.tgMusicId, extra);
+		} else {
+			await ctx.replyWithPhoto(song.coverUrl, extra);
+		}
 	});
 
 	bot.action(/^song:(\d+):(\d)$/, async (ctx) => {
@@ -134,20 +139,32 @@ export const createBot = (env: Env) => {
 					`${(userScore.achievement / 1e4).toFixed(4)}% ${FC[userScore.comboStatus]}`);
 			}
 
-			ret.push({
-				type: 'photo',
-				title: song.title,
-				description: song.title,
-				id: song.dxId?.toString() || song.title,
-				photo_url: song.coverUrl,
-				thumbnail_url: song.coverUrl,
-				caption: message.join('\n'),
-				reply_markup: {
-					inline_keyboard: [[
-						{ text: '歌曲详情', switch_inline_query_current_chat: song.id.toString() }
-					]]
-				}
-			});
+			ret.push(song.tgMusicId ?
+				{
+					type: 'audio',
+					audio_file_id: song.tgMusicId,
+					id: song.dxId?.toString() || song.title,
+					caption: message.join('\n'),
+					reply_markup: {
+						inline_keyboard: [[
+							{ text: '歌曲详情', switch_inline_query_current_chat: song.id.toString() }
+						]]
+					}
+				} :
+				{
+					type: 'photo',
+					title: song.title,
+					description: song.title,
+					id: song.dxId?.toString() || song.title,
+					photo_url: song.coverUrl,
+					thumbnail_url: song.coverUrl,
+					caption: message.join('\n'),
+					reply_markup: {
+						inline_keyboard: [[
+							{ text: '歌曲详情', switch_inline_query_current_chat: song.id.toString() }
+						]]
+					}
+				});
 		}
 
 		await ctx.answerInlineQuery(ret, {
@@ -219,16 +236,25 @@ export const createBot = (env: Env) => {
 			await ctx.answerInlineQuery([]);
 		}
 		const results = Song.search(ctx.inlineQuery.query.trim().toLowerCase());
-		await ctx.answerInlineQuery(results.map(song => ({
-			type: 'photo',
-			title: song.title,
-			description: song.title,
-			id: song.dxId?.toString() || song.title,
-			photo_url: song.coverUrl,
-			thumbnail_url: song.coverUrl,
-			caption: song.display,
-			reply_markup: { inline_keyboard: genSongInfoButtons(song) }
-		})), { cache_time: 3600 });
+		await ctx.answerInlineQuery(results.map(song =>
+			song.tgMusicId ?
+				{
+					type: 'audio',
+					audio_file_id: song.tgMusicId,
+					id: song.dxId?.toString() || song.title,
+					caption: song.display,
+					reply_markup: { inline_keyboard: genSongInfoButtons(song) }
+				} :
+				{
+					type: 'photo',
+					title: song.title,
+					description: song.title,
+					id: song.dxId?.toString() || song.title,
+					photo_url: song.coverUrl,
+					thumbnail_url: song.coverUrl,
+					caption: song.display,
+					reply_markup: { inline_keyboard: genSongInfoButtons(song) }
+				}), { cache_time: 3600 });
 	});
 
 	for (const level of LEVELS) {
@@ -278,14 +304,19 @@ export const createBot = (env: Env) => {
 					`${(userScore.achievement / 1e4).toFixed(4)}% ${FC[userScore.comboStatus]}`);
 			}
 
-			await ctx.replyWithPhoto(song.coverUrl, {
+			const extra = {
 				caption: message.join('\n'),
 				reply_markup: {
 					inline_keyboard: [[
 						{ text: '歌曲详情', switch_inline_query_current_chat: song.id.toString() }
 					]]
 				}
-			});
+			};
+			if (song.tgMusicId) {
+				await ctx.replyWithAudio(song.tgMusicId, extra);
+			} else {
+				await ctx.replyWithPhoto(song.coverUrl, extra);
+			}
 			return;
 		}
 		await ctx.reply(`共找到 ${results.length} 个结果：\n\n` +

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "deploy": "wrangler deploy",
-    "dev": "wrangler dev --ip 0.0.0.0 --port 8080",
+    "dev": "cross-env NODE_ENV=development wrangler dev --ip 0.0.0.0 --port 8080",
     "start": "wrangler dev",
     "tail": "wrangler tail",
     "cf-typegen": "wrangler types"
@@ -14,6 +14,7 @@
     "@types/lodash": "^4.17.4",
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
+    "cross-env": "^7.0.3",
     "typescript": "^5.4.5",
     "wrangler": "^3.56.0"
   },

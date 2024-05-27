@@ -1,5 +1,5 @@
 import { CategoryEnum, DifficultyEnum, dxdata, Regions, Song as DataSong, TypeEnum } from '@gekichumai/dxdata';
-import { ALL_MUSIC, LEVEL, LEVEL_EMOJI, LEVEL_EN } from '../consts';
+import { ALL_MUSIC, LEVEL, LEVEL_EMOJI, LEVEL_EN, TG_MUSIC_IDS } from '../consts';
 import Chart from './Chart';
 
 export default class Song implements DataSong {
@@ -55,6 +55,10 @@ export default class Song implements DataSong {
 
 	public get coverUrl() {
 		return 'https://shama.dxrating.net/images/cover/v2/' + this.imageName;
+	}
+
+	public get tgMusicId() {
+		return TG_MUSIC_IDS[this.id];
 	}
 
 	public get basicInfo() {

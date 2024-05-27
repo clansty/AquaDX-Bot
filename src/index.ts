@@ -15,7 +15,10 @@ export default {
 		}
 		try {
 			const req = await request.json();
-			console.log(req);
+			if (process.env.NODE_ENV === 'development')
+				console.log(JSON.stringify(req));
+			else
+				console.log(req);
 			ctx.waitUntil(createBot(env).handleUpdate(req as any));
 		} catch (e) {
 			console.error(e);
