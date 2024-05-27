@@ -7,7 +7,8 @@
     "dev": "cross-env NODE_ENV=development wrangler dev --ip 0.0.0.0 --port 8080",
     "start": "wrangler dev",
     "tail": "wrangler tail",
-    "cf-typegen": "wrangler types"
+    "cf-typegen": "wrangler types",
+	"genFileIds": "tsx tools/genFileIds.ts"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240512.0",
@@ -15,6 +16,8 @@
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
     "cross-env": "^7.0.3",
+    "strip-ansi": "^7.1.0",
+    "tsx": "^4.11.0",
     "typescript": "^5.4.5",
     "wrangler": "^3.56.0"
   },

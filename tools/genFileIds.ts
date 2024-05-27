@@ -1,5 +1,8 @@
 import * as fs from 'node:fs';
 import { ALL_MUSIC } from '../src/consts';
+import stripAnsi from 'strip-ansi';
+import prodIds from '../src/data/fileIds-prod.json';
+import devIds from '../src/data/fileIds-dev.json';
 
 function parseJsonObjects(content: string): any[] {
 	const lines: string[] = content.split('\n');
@@ -35,10 +38,10 @@ function parseJsonObjects(content: string): any[] {
 }
 
 const prodObjects = parseJsonObjects(fs.readFileSync('prod_files', 'utf-8'));
-const devObjects = parseJsonObjects(fs.readFileSync('dev_files', 'utf-8'));
+const devObjects = parseJsonObjects(stripAnsi(fs.readFileSync('dev_files', 'utf-8')));
 
-const prodIds = {} as Record<number, string>;
-const devIds = {} as Record<number, string>;
+console.log('prodObjects:', prodObjects.length);
+console.log('devObjects:', devObjects.length);
 
 const parseUpdate = (update: any, ids: Record<number, string>) => {
 	const audio = update?.message?.audio;
