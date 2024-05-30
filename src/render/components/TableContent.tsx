@@ -1,7 +1,7 @@
 import { ScoreRenderType, TableContentRenderData, TableContentRenderRow, UserMusic } from '../../types';
 import React from 'react';
 import convert from '../../convert';
-import { IMG_DX, IMG_STD, LEVEL_COLOR, LEVEL_EN } from '../../consts';
+import { IMG_DX, IMG_MOON_CAKE, IMG_STD, LEVEL_COLOR, LEVEL_EN } from '../../consts';
 
 const COVER_SIZE = '80px';
 const BORDER_SIZE = '5px';
@@ -28,7 +28,7 @@ const Cell = ({ scoreType, data, showSdDx }: { scoreType: ScoreRenderType, data:
 		boxSizing: 'border-box', borderWidth: BORDER_SIZE, borderStyle: 'solid', borderColor: LEVEL_COLOR[LEVEL_EN.indexOf(data.chart.difficulty)]
 	}}>
 		{showSdDx && <img src={data.chart.type === 'dx' ? IMG_DX : IMG_STD} alt="" style={{ position: 'absolute', top: 1, left: 1, width: SD_DX_SIZE }} />}
-		{data.score &&
+		{data.score && !(scoreType === 'combo' && !data.score.comboStatus) &&
 			<div style={{ backgroundColor: 'rgba(0,0,0,0.7)', height: '100%', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: 20 }}>
 				<DisplayScore scoreType={scoreType} score={data.score} />
 			</div>}
@@ -40,5 +40,8 @@ const DisplayScore = ({ scoreType, score }: { scoreType: ScoreRenderType, score:
 			return `${(score.achievement / 1e4).toFixed(4)}%`;
 		case 'rank':
 			return <img src={convert.getRankImage(convert.achievementToRank(score.achievement))} alt="" width={COVER_SIZE} />;
+		case 'combo':
+			if (!score.comboStatus) return;
+			return <img src={IMG_MOON_CAKE[score.comboStatus]} alt="" width={COVER_SIZE} />;
 	}
 };

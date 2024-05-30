@@ -52,6 +52,6 @@ export default (userMusic: UserMusic[], ver: typeof PLATE_VER[number] | typeof B
 			}
 			<LevelProgress progress={compute.calcProgress(userMusic, ver, type)} />
 		</div>
-		<TableContent data={displayDataRows} scoreType={'rank'} showSdDx={false} />
+		<TableContent data={displayDataRows} scoreType={['极', '神'].includes(type) ? 'combo' : 'rank'} showSdDx={false} />
 	</div>;
 }

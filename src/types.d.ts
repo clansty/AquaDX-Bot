@@ -62,7 +62,7 @@ export type TableContentRenderRow = {
 	data: TableContentRenderData[]
 }
 
-export type ScoreRenderType = 'rank' | 'score'
+export type ScoreRenderType = 'rank' | 'score' | 'combo'
 
 export type Rank = 'sssp' | 'sss' | 'ssp' | 'ss' | 'sp' | 's' | 'aaa' | 'aa' | 'a' | 'bbb' | 'bb' | 'b' | 'c' | 'd'
 
