@@ -1,9 +1,10 @@
 import { CategoryEnum, DifficultyEnum, dxdata, Regions, Song as DataSong, TypeEnum } from '@gekichumai/dxdata';
-import { ALL_MUSIC, LEVEL, LEVEL_EMOJI, LEVEL_EN, TG_MUSIC_IDS } from '../consts';
+import { ALL_MUSIC, LEVEL, LEVEL_EN, TG_MUSIC_IDS } from '../consts';
 import Chart from './Chart';
+import _ from 'lodash';
 
 export default class Song implements DataSong {
-	songId: string;
+	songId: never;
 	searchAcronyms: string[];
 	category: CategoryEnum;
 	title: string;
@@ -17,7 +18,7 @@ export default class Song implements DataSong {
 	// 一定是 1e4 以内的数
 	public readonly id: number;
 
-	private constructor(data: DataSong, public dx?: boolean) {
+	private constructor(data: DataSong, public dx?: boolean, public unlisted = false) {
 		Object.assign(this, data);
 
 		const stdChart = data.sheets.find(it => it.type === TypeEnum.STD);
@@ -29,10 +30,10 @@ export default class Song implements DataSong {
 			this.id %= 1e4;
 		} else {
 			// DXRating.net 中一些歌，比如说 LOSER 和俊达萌起床歌，没有 ID
-			const findId = Object.entries(ALL_MUSIC).find(([id, dataFromAllMusic]) => dataFromAllMusic.name === data.title);
+			const findId = Object.entries(ALL_MUSIC).find(([id, dataFromAllMusic]) => dataFromAllMusic.name?.toLowerCase() === data.title.toLowerCase());
 			if (findId) {
 				this.id = Number(findId[0]) % 1e4;
-				console.log('修复了 ID 丢失', data.title, this.id);
+				// console.log('修复了 ID 丢失', data.title, this.id);
 			} else {
 				console.log('修复不了 ID 丢失', data.title);
 			}
@@ -115,16 +116,38 @@ export default class Song implements DataSong {
 		const dataFromAllMusic = ALL_MUSIC[id] || ALL_MUSIC[id + 1e4];
 		if (!dataFromAllMusic) return null;
 
-		song = dxdata.songs.find(song => song.title === dataFromAllMusic.name);
+		song = dxdata.songs.find(song => song.title.toLowerCase() === dataFromAllMusic.name.toLowerCase());
 		if (song) return new this(song, dx);
-		return null;
+		return new this({
+			title: dataFromAllMusic.name,
+			artist: dataFromAllMusic.composer,
+			bpm: undefined,
+			category: dataFromAllMusic.genre as unknown as CategoryEnum,
+			imageName: undefined,
+			isNew: false,
+			isLocked: false,
+			searchAcronyms: [],
+			songId: undefined,
+			sheets: dataFromAllMusic.notes.filter(it => it.lv).map((chart, index) => new Chart({
+				difficulty: LEVEL_EN[index],
+				internalId: dx ? id + 1e4 : id,
+				type: dx ? TypeEnum.DX : TypeEnum.STD,
+				level: undefined,
+				regions: { cn: false, intl: false, jp: false },
+				version: undefined,
+				noteCounts: undefined,
+				noteDesigner: '',
+				internalLevelValue: chart.lv,
+				isSpecial: undefined
+			}, dataFromAllMusic, dx ? id + 1e4 : id))
+		}, dx, true);
 	}
 
 	public static search(kw: string) {
 		const results = [] as Song[];
 		if (Number(kw)) {
 			const song = this.fromId(Number(kw));
-			if (song) return [song];
+			results.push(song);
 		}
 		for (const songRaw of dxdata.songs) {
 			if (songRaw.title.toLowerCase().includes(kw)) {
@@ -133,7 +156,12 @@ export default class Song implements DataSong {
 				results.push(new this(songRaw));
 			}
 		}
-		return results;
+		for (const [id, data] of Object.entries(ALL_MUSIC)) {
+			if (data.name?.toLowerCase().includes(kw)) {
+				results.push(this.fromId(Number(id)));
+			}
+		}
+		return _.uniqBy(results, 'id');
 	}
 
 	public static getByCondition(condition: (song: DataSong) => boolean) {

@@ -27,6 +27,10 @@ export const createBot = (env: Env) => {
 	});
 
 	bot.command(['search', 'maimai'], async (ctx) => {
+		if (ctx.payload.trim() === '') {
+			await ctx.reply('请输入要搜索的歌曲名');
+			return;
+		}
 		const results = Song.search(ctx.payload.trim().toLowerCase());
 		if (!results.length) {
 			await ctx.reply('找不到匹配的歌');

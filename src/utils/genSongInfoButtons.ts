@@ -4,6 +4,7 @@ import { TypeEnum } from '@gekichumai/dxdata';
 import { LEVEL, LEVEL_EN } from '../consts';
 
 export default (song: Song) => {
+	if (song.unlisted) return [];
 	const buttons = [] as InlineKeyboardButton[][];
 	const stdCharts = song.sheets.filter(it => it.type === TypeEnum.STD);
 	const dxCharts = song.sheets.filter(it => it.type === TypeEnum.DX);

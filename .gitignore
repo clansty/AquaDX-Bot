@@ -173,3 +173,4 @@ dist
 
 dev_files
 prod_files
+test.ts

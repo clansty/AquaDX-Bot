@@ -10,7 +10,7 @@ export const INLINE_HELP = [
 	'输入 "query [搜索内容]" 来搜索自己的成绩',
 	'输入牌子名称（霸者/真极/…）来查询牌子进度'
 ] as const;
-export const ALL_MUSIC = allMusic as Record<string | number, typeof allMusic[11534]>;
+export const ALL_MUSIC = allMusic as Record<string | number, Partial<typeof allMusic[8]>>;
 export const TG_MUSIC_IDS = (process.env.NODE_ENV === 'development' ? fileIdsDev : fileIdsProd) as Record<string | number, string>;
 export const LEVEL = ['绿', '黄', '红', '紫', '白'] as const;
 export const LEVEL_COLOR = ['rgb(34, 187, 91)', 'rgb(251, 156, 45)', 'rgb(246, 72, 97)', 'rgb(158, 69, 226)',
