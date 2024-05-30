@@ -122,10 +122,12 @@ export default class Song implements DataSong {
 
 	public static search(kw: string) {
 		const results = [] as Song[];
+		if (Number(kw)) {
+			const song = this.fromId(Number(kw));
+			if (song) return [song];
+		}
 		for (const songRaw of dxdata.songs) {
-			if (songRaw.sheets[0].internalId % 1e4 === Number(kw) % 1e4) {
-				results.push(new this(songRaw));
-			} else if (songRaw.title.toLowerCase().includes(kw)) {
+			if (songRaw.title.toLowerCase().includes(kw)) {
 				results.push(new this(songRaw));
 			} else if (songRaw.searchAcronyms.some(alias => alias === kw)) {
 				results.push(new this(songRaw));
