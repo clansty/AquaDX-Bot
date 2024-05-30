@@ -51,7 +51,7 @@ const parseUpdate = (update: any, ids: Record<number, string>) => {
 
 	const song = Object.entries(ALL_MUSIC).find(([_, v]) => v.name === title);
 	if (!song) {
-		console.error('找不到:', title);
+		console.error('找不到:', title, fileId);
 		return;
 	}
 	const id = Number(song[0]) % 1e4;
