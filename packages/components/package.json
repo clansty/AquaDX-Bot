@@ -1,0 +1,15 @@
+{
+  "name": "@clansty/maibot-components",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "main": "src/index.ts",
+  "dependencies": {
+    "@clansty/maibot-types": "workspace:^",
+    "@clansty/maibot-utils": "workspace:^",
+    "react": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.2"
+  }
+}

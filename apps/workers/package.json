@@ -1,0 +1,28 @@
+{
+  "name": "@clansty/maibot-workers",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "cross-env NODE_ENV=development wrangler dev --ip 0.0.0.0 --port 8080",
+    "tail": "wrangler tail",
+    "cf-typegen": "wrangler types"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240512.0",
+    "@types/react": "^18.3.2",
+    "@types/react-dom": "^18.3.0",
+    "cross-env": "^7.0.3",
+    "wrangler": "^3.56.0"
+  },
+  "dependencies": {
+    "@clansty/maibot-components": "workspace:^",
+    "@clansty/maibot-types": "workspace:^",
+    "@clansty/maibot-utils": "workspace:^",
+    "@cloudflare/puppeteer": "^0.0.8",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "telegraf": "^4.16.3"
+  }
+}

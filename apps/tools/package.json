@@ -1,0 +1,14 @@
+{
+  "name": "@clansty/maibot-tools",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "genFileIds": "tsx src/genFileIds.ts"
+  },
+  "devDependencies": {
+    "@clansty/maibot-types": "workspace:^",
+    "strip-ansi": "^7.1.0",
+    "tsx": "^4.11.0"
+  }
+}

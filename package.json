@@ -1,33 +1,12 @@
 {
-  "name": "aquadx-bot",
-  "version": "0.0.0",
   "private": true,
   "scripts": {
-    "deploy": "wrangler deploy",
-    "dev": "cross-env NODE_ENV=development wrangler dev --ip 0.0.0.0 --port 8080",
-    "start": "wrangler dev",
-    "tail": "wrangler tail",
-    "cf-typegen": "wrangler types",
-    "genFileIds": "tsx tools/genFileIds.ts"
-  },
-  "devDependencies": {
-    "@cloudflare/workers-types": "^4.20240512.0",
-    "@types/lodash": "^4.17.4",
-    "@types/react": "^18.3.2",
-    "@types/react-dom": "^18.3.0",
-    "cross-env": "^7.0.3",
-    "strip-ansi": "^7.1.0",
-    "tsx": "^4.11.0",
-    "typescript": "^5.4.5",
-    "wrangler": "^3.56.0"
+    "dev": "pnpm run --filter=@clansty/maibot-workers dev",
+    "deploy": "pnpm run --filter=@clansty/maibot-workers deploy",
+    "tail": "pnpm run --filter=@clansty/maibot-workers tail"
   },
   "dependencies": {
-    "@cloudflare/puppeteer": "^0.0.8",
-    "@gekichumai/dxdata": "https://gitpkg.now.sh/gekichumai/dxrating/packages/dxdata?main",
-    "lodash": "^4.17.21",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "telegraf": "^4.16.3"
+    "lodash": "^4.17.21"
   },
   "pnpm": {
     "patchedDependencies": {
@@ -35,5 +14,9 @@
       "rollup-plugin-node-polyfills@0.2.1": "patches/rollup-plugin-node-polyfills@0.2.1.patch"
     }
   },
-  "packageManager": "pnpm@9.1.2+sha256.19c17528f9ca20bd442e4ca42f00f1b9808a9cb419383cd04ba32ef19322aba7"
+  "packageManager": "pnpm@9.1.2+sha256.19c17528f9ca20bd442e4ca42f00f1b9808a9cb419383cd04ba32ef19322aba7",
+  "devDependencies": {
+    "@types/lodash": "^4.17.4",
+    "typescript": "^5.4.5"
+  }
 }

@@ -16,15 +16,43 @@ importers:
 
   .:
     dependencies:
-      '@cloudflare/puppeteer':
-        specifier: ^0.0.8
-        version: 0.0.8
-      '@gekichumai/dxdata':
-        specifier: https://gitpkg.now.sh/gekichumai/dxrating/packages/dxdata?main
-        version: https://gitpkg.now.sh/gekichumai/dxrating/packages/dxdata?main
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
+    devDependencies:
+      '@types/lodash':
+        specifier: ^4.17.4
+        version: 4.17.4
+      typescript:
+        specifier: ^5.4.5
+        version: 5.4.5
+
+  apps/tools:
+    devDependencies:
+      '@clansty/maibot-types':
+        specifier: workspace:^
+        version: link:../../packages/types
+      strip-ansi:
+        specifier: ^7.1.0
+        version: 7.1.0
+      tsx:
+        specifier: ^4.11.0
+        version: 4.11.0
+
+  apps/workers:
+    dependencies:
+      '@clansty/maibot-components':
+        specifier: workspace:^
+        version: link:../../packages/components
+      '@clansty/maibot-types':
+        specifier: workspace:^
+        version: link:../../packages/types
+      '@clansty/maibot-utils':
+        specifier: workspace:^
+        version: link:../../packages/utils
+      '@cloudflare/puppeteer':
+        specifier: ^0.0.8
+        version: 0.0.8
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -38,9 +66,6 @@ importers:
       '@cloudflare/workers-types':
         specifier: ^4.20240512.0
         version: 4.20240512.0
-      '@types/lodash':
-        specifier: ^4.17.4
-        version: 4.17.4
       '@types/react':
         specifier: ^18.3.2
         version: 18.3.2
@@ -50,18 +75,42 @@ importers:
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
-      strip-ansi:
-        specifier: ^7.1.0
-        version: 7.1.0
-      tsx:
-        specifier: ^4.11.0
-        version: 4.11.0
-      typescript:
-        specifier: ^5.4.5
-        version: 5.4.5
       wrangler:
         specifier: ^3.56.0
         version: 3.56.0(@cloudflare/workers-types@4.20240512.0)
+
+  packages/components:
+    dependencies:
+      '@clansty/maibot-types':
+        specifier: workspace:^
+        version: link:../types
+      '@clansty/maibot-utils':
+        specifier: workspace:^
+        version: link:../utils
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+    devDependencies:
+      '@types/react':
+        specifier: ^18.3.2
+        version: 18.3.2
+
+  packages/data: {}
+
+  packages/types:
+    dependencies:
+      '@clansty/maibot-data':
+        specifier: workspace:^
+        version: link:../data
+      '@gekichumai/dxdata':
+        specifier: https://gitpkg.now.sh/gekichumai/dxrating/packages/dxdata?main
+        version: https://gitpkg.now.sh/gekichumai/dxrating/packages/dxdata?main
+
+  packages/utils:
+    dependencies:
+      '@clansty/maibot-types':
+        specifier: workspace:^
+        version: link:../types
 
 packages:
 

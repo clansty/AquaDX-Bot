@@ -1,0 +1,10 @@
+{
+  "name": "@clansty/maibot-utils",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "main": "src/index.ts",
+  "dependencies": {
+    "@clansty/maibot-types": "workspace:^"
+  }
+}
