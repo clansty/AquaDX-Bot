@@ -2,8 +2,8 @@ import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
 import { Env } from '../../worker-configuration';
 import Renderer from '../classes/Renderer';
-import { BA_VE, PLATE_TYPE, PLATE_VER } from '@clansty/maibot-types/src';
-import { calcProgressText } from '@clansty/maibot-utils/src';
+import { BA_VE, PLATE_TYPE, PLATE_VER } from '@clansty/maibot-types';
+import { calcProgressText } from '@clansty/maibot-utils';
 import { InlineQueryResult } from 'telegraf/types';
 import { xxhash32 } from 'cf-workers-hash';
 
