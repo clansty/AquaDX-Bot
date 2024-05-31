@@ -1,5 +1,4 @@
-import { TableContentRenderData, TableContentRenderRow, UserMusic } from '../types';
-import { BA_VE, BUDDIES_LOGO, MAIMAI_DX_RELEASE_DATE, PLATE_IMAGES, PLATE_TYPE, PLATE_VER, PLATE_VER_LIST, Song, VER_MUSIC_LIST } from '@clansty/maibot-types';
+import { BA_VE, BUDDIES_LOGO, MAIMAI_DX_RELEASE_DATE, PLATE_IMAGES, PLATE_TYPE, PLATE_VER, PLATE_VER_LIST, Song, VER_MUSIC_LIST, TableContentRenderData, TableContentRenderRow, UserMusic } from '@clansty/maibot-types';
 import React from 'react';
 import TableContent from './components/TableContent';
 import _ from 'lodash';
@@ -44,7 +43,7 @@ export default (userMusic: UserMusic[], ver: typeof PLATE_VER[number] | typeof B
 			<div style={{ flexGrow: 1 }} />
 			{
 				PLATE_IMAGES[ver + (type || '')] ?
-					<img src={PLATE_IMAGES[BA_VE]} alt="" height={80} /> :
+					<img src={PLATE_IMAGES[ver + (type || '')]} alt="" height={80} /> :
 					<div style={{ fontSize: 60, textShadow: '1px 1px 2px #fff', marginTop: '-.1em' }}>
 						{ver}{type} 完成进度
 					</div>

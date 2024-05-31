@@ -73,7 +73,7 @@ browser = { binding = "MYBROWSER" }
 [[kv_namespaces]]
 binding = "KV"
 id = "16a7f633b5374174a3e44a4ebd4abac6"
-preview_id = "16a7f633b5374174a3e44a4ebd4abac6"
+preview_id = "acba204b1e0d4d38912b71a234163688"
 
 # Bind an mTLS certificate. Use to present a client certificate when communicating with another service.
 # Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#mtls-certificates

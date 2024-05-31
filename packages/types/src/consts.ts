@@ -44,7 +44,45 @@ export const PLATE_VER_LIST = {
 } as const;
 export const BUDDIES_LOGO = 'https://shama.dxrating.net/images/version-logo/buddies.webp';
 export const PLATE_IMAGES = {
-	'霸者': 'https://static.wikia.nocookie.net/maimai/images/b/b8/Namep_覇者.png/revision/latest?path-prefix=zh'
+	'真极': 'https://static.wikia.nocookie.net/maimai/images/6/64/%E7%9C%9F%E6%A5%B5_n.png/revision/latest?cb=20170913173303&path-prefix=zh',
+	'真神': 'https://static.wikia.nocookie.net/maimai/images/b/bb/%E7%9C%9F%E7%A5%9E_p.jpg/revision/latest?cb=20151209165607&path-prefix=zh',
+	'超极': 'https://static.wikia.nocookie.net/maimai/images/f/f9/%E8%B6%85%E6%A5%B5n.png/revision/latest?cb=20151209143802&path-prefix=zh',
+	'超神': 'https://static.wikia.nocookie.net/maimai/images/b/b2/%E8%B6%85%E7%A5%9E.jpg/revision/latest?cb=20151209170358&path-prefix=zh',
+	'超将': 'https://static.wikia.nocookie.net/maimai/images/3/3c/%E8%B6%85%E5%B0%87.jpg/revision/latest?cb=20151209165629&path-prefix=zh',
+	'檄将': 'https://static.wikia.nocookie.net/maimai/images/b/b2/Namep0115_geki_ss.png/revision/latest?cb=20170209055804&path-prefix=zh',
+	'檄神': 'https://static.wikia.nocookie.net/maimai/images/4/43/Namep0112_geki_kami.png/revision/latest?cb=20170209055824&path-prefix=zh',
+	'檄极': 'https://static.wikia.nocookie.net/maimai/images/b/bb/Namep0111_geki_kiwami.png/revision/latest?cb=20170209055748&path-prefix=zh',
+	'橙极': 'https://static.wikia.nocookie.net/maimai/images/9/95/Namep0181_orange_kiwami.png/revision/latest?cb=20170209054618&path-prefix=zh',
+	'橙将': 'https://static.wikia.nocookie.net/maimai/images/4/42/Namep0182_orange_syo.png/revision/latest?cb=20170209054640&path-prefix=zh',
+	'橙神': 'https://static.wikia.nocookie.net/maimai/images/9/97/Namep0183_orange_kami.png/revision/latest?cb=20170209054703&path-prefix=zh',
+	'晓将': 'https://static.wikia.nocookie.net/maimai/images/0/0c/Namep0214_akatsuki_syo.png/revision/latest?cb=20170209055133&path-prefix=zh',
+	'晓神': 'https://static.wikia.nocookie.net/maimai/images/3/3a/Namep0215_akatsuki_kami.png/revision/latest?cb=20170209055133&path-prefix=zh',
+	'晓极': 'https://static.wikia.nocookie.net/maimai/images/8/8c/Namep0213_akatsuki_kiwami.png/revision/latest?cb=20170209055132&path-prefix=zh',
+	'桃极': 'https://static.wikia.nocookie.net/maimai/images/3/31/Namep0258_pink_kiwami.png/revision/latest?cb=20170209055134&path-prefix=zh',
+	'桃神': 'https://static.wikia.nocookie.net/maimai/images/9/9a/Namep0260_pink_kami.png/revision/latest?cb=20170209055135&path-prefix=zh',
+	'桃将': 'https://static.wikia.nocookie.net/maimai/images/a/aa/Namep0259_pink_syo.png/revision/latest?cb=20170209055135&path-prefix=zh',
+	'樱极': 'https://static.wikia.nocookie.net/maimai/images/9/93/Namep0294_sakura_kiwami.png/revision/latest?cb=20170209055136&path-prefix=zh',
+	'樱将': 'https://static.wikia.nocookie.net/maimai/images/5/55/Namep0295_sakura_syo.png/revision/latest?cb=20170209055136&path-prefix=zh',
+	'樱神': 'https://static.wikia.nocookie.net/maimai/images/e/ef/Namep0296_sakura_kami.png/revision/latest?cb=20170209055137&path-prefix=zh',
+	'紫极': 'https://static.wikia.nocookie.net/maimai/images/2/27/Namep0314_murasaki_kiwami.png/revision/latest?cb=20170629185102&path-prefix=zh',
+	'紫将': 'https://static.wikia.nocookie.net/maimai/images/6/62/Namep0315_murasaki_syo.png/revision/latest?cb=20170629185103&path-prefix=zh',
+	'紫神': 'https://static.wikia.nocookie.net/maimai/images/0/0f/Namep0316_murasaki_kami.png/revision/latest?cb=20170629185104&path-prefix=zh',
+	'堇将': 'https://static.wikia.nocookie.net/maimai/images/4/41/Namep_%E5%A0%87%E5%B0%87.png/revision/latest?cb=20180526052637&path-prefix=zh',
+	'堇神': 'https://static.wikia.nocookie.net/maimai/images/8/8b/%E8%8F%AB%E7%A5%9E.png/revision/latest?cb=20180912141623&path-prefix=zh',
+	'堇极': 'https://static.wikia.nocookie.net/maimai/images/8/8b/Namep_%E5%A0%87%E6%A5%B5.png/revision/latest?cb=20180406071619&path-prefix=zh',
+	'白极': 'https://static.wikia.nocookie.net/maimai/images/4/40/Namep_%E7%99%BD%E6%A5%B5.png/revision/latest?cb=20180725151303&path-prefix=zh',
+	'白神': 'https://static.wikia.nocookie.net/maimai/images/5/56/Namep_%E7%99%BD%E7%A5%9E.png/revision/latest?cb=20180725151234&path-prefix=zh',
+	'白将': 'https://static.wikia.nocookie.net/maimai/images/5/59/Namep_%E7%99%BD%E5%B0%87.png/revision/latest?cb=20180725151250&path-prefix=zh',
+	'雪极': 'https://static.wikia.nocookie.net/maimai/images/8/85/NameP_%E9%9B%AA%E6%A5%B5.png/revision/latest?cb=20190207101955&path-prefix=zh',
+	'雪神': 'https://static.wikia.nocookie.net/maimai/images/1/1e/NameP_%E9%9B%AA%E7%A5%9E.png/revision/latest?cb=20190207102010&path-prefix=zh',
+	'雪将': 'https://static.wikia.nocookie.net/maimai/images/f/f5/NameP_%E9%9B%AA%E5%B0%86.png/revision/latest?cb=20190207102004&path-prefix=zh',
+	'辉极': 'https://static.wikia.nocookie.net/maimai/images/e/ee/NameP_%E8%BC%9D%E6%A5%B5.jpg/revision/latest?cb=20190721121927&path-prefix=zh',
+	'辉神': 'https://static.wikia.nocookie.net/maimai/images/d/d5/NameP_%E8%BC%9D%E7%A5%9E.jpg/revision/latest?cb=20190721122222&path-prefix=zh',
+	'辉将': 'https://static.wikia.nocookie.net/maimai/images/0/0f/NameP_%E8%BC%9D%E5%B0%86.jpg/revision/latest?cb=20190721122145&path-prefix=zh',
+	'霸者': 'https://static.wikia.nocookie.net/maimai/images/6/6b/NameP_%E8%A6%87%E8%80%85.png/revision/latest?cb=20190721111343&path-prefix=zh',
+	'舞极': 'https://static.wikia.nocookie.net/maimai/images/e/e0/NameP_%E8%88%9E%E6%A5%B5.jpg/revision/latest?cb=20190721122105&path-prefix=zh',
+	'舞神': 'https://static.wikia.nocookie.net/maimai/images/f/f3/NameP_%E8%88%9E%E7%A5%9E.jpg/revision/latest?cb=20190803104143&path-prefix=zh',
+	'舞将': 'https://static.wikia.nocookie.net/maimai/images/6/68/NameP_%E8%88%9E%E5%B0%86.jpg/revision/latest?cb=20190721122021&path-prefix=zh'
 } as const;
 export const IMG_STD = 'https://shama.dxrating.net/images/type_sd.png';
 export const IMG_DX = 'https://shama.dxrating.net/images/type_dx.png';
