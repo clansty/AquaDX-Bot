@@ -56,6 +56,9 @@ importers:
       cf-workers-hash:
         specifier: ^1.0.3
         version: 1.0.3
+      elysia:
+        specifier: ^1.0.22
+        version: 1.0.22(@sinclair/typebox@0.32.31)(typescript@5.4.5)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -474,6 +477,9 @@ packages:
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
 
+  '@sinclair/typebox@0.32.31':
+    resolution: {integrity: sha512-rYB0tgGHawpom3ZwwsGidvI0NI+W/rRHu1dyyO1KlIoH8iMdg3esSnYQxQtyJ8eflhqxmzEV7Nu8zT4JY7CHKw==}
+
   '@smithy/is-array-buffer@2.2.0':
     resolution: {integrity: sha512-GGP3O9QFD24uGeAXYUjwSTXARoqpZykHadOmA8G5vfJPK0/DC67qa//0qvqrJzL1xc8WQWX7/yc7fwudjPHPhA==}
     engines: {node: '>=14.0.0'}
@@ -581,6 +587,10 @@ packages:
     resolution: {integrity: sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==}
     engines: {node: '>= 0.6'}
 
+  cookie@0.6.0:
+    resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
+    engines: {node: '>= 0.6'}
+
   cross-env@7.0.3:
     resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
     engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
@@ -615,6 +625,18 @@ packages:
   devtools-protocol@0.0.1019158:
     resolution: {integrity: sha512-wvq+KscQ7/6spEV7czhnZc9RM/woz1AY+/Vpd8/h2HFMwJSdTliu7f/yr1A6vDdJfKICZsShqsYpEQbdhg8AFQ==}
 
+  elysia@1.0.22:
+    resolution: {integrity: sha512-bEdO6glElFciGvtYGzZoQ4mZyfTCNGm63jpCvPYIs+cC65i37qP93DFT+ZasB3s4m5HnavklCuXHKtuo5X2o8A==}
+    peerDependencies:
+      '@sinclair/typebox': '>= 0.31.0'
+      openapi-types: '>= 12.0.0'
+      typescript: '>= 5.0.0'
+    peerDependenciesMeta:
+      openapi-types:
+        optional: true
+      typescript:
+        optional: true
+
   emitter-component@1.1.2:
     resolution: {integrity: sha512-QdXO3nXOzZB4pAjM0n6ZE+R9/+kPpECA/XSELIcc54NeYVnBqIk+4DFiBgK+8QbV3mdvTG6nedl7dTYgO+5wDw==}
 
@@ -647,6 +669,9 @@ packages:
     resolution: {integrity: sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==}
     engines: {node: '>=6'}
 
+  eventemitter3@5.0.1:
+    resolution: {integrity: sha512-GWkBvjiSZK87ELrYOSESUYeVIc9mvLLf/nXalMOS5dYrgZq9o5OVkbZAVM06CVxYsCwH9BDZFPlQTlPA1j4ahA==}
+
   events@3.3.0:
     resolution: {integrity: sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==}
     engines: {node: '>=0.8.x'}
@@ -654,6 +679,12 @@ packages:
   exit-hook@2.2.1:
     resolution: {integrity: sha512-eNTPlAD67BmP31LDINZ3U7HSF8l57TxOY2PmBJ1shpCvpnxBF93mWCE8YHBnXs8qiUZJc9WDcWIeC3a2HIAMfw==}
     engines: {node: '>=6'}
+
+  fast-decode-uri-component@1.0.1:
+    resolution: {integrity: sha512-WKgKWg5eUxvRZGwW8FvfbaH7AXSh2cL+3j5fMGzUMCxWBJ3dV3a7Wz8y2f/uQ0e3B6WmodD3oS54jTQ9HVTIIg==}
+
+  fast-querystring@1.1.2:
+    resolution: {integrity: sha512-g6KuKWmFXc0fID8WWH0jit4g0AGBoJhCkJMb1RmbsSEUNvQ+ZC8D6CUZ+GtF8nMzSPXnhiePyyqqipzNNEnHjg==}
 
   fill-range@7.0.1:
     resolution: {integrity: sha512-qOo9F+dMUmC2Lcb4BbVvnKJxTPjCm+RRpe4gDuGrzkL7mEVl/djYSu2OdQ2Pa302N4oqkSg9ir6jaLWJ2USVpQ==}
@@ -1254,6 +1285,8 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
+  '@sinclair/typebox@0.32.31': {}
+
   '@smithy/is-array-buffer@2.2.0':
     dependencies:
       tslib: 2.6.2
@@ -1376,6 +1409,8 @@ snapshots:
 
   cookie@0.5.0: {}
 
+  cookie@0.6.0: {}
+
   cross-env@7.0.3:
     dependencies:
       cross-spawn: 7.0.3
@@ -1403,6 +1438,16 @@ snapshots:
       gopd: 1.0.1
 
   devtools-protocol@0.0.1019158: {}
+
+  elysia@1.0.22(@sinclair/typebox@0.32.31)(typescript@5.4.5):
+    dependencies:
+      '@sinclair/typebox': 0.32.31
+      cookie: 0.6.0
+      eventemitter3: 5.0.1
+      fast-decode-uri-component: 1.0.1
+      fast-querystring: 1.1.2
+    optionalDependencies:
+      typescript: 5.4.5
 
   emitter-component@1.1.2: {}
 
@@ -1469,9 +1514,17 @@ snapshots:
 
   event-target-shim@5.0.1: {}
 
+  eventemitter3@5.0.1: {}
+
   events@3.3.0: {}
 
   exit-hook@2.2.1: {}
+
+  fast-decode-uri-component@1.0.1: {}
+
+  fast-querystring@1.1.2:
+    dependencies:
+      fast-decode-uri-component: 1.0.1
 
   fill-range@7.0.1:
     dependencies:

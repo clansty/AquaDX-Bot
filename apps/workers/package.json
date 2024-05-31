@@ -22,6 +22,7 @@
     "@clansty/maibot-utils": "workspace:^",
     "@cloudflare/puppeteer": "^0.0.8",
     "cf-workers-hash": "^1.0.3",
+    "elysia": "^1.0.22",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "telegraf": "^4.16.3"
