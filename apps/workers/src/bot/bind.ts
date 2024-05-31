@@ -1,9 +1,13 @@
 import { Telegraf } from 'telegraf';
-import BotContext from '../classes/BotContext';
+import BotContext from './BotContext';
 import { Env } from '../../worker-configuration';
 
 export default (bot: Telegraf<BotContext>, env: Env) => {
-	bot.start(Telegraf.reply('Hello'));
+	bot.start(async (ctx, next) => {
+		if (ctx.payload !== 'bind') return next();
+		await ctx.reply('bind test');
+	});
+
 	bot.command('bind', async (ctx) => {
 		if (ctx.args.length < 1) {
 			await ctx.reply('请输入要绑定的 ID');

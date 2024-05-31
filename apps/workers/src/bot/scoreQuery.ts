@@ -1,5 +1,5 @@
 import { Telegraf } from 'telegraf';
-import BotContext from '../classes/BotContext';
+import BotContext from './BotContext';
 import { Env } from '../../worker-configuration';
 import { InlineQueryResult } from 'telegraf/types';
 import _ from 'lodash';

@@ -1,5 +1,5 @@
 import { Telegraf } from 'telegraf';
-import BotContext from '../classes/BotContext';
+import BotContext from './BotContext';
 import { Env } from '../../worker-configuration';
 import Renderer from '../classes/Renderer';
 import { BA_VE, PLATE_TYPE, PLATE_VER } from '@clansty/maibot-types/src';
@@ -31,9 +31,8 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 				await ctx.reply(calcProgressText(await ctx.getUserMusic(), version, type));
 			});
 			bot.hears(RegExp(`^\\/?${version} ?${type} ?完成[图表]$`), async (ctx) => {
-				const genMsg = ctx.reply('图片生成中...');
-				await ctx.replyWithDocument({ source: await new Renderer(env.MYBROWSER).renderPlateProgress(await ctx.getUserMusic(), version, type), filename: `${version}${type}完成表.png` });
-				await ctx.deleteMessage((await genMsg).message_id);
+				const userMusic = await ctx.getUserMusic();
+				await ctx.genCacheSendImage([version, type, userMusic], () => new Renderer(env.MYBROWSER).renderPlateProgress(userMusic, version, type), `${version}${type}完成表.png`);
 			});
 		}
 	}
@@ -60,8 +59,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 		await ctx.reply(calcProgressText(await ctx.getUserMusic(), BA_VE));
 	});
 	bot.hears(/^\/?霸者完成[图表]$/, async (ctx) => {
-		const genMsg = ctx.reply('图片生成中...');
-		await ctx.replyWithDocument({ source: await new Renderer(env.MYBROWSER).renderPlateProgress(await ctx.getUserMusic(), BA_VE), filename: '霸者完成表.png' });
-		await ctx.deleteMessage((await genMsg).message_id);
+		const userMusic = await ctx.getUserMusic();
+		await ctx.genCacheSendImage([BA_VE, userMusic], () => new Renderer(env.MYBROWSER).renderPlateProgress(userMusic, BA_VE), '霸者完成表.png');
 	});
 }

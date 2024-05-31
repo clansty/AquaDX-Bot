@@ -21,10 +21,12 @@ export default class Renderer {
 		await page.setContent(html, { waitUntil: 'networkidle0' });
 		console.timeLog(timer, '页面已加载');
 		const data = await page.screenshot({ encoding: 'binary', fullPage: true }) as Buffer;
+		// @ts-ignore
+		const height = await page.evaluate(() => document.body.scrollHeight) as number;
 		console.timeLog(timer, '图片已生成');
 		console.timeEnd(timer);
 		page.close().then(browser.close).catch();
-		return data;
+		return { data, width, height };
 	}
 
 	private renderReact(element: ReactElement, width: number) {
