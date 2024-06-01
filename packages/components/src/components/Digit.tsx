@@ -13,7 +13,7 @@ const IMG_W = 344;
 
 const Percent = ({ color, width }: { color: 'blue' | 'gold' | 'red', width: number }) => {
 	const css: React.CSSProperties = {
-		width,
+		width: width,
 		height: width,
 		backgroundSize: '120%',
 		backgroundPosition: 'center'
@@ -84,12 +84,12 @@ export default ({ color, digit, width }: { color: 'blue' | 'gold' | 'red', digit
 		height,
 		backgroundSize: '400%',
 		backgroundPosition: position,
-		margin: '0 -.3%'
+		margin: `0 -${width * .05}px`
 	};
 
 	if (digit === '.') {
 		css.transform = 'translateY(13%)';
-		css.margin = '0 -1.9%';
+		css.margin = `0 -${width * .23}px`;
 	}
 
 	switch (color) {

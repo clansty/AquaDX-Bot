@@ -1,4 +1,4 @@
-import { RatingListEntry, UserMusic } from '../../types';
+import { RatingListEntry, UserMusic } from '@clansty/maibot-types';
 import { Song } from '@clansty/maibot-types';
 import React from 'react';
 import { IMG_DX, IMG_MOON_CAKE, IMG_SONG_MISSING, IMG_STD, LEVEL_COLOR } from '@clansty/maibot-types';

@@ -7,6 +7,7 @@
     "genFileIds": "tsx src/genFileIds.ts"
   },
   "devDependencies": {
+    "@clansty/maibot-data": "workspace:^",
     "@clansty/maibot-types": "workspace:^",
     "strip-ansi": "^7.1.0",
     "tsx": "^4.11.0"

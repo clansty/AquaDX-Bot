@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "dev": "pnpm run --filter=@clansty/maibot-workers dev",
-    "deploy": "pnpm run --filter=@clansty/maibot-workers deploy",
+    "dev": "pnpm run --filter=@clansty/maibot-workers --filter=@clansty/maibot-web --stream --parallel dev",
+    "deploy": "pnpm run --filter=@clansty/maibot-workers --filter=@clansty/maibot-web --stream --parallel deploy",
     "tail": "pnpm run --filter=@clansty/maibot-workers tail"
   },
   "dependencies": {

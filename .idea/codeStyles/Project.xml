@@ -3,6 +3,7 @@
     <option name="LINE_SEPARATOR" value="&#10;" />
     <option name="RIGHT_MARGIN" value="800" />
     <HTMLCodeStyleSettings>
+      <option name="HTML_ALIGN_ATTRIBUTES" value="false" />
       <option name="HTML_SPACE_INSIDE_EMPTY_TAG" value="true" />
     </HTMLCodeStyleSettings>
     <JSCodeStyleSettings version="0">
@@ -49,6 +50,7 @@
       </indentOptions>
     </codeStyleSettings>
     <codeStyleSettings language="TypeScript">
+      <option name="ALIGN_MULTILINE_PARAMETERS" value="false" />
       <option name="SOFT_MARGINS" value="140" />
       <indentOptions>
         <option name="INDENT_SIZE" value="2" />

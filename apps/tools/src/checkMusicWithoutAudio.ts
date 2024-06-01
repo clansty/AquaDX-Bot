@@ -1,5 +1,5 @@
-import { ALL_MUSIC } from '../src/consts';
-import devIds from '../src/data/fileIds-dev.json';
+import { ALL_MUSIC } from '@clansty/maibot-data';
+import devIds from '@clansty/maibot-data/src/fileIds-dev.json';
 
 let total = 0;
 for (const [strId, info] of Object.entries(ALL_MUSIC)) {

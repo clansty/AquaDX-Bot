@@ -1,0 +1,38 @@
+{
+  "name": "@clansty/maibot-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "pages:build": "pnpm next-on-pages",
+    "preview": "pnpm pages:build && wrangler pages dev --ip 0.0.0.0",
+    "deploy": "pnpm pages:build && wrangler pages deploy",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts"
+  },
+  "dependencies": {
+    "@clansty/maibot-clients": "workspace:^",
+    "@clansty/maibot-components": "workspace:^",
+    "@clansty/maibot-types": "workspace:^",
+    "next": "14.2.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.11.3",
+    "@cloudflare/workers-types": "^4.20240529.0",
+    "@types/node": "^20.13.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "esbuild-loader": "^4.1.0",
+    "json-loader": "^0.5.7",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.5",
+    "vercel": "^34.2.4",
+    "webpack": "^5.91.0",
+    "wrangler": "^3.58.0"
+  }
+}

@@ -19,7 +19,12 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 			}
 
 			return await new Renderer(env.MYBROWSER).renderB50(rating, userMusic, userPreview.userName, avatar);
-		}, 'B50.png');
+		}, 'B50.png', {
+			inline_keyboard: [
+				[{ text: '查看详情', url: `tg://resolve?domain=${ctx.botInfo.username}&appname=webapp&startapp=${encodeURIComponent(btoa(`/b50/${ctx.from.id}`))}` }],
+				[{ text: '分享', switch_inline_query: 'b50' }]
+			]
+		});
 	};
 
 	bot.command('b50', sendB50Image);

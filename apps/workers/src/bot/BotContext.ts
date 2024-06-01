@@ -1,5 +1,5 @@
 import { Context } from 'telegraf';
-import AquaApi from '../client/AquaApi';
+import { AquaApi } from '@clansty/maibot-clients';
 import { UserMusic, UserPreview, UserRating } from '@clansty/maibot-types';
 import { Env } from '../../worker-configuration';
 import { xxhash64 } from 'cf-workers-hash';

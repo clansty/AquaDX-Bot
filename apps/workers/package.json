@@ -17,6 +17,7 @@
     "wrangler": "^3.56.0"
   },
   "dependencies": {
+    "@clansty/maibot-clients": "workspace:^",
     "@clansty/maibot-components": "workspace:^",
     "@clansty/maibot-types": "workspace:^",
     "@clansty/maibot-utils": "workspace:^",
