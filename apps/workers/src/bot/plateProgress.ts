@@ -46,7 +46,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 			});
 			bot.start(async (ctx, next) => {
 				if (ctx.payload !== await xxhash32(`${version}${type}`)) return next();
-				const image = sendProgressImage(ctx, version, type);
+				const image = await sendProgressImage(ctx, version, type);
 				if ('document' in image && image.document) await ctx.reply('由于图片高度太高，暂时不支持使用行内模式发送');
 			});
 
