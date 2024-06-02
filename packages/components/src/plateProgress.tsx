@@ -5,7 +5,7 @@ import _ from 'lodash';
 import LevelProgress from './components/LevelProgress';
 import { calcProgress } from '@clansty/maibot-utils';
 
-export default (userMusic: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type?: typeof PLATE_TYPE[number] | '') => {
+export default (userMusic: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | '') => {
 	let displayData = [] as TableContentRenderData[];
 	const requiredSongList = PLATE_VER_LIST[ver].flatMap(ver => VER_MUSIC_LIST[ver]).map(id => Song.fromId(id));
 	const levelsRequired = [3];

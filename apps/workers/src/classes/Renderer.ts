@@ -33,7 +33,7 @@ export default class Renderer {
 		return this.renderHtml(renderToStaticMarkup(wrapBasicReactElement(element)), width);
 	}
 
-	public renderPlateProgress(score: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type?: typeof PLATE_TYPE[number] | '') {
+	public renderPlateProgress(score: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | '') {
 		return this.renderReact(plateProgress(score, ver, type), 1500);
 	}
 

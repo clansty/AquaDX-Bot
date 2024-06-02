@@ -1,5 +1,4 @@
-import { ProgressCalcResult, TableContentRenderData, TableContentRenderRow, UserMusic } from '../types';
-import { BUDDIES_LOGO, LEVEL_EN, LEVELS, Song, VersionEnum } from '@clansty/maibot-types';
+import { BUDDIES_LOGO, LEVEL_EN, LEVELS, Song, VersionEnum, ProgressCalcResult, TableContentRenderData, TableContentRenderRow, UserMusic } from '@clansty/maibot-types';
 import React from 'react';
 import TableContent from './components/TableContent';
 import _ from 'lodash';

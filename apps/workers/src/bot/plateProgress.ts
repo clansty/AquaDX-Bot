@@ -4,13 +4,21 @@ import { Env } from '../../worker-configuration';
 import Renderer from '../classes/Renderer';
 import { BA_VE, PLATE_TYPE, PLATE_VER } from '@clansty/maibot-types';
 import { calcProgressText } from '@clansty/maibot-utils';
-import { InlineQueryResult } from 'telegraf/types';
+import { InlineKeyboardButton, InlineQueryResult } from 'telegraf/types';
 import { xxhash32 } from 'cf-workers-hash';
 
 export default (bot: Telegraf<BotContext>, env: Env) => {
-	const sendProgressImage = async (ctx: BotContext, ver: typeof PLATE_VER[number] | typeof BA_VE, type?: typeof PLATE_TYPE[number] | '') => {
+	const sendProgressImage = async (ctx: BotContext, ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | '') => {
 		const userMusic = await ctx.getUserMusic();
-		return await ctx.genCacheSendImage([ver, type, userMusic], () => new Renderer(env.MYBROWSER).renderPlateProgress(userMusic, ver, type), `${ver}${type || ''}完成表.png`);
+
+		const inlineKeyboard: InlineKeyboardButton[][] = [];
+		if (ctx.chat?.type === 'private') {
+			inlineKeyboard.push([{ text: '分享', switch_inline_query: `${ver}${type}` }]);
+		}
+
+		return await ctx.genCacheSendImage([ver, type, userMusic], () => new Renderer(env.MYBROWSER).renderPlateProgress(userMusic, ver, type), `${ver}${type}完成表.png`, {
+			inline_keyboard: inlineKeyboard
+		});
 	};
 
 	for (const version of [...PLATE_VER, BA_VE] as const) {
@@ -44,6 +52,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 					button = { text: `生成图表`, start_parameter: await xxhash32(`${version}${type}`) };
 				await ctx.answerInlineQuery(results, { is_personal: true, button, cache_time: 10 });
 			});
+
 			bot.start(async (ctx, next) => {
 				if (ctx.payload !== await xxhash32(`${version}${type}`)) return next();
 				const image = await sendProgressImage(ctx, version, type);

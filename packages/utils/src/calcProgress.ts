@@ -1,6 +1,6 @@
 import { BA_VE, LEVEL, MAIMAI_DX_RELEASE_DATE, PLATE_TYPE, PLATE_VER, PLATE_VER_LIST, ProgressCalcResult, Song, UserMusic, VER_MUSIC_LIST } from '@clansty/maibot-types';
 
-const checkPlateMusic = (music: UserMusic, type?: typeof PLATE_TYPE[number] | '') => {
+const checkPlateMusic = (music: UserMusic, type: typeof PLATE_TYPE[number] | '') => {
 	switch (type) {
 		case undefined: // 霸者
 		case '':
@@ -18,7 +18,7 @@ const checkPlateMusic = (music: UserMusic, type?: typeof PLATE_TYPE[number] | ''
 	}
 };
 
-export const calcProgress = (musicList: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type?: typeof PLATE_TYPE[number] | ''): ProgressCalcResult[] => {
+export const calcProgress = (musicList: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | ''): ProgressCalcResult[] => {
 	const requiredSongList: number[] = PLATE_VER_LIST[ver].flatMap(ver => VER_MUSIC_LIST[ver]);
 	const result = [] as ProgressCalcResult[];
 	let total = 0, totalDone = 0, maxLevel = 4;
@@ -46,7 +46,7 @@ export const calcProgress = (musicList: UserMusic[], ver: typeof PLATE_VER[numbe
 	return result;
 };
 
-export const calcProgressText = (musicList: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type?: typeof PLATE_TYPE[number] | ''): string => {
+export const calcProgressText = (musicList: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | ''): string => {
 	const result = calcProgress(musicList, ver, type);
 	const ret = result.map(({ done, all }, lv) => `${LEVEL[lv]} ${done}/${all}`);
 	ret.push(`总计 ${result.reduce((acc, { done }) => acc + done, 0)}/${result.reduce((acc, { all }) => acc + all, 0)}`);
