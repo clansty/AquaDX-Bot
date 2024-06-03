@@ -11,14 +11,8 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 	const sendProgressImage = async (ctx: BotContext, ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | '') => {
 		const userMusic = await ctx.getUserMusic();
 
-		const inlineKeyboard: InlineKeyboardButton[][] = [];
-		if (ctx.chat?.type === 'private') {
-			inlineKeyboard.push([{ text: '分享', switch_inline_query: `${ver}${type}` }]);
-		}
-
-		return await ctx.genCacheSendImage([ver, type, userMusic], () => new Renderer(env.MYBROWSER).renderPlateProgress(userMusic, ver, type), `${ver}${type}完成表.png`, {
-			inline_keyboard: inlineKeyboard
-		});
+		return await ctx.genCacheSendImage([ver, type, userMusic], () => new Renderer(env.MYBROWSER).renderPlateProgress(userMusic, ver, type), `${ver}${type}完成表.png`,
+			ctx.chat?.type === 'private' ? `${ver}${type}` : undefined);
 	};
 
 	for (const version of [...PLATE_VER, BA_VE] as const) {

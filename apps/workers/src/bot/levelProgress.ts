@@ -3,20 +3,14 @@ import BotContext from './BotContext';
 import { Env } from '../../worker-configuration';
 import Renderer from '../classes/Renderer';
 import { LEVELS } from '@clansty/maibot-types/src';
-import { InlineKeyboardButton, InlineQueryResult } from 'telegraf/types';
+import { InlineQueryResult } from 'telegraf/types';
 
 export default (bot: Telegraf<BotContext>, env: Env) => {
 	const sendProgressImage = async (ctx: BotContext, level: typeof LEVELS[number]) => {
 		const userMusic = await ctx.getUserMusic();
 
-		const inlineKeyboard: InlineKeyboardButton[][] = [];
-		if (ctx.chat?.type === 'private') {
-			inlineKeyboard.push([{ text: '分享', switch_inline_query: level }]);
-		}
-
-		return await ctx.genCacheSendImage([level, userMusic], () => new Renderer(env.MYBROWSER).renderLevelProgress(userMusic, level), `LV ${level} 完成表.png`, {
-			inline_keyboard: inlineKeyboard
-		});
+		return await ctx.genCacheSendImage([level, userMusic], () => new Renderer(env.MYBROWSER).renderLevelProgress(userMusic, level), `LV ${level} 完成表.png`,
+			ctx.chat?.type === 'private' ? level : undefined);
 	};
 
 	for (const level of LEVELS) {
