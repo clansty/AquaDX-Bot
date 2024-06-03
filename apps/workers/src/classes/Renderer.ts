@@ -25,7 +25,7 @@ export default class Renderer {
 		const height = await page.evaluate(() => document.body.scrollHeight) as number;
 		console.timeLog(timer, '图片已生成');
 		console.timeEnd(timer);
-		page.close().then(browser.close).catch();
+		await browser.close();
 		return { data, width, height };
 	}
 
@@ -37,7 +37,7 @@ export default class Renderer {
 		return this.renderReact(plateProgress(score, ver, type), 1500);
 	}
 
-	public renderLevelProgress(score: UserMusic[], level: typeof LEVELS[number]) {
+	public renderLevelProgress(level: typeof LEVELS[number], score: UserMusic[] = []) {
 		return this.renderReact(levelProgress(score, level), 1500);
 	}
 

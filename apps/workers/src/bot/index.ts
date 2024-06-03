@@ -10,6 +10,7 @@ import plateProgress from './plateProgress';
 import levelProgress from './levelProgress';
 import musicSearch from './musicSearch';
 import b50 from './b50';
+import levelConstTable from './levelConstTable';
 
 export const createBot = (env: Env) => {
 	const bot = new Telegraf(env.BOT_TOKEN, { contextType: BotContext });
@@ -17,7 +18,7 @@ export const createBot = (env: Env) => {
 	bot.use(useNewReplies());
 
 	// musicSearch 必须是最后一个，因为它的 inlineQuery 的正则匹配会匹配所有消息
-	for (const attachHandlers of [callbackQuery, help, bind, scoreQuery, plateProgress, levelProgress, b50, musicSearch]) {
+	for (const attachHandlers of [callbackQuery, help, bind, scoreQuery, plateProgress, levelProgress, levelConstTable, b50, musicSearch]) {
 		attachHandlers(bot, env);
 	}
 

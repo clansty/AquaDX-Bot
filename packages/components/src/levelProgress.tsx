@@ -45,9 +45,9 @@ export default (userMusic: UserMusic[], level: typeof LEVELS[number]) => {
 			<img src={BUDDIES_LOGO} alt="" height={120} />
 			<div style={{ flexGrow: 1 }} />
 			<div style={{ fontSize: 60, textShadow: '1px 1px 2px #fff', marginTop: '-.1em' }}>
-				LV {level} 完成进度
+				LV {level} {userMusic.length ? '完成进度' : '定数表'}
 			</div>
-			<LevelProgress progress={progress} />
+			{!!userMusic.length && <LevelProgress progress={progress} />}
 		</div>
 		<TableContent data={displayDataRows} scoreType={'rank'} />
 	</div>;

@@ -9,7 +9,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 	const sendProgressImage = async (ctx: BotContext, level: typeof LEVELS[number]) => {
 		const userMusic = await ctx.getUserMusic();
 
-		return await ctx.genCacheSendImage([level, userMusic], () => new Renderer(env.MYBROWSER).renderLevelProgress(userMusic, level), `LV ${level} 完成表.png`,
+		return await ctx.genCacheSendImage([level, userMusic], () => new Renderer(env.MYBROWSER).renderLevelProgress(level, userMusic), `LV ${level} 完成表.png`,
 			ctx.chat?.type === 'private' ? level : undefined);
 	};
 
