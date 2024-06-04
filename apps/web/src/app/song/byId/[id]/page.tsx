@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import React from 'react';
 
 export const dynamicParams = false;
-export const generateStaticParams = () => Song.getAllIds().map(id => ({ id }));
+export const generateStaticParams = () => Song.getAllIds().flatMap(id => [{ id: id.toString() }, { id: (id + 1e4).toString() }]);
 
 export default ({ params }: { params: { id: string } }) => {
 	const song = Song.fromId(Number(params.id));

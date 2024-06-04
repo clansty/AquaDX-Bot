@@ -5,7 +5,7 @@ import { computeRa, ratingAnalyse } from '@clansty/maibot-utils';
 import { getDxRatingPlateImage } from './urls';
 import toDBC from './utils/toDBC';
 
-export default (rating: UserRating, userMusic: UserMusic[], username: string, avatar: string) =>
+export default (rating: UserRating, userMusic: UserMusic[], username: string, avatar: string, link = (song: Song) => undefined as string) =>
 	<div style={{ padding: '0 20px' }}>
 		<style>{`
 			.hideOnSmallScreen {
@@ -37,11 +37,11 @@ export default (rating: UserRating, userMusic: UserMusic[], username: string, av
 			<img className="hideOnSmallScreen" src={BUDDIES_LOGO} alt="" height={120} />
 		</div>
 
-		<RatingTable rating={rating.ratingList} userMusic={userMusic} title="旧版本 Best 35" />
-		<RatingTable rating={rating.newRatingList} userMusic={userMusic} title="当前版本 Best 15" />
+		<RatingTable rating={rating.ratingList} userMusic={userMusic} title="旧版本 Best 35" link={link} />
+		<RatingTable rating={rating.newRatingList} userMusic={userMusic} title="当前版本 Best 15" link={link} />
 	</div>
 
-const RatingTable = ({ rating, userMusic, title }: { rating: RatingListEntry[], userMusic: UserMusic[], title: string }) => {
+const RatingTable = ({ rating, userMusic, title, link }: { rating: RatingListEntry[], userMusic: UserMusic[], title: string, link: (song: Song) => string }) => {
 	const scores = [] as number[];
 	let entries = [] as { rating: RatingListEntry, score?: number }[];
 	for (const ratingListEntry of rating) {
@@ -108,7 +108,7 @@ const RatingTable = ({ rating, userMusic, title }: { rating: RatingListEntry[], 
 			</div>
 		</div>
 		<div className="b50Grid">
-			{entries.map(it => <B50Song entry={it.rating} score={userMusic.find(music => music.musicId === it.rating.musicId)} key={it.rating.musicId} />)}
+			{entries.map(it => <B50Song entry={it.rating} score={userMusic.find(music => music.musicId === it.rating.musicId)} link={link} key={it.rating.musicId} />)}
 		</div>
 	</div>;
 };

@@ -5,12 +5,19 @@ import { IMG_DX, IMG_MOON_CAKE, IMG_SONG_MISSING, IMG_STD, LEVEL_COLOR } from '@
 import Digit from './Digit';
 import { getRankImage } from '../urls';
 import { achievementToRank, computeRa } from '@clansty/maibot-utils';
+import Link from 'next/link';
 
 const BORDER_SIZE = 3;
 const SIZE = 90;
 
-export default ({ entry, score }: { entry: RatingListEntry, score: UserMusic }) => {
+export default ({ entry, score, link }: { entry: RatingListEntry, score: UserMusic, link: (song: Song) => string }) => {
 	const song = Song.fromId(entry.musicId);
+	const href = link(song);
+
+	return href ? <Link href={href} style={{ color: 'unset', textDecoration: 'unset' }}><Component entry={entry} score={score} song={song} /></Link> : <Component entry={entry} score={score} song={song} />;
+}
+
+const Component = ({ entry, score, song }: { entry: RatingListEntry, score: UserMusic, song?: Song }) => {
 	const chart = song?.getChart(entry.level);
 
 	return <div style={{
@@ -50,7 +57,7 @@ export default ({ entry, score }: { entry: RatingListEntry, score: UserMusic }) 
 			</div>
 		</div>
 	</div>;
-}
+};
 
 const ScoreDisplay = ({ score }: { score: number }) => {
 	const color = score >= 97e4 ? 'gold' : 'red';

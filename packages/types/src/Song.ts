@@ -169,7 +169,7 @@ export default class Song implements DataSong {
 		return dxdata.songs.filter(condition).map(songRaw => new this(songRaw));
 	}
 
-	public static getAllIds = () => Object.keys(ALL_MUSIC);
+	public static getAllIds = () => Object.keys(ALL_MUSIC).map(Number).map(it => it % 1e4);
 
 	public getChart(difficulty: DifficultyEnum | number | typeof LEVEL[number], dx = this.dx) {
 		if (LEVEL.includes(difficulty as any)) {

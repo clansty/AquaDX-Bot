@@ -15,5 +15,5 @@ export default async ({ params }: { params: { tguid: string } }) => {
 	const userMusic = await api.getUserMusic(aquaUserId);
 	const userPreview = await api.getUserPreview(aquaUserId);
 
-	return b50(userRating, userMusic, userPreview.userName, '');
+	return b50(userRating, userMusic, userPreview.userName, '', song => song && `/song/byId/${song.id}`);
 }
