@@ -4,18 +4,18 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { BA_VE, LEVELS, PLATE_TYPE, PLATE_VER, UserMusic, UserRating } from '@clansty/maibot-types';
 import wrapBasicReactElement from '../utils/wrapBasicReactElement';
 import { b50, levelProgress, plateProgress } from '@clansty/maibot-components';
+import { RenderTypeArgs } from '../types';
 
+// This should only be used in Queue handler
 export default class Renderer {
-	constructor(private readonly browser: BrowserWorker) {
+	public constructor(private readonly browser: puppeteer.Browser) {
 	}
 
 	private async renderHtml(html: string, width: number) {
 		console.log('开始渲染图片');
 		const timer = crypto.randomUUID();
 		console.time(timer);
-		const browser = await puppeteer.launch(this.browser);
-		console.timeLog(timer, '浏览器已启动');
-		const page = await browser.newPage();
+		const page = await this.browser.newPage();
 		await page.setViewport({ width, height: 300 });
 		console.timeLog(timer, '页面已创建');
 		await page.setContent(html, { waitUntil: 'networkidle0' });
@@ -25,7 +25,6 @@ export default class Renderer {
 		const height = await page.evaluate(() => document.body.scrollHeight) as number;
 		console.timeLog(timer, '图片已生成');
 		console.timeEnd(timer);
-		await browser.close();
 		return { data, width, height };
 	}
 
@@ -43,5 +42,16 @@ export default class Renderer {
 
 	public renderB50(rating: UserRating, userMusic: UserMusic[], username: string, avatar: string) {
 		return this.renderReact(b50(rating, userMusic, username, avatar), 2000);
+	}
+
+	public render({ action, args }: RenderTypeArgs) {
+		switch (action) {
+			case 'b50':
+				return this.renderB50(...args);
+			case 'levelProgress':
+				return this.renderLevelProgress(...args);
+			case 'plateProgress':
+				return this.renderPlateProgress(...args);
+		}
 	}
 }

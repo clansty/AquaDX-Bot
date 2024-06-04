@@ -4,6 +4,7 @@ import { UserMusic, UserPreview, UserRating } from '@clansty/maibot-types';
 import { Env } from '../../worker-configuration';
 import { xxhash64 } from 'cf-workers-hash';
 import { Message, InlineKeyboardButton } from 'telegraf/types';
+import { RenderTypeArgs } from '../types';
 
 export default class BotContext extends Context {
 	private aqua?: AquaApi;
@@ -55,7 +56,7 @@ export default class BotContext extends Context {
 		return await this.env.KV.get(`image:${hash}`, 'json') as { fileId: string, type: 'image' | 'document' };
 	}
 
-	async genCacheSendImage(key: any, gen: () => Promise<{ data: Buffer, width: number, height: number }>, filename: string, shareKw?: string, inlineKeyboard: InlineKeyboardButton[][] = []) {
+	async genCacheSendImage(key: any, gen: RenderTypeArgs | (() => Promise<RenderTypeArgs>), filename: string, shareKw?: string, isFromStart = false, inlineKeyboard: InlineKeyboardButton[][] = []) {
 		const hash = await xxhash64(JSON.stringify(key));
 		const cached = await this.env.KV.get(`image:${hash}`, 'json') as { fileId: string, type: 'image' | 'document' };
 		if (cached?.type === 'image') {
@@ -66,39 +67,27 @@ export default class BotContext extends Context {
 				}]);
 			}
 
-			return await this.replyWithPhoto(cached.fileId, {
+			await this.replyWithPhoto(cached.fileId, {
 				reply_markup: { inline_keyboard: inlineKeyboard }
 			});
+			return;
 		} else if (cached?.type === 'document') {
-			return await this.replyWithDocument(cached.fileId, {
+			await this.replyWithDocument(cached.fileId, {
 				reply_markup: { inline_keyboard: inlineKeyboard }
 			});
+			return;
 		}
 
-		const genMsg = this.reply('图片生成中...');
-		const file = await gen();
-
-		let message: Message;
-		if (file.height / file.width > 2) {
-			message = await this.replyWithDocument({ source: file.data, filename }, {
-				reply_markup: { inline_keyboard: inlineKeyboard }
-			});
-			await this.env.KV.put(`image:${hash}`, JSON.stringify({ fileId: message.document.file_id, type: 'document' }));
-		} else {
-			if (shareKw) {
-				inlineKeyboard.push([{
-					text: '分享',
-					switch_inline_query: shareKw
-				}]);
-			}
-
-			message = await this.replyWithPhoto({ source: file.data, filename }, {
-				reply_markup: { inline_keyboard: inlineKeyboard }
-			});
-			await this.env.KV.put(`image:${hash}`, JSON.stringify({ fileId: message.photo[message.photo.length - 1].file_id, type: 'image' }));
-		}
-
-		await this.deleteMessage((await genMsg).message_id);
-		return message;
+		const genMsg = await this.reply('图片生成中...');
+		if (typeof (gen) === 'function')
+			gen = await gen();
+		await this.env.RENDER_QUEUE.send({
+			...gen,
+			hash, shareKw, filename, inlineKeyboard, isFromStart,
+			processingMessageId: genMsg.message_id,
+			chatId: this.chat.id,
+			replyToMessageId: this.msgId,
+			queueTime: new Date().getTime()
+		});
 	}
 }

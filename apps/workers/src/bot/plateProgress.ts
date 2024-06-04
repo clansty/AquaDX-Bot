@@ -1,18 +1,17 @@
 import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
 import { Env } from '../../worker-configuration';
-import Renderer from '../classes/Renderer';
 import { BA_VE, PLATE_TYPE, PLATE_VER } from '@clansty/maibot-types';
 import { calcProgressText } from '@clansty/maibot-utils';
-import { InlineKeyboardButton, InlineQueryResult } from 'telegraf/types';
+import { InlineQueryResult } from 'telegraf/types';
 import { xxhash32 } from 'cf-workers-hash';
 
 export default (bot: Telegraf<BotContext>, env: Env) => {
-	const sendProgressImage = async (ctx: BotContext, ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | '') => {
+	const sendProgressImage = async (ctx: BotContext, ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | '', isFromStart = false) => {
 		const userMusic = await ctx.getUserMusic();
 
-		return await ctx.genCacheSendImage([ver, type, userMusic], () => new Renderer(env.MYBROWSER).renderPlateProgress(userMusic, ver, type), `${ver}${type}完成表.png`,
-			ctx.chat?.type === 'private' ? `${ver}${type}` : undefined);
+		return await ctx.genCacheSendImage([ver, type, userMusic], { action: 'plateProgress', args: [userMusic, ver, type] }, `${ver}${type}完成表.png`,
+			ctx.chat?.type === 'private' ? `${ver}${type}` : undefined, isFromStart);
 	};
 
 	for (const version of [...PLATE_VER, BA_VE] as const) {
@@ -49,8 +48,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 
 			bot.start(async (ctx, next) => {
 				if (ctx.payload !== await xxhash32(`${version}${type}`)) return next();
-				const image = await sendProgressImage(ctx, version, type);
-				if ('document' in image && image.document) await ctx.reply('由于图片高度太高，暂时不支持使用行内模式发送');
+				await sendProgressImage(ctx, version, type, true);
 			});
 
 			bot.hears(RegExp(`^\\/?${version} ?${type} ?进度$`), async (ctx) => {

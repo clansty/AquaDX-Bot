@@ -1,16 +1,15 @@
 import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
 import { Env } from '../../worker-configuration';
-import Renderer from '../classes/Renderer';
 import { LEVELS } from '@clansty/maibot-types/src';
 import { InlineQueryResult } from 'telegraf/types';
 
 export default (bot: Telegraf<BotContext>, env: Env) => {
-	const sendProgressImage = async (ctx: BotContext, level: typeof LEVELS[number]) => {
+	const sendProgressImage = async (ctx: BotContext, level: typeof LEVELS[number], isFromStart = false) => {
 		const userMusic = await ctx.getUserMusic();
 
-		return await ctx.genCacheSendImage([level, userMusic], () => new Renderer(env.MYBROWSER).renderLevelProgress(level, userMusic), `LV ${level} 完成表.png`,
-			ctx.chat?.type === 'private' ? level : undefined);
+		return await ctx.genCacheSendImage([level, userMusic], { action: 'levelProgress', args: [level, userMusic] },
+			`LV ${level} 完成表.png`, ctx.chat?.type === 'private' ? level : undefined, isFromStart);
 	};
 
 	for (const level of LEVELS) {
@@ -40,8 +39,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 
 		bot.start(async (ctx, next) => {
 			if (ctx.payload !== level) return next();
-			const image = await sendProgressImage(ctx, level);
-			if ('document' in image && image.document) await ctx.reply('由于图片高度太高，暂时不支持使用行内模式发送');
+			await sendProgressImage(ctx, level, true);
 		});
 
 		bot.hears(RegExp(`^\\/?${level.replace('+', '\\+')} ?(进度|完成[图表])$`), async (ctx) => {

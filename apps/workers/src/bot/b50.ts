@@ -1,7 +1,6 @@
 import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
 import { Env } from '../../worker-configuration';
-import Renderer from '../classes/Renderer';
 
 export default (bot: Telegraf<BotContext>, env: Env) => {
 	const sendB50Image = async (ctx: BotContext) => {
@@ -18,8 +17,8 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 				if (!res.ok) avatar = '';
 			}
 
-			return await new Renderer(env.MYBROWSER).renderB50(rating, userMusic, userPreview.userName, avatar);
-		}, 'B50.png', ctx.chat?.type === 'private' ? 'b50' : undefined, [
+			return { action: 'b50', args: [rating, userMusic, userPreview.userName, avatar] };
+		}, 'B50.png', ctx.chat?.type === 'private' ? 'b50' : undefined, false, [
 			[{ text: '查看详情', url: `tg://resolve?domain=${ctx.botInfo.username}&appname=webapp&startapp=${encodeURIComponent(btoa(`/b50/${ctx.from.id}`))}` }]
 		]);
 	};
