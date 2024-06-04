@@ -169,6 +169,8 @@ export default class Song implements DataSong {
 		return dxdata.songs.filter(condition).map(songRaw => new this(songRaw));
 	}
 
+	public static getAllIds = () => Object.keys(ALL_MUSIC);
+
 	public getChart(difficulty: DifficultyEnum | number | typeof LEVEL[number], dx = this.dx) {
 		if (LEVEL.includes(difficulty as any)) {
 			difficulty = LEVEL.indexOf(difficulty as any);

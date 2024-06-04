@@ -2,6 +2,7 @@ import { Footer } from '@clansty/maibot-components';
 import type { Metadata } from 'next';
 import { Quicksand, Noto_Sans_SC, Reddit_Mono } from 'next/font/google';
 import React from 'react';
+import './global.css';
 
 const quicksand = Quicksand({ subsets: ['latin'] });
 const notoSansSC = Noto_Sans_SC({ subsets: ['latin'] });

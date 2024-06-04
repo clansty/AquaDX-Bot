@@ -12,7 +12,7 @@ const nextConfig = {
 	typescript: {
 		ignoreBuildErrors: true
 	},
-	webpack: (config, { isServer }) => {
+	webpack: (config, { isServer, buildId }) => {
 		config.module.rules.push({
 			test: /\.ts$/,
 			/*
