@@ -154,6 +154,9 @@ importers:
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
+      tiny-compressor:
+        specifier: ^1.0.2
+        version: 1.0.2
       wrangler:
         specifier: ^3.56.0
         version: 3.56.0(@cloudflare/workers-types@4.20240512.0)
@@ -2943,6 +2946,9 @@ packages:
     resolution: {integrity: sha512-MyqZCTGLDZ77u4k+jqg4UlrzPTPZ49NDlaekU6uuFaJLzPIN1woaRXCbGeqOfxwc3Y37ZROGAJ614Rdv7Olt+g==}
     engines: {node: '>=10'}
 
+  tiny-compressor@1.0.2:
+    resolution: {integrity: sha512-2BXlPnKTTMkZH+HYyIWCNCpOKvSZSmz+R5kDktqOMAx0sdL9rog1l6wUVy/GBeGz1PuwFtMO0fyFn3zHTVji/Q==}
+
   to-fast-properties@2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
     engines: {node: '>=4'}
@@ -3020,6 +3026,9 @@ packages:
 
   uid-promise@1.0.0:
     resolution: {integrity: sha512-R8375j0qwXyIu/7R0tjdF06/sElHqbmdmWC9M2qQHpEVbvE4I5+38KJI7LUUmQMp7NVq4tKHiBMkT0NFM453Ig==}
+
+  uint8-concat@1.0.0:
+    resolution: {integrity: sha512-MuJSZioUpLNzzV7/aojj8EAI9OTe9yNvN2jV7bICLFkkzL1L3vARlpJkzSD8VGqhmKQglYMGgsYOQjo0qDfplg==}
 
   unconfig@0.3.13:
     resolution: {integrity: sha512-N9Ph5NC4+sqtcOjPfHrRcHekBCadCXWTBzp2VYYbySOHW0PfD9XLCeXshTXjkPYwLrBr9AtSeU0CZmkYECJhng==}
@@ -5967,6 +5976,10 @@ snapshots:
     dependencies:
       convert-hrtime: 3.0.0
 
+  tiny-compressor@1.0.2:
+    dependencies:
+      uint8-concat: 1.0.0
+
   to-fast-properties@2.0.0: {}
 
   to-regex-range@5.0.1:
@@ -6034,6 +6047,8 @@ snapshots:
   ufo@1.5.3: {}
 
   uid-promise@1.0.0: {}
+
+  uint8-concat@1.0.0: {}
 
   unconfig@0.3.13:
     dependencies:

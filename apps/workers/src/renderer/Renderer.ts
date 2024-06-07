@@ -1,17 +1,11 @@
-import puppeteer, { BrowserWorker } from '@cloudflare/puppeteer';
-import { ReactElement } from 'react';
-import { renderToStaticMarkup } from 'react-dom/server';
-import { BA_VE, LEVELS, PLATE_TYPE, PLATE_VER, UserMusic, UserRating } from '@clansty/maibot-types';
-import wrapBasicReactElement from '../utils/wrapBasicReactElement';
-import { b50, levelProgress, plateProgress } from '@clansty/maibot-components';
-import { RenderTypeArgs } from '../types';
+import puppeteer from '@cloudflare/puppeteer';
 
 // This should only be used in Queue handler
 export default class Renderer {
 	public constructor(private readonly browser: puppeteer.Browser) {
 	}
 
-	private async renderHtml(html: string, width: number) {
+	public async renderHtml(html: string, width: number) {
 		console.log('开始渲染图片');
 		const timer = crypto.randomUUID();
 		console.time(timer);
@@ -26,32 +20,5 @@ export default class Renderer {
 		console.timeLog(timer, '图片已生成');
 		console.timeEnd(timer);
 		return { data, width, height };
-	}
-
-	private renderReact(element: ReactElement, width: number) {
-		return this.renderHtml(renderToStaticMarkup(wrapBasicReactElement(element)), width);
-	}
-
-	public renderPlateProgress(score: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | '') {
-		return this.renderReact(plateProgress(score, ver, type), 1500);
-	}
-
-	public renderLevelProgress(level: typeof LEVELS[number], score: UserMusic[] = []) {
-		return this.renderReact(levelProgress(score, level), 1500);
-	}
-
-	public renderB50(rating: UserRating, userMusic: UserMusic[], username: string, avatar: string) {
-		return this.renderReact(b50(rating, userMusic, username, avatar), 2000);
-	}
-
-	public render({ action, args }: RenderTypeArgs) {
-		switch (action) {
-			case 'b50':
-				return this.renderB50(...args);
-			case 'levelProgress':
-				return this.renderLevelProgress(...args);
-			case 'plateProgress':
-				return this.renderPlateProgress(...args);
-		}
 	}
 }

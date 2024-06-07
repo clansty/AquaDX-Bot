@@ -3,12 +3,13 @@ import BotContext from './BotContext';
 import { Env } from '../../worker-configuration';
 import { LEVELS } from '@clansty/maibot-types/src';
 import { InlineQueryResult } from 'telegraf/types';
+import htmlRender from '../utils/htmlRender';
 
 export default (bot: Telegraf<BotContext>, env: Env) => {
 	const sendProgressImage = async (ctx: BotContext, level: typeof LEVELS[number], isFromStart = false) => {
 		const userMusic = await ctx.getUserMusic();
 
-		return await ctx.genCacheSendImage([level, userMusic], { action: 'levelProgress', args: [level, userMusic] },
+		return await ctx.genCacheSendImage([level, userMusic], htmlRender.levelProgress(level, userMusic),
 			`LV ${level} 完成表.png`, ctx.chat?.type === 'private' ? level : undefined, isFromStart);
 	};
 

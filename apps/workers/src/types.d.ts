@@ -10,8 +10,10 @@ export type RENDER_QUEUE_ITEM = {
 	inlineKeyboard: InlineKeyboardButton[][],
 	shareKw?: string,
 	filename: string,
-	queueTime: number
-} & RenderTypeArgs
+	queueTime: number,
+	html: string,
+	width: number
+}
 
 export type RenderTypeArgs = {
 	action: 'levelProgress',

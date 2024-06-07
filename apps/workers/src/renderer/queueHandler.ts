@@ -4,8 +4,9 @@ import puppeteer from '@cloudflare/puppeteer';
 import Renderer from './Renderer';
 import { Telegraf } from 'telegraf';
 import { Message } from 'telegraf/types';
+import Compressor from 'tiny-compressor';
 
-export default async (batch: MessageBatch<RENDER_QUEUE_ITEM>, env: Env) => {
+export default async (batch: MessageBatch<ArrayBuffer>, env: Env) => {
 	console.time('consumer');
 	let browser: puppeteer.Browser;
 	try {
@@ -23,10 +24,11 @@ export default async (batch: MessageBatch<RENDER_QUEUE_ITEM>, env: Env) => {
 		const startDate = new Date().getTime();
 		try {
 			console.timeLog('consumer', '处理消息');
-			const { inlineKeyboard, shareKw, hash, chatId, replyToMessageId, processingMessageId, filename, queueTime } = message.body;
+			const body = JSON.parse(Buffer.from(await Compressor.decompress(message.body, 'deflate-raw')).toString()) as RENDER_QUEUE_ITEM;
+			const { inlineKeyboard, shareKw, hash, chatId, replyToMessageId, processingMessageId, filename, queueTime } = body;
 			const queueDate = new Date(queueTime).getTime();
 			// 控制是否显示不能用 inline 发送的提示，要是以图片方式发送了，就把这个设为 false
-			let { isFromStart } = message.body;
+			let { isFromStart } = body;
 			let messageSent: Message;
 			// 再次确认缓存的 key
 			const cached = await env.KV.get(`image:${hash}`, 'json') as { fileId: string, type: 'image' | 'document' };
@@ -53,7 +55,7 @@ export default async (batch: MessageBatch<RENDER_QUEUE_ITEM>, env: Env) => {
 			// End: 发现有缓存的图片发送
 			else {
 				// 开始生成图片
-				const file = await renderer.render(message.body);
+				const file = await renderer.renderHtml(body.html, body.width);
 				const endDate = new Date().getTime();
 				console.timeLog('consumer', '生成结束');
 				const timeSummary = `队列时间: ${Math.round((startDate - queueDate) / 1000)}s\n生成时间: ${Math.round((endDate - startDate) / 1000)}s`;

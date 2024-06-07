@@ -10,6 +10,6 @@ interface Env {
 	API_SECRET: string;
 	POWERON_TOKEN: string;
 	API_BASE: string;
-	RENDER_QUEUE: Queue<RENDER_QUEUE_ITEM>;
+	RENDER_QUEUE: Queue<ArrayBuffer>;
 	MYBROWSER: BrowserWorker;
 }
