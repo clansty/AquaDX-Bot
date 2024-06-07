@@ -11,7 +11,8 @@ export type RENDER_QUEUE_ITEM = {
 	shareKw?: string,
 	filename: string,
 	queueTime: number,
-	html: string,
+	html?: string,
+	url?: string,
 	width: number
 }
 

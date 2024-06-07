@@ -31,7 +31,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 				}), { cache_time: 3600 });
 	});
 
-	bot.command(['search', 'maimai'], async (ctx) => {
+	bot.command(['search', 'maimai', 's'], async (ctx) => {
 		if (ctx.payload.trim() === '') {
 			await ctx.reply('请输入要搜索的歌曲名');
 			return;

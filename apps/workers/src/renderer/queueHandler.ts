@@ -55,7 +55,7 @@ export default async (batch: MessageBatch<ArrayBuffer>, env: Env) => {
 			// End: 发现有缓存的图片发送
 			else {
 				// 开始生成图片
-				const file = await renderer.renderHtml(body.html, body.width);
+				const file = await renderer.renderHtml(body.url || body.html, body.width, !!body.url);
 				const endDate = new Date().getTime();
 				console.timeLog('consumer', '生成结束');
 				const timeSummary = `队列时间: ${Math.round((startDate - queueDate) / 1000)}s\n生成时间: ${Math.round((endDate - startDate) / 1000)}s`;
@@ -65,7 +65,8 @@ export default async (batch: MessageBatch<ArrayBuffer>, env: Env) => {
 						reply_markup: { inline_keyboard: inlineKeyboard },
 						caption: timeSummary
 					});
-					await env.KV.put(`image:${hash}`, JSON.stringify({ fileId: messageSent.document.file_id, type: 'document' }));
+					if (hash)
+						await env.KV.put(`image:${hash}`, JSON.stringify({ fileId: messageSent.document.file_id, type: 'document' }));
 				} else {
 					if (shareKw) {
 						inlineKeyboard.push([{
@@ -80,19 +81,21 @@ export default async (batch: MessageBatch<ArrayBuffer>, env: Env) => {
 						reply_markup: { inline_keyboard: inlineKeyboard },
 						caption: timeSummary
 					});
-					await env.KV.put(`image:${hash}`, JSON.stringify({ fileId: messageSent.photo[messageSent.photo.length - 1].file_id, type: 'image' }));
+					if (hash)
+						await env.KV.put(`image:${hash}`, JSON.stringify({ fileId: messageSent.photo[messageSent.photo.length - 1].file_id, type: 'image' }));
 				}
 				console.timeLog('consumer', '发送结束');
 			}
 			// End: 发送图片
 
 			message.ack();
-			try {
-				await bot.telegram.deleteMessage(chatId, processingMessageId);
-				console.timeLog('consumer', '删除消息完成');
-			} catch (e) {
-				console.log('删除消息失败', e, '无所谓');
-			}
+			if (processingMessageId)
+				try {
+					await bot.telegram.deleteMessage(chatId, processingMessageId);
+					console.timeLog('consumer', '删除消息完成');
+				} catch (e) {
+					console.log('删除消息失败', e, '无所谓');
+				}
 
 			// 处理通过 start 发送时，作为文件发送的提示
 			// 不用检测是不是以图片发送的，因为前面如果以图片方式发送了，就会把 isFromStart 设为 false
