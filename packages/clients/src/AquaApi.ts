@@ -1,4 +1,4 @@
-import { UserMusic, UserPreview, UserRating } from '@clansty/maibot-types';
+import { UserData, UserMusic, UserPreview, UserRating } from '@clansty/maibot-types';
 
 export default class AquaApi {
 	private constructor(private readonly baseUrl: string) {
@@ -7,7 +7,9 @@ export default class AquaApi {
 	private static async powerOn(baseUrl: string, token: string) {
 		const req = await fetch(baseUrl + '/sys/servlet/PowerOn', {
 			method: 'POST',
-			body: token
+			body: token,
+			// @ts-ignore next cache
+			cache: 'no-store'
 		});
 		const res = new URLSearchParams(await req.text());
 		console.log(res);
@@ -57,5 +59,15 @@ export default class AquaApi {
 		});
 
 		return await req.json() as UserPreview;
+	}
+
+	public async getUserData(userId: number) {
+		const req = await fetch(this.baseUrl + 'GetUserDataApi', {
+			method: 'POST',
+			body: JSON.stringify({ userId }),
+			headers: { 'Content-Type': 'application/json' }
+		});
+
+		return (await req.json() as any).userData as UserData;
 	}
 }

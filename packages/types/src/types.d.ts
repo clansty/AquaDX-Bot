@@ -50,6 +50,99 @@ export type UserPreview = {
 	'banState': number
 }
 
+export type UserData = {
+	accessCode: string;
+	userName: string;
+	friendCode: string;
+	isNetMember: number;
+	nameplateId: number;
+	iconId: number;
+	trophyId: number;
+	plateId: number;
+	titleId: number;
+	partnerId: number;
+	frameId: number;
+	selectMapId: number;
+	totalAwake: number;
+	gradeRating: number;
+	musicRating: number;
+	playerRating: number;
+	highestRating: number;
+	gradeRank: number;
+	classRank: number;
+	courseRank: number;
+	charaSlot: number[];
+	charaLockSlot: number[];
+	contentBit: number;
+	playCount: number;
+	eventWatchedDate: string;
+	lastGameId: string;
+	lastRomVersion: string;
+	lastDataVersion: string;
+	lastLoginDate: string;
+	lastPlayDate: string;
+	lastPlayCredit: number;
+	lastPlayMode: number;
+	lastPlaceId: number;
+	lastPlaceName: string;
+	lastAllNetId: number;
+	lastRegionId: number;
+	lastRegionName: string;
+	lastClientId: string;
+	lastCountryCode: string;
+	lastSelectEMoney: number;
+	lastSelectTicket: number;
+	lastSelectCourse: number;
+	lastCountCourse: number;
+	firstGameId: string;
+	firstRomVersion: string;
+	firstDataVersion: string;
+	firstPlayDate: string;
+	compatibleCmVersion: string;
+	dailyBonusDate: string;
+	dailyCourseBonusDate: string;
+	lastPairLoginDate: string;
+	lastTrialPlayDate: string;
+	playVsCount: number;
+	playSyncCount: number;
+	winCount: number;
+	helpCount: number;
+	comboCount: number;
+	totalDeluxscore: number;
+	totalBasicDeluxscore: number;
+	totalAdvancedDeluxscore: number;
+	totalExpertDeluxscore: number;
+	totalMasterDeluxscore: number;
+	totalReMasterDeluxscore: number;
+	totalHiscore: number;
+	totalBasicHighscore: number;
+	totalAdvancedHighscore: number;
+	totalExpertHighscore: number;
+	totalMasterHighscore: number;
+	totalReMasterHighscore: number;
+	totalSync: number;
+	totalBasicSync: number;
+	totalAdvancedSync: number;
+	totalExpertSync: number;
+	totalMasterSync: number;
+	totalReMasterSync: number;
+	totalAchievement: number;
+	totalBasicAchievement: number;
+	totalAdvancedAchievement: number;
+	totalExpertAchievement: number;
+	totalMasterAchievement: number;
+	totalReMasterAchievement: number;
+	playerOldRating: number;
+	playerNewRating: number;
+	banState: number;
+	dateTime: number;
+	cmLastEmoneyBrand: number;
+	cmLastEmoneyCredit: number;
+	mapStock: number;
+	currentPlayCount: number;
+	renameCredit: number;
+}
+
 export type TableContentRenderData = {
 	song: Song,
 	chart: Sheet,
