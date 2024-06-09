@@ -1,1 +1,5 @@
 @unocss all;
+
+a {
+  @apply c-unset decoration-unset;
+}

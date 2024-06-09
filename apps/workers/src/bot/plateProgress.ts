@@ -5,14 +5,13 @@ import { BA_VE, PLATE_TYPE, PLATE_VER } from '@clansty/maibot-types';
 import { calcProgressText } from '@clansty/maibot-utils';
 import { InlineQueryResult } from 'telegraf/types';
 import { xxhash32 } from 'cf-workers-hash';
-import htmlRender from '../utils/htmlRender';
 
 export default (bot: Telegraf<BotContext>, env: Env) => {
 	const sendProgressImage = async (ctx: BotContext, ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | '', isFromStart = false) => {
 		const userMusic = await ctx.getUserMusic();
 
-		return await ctx.genCacheSendImage([ver, type, userMusic], htmlRender.plateProgress(userMusic, ver, type), `${ver}${type}完成表.png`,
-			ctx.chat?.type === 'private' ? `${ver}${type}` : undefined, isFromStart);
+		return await ctx.genCacheSendImage([ver, type, userMusic], `https://maibot-web.pages.dev/plateProgress/aquadx/${await ctx.getAquaUserId()}/${ver}${type}`,
+			1500, `${ver}${type}完成表.png`, ctx.chat?.type === 'private' ? `${ver}${type}` : undefined, isFromStart);
 	};
 
 	for (const version of [...PLATE_VER, BA_VE] as const) {

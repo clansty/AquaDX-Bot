@@ -1,20 +1,23 @@
-import { RatingListEntry, UserMusic } from '@clansty/maibot-types';
+import { Rank, RatingListEntry, UserMusic } from '@clansty/maibot-types';
 import { Song } from '@clansty/maibot-types';
 import React from 'react';
 import { IMG_DX, IMG_MOON_CAKE, IMG_SONG_MISSING, IMG_STD, LEVEL_COLOR } from '@clansty/maibot-types';
-import Digit from './Digit';
-import { getRankImage } from '../urls';
 import { achievementToRank, computeRa } from '@clansty/maibot-utils';
 import Link from 'next/link';
+import Digit from '@/components/Digit';
+
+const getRankImage = (rank: Rank): string => {
+	return `https://shama.dxrating.net/images/rank/buddies-plus/${rank}.png`;
+};
 
 const BORDER_SIZE = 3;
 const SIZE = 90;
 
-export default ({ entry, score, link }: { entry: RatingListEntry, score: UserMusic, link: (song: Song) => string }) => {
+export default ({ entry, score }: { entry: RatingListEntry, score: UserMusic }) => {
 	const song = Song.fromId(entry.musicId);
-	const href = link(song);
+	const href = song && `/song/byId/${song.id}`;
 
-	return href ? <Link href={href} style={{ color: 'unset', textDecoration: 'unset' }}><Component entry={entry} score={score} song={song} /></Link> : <Component entry={entry} score={score} song={song} />;
+	return href ? <Link href={href}><Component entry={entry} score={score} song={song} /></Link> : <Component entry={entry} score={score} song={song} />;
 }
 
 const Component = ({ entry, score, song }: { entry: RatingListEntry, score: UserMusic, song?: Song }) => {

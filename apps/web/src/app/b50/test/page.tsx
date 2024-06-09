@@ -1,4 +1,4 @@
-import { b50 } from '@clansty/maibot-components';
 import { SAMPLE_USER_MUSIC, SAMPLE_USER_RATING } from '@clansty/maibot-types';
+import B50 from '@/app/b50/components/B50';
 
-export default () => b50(SAMPLE_USER_RATING, SAMPLE_USER_MUSIC, 'Clansty', '', song => song && `/song/byId/${song.id}`)
+export default () => <B50 rating={SAMPLE_USER_RATING} userMusic={SAMPLE_USER_MUSIC} avatar="" username="Clansty" />

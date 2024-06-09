@@ -4,7 +4,6 @@ import { UserMusic, UserPreview, UserRating } from '@clansty/maibot-types';
 import { Env } from '../../worker-configuration';
 import { xxhash64 } from 'cf-workers-hash';
 import { InlineKeyboardButton } from 'telegraf/types';
-import Compressor from 'tiny-compressor';
 import { RENDER_QUEUE_ITEM } from '../types';
 
 export default class BotContext extends Context {
@@ -57,7 +56,7 @@ export default class BotContext extends Context {
 		return await this.env.KV.get(`image:${hash}`, 'json') as { fileId: string, type: 'image' | 'document' };
 	}
 
-	async genCacheSendImage(key: any, gen: { html: string, width: number } | (() => Promise<{ html: string, width: number }>), filename: string, shareKw?: string, isFromStart = false, inlineKeyboard: InlineKeyboardButton[][] = []) {
+	async genCacheSendImage(key: any, url: string, width: number, filename: string, shareKw?: string, isFromStart = false, inlineKeyboard: InlineKeyboardButton[][] = []) {
 		const hash = await xxhash64(JSON.stringify(key));
 		const cached = await this.env.KV.get(`image:${hash}`, 'json') as { fileId: string, type: 'image' | 'document' };
 		if (cached?.type === 'image') {
@@ -80,17 +79,13 @@ export default class BotContext extends Context {
 		}
 
 		const genMsg = await this.reply('图片生成中...');
-		if (typeof (gen) === 'function')
-			gen = await gen();
 
-		const message = JSON.stringify({
-			...gen,
-			hash, shareKw, filename, inlineKeyboard, isFromStart,
+		await this.env.RENDER_QUEUE.send({
+			hash, shareKw, filename, inlineKeyboard, isFromStart, url, width,
 			processingMessageId: genMsg.message_id,
 			chatId: this.chat.id,
 			replyToMessageId: this.msgId,
 			queueTime: new Date().getTime()
-		} as RENDER_QUEUE_ITEM);
-		await this.env.RENDER_QUEUE.send(await Compressor.compress(Buffer.from(message), 'deflate-raw'), { contentType: 'bytes' });
+		});
 	}
 }

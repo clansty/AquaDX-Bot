@@ -1,6 +1,6 @@
-import { b50 } from '@clansty/maibot-components';
 import { AquaApi } from '@clansty/maibot-clients';
 import { getRequestContext } from '@cloudflare/next-on-pages';
+import B50 from '@/app/b50/components/B50';
 
 export const runtime = 'edge';
 
@@ -15,5 +15,5 @@ export default async ({ params }: { params: { tguid: string } }) => {
 	const userMusic = await api.getUserMusic(aquaUserId);
 	const userPreview = await api.getUserPreview(aquaUserId);
 
-	return b50(userRating, userMusic, userPreview.userName, '', song => song && `/song/byId/${song.id}`);
+	return <B50 rating={userRating} userMusic={userMusic} avatar="" username={userPreview.userName} />;
 }

@@ -1,11 +1,11 @@
 import { BA_VE, BUDDIES_LOGO, MAIMAI_DX_RELEASE_DATE, PLATE_IMAGES, PLATE_TYPE, PLATE_VER, PLATE_VER_LIST, Song, VER_MUSIC_LIST, TableContentRenderData, TableContentRenderRow, UserMusic } from '@clansty/maibot-types';
 import React from 'react';
-import TableContent from './components/TableContent';
+import TableContent from '../../../components/TableContent';
 import _ from 'lodash';
-import LevelProgress from './components/LevelProgress';
+import LevelProgress from '../../../components/LevelProgress';
 import { calcProgress } from '@clansty/maibot-utils';
 
-export default (userMusic: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | '') => {
+export default ({ userMusic, ver, type }: { userMusic: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | '' }) => {
 	let displayData = [] as TableContentRenderData[];
 	const requiredSongList = PLATE_VER_LIST[ver].flatMap(ver => VER_MUSIC_LIST[ver]).map(id => Song.fromId(id));
 	const levelsRequired = [3];

@@ -5,6 +5,9 @@
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/web/.vercel" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/web/.wrangler" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/workers/.wrangler" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

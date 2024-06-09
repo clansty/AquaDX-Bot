@@ -1,8 +1,6 @@
 import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
 import { Env } from '../../worker-configuration';
-import { RENDER_QUEUE_ITEM } from '../types';
-import Compressor from 'tiny-compressor';
 
 export default (bot: Telegraf<BotContext>, env: Env) => {
 	bot.command('snapshot', async (ctx) => {
@@ -11,7 +9,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 			return;
 		}
 
-		const message = JSON.stringify({
+		await env.RENDER_QUEUE.send({
 			hash: '',
 			filename: 'snapshot.png',
 			isFromStart: false,
@@ -21,9 +19,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 			inlineKeyboard: [],
 			url: ctx.payload,
 			width: 2000
-		} as RENDER_QUEUE_ITEM);
-
-		await env.RENDER_QUEUE.send(await Compressor.compress(Buffer.from(message), 'deflate-raw'), { contentType: 'bytes' });
+		});
 		await ctx.reply('已提交');
 	});
 }

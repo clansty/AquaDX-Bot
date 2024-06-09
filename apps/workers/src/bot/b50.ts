@@ -1,27 +1,16 @@
 import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
 import { Env } from '../../worker-configuration';
-import htmlRender from '../utils/htmlRender';
 
 export default (bot: Telegraf<BotContext>, env: Env) => {
 	const sendB50Image = async (ctx: BotContext) => {
-		const userPreview = await ctx.getUserPreview();
-		const [userMusic, rating] = await Promise.all([ctx.getUserMusic(), ctx.getUserRating()]);
+		const rating = await ctx.getUserRating();
 
-		return await ctx.genCacheSendImage(['b50', rating, ctx.from.id], async () => {
-			let avatar = await ctx.telegram.getUserProfilePhotos(ctx.from.id, 0, 1).then(it => it.photos[0]?.[0].file_id);
-			if (avatar) {
-				avatar = (await ctx.telegram.getFileLink(avatar)).toString();
-			} else {
-				avatar = 'https://nyac.at/api/telegram/avatar/' + ctx.from.id;
-				const res = await fetch(avatar, { method: 'HEAD' });
-				if (!res.ok) avatar = '';
-			}
-
-			return htmlRender.b50(rating, userMusic, userPreview.userName, avatar);
-		}, 'B50.png', ctx.chat?.type === 'private' ? 'b50' : undefined, false, [
-			[{ text: '查看详情', url: `tg://resolve?domain=${ctx.botInfo.username}&appname=webapp&startapp=${encodeURIComponent(btoa(`/b50/${ctx.from.id}`))}` }]
-		]);
+		return await ctx.genCacheSendImage(['b50', rating, ctx.from.id],
+			`https://maibot-web.pages.dev/b50/aquadx/${await ctx.getAquaUserId()}`,
+			2000, 'B50.png', ctx.chat?.type === 'private' ? 'b50' : undefined, false, [
+				[{ text: '查看详情', url: `tg://resolve?domain=${ctx.botInfo.username}&appname=webapp&startapp=${encodeURIComponent(btoa(`/b50/${ctx.from.id}`))}` }]
+			]);
 	};
 
 	bot.command('b50', sendB50Image);

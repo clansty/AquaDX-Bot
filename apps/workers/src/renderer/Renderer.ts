@@ -5,17 +5,14 @@ export default class Renderer {
 	public constructor(private readonly browser: puppeteer.Browser) {
 	}
 
-	public async renderHtml(html: string, width: number, isUrl = false) {
+	public async renderHtml(url: string, width: number, isUrl = false) {
 		console.log('开始渲染图片');
 		const timer = crypto.randomUUID();
 		console.time(timer);
 		const page = await this.browser.newPage();
 		await page.setViewport({ width, height: 300 });
 		console.timeLog(timer, '页面已创建');
-		if (isUrl)
-			await page.goto(html, { waitUntil: 'networkidle0' });
-		else
-			await page.setContent(html, { waitUntil: 'networkidle0' });
+		await page.goto(url, { waitUntil: 'networkidle0' });
 		console.timeLog(timer, '页面已加载');
 		const data = await page.screenshot({ encoding: 'binary', fullPage: true }) as Buffer;
 		// @ts-ignore

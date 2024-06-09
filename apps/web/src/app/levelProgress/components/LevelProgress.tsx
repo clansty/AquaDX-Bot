@@ -1,10 +1,10 @@
 import { BUDDIES_LOGO, LEVEL_EN, LEVELS, Song, VersionEnum, ProgressCalcResult, TableContentRenderData, TableContentRenderRow, UserMusic } from '@clansty/maibot-types';
 import React from 'react';
-import TableContent from './components/TableContent';
+import TableContent from '../../../components/TableContent';
 import _ from 'lodash';
-import LevelProgress from './components/LevelProgress';
+import LevelProgress from '../../../components/LevelProgress';
 
-export default (userMusic: UserMusic[], level: typeof LEVELS[number]) => {
+export default ({ userMusic, level }: { userMusic: UserMusic[], level: typeof LEVELS[number] }) => {
 	let displayData = [] as TableContentRenderData[];
 	const requiredSongList = Song.getByCondition(it => it.sheets.some(chart => chart.level === level));
 	const progress = Array(5).fill(null).map(() => ({ all: 0, done: 0 })) as ProgressCalcResult[];

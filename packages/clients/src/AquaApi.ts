@@ -14,7 +14,7 @@ export default class AquaApi {
 			// @ts-ignore
 			init.cache = 'no-store';
 		}
-		const req = await fetch(baseUrl + '/sys/servlet/PowerOn');
+		const req = await fetch(baseUrl + '/sys/servlet/PowerOn', init);
 		const res = new URLSearchParams(await req.text());
 		console.log(res);
 		return res.get('uri') as string;

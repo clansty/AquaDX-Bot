@@ -4,10 +4,8 @@ import puppeteer from '@cloudflare/puppeteer';
 import Renderer from './Renderer';
 import { Telegraf } from 'telegraf';
 import { Message } from 'telegraf/types';
-import Compressor from 'tiny-compressor';
 
-export default async (batch: MessageBatch<ArrayBuffer>, env: Env) => {
-	console.time('consumer');
+export default async (batch: MessageBatch<RENDER_QUEUE_ITEM>, env: Env, ctx: ExecutionContext) => {
 	let browser: puppeteer.Browser;
 	try {
 		browser = await getBrowser(env.MYBROWSER);
@@ -16,19 +14,18 @@ export default async (batch: MessageBatch<ArrayBuffer>, env: Env) => {
 		batch.retryAll({ delaySeconds: 5 });
 		return;
 	}
-	console.timeLog('consumer', '浏览器已创建');
+	console.log('浏览器已创建');
 	const bot = new Telegraf(env.BOT_TOKEN);
 	const renderer = new Renderer(browser);
 
 	for (const message of batch.messages) {
 		const startDate = new Date().getTime();
 		try {
-			console.timeLog('consumer', '处理消息');
-			const body = JSON.parse(Buffer.from(await Compressor.decompress(message.body, 'deflate-raw')).toString()) as RENDER_QUEUE_ITEM;
-			const { inlineKeyboard, shareKw, hash, chatId, replyToMessageId, processingMessageId, filename, queueTime } = body;
+			console.log('处理消息');
+			const { inlineKeyboard, shareKw, hash, chatId, replyToMessageId, processingMessageId, filename, queueTime } = message.body;
 			const queueDate = new Date(queueTime).getTime();
 			// 控制是否显示不能用 inline 发送的提示，要是以图片方式发送了，就把这个设为 false
-			let { isFromStart } = body;
+			let { isFromStart } = message.body;
 			let messageSent: Message;
 			// 再次确认缓存的 key
 			const cached = await env.KV.get(`image:${hash}`, 'json') as { fileId: string, type: 'image' | 'document' };
@@ -55,9 +52,9 @@ export default async (batch: MessageBatch<ArrayBuffer>, env: Env) => {
 			// End: 发现有缓存的图片发送
 			else {
 				// 开始生成图片
-				const file = await renderer.renderHtml(body.url || body.html, body.width, !!body.url);
+				const file = await renderer.renderHtml(message.body.url, message.body.width);
 				const endDate = new Date().getTime();
-				console.timeLog('consumer', '生成结束');
+				console.log('生成结束');
 				const timeSummary = `队列时间: ${Math.round((startDate - queueDate) / 1000)}s\n生成时间: ${Math.round((endDate - startDate) / 1000)}s`;
 				if (file.height / file.width > 2) {
 					messageSent = await bot.telegram.sendDocument(chatId, { source: file.data, filename }, {
@@ -66,7 +63,7 @@ export default async (batch: MessageBatch<ArrayBuffer>, env: Env) => {
 						caption: timeSummary
 					});
 					if (hash)
-						await env.KV.put(`image:${hash}`, JSON.stringify({ fileId: messageSent.document.file_id, type: 'document' }));
+						ctx.waitUntil(env.KV.put(`image:${hash}`, JSON.stringify({ fileId: messageSent.document.file_id, type: 'document' })));
 				} else {
 					if (shareKw) {
 						inlineKeyboard.push([{
@@ -82,9 +79,9 @@ export default async (batch: MessageBatch<ArrayBuffer>, env: Env) => {
 						caption: timeSummary
 					});
 					if (hash)
-						await env.KV.put(`image:${hash}`, JSON.stringify({ fileId: messageSent.photo[messageSent.photo.length - 1].file_id, type: 'image' }));
+						ctx.waitUntil(env.KV.put(`image:${hash}`, JSON.stringify({ fileId: messageSent.photo[messageSent.photo.length - 1].file_id, type: 'image' })));
 				}
-				console.timeLog('consumer', '发送结束');
+				console.log('发送结束');
 			}
 			// End: 发送图片
 
@@ -92,7 +89,7 @@ export default async (batch: MessageBatch<ArrayBuffer>, env: Env) => {
 			if (processingMessageId)
 				try {
 					await bot.telegram.deleteMessage(chatId, processingMessageId);
-					console.timeLog('consumer', '删除消息完成');
+					console.log('删除消息完成');
 				} catch (e) {
 					console.log('删除消息失败', e, '无所谓');
 				}
@@ -115,8 +112,7 @@ export default async (batch: MessageBatch<ArrayBuffer>, env: Env) => {
 		}
 	}
 	browser.disconnect();
-	console.timeLog('consumer', '队列完成');
-	console.timeEnd('consumer');
+	console.log('队列完成');
 }
 
 const getBrowser = async (endpoint: puppeteer.BrowserWorker) => {
