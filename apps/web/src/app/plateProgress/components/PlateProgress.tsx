@@ -4,6 +4,7 @@ import TableContent from '../../../components/TableContent';
 import _ from 'lodash';
 import LevelProgress from '../../../components/LevelProgress';
 import { calcProgress } from '@clansty/maibot-utils';
+import styles from './PlateProgress.module.css';
 
 export default ({ userMusic, ver, type }: { userMusic: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | '' }) => {
 	let displayData = [] as TableContentRenderData[];
@@ -38,14 +39,16 @@ export default ({ userMusic, ver, type }: { userMusic: UserMusic[], ver: typeof 
 		} as TableContentRenderRow)), it => it.levelValue, 'desc');
 
 	return <div>
-		<div style={{ display: 'flex', alignItems: 'center', padding: 40, gap: 50 }}>
-			<img src={BUDDIES_LOGO} alt="" height={120} />
-			<div style={{ flexGrow: 1 }} />
+		<div className={styles.header}>
+			<img src={BUDDIES_LOGO} alt="" height={120} className={styles.hideOnSmallScreen} />
+			<div style={{ flexGrow: 1 }} className={styles.hideOnSmallScreen} />
 			{
 				PLATE_IMAGES[ver + (type || '')] ?
 					<img src={PLATE_IMAGES[ver + (type || '')]} alt="" height={80} /> :
-					<div style={{ fontSize: 60, textShadow: '1px 1px 2px #fff', marginTop: '-.1em' }}>
-						{ver}{type} 完成进度
+					<div className={styles.title}>
+						{ver}{type}
+						<br/>
+						完成进度
 					</div>
 			}
 			<LevelProgress progress={calcProgress(userMusic, ver, type)} />

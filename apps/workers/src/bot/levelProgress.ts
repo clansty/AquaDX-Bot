@@ -9,7 +9,9 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 		const userMusic = await ctx.getUserMusic();
 
 		return await ctx.genCacheSendImage([level, userMusic], `https://maibot-web.pages.dev/levelProgress/aquadx/${await ctx.getAquaUserId()}/${encodeURIComponent(level)}`,
-			1500, `LV ${level} 完成表.png`, ctx.chat?.type === 'private' ? level : undefined, isFromStart);
+			1500, `LV ${level} 完成表.png`, ctx.chat?.type === 'private' ? level : undefined, isFromStart, [
+				[{ text: '查看详情', url: `tg://resolve?domain=${ctx.botInfo.username}&appname=webapp&startapp=${encodeURIComponent(btoa(`/levelProgress/${ctx.from.id}/${encodeURIComponent(level)}`))}` }]
+			]);
 	};
 
 	for (const level of LEVELS) {

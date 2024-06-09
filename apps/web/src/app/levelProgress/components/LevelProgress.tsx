@@ -3,6 +3,7 @@ import React from 'react';
 import TableContent from '../../../components/TableContent';
 import _ from 'lodash';
 import LevelProgress from '../../../components/LevelProgress';
+import styles from './LevelProgress.module.css';
 
 export default ({ userMusic, level }: { userMusic: UserMusic[], level: typeof LEVELS[number] }) => {
 	let displayData = [] as TableContentRenderData[];
@@ -41,10 +42,10 @@ export default ({ userMusic, level }: { userMusic: UserMusic[], level: typeof LE
 		} as TableContentRenderRow)), it => it.levelValue, 'desc');
 
 	return <div>
-		<div style={{ display: 'flex', alignItems: 'center', padding: 40, gap: 50 }}>
-			<img src={BUDDIES_LOGO} alt="" height={120} />
-			<div style={{ flexGrow: 1 }} />
-			<div style={{ fontSize: 60, textShadow: '1px 1px 2px #fff', marginTop: '-.1em' }}>
+		<div className={styles.header}>
+			<img src={BUDDIES_LOGO} alt="" height={120} className={styles.hideOnSmallScreen} />
+			<div style={{ flexGrow: 1 }} className={styles.hideOnSmallScreen2} />
+			<div className={styles.title}>
 				LV {level} {userMusic.length ? '完成进度' : '定数表'}
 			</div>
 			{!!userMusic.length && <LevelProgress progress={progress} />}

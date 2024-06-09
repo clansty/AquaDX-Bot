@@ -10,8 +10,10 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 	const sendProgressImage = async (ctx: BotContext, ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | '', isFromStart = false) => {
 		const userMusic = await ctx.getUserMusic();
 
-		return await ctx.genCacheSendImage([ver, type, userMusic], `https://maibot-web.pages.dev/plateProgress/aquadx/${await ctx.getAquaUserId()}/${ver}${type}`,
-			1500, `${ver}${type}完成表.png`, ctx.chat?.type === 'private' ? `${ver}${type}` : undefined, isFromStart);
+		return await ctx.genCacheSendImage([ver, type, userMusic], `https://maibot-web.pages.dev/plateProgress/aquadx/${await ctx.getAquaUserId()}/${encodeURIComponent(ver + type)}`,
+			1500, `${ver}${type}完成表.png`, ctx.chat?.type === 'private' ? `${ver}${type}` : undefined, isFromStart, [
+				[{ text: '查看详情', url: `tg://resolve?domain=${ctx.botInfo.username}&appname=webapp&startapp=${encodeURIComponent(btoa(`/plateProgress/${ctx.from.id}/${encodeURIComponent(ver + type)}`))}` }]
+			]);
 	};
 
 	for (const version of [...PLATE_VER, BA_VE] as const) {

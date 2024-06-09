@@ -12,15 +12,6 @@ index 25fbbbb47c7f88e83ae26f629e5ae1a0c141725c..12413d45069d7eb1ccda415cfaa0730a
  const https = __importStar(require("https"));
  const path = __importStar(require("path"));
  const node_fetch_1 = __importDefault(require("node-fetch"));
-@@ -39,7 +37,7 @@ const multipart_stream_1 = __importDefault(require("./multipart-stream"));
- const error_1 = __importDefault(require("./error"));
- const url_1 = require("url");
- // eslint-disable-next-line @typescript-eslint/no-var-requires
--const debug = require('debug')('telegraf:client');
-+const debug = (...args) => console.log('telegraf:client', ...args);
- const { isStream } = multipart_stream_1.default;
- const WEBHOOK_REPLY_METHOD_ALLOWLIST = new Set([
-     'answerCallbackQuery',
 @@ -110,18 +108,12 @@ async function buildFormDataConfig(payload, agent) {
              payload[field] = JSON.stringify(payload[field]);
          }
@@ -28,7 +19,7 @@ index 25fbbbb47c7f88e83ae26f629e5ae1a0c141725c..12413d45069d7eb1ccda415cfaa0730a
 -    const boundary = crypto.randomBytes(32).toString('hex');
 -    const formData = new multipart_stream_1.default(boundary);
 +    const formData = new FormData();
-     await Promise.all(Object.keys(payload).map((key) => 
+     await Promise.all(Object.keys(payload).map((key) =>
      // @ts-expect-error payload[key] can obviously index payload, but TS doesn't trust us
      attachFormValue(formData, key, payload[key], agent)));
      return {

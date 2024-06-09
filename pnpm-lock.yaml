@@ -9,7 +9,7 @@ patchedDependencies:
     hash: h5ds5csqjpdvsndz6yipxstrlm
     path: patches/rollup-plugin-node-polyfills@0.2.1.patch
   telegraf@4.16.3:
-    hash: eh53c7bcourv6ij2lrebty4tii
+    hash: 4iycakhvrxzj25c55x6u43nfh4
     path: patches/telegraf@4.16.3.patch
 
 importers:
@@ -131,7 +131,7 @@ importers:
         version: 1.0.3
       telegraf:
         specifier: ^4.16.3
-        version: 4.16.3(patch_hash=eh53c7bcourv6ij2lrebty4tii)
+        version: 4.16.3(patch_hash=4iycakhvrxzj25c55x6u43nfh4)
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20240512.0
@@ -5897,7 +5897,7 @@ snapshots:
       mkdirp: 1.0.4
       yallist: 4.0.0
 
-  telegraf@4.16.3(patch_hash=eh53c7bcourv6ij2lrebty4tii):
+  telegraf@4.16.3(patch_hash=4iycakhvrxzj25c55x6u43nfh4):
     dependencies:
       '@telegraf/types': 7.1.0
       abort-controller: 3.0.0

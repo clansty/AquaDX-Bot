@@ -14,14 +14,14 @@ export default async (batch: MessageBatch<RENDER_QUEUE_ITEM>, env: Env, ctx: Exe
 		batch.retryAll({ delaySeconds: 5 });
 		return;
 	}
-	console.log('浏览器已创建');
+	console.log('浏览器已创建', new Date());
 	const bot = new Telegraf(env.BOT_TOKEN);
 	const renderer = new Renderer(browser);
 
 	for (const message of batch.messages) {
 		const startDate = new Date().getTime();
 		try {
-			console.log('处理消息');
+			console.log('处理消息', new Date());
 			const { inlineKeyboard, shareKw, hash, chatId, replyToMessageId, processingMessageId, filename, queueTime } = message.body;
 			const queueDate = new Date(queueTime).getTime();
 			// 控制是否显示不能用 inline 发送的提示，要是以图片方式发送了，就把这个设为 false
@@ -54,7 +54,7 @@ export default async (batch: MessageBatch<RENDER_QUEUE_ITEM>, env: Env, ctx: Exe
 				// 开始生成图片
 				const file = await renderer.renderHtml(message.body.url, message.body.width);
 				const endDate = new Date().getTime();
-				console.log('生成结束');
+				console.log('生成结束', new Date());
 				const timeSummary = `队列时间: ${Math.round((startDate - queueDate) / 1000)}s\n生成时间: ${Math.round((endDate - startDate) / 1000)}s`;
 				if (file.height / file.width > 2) {
 					messageSent = await bot.telegram.sendDocument(chatId, { source: file.data, filename }, {
@@ -81,7 +81,7 @@ export default async (batch: MessageBatch<RENDER_QUEUE_ITEM>, env: Env, ctx: Exe
 					if (hash)
 						ctx.waitUntil(env.KV.put(`image:${hash}`, JSON.stringify({ fileId: messageSent.photo[messageSent.photo.length - 1].file_id, type: 'image' })));
 				}
-				console.log('发送结束');
+				console.log('发送结束', new Date());
 			}
 			// End: 发送图片
 
@@ -89,7 +89,7 @@ export default async (batch: MessageBatch<RENDER_QUEUE_ITEM>, env: Env, ctx: Exe
 			if (processingMessageId)
 				try {
 					await bot.telegram.deleteMessage(chatId, processingMessageId);
-					console.log('删除消息完成');
+					console.log('删除消息完成', new Date());
 				} catch (e) {
 					console.log('删除消息失败', e, '无所谓');
 				}
@@ -101,7 +101,7 @@ export default async (batch: MessageBatch<RENDER_QUEUE_ITEM>, env: Env, ctx: Exe
 					await bot.telegram.sendMessage(chatId, '由于图片高度太高，暂时不支持使用行内模式发送', {
 						reply_parameters: { message_id: messageSent.message_id }
 					});
-					console.timeLog('consumer', '发送高度提示');
+					console.log('发送高度提示', new Date());
 				} catch (e) {
 					console.log('发送消息失败', e, '无所谓');
 				}
@@ -112,7 +112,7 @@ export default async (batch: MessageBatch<RENDER_QUEUE_ITEM>, env: Env, ctx: Exe
 		}
 	}
 	browser.disconnect();
-	console.log('队列完成');
+	console.log('队列完成', new Date());
 }
 
 const getBrowser = async (endpoint: puppeteer.BrowserWorker) => {
@@ -123,10 +123,10 @@ const getBrowser = async (endpoint: puppeteer.BrowserWorker) => {
 			return await puppeteer.connect(endpoint, sessionId);
 		} catch (e) {
 			// another worker may have connected first
-			console.log(`Failed to connect to ${sessionId}. Error ${e}`);
+			console.log(`Failed to connect to ${sessionId}. Error ${e}`, new Date());
 		}
 	}
-	console.log('No open sessions, launch new session');
+	console.log('No open sessions, launch new session', new Date());
 	return await puppeteer.launch(endpoint, { keep_alive: 600000 });
 };
 
@@ -135,7 +135,7 @@ const getBrowser = async (endpoint: puppeteer.BrowserWorker) => {
 // https://developers.cloudflare.com/browser-rendering/get-started/reuse-sessions/#4-code
 const getRandomSession = async (endpoint: puppeteer.BrowserWorker): Promise<string> => {
 	const sessions: puppeteer.ActiveSession[] = await puppeteer.sessions(endpoint);
-	console.log(`Sessions: ${JSON.stringify(sessions)}`);
+	console.log(`Sessions: ${JSON.stringify(sessions)}`, new Date());
 	const sessionsIds = sessions
 		.filter(v => !v.connectionId)
 		.map(v => v.sessionId);
