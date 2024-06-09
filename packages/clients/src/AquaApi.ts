@@ -5,12 +5,16 @@ export default class AquaApi {
 	}
 
 	private static async powerOn(baseUrl: string, token: string) {
-		const req = await fetch(baseUrl + '/sys/servlet/PowerOn', {
+		const init = {
 			method: 'POST',
-			body: token,
-			// @ts-ignore next cache
-			cache: 'no-store'
-		});
+			body: token
+		};
+		// @ts-ignore
+		if (typeof window !== 'undefined') {
+			// @ts-ignore
+			init.cache = 'no-store';
+		}
+		const req = await fetch(baseUrl + '/sys/servlet/PowerOn');
 		const res = new URLSearchParams(await req.text());
 		console.log(res);
 		return res.get('uri') as string;
