@@ -44,13 +44,19 @@
 .b50Header {
   font-size: 10px;
 
-  @media (max-width: 650px) {
+  @media (max-width: 760px) {
+    font-size: 9px;
+  }
+  @media (max-width: 690px) {
     font-size: 8px;
   }
-  @media (max-width: 500px) {
+  @media (max-width: 610px) {
     font-size: 7px;
   }
-  @media (max-width: 450px) {
-    font-size: 5.8px;
+  @media (max-width: 540px) {
+    font-size: 6px;
+  }
+  @media (max-width: 475px) {
+    font-size: 5px;
   }
 }

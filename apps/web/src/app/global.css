@@ -1,5 +1,6 @@
 @unocss all;
 
 a {
-  @apply c-unset decoration-unset;
+  @apply c-unset;
+  text-decoration: unset;
 }

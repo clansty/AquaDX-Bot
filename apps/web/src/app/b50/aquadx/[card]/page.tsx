@@ -12,6 +12,7 @@ export default async ({ params }: { params: { card: string } }) => {
 	const card = Number(params.card);
 	const userRating = await api.getUserRating(card);
 	const userMusic = await api.getUserMusic(card);
-	const userPreview = await api.getUserPreview(card);
-	return <B50 rating={userRating} userMusic={userMusic} avatar="" username={userPreview.userName} />;
+	const userData = await api.getUserData(card);
+
+	return <B50 rating={userRating} userMusic={userMusic} user={userData} />;
 }

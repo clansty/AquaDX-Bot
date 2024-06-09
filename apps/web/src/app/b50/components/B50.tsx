@@ -1,17 +1,16 @@
-import { RatingListEntry, UserMusic, UserRating, Song, BUDDIES_LOGO } from '@clansty/maibot-types';
+import { RatingListEntry, UserMusic, UserRating, Song, BUDDIES_LOGO, UserData } from '@clansty/maibot-types';
 import React from 'react';
 import B50Song from './B50Song';
 import { computeRa, ratingAnalyse } from '@clansty/maibot-utils';
-import DxRating from '@/components/DxRating';
 import styles from './B50.module.css';
+import Nameplate from '@/components/Nameplate';
 
-export default ({ rating, userMusic, username, avatar }: { rating: UserRating, userMusic: UserMusic[], username: string, avatar: string }) =>
+export default ({ rating, userMusic, user }: { rating: UserRating, userMusic: UserMusic[], user: UserData }) =>
 	<div style={{ padding: '0 20px' }}>
-		<div className={`${styles.b50Header} flex items-center p-20px gap-[10px_40px]`}>
-			<div style={{ fontSize: '6em', textShadow: '1px 1px 2px #fff', marginTop: '-.1em' }}>
-				{username}
+		<div className={`${styles.b50Header} flex items-center p-[20px_0] gap-[10px_40px]`}>
+			<div className="text-1.8em">
+				<Nameplate user={user} />
 			</div>
-			<div className="text-5em"><DxRating score={rating.rating} /></div>
 			<div className={`${styles.hideOnSmallScreen} grow`} />
 			<img className={styles.hideOnSmallScreen} src={BUDDIES_LOGO} alt="" height={120} />
 		</div>
@@ -37,11 +36,18 @@ const RatingTable = ({ rating, userMusic, title }: { rating: RatingListEntry[], 
 	// 游戏给的排序没问题。要是顺序真的不对，那就是算法有问题，或者是数据有问题。
 	// entries = _.sortBy(entries, it => -it.score || 1);
 	const averageMinMax = scores.reduce((acc, cur) => [acc[0] + cur, Math.min(acc[1], cur), Math.max(acc[2], cur)], [0, Infinity, -Infinity]);
-	averageMinMax[0] = Math.round(averageMinMax[0] / scores.length);
+	const sum = averageMinMax[0];
+	averageMinMax[0] = Math.round(sum / scores.length);
 
 	return <div>
 		<div className={styles.b50GridHeader} style={{ display: 'flex', alignItems: 'center', textShadow: '1px 1px 2px #fff', fontWeight: 500 }}>
-			<div style={{ fontSize: '5em', flexGrow: 1 }}>{title}</div>
+			<div style={{ fontSize: '5em', flexGrow: 1 }}>
+				{title}
+				<div className="text-.4em">
+					总分: <span className="font-600">{sum}</span>
+					{![35, 15].includes(scores.length) && `（共 ${scores.length} 首）`}
+				</div>
+			</div>
 			<div style={{ fontSize: '2em', margin: '0 15px' }}>
 				<div>平均: {ratingAnalyse(averageMinMax[0])}</div>
 				<div>最低: {ratingAnalyse(averageMinMax[1])}</div>

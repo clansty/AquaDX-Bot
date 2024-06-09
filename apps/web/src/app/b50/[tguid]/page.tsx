@@ -13,7 +13,7 @@ export default async ({ params }: { params: { tguid: string } }) => {
 	const api = await AquaApi.create(env.KV, env.API_BASE, env.POWERON_TOKEN);
 	const userRating = await api.getUserRating(aquaUserId);
 	const userMusic = await api.getUserMusic(aquaUserId);
-	const userPreview = await api.getUserPreview(aquaUserId);
+	const userData = await api.getUserData(aquaUserId);
 
-	return <B50 rating={userRating} userMusic={userMusic} avatar="" username={userPreview.userName} />;
+	return <B50 rating={userRating} userMusic={userMusic} user={userData} />;
 }
