@@ -4,6 +4,7 @@ import { Env } from '../../worker-configuration';
 import { InlineQueryResult } from 'telegraf/types';
 import _ from 'lodash';
 import { FC, LEVEL_EMOJI, Song } from '@clansty/maibot-types/src';
+import { computeRa } from '@clansty/maibot-utils';
 
 export default (bot: Telegraf<BotContext>, env: Env) => {
 	bot.inlineQuery(/^ ?query (.+)/, async (ctx) => {
@@ -31,7 +32,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 			for (const userScore of userScores) {
 				const chart = song.getChart(userScore.level, userScore.musicId > 1e4);
 				message.push(`${userScore.musicId > 1e4 ? 'DX' : 'STD'} ${LEVEL_EMOJI[userScore.level]} ${chart.internalLevelValue.toFixed(1)} ` +
-					`${(userScore.achievement / 1e4).toFixed(4)}% ${FC[userScore.comboStatus]}`);
+					`${(userScore.achievement / 1e4).toFixed(4)}% = ${computeRa(chart.internalLevelValue, userScore.achievement)} ${FC[userScore.comboStatus]}`);
 			}
 
 			ret.push(song.tgMusicId ?
@@ -83,7 +84,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 			for (const userScore of userScores) {
 				const chart = song.getChart(userScore.level, userScore.musicId > 1e4);
 				message.push(`${userScore.musicId > 1e4 ? 'DX' : 'STD'} ${LEVEL_EMOJI[userScore.level]} ${chart.internalLevelValue.toFixed(1)} ` +
-					`${(userScore.achievement / 1e4).toFixed(4)}% ${FC[userScore.comboStatus]}`);
+					`${(userScore.achievement / 1e4).toFixed(4)}% = ${computeRa(chart.internalLevelValue, userScore.achievement)} ${FC[userScore.comboStatus]}`);
 			}
 
 			const extra = {
