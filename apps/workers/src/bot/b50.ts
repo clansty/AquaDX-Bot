@@ -9,8 +9,8 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 		return await ctx.genCacheSendImage(['b50', rating, ctx.from.id],
 			`https://maibot-web.pages.dev/b50/aquadx/${await ctx.getAquaUserId()}`,
 			2000, 'B50.png', ctx.chat?.type === 'private' ? 'b50' : undefined, false, [
-				[{ text: '查看详情', url: `tg://resolve?domain=${ctx.botInfo.username}&appname=webapp&startapp=${encodeURIComponent(btoa(`/b50/${ctx.from.id}`))}` }]
-			]);
+			[{ text: '查看详情', url: `tg://resolve?domain=${ctx.botInfo.username}&appname=webapp&startapp=${encodeURIComponent(btoa(`/b50/${ctx.from.id}`))}` }]
+		]);
 	};
 
 	bot.command('b50', sendB50Image);
@@ -21,17 +21,8 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 	});
 
 	bot.inlineQuery(['b50', 'B50'], async (ctx) => {
-		const userPreview = await ctx.getUserPreview();
-		if (!userPreview?.userName) {
-			await ctx.answerInlineQuery([], {
-				button: { text: '请绑定用户', start_parameter: 'bind' },
-				is_personal: true
-			});
-			return;
-		}
-		const [userMusic, rating] = await Promise.all([ctx.getUserMusic(), ctx.getUserRating()]);
-
-		const cached = await ctx.getCacheImage(['b50', userMusic, userPreview.userName, ctx.from.id]);
+		const rating = await ctx.getUserRating();
+		const cached = await ctx.getCacheImage(['b50', rating, ctx.from.id]);
 		if (cached?.type === 'image') {
 			await ctx.answerInlineQuery([{
 				type: 'photo',
