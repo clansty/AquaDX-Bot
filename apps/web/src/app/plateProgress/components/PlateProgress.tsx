@@ -11,7 +11,7 @@ export default ({ userMusic, ver, type }: { userMusic: UserMusic[], ver: typeof 
 	const requiredSongList = PLATE_VER_LIST[ver].flatMap(ver => VER_MUSIC_LIST[ver]).map(id => Song.fromId(id));
 	const levelsRequired = [3];
 	// 只有舞x 和霸者需要打白谱
-	if (ver === BA_VE || ver === '舞' || ver === '全曲') levelsRequired.push(4);
+	if ([BA_VE, '舞', '全曲'].includes(ver) || ['clear', 'fc', 'ap'].includes(type)) levelsRequired.push(4);
 	for (const song of requiredSongList) {
 		for (const level of levelsRequired) {
 			const chart = song.getChart(level);
@@ -22,7 +22,7 @@ export default ({ userMusic, ver, type }: { userMusic: UserMusic[], ver: typeof 
 			displayData.push({
 				song,
 				chart,
-				score: userMusic.find(it => it.musicId === song.id && it.level === level)
+				score: userMusic.find(it => it.musicId === song.dxId && it.level === level)
 			});
 		}
 	}
@@ -53,6 +53,6 @@ export default ({ userMusic, ver, type }: { userMusic: UserMusic[], ver: typeof 
 			}
 			<LevelProgress progress={calcProgress(userMusic, ver, type)} />
 		</div>
-		<TableContent data={displayDataRows} scoreType={['极', '神', 'fc', 'ap'].includes(type) ? 'combo' : 'rank'} showSdDx={ver === '全曲'} />
+		<TableContent data={displayDataRows} scoreType={['极', '神', 'fc', 'ap'].includes(type) ? 'combo' : type === 'clear' ? 'score' : 'rank'} showSdDx={ver === '全曲'} />
 	</div>;
 }

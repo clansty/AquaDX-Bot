@@ -25,7 +25,7 @@ export const calcProgress = (musicList: UserMusic[], ver: typeof PLATE_VER[numbe
 	const result = [] as ProgressCalcResult[];
 	let total = 0, totalDone = 0, maxLevel = 4;
 	// 只有舞x 和霸者需要打白谱
-	if (ver === BA_VE || ver === '舞' || ver === '全曲') maxLevel = 5;
+	if ([BA_VE, '舞', '全曲'].includes(ver) || ['clear', 'fc', 'ap'].includes(type)) maxLevel = 5;
 	for (let lv = 0; lv < maxLevel; lv++) {
 		let all = 0, done = 0;
 		for (const required of requiredSongList) {
