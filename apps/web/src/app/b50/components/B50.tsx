@@ -55,7 +55,7 @@ const RatingTable = ({ rating, userMusic, title }: { rating: RatingListEntry[], 
 			</div>
 		</div>
 		<div className={styles.b50Grid}>
-			{entries.map(it => <B50Song entry={it.rating} score={userMusic.find(music => music.musicId === it.rating.musicId)} key={it.rating.musicId} />)}
+			{entries.map(it => <B50Song entry={it.rating} score={userMusic.find(music => music.musicId === it.rating.musicId && music.level === it.rating.level)} key={it.rating.musicId} />)}
 		</div>
 	</div>;
 };
