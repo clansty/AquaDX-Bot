@@ -10,9 +10,12 @@ export const LEVELS = ['1', '2', '3', '4', '5', '6', '7', '7+', '8', '8+', '9', 
 export const FC = ['', 'FC', 'FC+', 'AP', 'AP+'] as const;
 export const DX_VERSIONS = [VersionEnum.Maimaiでらっくす, VersionEnum.MaimaiでらっくすPLUS, VersionEnum.Splash, VersionEnum.SplashPLUS, VersionEnum.UNiVERSE, VersionEnum.UNiVERSEPLUS,
 	VersionEnum.FESTiVAL, VersionEnum.FESTiVALPLUS, VersionEnum.BUDDiES, VersionEnum.BUDDiESPLUS] as const;
+export const STD_VERSIONS = ['maimai', 'maimai PLUS', 'GreeN', 'GreeN PLUS', 'ORANGE',
+	'ORANGE PLUS', 'PiNK', 'PiNK PLUS', 'MURASAKi', 'MURASAKi PLUS',
+	'MiLK', 'MiLK PLUS', 'FiNALE'] as const;
 export const PLATE_VER = ['真', '超', '檄', '橙', '晓', '桃', '樱', '紫', '堇', '白', '雪', '辉', '舞', '熊', '华', '爽',
-	'煌', '宙', '星', '祭', '祝'] as const;
-export const PLATE_TYPE = ['极', '将', '神', '舞舞', 'clear'] as const;
+	'煌', '宙', '星', '祭', '祝', '双', '全曲'] as const;
+export const PLATE_TYPE = ['极', '将', '神', '舞舞', 'clear', 'fc', 'ap'] as const;
 export const BA_VE = '霸者';
 export const PLATE_VER_LIST = {
 	'真': ['maimai', 'maimai PLUS'],
@@ -35,12 +38,10 @@ export const PLATE_VER_LIST = {
 	'星': ['UNiVERSE PLUS'],
 	'祭': ['FESTiVAL'],
 	'祝': ['FESTiVAL PLUS'],
-	'舞': ['maimai', 'maimai PLUS', 'GreeN', 'GreeN PLUS', 'ORANGE',
-		'ORANGE PLUS', 'PiNK', 'PiNK PLUS', 'MURASAKi', 'MURASAKi PLUS',
-		'MiLK', 'MiLK PLUS', 'FiNALE'],
-	'霸者': ['maimai', 'maimai PLUS', 'GreeN', 'GreeN PLUS', 'ORANGE',
-		'ORANGE PLUS', 'PiNK', 'PiNK PLUS', 'MURASAKi', 'MURASAKi PLUS',
-		'MiLK', 'MiLK PLUS', 'FiNALE']
+	'双': ['BUDDiES'],
+	'舞': STD_VERSIONS,
+	'霸者': STD_VERSIONS,
+	'全曲': [...STD_VERSIONS, ...DX_VERSIONS]
 } as const;
 export const BUDDIES_LOGO = 'https://shama.dxrating.net/images/version-logo/buddies.webp';
 export const PLATE_IMAGES = {
@@ -354,7 +355,21 @@ export const VER_MUSIC_LIST = {
 		11589, 11590, 11591, 11592, 11593, 11594, 11596,
 		11598, 11599, 11600, 11601, 11602, 11603, 11604,
 		11605, 11606, 11607
-	]
+	],
+	'BUDDiES': [
+		10185, 10242, 10366, 10411, 10535, 11534, 11535,
+		11536, 11537, 11567, 11578, 11580, 11597, 11608,
+		11609, 11610, 11611, 11612, 11613, 11614, 11615,
+		11616, 11617, 11618, 11619, 11620, 11621, 11622,
+		11623, 11624, 11625, 11626, 11627, 11628, 11629,
+		11630, 11631, 11632, 11633, 11634, 11635, 11636,
+		11637, 11638, 11639, 11640, 11641, 11642, 11643,
+		11644, 11645, 11646, 11647, 11648, 11650, 11651,
+		11652, 11653, 11654, 11655, 11656, 11657, 11658,
+		11659, 11660, 11661, 11662, 11663, 11664, 11665,
+		11666, 11667, 11668
+	],
+	'BUDDiES PLUS': []
 } as const;
 export const MAIMAI_DX_RELEASE_DATE = new Date('2019-07-11');
 export const SAMPLE_USER_MUSIC: UserMusic[] = [

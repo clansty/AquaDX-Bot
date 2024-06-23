@@ -41,6 +41,9 @@ importers:
       tsx:
         specifier: ^4.11.0
         version: 4.11.0
+      vite-node:
+        specifier: ^1.6.0
+        version: 1.6.0(@types/node@20.13.0)(sass@1.77.4)(terser@5.31.0)
 
   apps/web:
     dependencies:
@@ -3058,6 +3061,11 @@ packages:
   vercel@34.2.4:
     resolution: {integrity: sha512-C6YQrshh+gpNngQf0Nj1Uhopj/hhxmsBaUKBj1M8vmY8p8d3EmgZ+Q/6erjnqY+S7+QLkEtp0st6wZ7VhA+hJQ==}
     engines: {node: '>= 16'}
+    hasBin: true
+
+  vite-node@1.6.0:
+    resolution: {integrity: sha512-de6HJgzC+TFzOu0NTC4RAIsyf/DY/ibWDYQUcuEA84EMHhcefTUGkjFHKKEJhQN4A+6I0u++kr3l36ZF2d7XRw==}
+    engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
 
   vite@5.2.12:
@@ -6109,6 +6117,23 @@ snapshots:
       - '@swc/wasm'
       - encoding
       - supports-color
+
+  vite-node@1.6.0(@types/node@20.13.0)(sass@1.77.4)(terser@5.31.0):
+    dependencies:
+      cac: 6.7.14
+      debug: 4.3.5
+      pathe: 1.1.2
+      picocolors: 1.0.1
+      vite: 5.2.12(@types/node@20.13.0)(sass@1.77.4)(terser@5.31.0)
+    transitivePeerDependencies:
+      - '@types/node'
+      - less
+      - lightningcss
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
 
   vite@5.2.12(@types/node@20.13.0)(sass@1.77.4)(terser@5.31.0):
     dependencies:

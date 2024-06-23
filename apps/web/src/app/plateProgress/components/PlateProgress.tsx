@@ -11,7 +11,7 @@ export default ({ userMusic, ver, type }: { userMusic: UserMusic[], ver: typeof 
 	const requiredSongList = PLATE_VER_LIST[ver].flatMap(ver => VER_MUSIC_LIST[ver]).map(id => Song.fromId(id));
 	const levelsRequired = [3];
 	// 只有舞x 和霸者需要打白谱
-	if (ver === BA_VE || ver === '舞') levelsRequired.push(4);
+	if (ver === BA_VE || ver === '舞' || ver === '全曲') levelsRequired.push(4);
 	for (const song of requiredSongList) {
 		for (const level of levelsRequired) {
 			const chart = song.getChart(level);
@@ -47,12 +47,12 @@ export default ({ userMusic, ver, type }: { userMusic: UserMusic[], ver: typeof 
 					<img src={PLATE_IMAGES[ver + (type || '')]} alt="" height={80} /> :
 					<div className={styles.title}>
 						{ver}{type}
-						<br/>
+						<br />
 						完成进度
 					</div>
 			}
 			<LevelProgress progress={calcProgress(userMusic, ver, type)} />
 		</div>
-		<TableContent data={displayDataRows} scoreType={['极', '神'].includes(type) ? 'combo' : 'rank'} showSdDx={false} />
+		<TableContent data={displayDataRows} scoreType={['极', '神', 'fc', 'ap'].includes(type) ? 'combo' : 'rank'} showSdDx={ver === '全曲'} />
 	</div>;
 }

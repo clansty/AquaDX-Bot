@@ -9,8 +9,10 @@ const checkPlateMusic = (music: UserMusic, type: typeof PLATE_TYPE[number] | '')
 		case '将':
 			return music.achievement >= 1e6;
 		case '极':
+		case 'fc':
 			return music.comboStatus > 0;
 		case '神':
+		case 'ap':
 			return music.comboStatus > 2; // AP / AP+
 		case '舞舞':
 			throw new Error('FDX 我也不知道是多少');
@@ -23,7 +25,7 @@ export const calcProgress = (musicList: UserMusic[], ver: typeof PLATE_VER[numbe
 	const result = [] as ProgressCalcResult[];
 	let total = 0, totalDone = 0, maxLevel = 4;
 	// 只有舞x 和霸者需要打白谱
-	if (ver === BA_VE || ver === '舞') maxLevel = 5;
+	if (ver === BA_VE || ver === '舞' || ver === '全曲') maxLevel = 5;
 	for (let lv = 0; lv < maxLevel; lv++) {
 		let all = 0, done = 0;
 		for (const required of requiredSongList) {
