@@ -1,6 +1,6 @@
 import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
-import { Env } from '../../worker-configuration';
+import { Env } from '../types';
 import { useNewReplies } from 'telegraf/future';
 import bind from './bind';
 import callbackQuery from './callbackQuery';

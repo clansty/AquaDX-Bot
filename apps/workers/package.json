@@ -6,8 +6,7 @@
   "scripts": {
     "deploy": "wrangler deploy",
     "dev": "cross-env NODE_ENV=development wrangler dev --ip 0.0.0.0 --port 8080",
-    "tail": "wrangler tail",
-    "cf-typegen": "wrangler types"
+    "tail": "wrangler tail"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240512.0",

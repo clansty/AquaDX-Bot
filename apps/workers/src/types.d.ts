@@ -1,5 +1,7 @@
 import { InlineKeyboardButton } from 'telegraf/types';
 import Renderer from './renderer/Renderer';
+import { CloudflareEnv } from '@clansty/maibot-types';
+import { BrowserWorker } from '@cloudflare/puppeteer';
 
 export type RENDER_QUEUE_ITEM = {
 	chatId: number,
@@ -24,4 +26,9 @@ export type RenderTypeArgs = {
 } | {
 	action: 'plateProgress',
 	args: Parameters<Renderer['plateProgress']>
+}
+
+export type Env = CloudflareEnv & {
+	RENDER_QUEUE: Queue<RENDER_QUEUE_ITEM>;
+	MYBROWSER: BrowserWorker;
 }

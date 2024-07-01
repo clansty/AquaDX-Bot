@@ -1,15 +1,15 @@
 import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
-import { Env } from '../../worker-configuration';
+import { Env } from '../types';
 
 export default (bot: Telegraf<BotContext>, env: Env) => {
 	const sendB50Image = async (ctx: BotContext) => {
 		const rating = await ctx.getUserRating();
 
 		return await ctx.genCacheSendImage(['b50', rating, ctx.from.id],
-			`https://maibot-web.pages.dev/b50/${ctx.from.id}`,
+			`https://maibot-web.pages.dev/b50/${ctx.from.id}/${ctx.currentProfileId}`,
 			2000, 'B50.png', ctx.chat?.type === 'private' ? 'b50' : undefined, false, [
-			[{ text: '查看详情', url: `tg://resolve?domain=${ctx.botInfo.username}&appname=webapp&startapp=${encodeURIComponent(btoa(`/b50/${ctx.from.id}`))}` }]
+			[{ text: '查看详情', url: `tg://resolve?domain=${ctx.botInfo.username}&appname=webapp&startapp=${encodeURIComponent(btoa(`/b50/${ctx.from.id}/${ctx.currentProfileId}`))}` }]
 		]);
 	};
 

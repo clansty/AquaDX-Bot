@@ -3,6 +3,7 @@ import { AquaApi } from '@clansty/maibot-clients';
 import LevelProgress from '../../../components/LevelProgress';
 import { LEVELS } from '@clansty/maibot-types';
 import { notFound } from 'next/navigation';
+import { CloudflareEnv } from '@clansty/maibot-types';
 
 // https://github.com/vercel/next.js/issues/53562
 export const runtime = 'edge';
@@ -16,5 +17,5 @@ export default async ({ params }: { params: { card: string, level: string } }) =
 	const api = await AquaApi.create(env.KV, env.POWERON_TOKEN);
 	const card = Number(params.card);
 	const userMusic = await api.getUserMusic(card);
-	return <LevelProgress userMusic={userMusic} level={level} />;
+	return <LevelProgress userMusic={userMusic} level={level} region="jp" />;
 }

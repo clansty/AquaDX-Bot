@@ -1,4 +1,4 @@
-import { BA_VE, LEVEL, MAIMAI_DX_RELEASE_DATE, PLATE_TYPE, PLATE_VER, PLATE_VER_LIST, ProgressCalcResult, Song, UserMusic, VER_MUSIC_LIST } from '@clansty/maibot-types';
+import { BA_VE, LEVEL, MAIMAI_DX_RELEASE_DATE, PLATE_TYPE, PLATE_VER, ProgressCalcResult, Song, UserMusic } from '@clansty/maibot-types';
 
 const checkPlateMusic = (music: UserMusic, type: typeof PLATE_TYPE[number] | '') => {
 	switch (type) {
@@ -20,8 +20,7 @@ const checkPlateMusic = (music: UserMusic, type: typeof PLATE_TYPE[number] | '')
 	}
 };
 
-export const calcProgress = (musicList: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | ''): ProgressCalcResult[] => {
-	const requiredSongList: number[] = PLATE_VER_LIST[ver].flatMap(ver => VER_MUSIC_LIST[ver]);
+export const calcProgress = (musicList: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | '', requiredSongList: number[]): ProgressCalcResult[] => {
 	const result = [] as ProgressCalcResult[];
 	let total = 0, totalDone = 0, maxLevel = 4;
 	// 只有舞x 和霸者需要打白谱
@@ -48,8 +47,8 @@ export const calcProgress = (musicList: UserMusic[], ver: typeof PLATE_VER[numbe
 	return result;
 };
 
-export const calcProgressText = (musicList: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | ''): string => {
-	const result = calcProgress(musicList, ver, type);
+export const calcProgressText = (musicList: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | '', requiredSongList: number[]): string => {
+	const result = calcProgress(musicList, ver, type, requiredSongList);
 	const ret = result.map(({ done, all }, lv) => `${LEVEL[lv]} ${done}/${all}`);
 	ret.push(`总计 ${result.reduce((acc, { done }) => acc + done, 0)}/${result.reduce((acc, { all }) => acc + all, 0)}`);
 	return ret.join('\n');

@@ -1,11 +1,11 @@
-import { BUDDIES_LOGO, LEVEL_EN, LEVELS, Song, VersionEnum, ProgressCalcResult, TableContentRenderData, TableContentRenderRow, UserMusic } from '@clansty/maibot-types';
+import { BUDDIES_LOGO, LEVEL_EN, LEVELS, Song, VersionEnum, ProgressCalcResult, TableContentRenderData, TableContentRenderRow, UserMusic, Regions } from '@clansty/maibot-types';
 import React from 'react';
 import TableContent from '../../../components/TableContent';
 import _ from 'lodash';
 import LevelProgress from '../../../components/LevelProgress';
 import styles from './LevelProgress.module.css';
 
-export default ({ userMusic, level }: { userMusic: UserMusic[], level: typeof LEVELS[number] }) => {
+export default ({ userMusic, level, region }: { userMusic: UserMusic[], level: typeof LEVELS[number], region: keyof Regions }) => {
 	let displayData = [] as TableContentRenderData[];
 	const requiredSongList = Song.getByCondition(it => it.sheets.some(chart => chart.level === level));
 	const progress = Array(5).fill(null).map(() => ({ all: 0, done: 0 })) as ProgressCalcResult[];
@@ -15,7 +15,7 @@ export default ({ userMusic, level }: { userMusic: UserMusic[], level: typeof LE
 		const charts = song.sheets.filter(chart => chart.level === level);
 		for (const chart of charts) {
 			// 不包括删除曲
-			if (!chart.regions.jp) continue;
+			if (!chart.regions[region]) continue;
 			// 不含 BUDDiES PLUS 的歌
 			if (chart.version === VersionEnum.BUDDiESPLUS) continue;
 			const score = userMusic.find(it => it.musicId === chart.internalId && it.level === LEVEL_EN.indexOf(chart.difficulty));

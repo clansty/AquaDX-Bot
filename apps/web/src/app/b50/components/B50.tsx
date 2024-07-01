@@ -1,11 +1,11 @@
-import { RatingListEntry, UserMusic, UserRating, Song, BUDDIES_LOGO, UserData } from '@clansty/maibot-types';
+import { RatingListEntry, UserMusic, UserRating, Song, BUDDIES_LOGO, Nameplate as NameplateData } from '@clansty/maibot-types';
 import React from 'react';
 import B50Song from './B50Song';
 import { computeRa, ratingAnalyse } from '@clansty/maibot-utils';
 import styles from './B50.module.css';
 import Nameplate from '@/components/Nameplate';
 
-export default ({ rating, userMusic, user }: { rating: UserRating, userMusic: UserMusic[], user: UserData }) =>
+export default ({ rating, userMusic, user }: { rating: UserRating, userMusic: UserMusic[], user: NameplateData }) =>
 	<div style={{ padding: '0 20px' }}>
 		<div className={`${styles.b50Header} flex items-center p-[20px_0] gap-[10px_40px]`}>
 			<div className="text-1.8em">

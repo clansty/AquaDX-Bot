@@ -1,5 +1,6 @@
 import Song from './models/Song';
 import { Sheet } from '@gekichumai/dxdata';
+import { BA_VE, PLATE_VER } from './consts';
 
 export type UserMusic = {
 	'musicId': number,
@@ -193,4 +194,15 @@ export type UserProfileDto = UserProfileDtoAquaDx | UserProfileDtoSdgb
 export type UserProfilesKVStorage = {
 	profiles: UserProfileDto[],
 	selected: number
+}
+
+export type GameVariantPlateMusicList = { [k in typeof PLATE_VER[number] | typeof BA_VE]: number[] }
+
+export type CloudflareEnv = {
+	KV: KVNamespace;
+	BOT_TOKEN: string;
+	API_SECRET: string;
+	POWERON_TOKEN: string;
+	CF_ACCESS_CLIENT_ID: string;
+	CF_ACCESS_CLIENT_SECRET: string;
 }

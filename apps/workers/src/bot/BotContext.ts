@@ -1,26 +1,16 @@
 import { Context } from 'telegraf';
-import { AquaApi } from '@clansty/maibot-clients';
-import { UserMusic, UserPreview, UserProfileDto, UserProfilesKVStorage, UserRating } from '@clansty/maibot-types';
-import { Env } from '../../worker-configuration';
+import { AquaApi, UserProfile } from '@clansty/maibot-clients';
+import { UserMusic, UserProfilesKVStorage, UserRating } from '@clansty/maibot-types';
+import { Env } from '../types';
 import { xxhash64 } from 'cf-workers-hash';
 import { InlineKeyboardButton } from 'telegraf/types';
-import { RENDER_QUEUE_ITEM } from '../types';
-import { UserProfile } from '../models/UserProfile';
-import * as repl from 'node:repl';
 
 export default class BotContext extends Context {
-	private aqua?: AquaApi;
 	private _userMusic?: UserMusic[];
 	private _userRating?: UserRating;
 	private _profiles?: UserProfile[];
-	private _currentProfileId? = 0;
+	currentProfileId? = 0;
 	env: Env;
-
-	async initAquaApi() {
-		if (this.aqua) return this.aqua;
-		this.aqua = await AquaApi.create(this.env.KV, this.env.POWERON_TOKEN);
-		return this.aqua;
-	}
 
 	async getProfiles() {
 		if (this._profiles) return this._profiles;
@@ -30,14 +20,14 @@ export default class BotContext extends Context {
 			return [];
 		}
 		this._profiles = await Promise.all(dto.profiles.map(dto => UserProfile.create(dto, this.env)));
-		this._currentProfileId = dto.selected || 0;
+		this.currentProfileId = dto.selected || 0;
 		return this._profiles;
 	}
 
 	async saveProfiles(profiles: UserProfile[]) {
 		await this.env.KV.put(`profiles:${this.from.id}`, JSON.stringify(<UserProfilesKVStorage>{
 			profiles: profiles.map(p => p.dto),
-			selected: this._currentProfileId
+			selected: this.currentProfileId
 		}));
 	}
 
@@ -47,10 +37,10 @@ export default class BotContext extends Context {
 			await this.reply('请先绑定用户');
 			throw new Error('User not bound');
 		}
-		if (this._currentProfileId >= profiles.length) {
-			this._currentProfileId = 0;
+		if (this.currentProfileId >= profiles.length) {
+			this.currentProfileId = 0;
 		}
-		return profiles[this._currentProfileId];
+		return profiles[this.currentProfileId];
 	}
 
 	async selectProfile(id: number) {
@@ -58,7 +48,7 @@ export default class BotContext extends Context {
 		if (id >= profiles.length) {
 			throw new Error('槽位不存在');
 		}
-		this._currentProfileId = id;
+		this.currentProfileId = id;
 		await this.saveProfiles(profiles);
 	}
 
@@ -70,7 +60,6 @@ export default class BotContext extends Context {
 
 	async getUserRating(reply = true) {
 		if (this._userRating) return this._userRating;
-		if (!this.aqua) await this.initAquaApi();
 		this._userRating = await (await this.getCurrentProfile(reply)).getUserRating();
 		return this._userRating;
 	}

@@ -1,4 +1,4 @@
-import { Env } from '../../worker-configuration';
+import { Env } from '../types';
 import { RENDER_QUEUE_ITEM } from '../types';
 import puppeteer from '@cloudflare/puppeteer';
 import Renderer from './Renderer';

@@ -1,6 +1,7 @@
 import { getRequestContext } from '@cloudflare/next-on-pages';
 import { AquaApi } from '@clansty/maibot-clients';
 import B50 from '@/app/b50/components/B50';
+import { CloudflareEnv } from '@clansty/maibot-types';
 
 // https://github.com/vercel/next.js/issues/53562
 export const runtime = 'edge';

@@ -4,8 +4,7 @@
     "dev:web": "pnpm run --filter=@clansty/maibot-web dev",
     "dev:bot": "pnpm run --filter=@clansty/maibot-workers dev",
     "dev": "pnpm run --filter=@clansty/maibot-workers --filter=@clansty/maibot-web --stream --parallel dev",
-    "deploy": "pnpm run --filter=@clansty/maibot-workers --filter=@clansty/maibot-web --stream --parallel deploy",
-    "deploy:web": "pnpm run --filter=@clansty/maibot-web deploy",
+    "deploy": "pnpm run --filter=@clansty/maibot-workers deploy",
     "deploy:bot": "pnpm run --filter=@clansty/maibot-workers deploy",
     "tail": "pnpm run --filter=@clansty/maibot-workers tail"
   },

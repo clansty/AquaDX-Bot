@@ -1,6 +1,6 @@
 import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
-import { Env } from '../../worker-configuration';
+import { Env } from '../types';
 import { InlineQueryResult } from 'telegraf/types';
 import _ from 'lodash';
 import { FC, LEVEL_EMOJI, Song } from '@clansty/maibot-types/src';

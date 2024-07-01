@@ -1,6 +1,7 @@
 import { AquaApi } from '@clansty/maibot-clients';
 import Nameplate from '../../../../components/Nameplate';
 import { getRequestContext } from '@cloudflare/next-on-pages';
+import { CloudflareEnv } from '@clansty/maibot-types';
 
 export const runtime = 'edge';
 

@@ -1,6 +1,6 @@
 import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
-import { Env } from '../../worker-configuration';
+import { Env } from '../types';
 import { LEVEL_CONST_TABLES, LEVELS } from '@clansty/maibot-types';
 import _ from 'lodash';
 

@@ -1,4 +1,4 @@
-import { BA_VE, BUDDIES_LOGO, MAIMAI_DX_RELEASE_DATE, PLATE_IMAGES, PLATE_TYPE, PLATE_VER, PLATE_VER_LIST, Song, VER_MUSIC_LIST, TableContentRenderData, TableContentRenderRow, UserMusic } from '@clansty/maibot-types';
+import { BA_VE, BUDDIES_LOGO, MAIMAI_DX_RELEASE_DATE, PLATE_IMAGES, PLATE_TYPE, PLATE_VER, Song, TableContentRenderData, TableContentRenderRow, UserMusic } from '@clansty/maibot-types';
 import React from 'react';
 import TableContent from '../../../components/TableContent';
 import _ from 'lodash';
@@ -6,9 +6,14 @@ import LevelProgress from '../../../components/LevelProgress';
 import { calcProgress } from '@clansty/maibot-utils';
 import styles from './PlateProgress.module.css';
 
-export default ({ userMusic, ver, type }: { userMusic: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | '' }) => {
+export default ({ userMusic, ver, type, requiredList }: {
+	userMusic: UserMusic[],
+	ver: typeof PLATE_VER[number] | typeof BA_VE,
+	type: typeof PLATE_TYPE[number] | '',
+	requiredList: number[]
+}) => {
 	let displayData = [] as TableContentRenderData[];
-	const requiredSongList = PLATE_VER_LIST[ver].flatMap(ver => VER_MUSIC_LIST[ver]).map(id => Song.fromId(id));
+	const requiredSongList = requiredList.map(id => Song.fromId(id));
 	const levelsRequired = [3];
 	// 只有舞x 和霸者需要打白谱
 	if ([BA_VE, '舞', '全曲'].includes(ver) || ['clear', 'fc', 'ap'].includes(type)) levelsRequired.push(4);
@@ -51,7 +56,7 @@ export default ({ userMusic, ver, type }: { userMusic: UserMusic[], ver: typeof 
 						完成进度
 					</div>
 			}
-			<LevelProgress progress={calcProgress(userMusic, ver, type)} />
+			<LevelProgress progress={calcProgress(userMusic, ver, type, requiredList)} />
 		</div>
 		<TableContent data={displayDataRows} scoreType={['极', '神', 'fc', 'ap'].includes(type) ? 'combo' : type === 'clear' ? 'score' : 'rank'} showSdDx={ver === '全曲'} />
 	</div>;

@@ -1,8 +1,7 @@
-import { UserProfileDto } from '@clansty/maibot-types';
-import { UserSource } from '@clansty/maibot-clients/src/UserSource';
-import { Env } from '../../worker-configuration';
-import { AquaApi } from '@clansty/maibot-clients';
-import SdgbProxied from '@clansty/maibot-clients/src/SdgbProxied';
+import { CloudflareEnv, GameVariantPlateMusicList, PLATE_MUSIC_LIST_CN, PLATE_MUSIC_LIST_JP, Regions, UserProfileDto } from '@clansty/maibot-types';
+import { UserSource } from './UserSource';
+import AquaApi from './AquaApi';
+import SdgbProxied from './SdgbProxied';
 
 export class UserProfile {
 	private constructor(public readonly type: UserProfileDto['type'],
@@ -10,7 +9,7 @@ export class UserProfile {
 		private readonly client: UserSource) {
 	}
 
-	static async create(dto: UserProfileDto, env: Env) {
+	static async create(dto: UserProfileDto, env: CloudflareEnv) {
 		let client: UserSource;
 		switch (dto.type) {
 			case 'AquaDX':
@@ -31,6 +30,26 @@ export class UserProfile {
 			type: this.type,
 			userId: this.userId
 		};
+	}
+
+	public get region(): keyof Regions {
+		switch (this.type) {
+			case 'AquaDX':
+				return 'jp';
+			case 'SDGB':
+				return 'cn';
+			default:
+		}
+	}
+
+	public get plateSongs(): GameVariantPlateMusicList {
+		switch (this.region) {
+			case 'jp':
+				return PLATE_MUSIC_LIST_JP;
+			case 'cn':
+				return PLATE_MUSIC_LIST_CN;
+			default:
+		}
 	}
 
 	async getUserMusic() {

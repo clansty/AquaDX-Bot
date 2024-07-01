@@ -1,6 +1,6 @@
 import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
-import { Env } from '../../worker-configuration';
+import { Env } from '../types';
 import genSongInfoButtons from '../utils/genSongInfoButtons';
 import { Song } from '@clansty/maibot-types/src';
 

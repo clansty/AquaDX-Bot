@@ -1,6 +1,6 @@
 import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
-import { Env } from '../../worker-configuration';
+import { Env } from '../types';
 
 export default (bot: Telegraf<BotContext>, env: Env) => {
 	bot.command('snapshot', async (ctx) => {

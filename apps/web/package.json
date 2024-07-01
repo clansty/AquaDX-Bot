@@ -10,8 +10,7 @@
     "lint": "next lint",
     "pages:build": "pnpm next-on-pages",
     "preview": "pnpm pages:build && wrangler pages dev --ip 0.0.0.0",
-    "deploy": "pnpm pages:build && wrangler pages deploy",
-    "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts"
+    "deploy": "pnpm pages:build && wrangler pages deploy"
   },
   "dependencies": {
     "@clansty/maibot-clients": "workspace:^",

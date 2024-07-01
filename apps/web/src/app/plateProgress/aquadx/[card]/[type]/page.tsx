@@ -1,8 +1,9 @@
 import { getRequestContext } from '@cloudflare/next-on-pages';
 import { AquaApi } from '@clansty/maibot-clients';
-import { BA_VE, LEVELS, PLATE_TYPE, PLATE_VER } from '@clansty/maibot-types';
+import { BA_VE, PLATE_MUSIC_LIST_JP, PLATE_TYPE, PLATE_VER } from '@clansty/maibot-types';
 import { notFound } from 'next/navigation';
 import PlateProgress from '@/app/plateProgress/components/PlateProgress';
+import { CloudflareEnv } from '@clansty/maibot-types';
 
 // https://github.com/vercel/next.js/issues/53562
 export const runtime = 'edge';
@@ -25,5 +26,5 @@ export default async ({ params }: { params: { card: string, type: string } }) =>
 	const card = Number(params.card);
 	const userMusic = await api.getUserMusic(card);
 
-	return <PlateProgress userMusic={userMusic} type={type} ver={ver} />;
+	return <PlateProgress userMusic={userMusic} type={type} ver={ver} requiredList={PLATE_MUSIC_LIST_JP[ver]} />;
 }

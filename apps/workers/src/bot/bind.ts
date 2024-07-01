@@ -1,8 +1,7 @@
 import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
-import { Env } from '../../worker-configuration';
-import { UserProfile } from '../models/UserProfile';
-import SdgbProxied from '@clansty/maibot-clients/src/SdgbProxied';
+import { Env } from '../types';
+import { SdgbProxied, UserProfile } from '@clansty/maibot-clients';
 
 export default (bot: Telegraf<BotContext>, env: Env) => {
 	const handleQueryBind = async (ctx: BotContext) => {
