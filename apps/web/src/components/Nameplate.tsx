@@ -1,4 +1,4 @@
-import { UserData } from '@clansty/maibot-types';
+import { Nameplate, UserData } from '@clansty/maibot-types';
 import React from 'react';
 import DxRating from '@/components/DxRating';
 import { Kosugi_Maru } from 'next/font/google';
@@ -16,7 +16,7 @@ const course = (id: number) => `https://maimai-assets.pages.dev/UI_DNM_DaniPlate
 const kosugiMaru = Kosugi_Maru({ subsets: ['latin'], weight: '400' });
 
 
-export default ({ user }: { user: UserData }) => {
+export default ({ user }: { user: Nameplate }) => {
 	const title = titles.find(it => it.id === pad(user.titleId));
 
 	return <div className="w-40em h-6.44em bg-cover flex" style={{ backgroundImage: `url(${plate(user.plateId)})` }}>

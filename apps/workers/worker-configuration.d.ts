@@ -9,7 +9,8 @@ interface Env {
 	BOT_TOKEN: string;
 	API_SECRET: string;
 	POWERON_TOKEN: string;
-	API_BASE: string;
 	RENDER_QUEUE: Queue<RENDER_QUEUE_ITEM>;
 	MYBROWSER: BrowserWorker;
+	CF_ACCESS_CLIENT_ID: string;
+	CF_ACCESS_CLIENT_SECRET: string;
 }

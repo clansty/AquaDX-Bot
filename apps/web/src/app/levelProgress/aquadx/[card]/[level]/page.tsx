@@ -13,7 +13,7 @@ export default async ({ params }: { params: { card: string, level: string } }) =
 	if (!LEVELS.includes(level)) notFound();
 
 	const env = getRequestContext().env as CloudflareEnv;
-	const api = await AquaApi.create(env.KV, env.API_BASE, env.POWERON_TOKEN);
+	const api = await AquaApi.create(env.KV, env.POWERON_TOKEN);
 	const card = Number(params.card);
 	const userMusic = await api.getUserMusic(card);
 	return <LevelProgress userMusic={userMusic} level={level} />;

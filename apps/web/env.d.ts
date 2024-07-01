@@ -6,5 +6,4 @@ interface CloudflareEnv {
 	BOT_TOKEN: string;
 	API_SECRET: string;
 	POWERON_TOKEN: string;
-	API_BASE: string;
 }

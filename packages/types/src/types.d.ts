@@ -160,3 +160,32 @@ export type ScoreRenderType = 'rank' | 'score' | 'combo'
 export type Rank = 'sssp' | 'sss' | 'ssp' | 'ss' | 'sp' | 's' | 'aaa' | 'aa' | 'a' | 'bbb' | 'bb' | 'b' | 'c' | 'd'
 
 export type ProgressCalcResult = { done: number, all: number }
+
+export type Nameplate = {
+	iconId: number,
+	titleId: number,
+	plateId: number,
+	classRank: number,
+	playerRating: number,
+	userName: string,
+	courseRank: number
+}
+
+export type UserProfileDtoAquaDx = {
+	userId: number,
+	type: 'AquaDX',
+}
+
+export type UserProfileDtoSdgb = {
+	userId: number,
+	type: 'SDGB',
+}
+
+// TODO
+export type UserProfileDtoAnyAqua = {
+	userId: number,
+	serverUrl: string,
+	type: 'AnyAqua',
+}
+
+export type UserProfileDto = UserProfileDtoAquaDx | UserProfileDtoSdgb

@@ -1,23 +1,34 @@
 import { Context } from 'telegraf';
 import { AquaApi } from '@clansty/maibot-clients';
-import { UserMusic, UserPreview, UserRating } from '@clansty/maibot-types';
+import { UserMusic, UserPreview, UserProfileDto, UserRating } from '@clansty/maibot-types';
 import { Env } from '../../worker-configuration';
 import { xxhash64 } from 'cf-workers-hash';
 import { InlineKeyboardButton } from 'telegraf/types';
 import { RENDER_QUEUE_ITEM } from '../types';
+import { UserProfile } from '../models/UserProfile';
 
 export default class BotContext extends Context {
 	private aqua?: AquaApi;
 	private _aquaUserId?: number;
 	private _userMusic?: UserMusic[];
 	private _userRating?: UserRating;
-	private _userPreview?: UserPreview;
+	private _profiles?: UserProfile[];
 	env: Env;
 
 	async initAquaApi() {
 		if (this.aqua) return this.aqua;
-		this.aqua = await AquaApi.create(this.env.KV, this.env.API_BASE, this.env.POWERON_TOKEN);
+		this.aqua = await AquaApi.create(this.env.KV, this.env.POWERON_TOKEN);
 		return this.aqua;
+	}
+
+	async getProfiles() {
+		if (this._profiles) return this._profiles;
+		this._profiles = await Promise.all((await this.env.KV.get<UserProfileDto[]>(`profiles:${this.from.id}`, 'json') || []).map(dto => UserProfile.create(dto, this.env)));
+		return this._profiles;
+	}
+
+	async saveProfiles(profiles: UserProfile[]) {
+		await this.env.KV.put(`profiles:${this.from.id}`, JSON.stringify(profiles.map(p => p.dto)));
 	}
 
 	async getAquaUserId(reply = true) {
@@ -42,13 +53,6 @@ export default class BotContext extends Context {
 		if (!this.aqua) await this.initAquaApi();
 		this._userRating = await this.aqua.getUserRating(await this.getAquaUserId(reply));
 		return this._userRating;
-	}
-
-	async getUserPreview(reply = true) {
-		if (this._userPreview) return this._userPreview;
-		if (!this.aqua) await this.initAquaApi();
-		this._userPreview = await this.aqua.getUserPreview(await this.getAquaUserId(reply));
-		return this._userPreview;
 	}
 
 	async getCacheImage(key: any) {

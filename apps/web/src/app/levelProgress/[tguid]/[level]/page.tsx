@@ -16,7 +16,7 @@ export default async ({ params }: { params: { tguid: string, level: string } }) 
 	if (!aquaUserId) {
 		throw new Error('请先绑定用户');
 	}
-	const api = await AquaApi.create(env.KV, env.API_BASE, env.POWERON_TOKEN);
+	const api = await AquaApi.create(env.KV, env.POWERON_TOKEN);
 	const userMusic = await api.getUserMusic(aquaUserId);
 
 	return <LevelProgress userMusic={userMusic} level={level} />;
