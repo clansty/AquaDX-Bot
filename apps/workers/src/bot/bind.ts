@@ -5,20 +5,25 @@ import { UserProfile } from '../models/UserProfile';
 import SdgbProxied from '@clansty/maibot-clients/src/SdgbProxied';
 
 export default (bot: Telegraf<BotContext>, env: Env) => {
+	const handleQueryBind = async (ctx: BotContext) => {
+		const profiles = await ctx.getProfiles();
+		let bond = '';
+		if (profiles.length) {
+			bond += `\n\n现在已经绑定 ${profiles.length} 个账号\n使用 /profile 命令来查看已经绑定的账号`;
+		}
+		await ctx.reply('用法: /bind <ID 或 Chime>' + bond);
+	};
+
 	bot.start(async (ctx, next) => {
 		if (ctx.payload !== 'bind') return next();
-		await ctx.reply('bind test');
+		await handleQueryBind(ctx);
 	});
 
 	bot.command('bind', async (ctx) => {
 		const profiles = await ctx.getProfiles();
 
 		if (ctx.args.length < 1) {
-			let bond = '';
-			if (profiles.length) {
-				bond += `\n\n现在已经绑定 ${profiles.length} 个账号\n使用 /profile 命令来查看已经绑定的账号`;
-			}
-			await ctx.reply('请输入要绑定的 ID 或 Chime' + bond);
+			await handleQueryBind(ctx);
 			return;
 		}
 
@@ -45,10 +50,41 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 		const userPreview = await profile.getUserPreview();
 
 		await ctx.saveProfiles(profiles);
-		let text = `成功绑定用户 ${userPreview.userName}，账号槽位 ${profiles.length}\n\n使用 /profile 命令来查看已经绑定的账号`;
-		if(profiles.length>1){
-			text+= `\n使用 "/profile <槽位ID>" 来切换当前选择的账号`;
+		let text = `成功绑定用户 ${userPreview.userName}，DX Rating ${userPreview.playerRating}\n账号槽位 ${profiles.length}\n\n使用 /profile 命令来查看已经绑定的账号`;
+		if (profiles.length > 1) {
+			text += `\n使用 "/profile <槽位ID>" 来切换当前选择的账号`;
 		}
 		await ctx.reply(text);
+	});
+
+	bot.command(['profile', 'profiles'], async (ctx) => {
+		const profiles = await ctx.getProfiles();
+		if (!profiles.length) {
+			await ctx.reply('请先绑定用户');
+			return;
+		}
+
+		if (!ctx.args.length) {
+			const text = await Promise.all(
+				profiles.map(async (p, i) => {
+					const text = `${i + 1}. ${p.type} ${p.userId}`;
+					if (p === await ctx.getCurrentProfile(false)) {
+						return `<b>${text}</b> (选中)`;
+					}
+					return text;
+				}));
+
+			await ctx.replyWithHTML(text.join('\n'));
+			return;
+		}
+
+		const index = Number(ctx.args[0]) - 1;
+		if (isNaN(index) || index < 0 || index >= profiles.length) {
+			await ctx.reply('槽位不存在');
+			return;
+		}
+
+		await ctx.selectProfile(index);
+		await ctx.reply('切换成功');
 	});
 }

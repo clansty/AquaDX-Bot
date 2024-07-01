@@ -1,18 +1,19 @@
 import { Context } from 'telegraf';
 import { AquaApi } from '@clansty/maibot-clients';
-import { UserMusic, UserPreview, UserProfileDto, UserRating } from '@clansty/maibot-types';
+import { UserMusic, UserPreview, UserProfileDto, UserProfilesKVStorage, UserRating } from '@clansty/maibot-types';
 import { Env } from '../../worker-configuration';
 import { xxhash64 } from 'cf-workers-hash';
 import { InlineKeyboardButton } from 'telegraf/types';
 import { RENDER_QUEUE_ITEM } from '../types';
 import { UserProfile } from '../models/UserProfile';
+import * as repl from 'node:repl';
 
 export default class BotContext extends Context {
 	private aqua?: AquaApi;
-	private _aquaUserId?: number;
 	private _userMusic?: UserMusic[];
 	private _userRating?: UserRating;
 	private _profiles?: UserProfile[];
+	private _currentProfileId? = 0;
 	env: Env;
 
 	async initAquaApi() {
@@ -23,35 +24,54 @@ export default class BotContext extends Context {
 
 	async getProfiles() {
 		if (this._profiles) return this._profiles;
-		this._profiles = await Promise.all((await this.env.KV.get<UserProfileDto[]>(`profiles:${this.from.id}`, 'json') || []).map(dto => UserProfile.create(dto, this.env)));
+		const dto = await this.env.KV.get<UserProfilesKVStorage>(`profiles:${this.from.id}`, 'json');
+		if (!dto) {
+			this._profiles = [];
+			return [];
+		}
+		this._profiles = await Promise.all(dto.profiles.map(dto => UserProfile.create(dto, this.env)));
+		this._currentProfileId = dto.selected || 0;
 		return this._profiles;
 	}
 
 	async saveProfiles(profiles: UserProfile[]) {
-		await this.env.KV.put(`profiles:${this.from.id}`, JSON.stringify(profiles.map(p => p.dto)));
+		await this.env.KV.put(`profiles:${this.from.id}`, JSON.stringify(<UserProfilesKVStorage>{
+			profiles: profiles.map(p => p.dto),
+			selected: this._currentProfileId
+		}));
 	}
 
-	async getAquaUserId(reply = true) {
-		if (this._aquaUserId) return this._aquaUserId;
-		this._aquaUserId = Number(await this.env.KV.get(`bind:${this.from.id}`));
-		if (!this._aquaUserId && reply) {
+	async getCurrentProfile(reply = true) {
+		const profiles = await this.getProfiles();
+		if (!profiles.length && reply) {
 			await this.reply('请先绑定用户');
 			throw new Error('User not bound');
 		}
-		return this._aquaUserId;
+		if (this._currentProfileId >= profiles.length) {
+			this._currentProfileId = 0;
+		}
+		return profiles[this._currentProfileId];
+	}
+
+	async selectProfile(id: number) {
+		const profiles = await this.getProfiles();
+		if (id >= profiles.length) {
+			throw new Error('槽位不存在');
+		}
+		this._currentProfileId = id;
+		await this.saveProfiles(profiles);
 	}
 
 	async getUserMusic(reply = true) {
 		if (this._userMusic) return this._userMusic;
-		if (!this.aqua) await this.initAquaApi();
-		this._userMusic = await this.aqua.getUserMusic(await this.getAquaUserId(reply));
+		this._userMusic = await (await this.getCurrentProfile(reply)).getUserMusic();
 		return this._userMusic;
 	}
 
 	async getUserRating(reply = true) {
 		if (this._userRating) return this._userRating;
 		if (!this.aqua) await this.initAquaApi();
-		this._userRating = await this.aqua.getUserRating(await this.getAquaUserId(reply));
+		this._userRating = await (await this.getCurrentProfile(reply)).getUserRating();
 		return this._userRating;
 	}
 

@@ -189,3 +189,8 @@ export type UserProfileDtoAnyAqua = {
 }
 
 export type UserProfileDto = UserProfileDtoAquaDx | UserProfileDtoSdgb
+
+export type UserProfilesKVStorage = {
+	profiles: UserProfileDto[],
+	selected: number
+}
