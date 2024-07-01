@@ -65,6 +65,10 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 		}
 
 		if (!ctx.args.length) {
+			if (ctx.chat.type !== 'private') {
+				await ctx.reply('请在私聊中使用此命令');
+				return;
+			}
 			const text = await Promise.all(
 				profiles.map(async (p, i) => {
 					const text = `${i + 1}. ${p.type} ${p.userId}`;
