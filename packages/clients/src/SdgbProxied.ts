@@ -25,9 +25,9 @@ export default class SdgbProxied extends UserSource {
 			iconId: userPreview.iconId,
 			// TODO: 绑定时预获取并保存
 			classRank: 0,
-			plateId: 0,
+			plateId: 1,
 			courseRank: 0,
-			titleId: 0,
+			titleId: 1,
 			userName: userPreview.userName,
 			playerRating: userPreview.playerRating
 		};
