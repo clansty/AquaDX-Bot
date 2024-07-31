@@ -69,7 +69,13 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 	});
 
 	bot.command('query', async (ctx) => {
-		const results = Song.search(ctx.payload.trim().toLowerCase());
+		const kw = ctx.payload.trim().toLowerCase();
+		if (!kw) {
+			await ctx.reply('请输入关键词');
+			return;
+		}
+
+		const results = Song.search(kw);
 
 		if (!results.length) {
 			await ctx.reply('找不到匹配的歌');
