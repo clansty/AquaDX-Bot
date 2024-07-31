@@ -28,7 +28,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 					return;
 				}
 
-				const text = calcProgressText(userMusic, version, type, (await ctx.getCurrentProfile()).plateSongs[version + type]);
+				const text = calcProgressText(userMusic, version, type, (await ctx.getCurrentProfile()).plateSongs[version]);
 				const cachedImage = await ctx.getCacheImage([version, type, userMusic]);
 				const results: InlineQueryResult[] = [{
 					type: 'article',
@@ -54,7 +54,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 			});
 
 			bot.hears(RegExp(`^\\/?${version} ?${type} ?进度$`), async (ctx) => {
-				await ctx.reply(calcProgressText(await ctx.getUserMusic(), version, type, (await ctx.getCurrentProfile()).plateSongs[version + type]));
+				await ctx.reply(calcProgressText(await ctx.getUserMusic(), version, type, (await ctx.getCurrentProfile()).plateSongs[version]));
 			});
 
 			bot.hears(RegExp(`^\\/?${version} ?${type} ?完成[图表]$`), async (ctx) => {
