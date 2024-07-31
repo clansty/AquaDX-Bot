@@ -35,7 +35,7 @@ export default class Chart implements Sheet {
 	get level(): typeof LEVELS[number] {
 		const base = Math.floor(this.internalLevelValue);
 		const decimal = this.internalLevelValue * 10 - base * 10;
-		if (decimal >= 7) {
+		if (decimal >= 6) {
 			return `${base}+` as typeof LEVELS[number];
 		}
 		return base.toString() as typeof LEVELS[number];
