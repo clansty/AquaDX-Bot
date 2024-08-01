@@ -54,6 +54,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 		profiles.push(profile);
 		const userPreview = await profile.getUserPreview();
 
+		await ctx.saveProfiles(profiles);
 		await ctx.selectProfile(profiles.length - 1);
 		let text = `成功绑定用户 ${userPreview.userName}，DX Rating ${userPreview.playerRating}\n账号槽位 ${profiles.length}\n\n使用 /profile 命令来查看已经绑定的账号`;
 		if (profiles.length > 1) {

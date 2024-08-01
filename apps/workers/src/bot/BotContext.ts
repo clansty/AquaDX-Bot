@@ -3,7 +3,7 @@ import { AquaApi, UserProfile } from '@clansty/maibot-clients';
 import { UserMusic, UserProfilesKVStorage, UserRating } from '@clansty/maibot-types';
 import { Env } from '../types';
 import { xxhash64 } from 'cf-workers-hash';
-import { InlineKeyboardButton } from 'telegraf/types';
+import { InlineKeyboardButton, Message } from 'telegraf/types';
 
 export default class BotContext extends Context {
 	private _userMusic?: UserMusic[];
@@ -25,6 +25,7 @@ export default class BotContext extends Context {
 	}
 
 	async saveProfiles(profiles: UserProfile[]) {
+		this._profiles = profiles;
 		await this.env.KV.put(`profiles:${this.from.id}`, JSON.stringify(<UserProfilesKVStorage>{
 			profiles: profiles.map(p => p.dto),
 			selected: this.currentProfileId
@@ -102,12 +103,63 @@ export default class BotContext extends Context {
 
 		const genMsg = await this.reply('图片生成中...');
 
-		await this.env.RENDER_QUEUE.send({
-			hash, shareKw, filename, inlineKeyboard, isFromStart, url, width,
-			processingMessageId: genMsg.message_id,
-			chatId: this.chat.id,
-			replyToMessageId: this.msgId,
-			queueTime: new Date().getTime()
+		const { data, height } = await this.genImage(url, width);
+		let messageSent: Message;
+		if (height / width > 2) {
+			messageSent = await this.replyWithDocument({ source: Buffer.from(data), filename }, {
+				reply_markup: { inline_keyboard: inlineKeyboard }
+			});
+			if (hash)
+				await this.env.KV.put(`image:${hash}`, JSON.stringify({ fileId: messageSent.document.file_id, type: 'document' }));
+		} else {
+			if (shareKw) {
+				inlineKeyboard.push([{
+					text: '分享',
+					switch_inline_query: shareKw
+				}]);
+			}
+			isFromStart = false;
+
+			messageSent = await this.replyWithPhoto({ source: Buffer.from(data), filename }, {
+				reply_markup: { inline_keyboard: inlineKeyboard }
+			});
+			if (hash)
+				await this.env.KV.put(`image:${hash}`, JSON.stringify({ fileId: messageSent.photo[messageSent.photo.length - 1].file_id, type: 'image' }));
+		}
+
+		try {
+			await this.deleteMessage(genMsg.message_id);
+			console.log('删除消息完成', new Date());
+		} catch (e) {
+			console.log('删除消息失败', e, '无所谓');
+		}
+
+		if (isFromStart) {
+			try {
+				await this.reply('由于图片高度太高，暂时不支持使用行内模式发送');
+				console.log('发送高度提示', new Date());
+			} catch (e) {
+				console.log('发送消息失败', e, '无所谓');
+			}
+		}
+	}
+
+	async genImage(url: string, width: number) {
+		const id = this.env.RENDERER.idFromName('browser');
+		const obj = this.env.RENDERER.get(id);
+
+		let req = await obj.fetch('https://do', {
+			method: 'POST',
+			body: JSON.stringify({ url, width })
 		});
+
+		if (!req.ok) {
+			throw new Error(await req.text());
+		}
+
+		return {
+			height: Number(req.headers.get('height')),
+			data: await req.arrayBuffer()
+		};
 	}
 }

@@ -1,6 +1,5 @@
 import { createBot } from './bot';
-import { Env } from '../worker-configuration';
-import queueHandler from './renderer/queueHandler';
+import { Env } from './types';
 
 export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
@@ -19,6 +18,7 @@ export default {
 			console.error(e);
 		}
 		return new Response();
-	},
-	queue: queueHandler
+	}
 };
+
+export { Renderer } from './renderer/Renderer';
