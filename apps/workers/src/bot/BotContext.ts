@@ -52,6 +52,15 @@ export default class BotContext extends Context {
 		await this.saveProfiles(profiles);
 	}
 
+	async delProfile(id: number) {
+		const profiles = await this.getProfiles();
+		if (id >= profiles.length) {
+			throw new Error('槽位不存在');
+		}
+		profiles.splice(id, 1);
+		await this.saveProfiles(profiles);
+	}
+
 	async getUserMusic(reply = true) {
 		if (this._userMusic) return this._userMusic;
 		this._userMusic = await (await this.getCurrentProfile(reply)).getUserMusic();

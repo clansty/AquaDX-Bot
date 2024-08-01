@@ -9,7 +9,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 		const profiles = await ctx.getProfiles();
 		let bond = '';
 		if (profiles.length) {
-			bond += `\n\n现在已经绑定 ${profiles.length} 个账号\n使用 /profile 命令来查看已经绑定的账号`;
+			bond += `\n\n现在已经绑定 ${profiles.length} 个账号\n使用 /profile 命令来查看已经绑定的账号\n使用 /delprofile 命令可以删除已经绑定的账号`;
 		}
 		await ctx.reply('用法: /bind <AquaDX 的“账户卡”号码> 或 <国服微信二维码识别出来的文字>' + bond);
 	};
@@ -54,7 +54,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 		profiles.push(profile);
 		const userPreview = await profile.getUserPreview();
 
-		await ctx.saveProfiles(profiles);
+		await ctx.selectProfile(profiles.length - 1);
 		let text = `成功绑定用户 ${userPreview.userName}，DX Rating ${userPreview.playerRating}\n账号槽位 ${profiles.length}\n\n使用 /profile 命令来查看已经绑定的账号`;
 		if (profiles.length > 1) {
 			text += `\n使用 "/profile <槽位ID>" 来切换当前选择的账号`;
@@ -92,10 +92,10 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 			}
 			await ctx.replyWithHTML(await getProfilesText(ctx), {
 				reply_markup: {
-					inline_keyboard: _.chunk(profiles.map((_, i) => ({
+					inline_keyboard: profiles.length > 1 ? _.chunk(profiles.map((_, i) => ({
 						text: (i + 1).toString(),
 						callback_data: `select_profile:${i}`
-					})), 4)
+					})), 4) : []
 				}
 			});
 			return;
@@ -121,6 +121,54 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 				inline_keyboard: _.chunk((await ctx.getProfiles()).map((_, i) => ({
 					text: (i + 1).toString(),
 					callback_data: `select_profile:${i}`
+				})), 4)
+			}
+		});
+	});
+
+	bot.command(['delprofile', 'delprofiles', 'rmprofile', 'rmprofiles'], async (ctx) => {
+		const profiles = await ctx.getProfiles();
+		if (!profiles.length) {
+			await ctx.reply('请先绑定用户');
+			return;
+		}
+
+		if (!ctx.args.length) {
+			if (ctx.chat.type !== 'private') {
+				await ctx.reply('请在私聊中使用此命令');
+				return;
+			}
+			await ctx.replyWithHTML(await getProfilesText(ctx), {
+				reply_markup: {
+					inline_keyboard: _.chunk(profiles.map((_, i) => ({
+						text: (i + 1).toString(),
+						callback_data: `del_profile:${i}`
+					})), 4)
+				}
+			});
+			return;
+		}
+
+		const index = Number(ctx.args[0]) - 1;
+		if (isNaN(index) || index < 0 || index >= profiles.length) {
+			await ctx.reply('槽位不存在');
+			return;
+		}
+
+		await ctx.delProfile(index);
+		await ctx.reply('删除成功');
+	});
+
+	bot.action(/^del_profile:(\d+)$/, async (ctx) => {
+		const index = Number(ctx.match[1]);
+		await ctx.delProfile(index);
+		await ctx.answerCbQuery('删除成功');
+		await ctx.editMessageText(await getProfilesText(ctx), {
+			parse_mode: 'HTML',
+			reply_markup: {
+				inline_keyboard: _.chunk((await ctx.getProfiles()).map((_, i) => ({
+					text: (i + 1).toString(),
+					callback_data: `del_profile:${i}`
 				})), 4)
 			}
 		});
