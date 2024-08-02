@@ -35,7 +35,16 @@ export default class AquaDx extends UserSource {
 
 	public override async getUserRating(username: string) {
 		console.log('请求 user-rating', { username });
-		return await this.fetch('/api/v2/game/mai2/user-rating', { username });
+		const data = await this.fetch('/api/v2/game/mai2/user-rating', { username });
+		for (const key of ['best35', 'best15']) {
+			data[key] = data[key].map(([musicId, level, romVersion, achievement]) => ({
+				musicId: parseInt(musicId),
+				level: parseInt(level),
+				romVersion: parseInt(romVersion),
+				achievement: parseInt(achievement)
+			}));
+		}
+		return data;
 	}
 
 	public async getUserPreview(username: string) {
