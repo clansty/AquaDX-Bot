@@ -16,9 +16,6 @@ importers:
 
   .:
     dependencies:
-      '@guiiai/logg':
-        specifier: ^1.0.1
-        version: 1.0.1
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
@@ -1025,9 +1022,6 @@ packages:
   '@gekichumai/dxdata@https://gitpkg.now.sh/gekichumai/dxrating/packages/dxdata?a6c507f7ef09cfb9ad1679e568c36f12c08cdb5b':
     resolution: {tarball: https://gitpkg.now.sh/gekichumai/dxrating/packages/dxdata?a6c507f7ef09cfb9ad1679e568c36f12c08cdb5b}
     version: 0.0.0
-
-  '@guiiai/logg@1.0.1':
-    resolution: {integrity: sha512-beDaKdlJzUE3w7gSII/XIfMd2W7W5jad5ScCTfsf6yJsXQoNE8OuO5D88fwoSLrrY/nQf1Q3zEblzWKMDYE6kA==}
 
   '@iconify-json/twemoji@1.1.15':
     resolution: {integrity: sha512-ze2CAOwIWBKIP6ih6qMDItasVjRicktl2Qr3/ohZSMToAHm9z3Q6HCwE48eT0+D+uFpGBlNRQ22HHyE5izyhDg==}
@@ -4312,10 +4306,6 @@ snapshots:
   '@fastify/busboy@2.1.1': {}
 
   '@gekichumai/dxdata@https://gitpkg.now.sh/gekichumai/dxrating/packages/dxdata?a6c507f7ef09cfb9ad1679e568c36f12c08cdb5b': {}
-
-  '@guiiai/logg@1.0.1':
-    dependencies:
-      colorette: 2.0.20
 
   '@iconify-json/twemoji@1.1.15':
     dependencies:

@@ -1,11 +1,5 @@
 import { createBot } from './bot';
 import { Env } from './types';
-import { createLogg, Format, LogLevel, setGlobalFormat, setGlobalLogLevel } from '@guiiai/logg';
-
-setGlobalLogLevel(LogLevel.Debug);
-setGlobalFormat(Format.Pretty);
-
-const log = createLogg('Main').useGlobalConfig();
 
 export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
@@ -17,7 +11,7 @@ export default {
 			const req = await request.json();
 			ctx.waitUntil(createBot(env).handleUpdate(req as any));
 		} catch (e) {
-			log.errorWithError('处理请求时发生错误', e);
+			console.log('处理请求时发生错误', e);
 		}
 		return new Response();
 	}

@@ -1,8 +1,5 @@
 import { UserData } from '@clansty/maibot-types';
 import { UserSource } from './UserSource';
-import { createLogg } from '@guiiai/logg';
-
-const log = createLogg('UserSource/AquaDxLegacy').useGlobalConfig()
 
 export default class AquaDxLegacy extends UserSource {
 	private static async powerOn(baseUrl: string, token: string) {
@@ -17,14 +14,13 @@ export default class AquaDxLegacy extends UserSource {
 		}
 		const req = await fetch(baseUrl + '/sys/servlet/PowerOn', init);
 		const res = new URLSearchParams(await req.text());
-		console.log(res);
 		return res.get('uri') as string;
 	}
 
 	public static async create(kv: KVNamespace, powerOnToken: string) {
 		let uri = await kv.get('apiBase');
 		if (!uri) {
-			log.log('请求 powerOn');
+			console.log('请求 powerOn');
 			uri = await AquaDxLegacy.powerOn('http://aquadx-cf.hydev.org', powerOnToken);
 			const url = new URL(uri);
 			// 不然会出现不会自动解压 deflate 的问题
@@ -36,7 +32,7 @@ export default class AquaDxLegacy extends UserSource {
 	}
 
 	public async getUserData(userId: number) {
-		log.withFields({ userId }).log('请求 GetUserDataApi');
+		console.log('请求 GetUserDataApi', { userId });
 		const req = await fetch(this.baseUrl + 'GetUserDataApi', {
 			method: 'POST',
 			body: JSON.stringify({ userId }),

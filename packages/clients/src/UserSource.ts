@@ -1,7 +1,4 @@
 import { Nameplate, UserCombinedRating, UserMusic, UserPreview, UserRating } from '@clansty/maibot-types';
-import { createLogg } from '@guiiai/logg';
-
-const log = createLogg('UserSource').useGlobalConfig()
 
 export abstract class UserSource {
 	protected constructor(protected readonly baseUrl: string) {
@@ -12,7 +9,7 @@ export abstract class UserSource {
 	}
 
 	async getUserMusic(userId: number | string, musicIdList: number[]) {
-		log.withFields({ userId, musicIdListLength: musicIdList.length }).log('请求 GetUserMusicApi');
+		console.log('请求 GetUserMusicApi', { userId, musicIdListLength: musicIdList.length });
 		const req = await fetch(this.baseUrl + 'GetUserMusicApi', {
 			method: 'POST',
 			body: JSON.stringify({ userId }),
@@ -23,7 +20,7 @@ export abstract class UserSource {
 	}
 
 	async getUserRating(userId: number | string): Promise<UserCombinedRating> {
-		log.withFields({ userId }).log('请求 GetUserRatingApi');
+		console.log('请求 GetUserRatingApi', userId);
 		const req = await fetch(this.baseUrl + 'GetUserRatingApi', {
 			method: 'POST',
 			body: JSON.stringify({ userId }),
@@ -40,7 +37,7 @@ export abstract class UserSource {
 	}
 
 	public async getUserPreview(userId: number | string) {
-		log.withFields({ userId }).log('请求 GetUserPreviewApi');
+		console.log('请求 GetUserPreviewApi', { userId });
 		const req = await fetch(this.baseUrl + 'GetUserPreviewApi', {
 			method: 'POST',
 			body: JSON.stringify({ userId }),
