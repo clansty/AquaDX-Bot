@@ -33,16 +33,14 @@ export type UserCombinedRating = {
 	musicList: UserMusic[]
 }
 
-export type UserPreview = {
+export interface UserPreview extends UserPreviewSummary {
 	'userId': number,
-	'userName': string,
 	'isLogin': boolean,
 	'lastGameId': string,
 	'lastDataVersion': string,
 	'lastRomVersion': string,
 	'lastLoginDate': string,
 	'lastPlayDate': string,
-	'playerRating': number,
 	'nameplateId': number,
 	'iconId': number,
 	'trophyId': number,
@@ -55,6 +53,11 @@ export type UserPreview = {
 	'dispRate': number,
 	'isInherit': number,
 	'banState': number
+}
+
+export interface UserPreviewSummary {
+	'userName': string,
+	'playerRating': number
 }
 
 export type UserData = {

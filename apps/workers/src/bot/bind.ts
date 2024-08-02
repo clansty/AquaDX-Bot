@@ -11,7 +11,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 		if (profiles.length) {
 			bond += `\n\n现在已经绑定 ${profiles.length} 个账号\n使用 /profile 命令来查看已经绑定的账号\n使用 /delprofile 命令可以删除已经绑定的账号`;
 		}
-		await ctx.reply('用法: /bind <AquaDX 的“账户卡”号码> 或 <国服微信二维码识别出来的文字>' + bond);
+		await ctx.replyWithHTML('用法: /bind <code>AquaDX 的用户名</code> 或 <code>国服微信二维码识别出来的文字</code>' + bond);
 	};
 
 	bot.start(async (ctx, next) => {
@@ -35,9 +35,10 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 		const param = ctx.args[0];
 		let profile: UserProfile;
 
-		if (!isNaN(Number(param))) {
-			profile = await UserProfile.create({ type: 'AquaDX', userId: Number(param) }, env);
-		} else if (param.startsWith('SGWCMAI' + 'D')) {
+		if (!isNaN(Number(param))) { // is number
+			await ctx.reply('现在请使用有户名绑定 AquaDX 的账号');
+			// profile = await UserProfile.create({ type: 'AquaDX', userId: Number(param) }, env);
+		} else if (param.startsWith('SGWCMAI' + 'D') && param.length === 64 + 8 + 12) {
 			const client = SdgbProxied.create(env.CF_ACCESS_CLIENT_ID, env.CF_ACCESS_CLIENT_SECRET);
 			try {
 				const userId = await client.resolveChime(param);
@@ -47,8 +48,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 				return;
 			}
 		} else {
-			await ctx.reply('我也不知道你输了什么，反正我绑不了');
-			return;
+			profile = await UserProfile.create({ type: 'AquaDX-v2', username: param }, env);
 		}
 
 		profiles.push(profile);

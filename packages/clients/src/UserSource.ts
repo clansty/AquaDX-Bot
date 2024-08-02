@@ -1,4 +1,4 @@
-import { Nameplate, UserCombinedRating, UserMusic, UserPreview, UserRating } from '@clansty/maibot-types';
+import { Nameplate, UserCombinedRating, UserMusic, UserPreview, UserPreviewSummary, UserRating } from '@clansty/maibot-types';
 
 export abstract class UserSource {
 	protected constructor(protected readonly baseUrl: string) {
@@ -36,7 +36,7 @@ export abstract class UserSource {
 		};
 	}
 
-	public async getUserPreview(userId: number | string) {
+	public async getUserPreview(userId: number | string): Promise<UserPreviewSummary> {
 		console.log('请求 GetUserPreviewApi', { userId });
 		const req = await fetch(this.baseUrl + 'GetUserPreviewApi', {
 			method: 'POST',

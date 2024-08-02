@@ -1,5 +1,5 @@
 import { UserSource } from './UserSource';
-import { Nameplate } from '@clansty/maibot-types';
+import { Nameplate, UserPreview } from '@clansty/maibot-types';
 
 export default class SdgbProxied extends UserSource {
 	public constructor(private readonly CF_ACCESS_CLIENT_ID: string,
@@ -19,7 +19,7 @@ export default class SdgbProxied extends UserSource {
 	}
 
 	public async getNameplate(userId: number): Promise<Nameplate> {
-		const userPreview = await this.getUserPreview(userId);
+		const userPreview = await this.getUserPreview(userId) as UserPreview;
 
 		return {
 			iconId: userPreview.iconId,

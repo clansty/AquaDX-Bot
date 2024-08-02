@@ -2,6 +2,7 @@ import { CloudflareEnv, GameVariantPlateMusicList, PLATE_MUSIC_LIST_CN, PLATE_MU
 import { UserSource } from './UserSource';
 import AquaDxLegacy from './AquaDxLegacy';
 import SdgbProxied from './SdgbProxied';
+import AquaDx from './AquaDx';
 
 export class UserProfile {
 	private constructor(private readonly _type: UserProfileDto['type'],
@@ -22,6 +23,7 @@ export class UserProfile {
 				userId = dto.userId;
 				break;
 			case 'AquaDX-v2':
+				client = new AquaDx();
 				userId = dto.username;
 		}
 
@@ -42,6 +44,8 @@ export class UserProfile {
 		switch (this._type) {
 			case 'AquaDX':
 				return 'AquaDX (Legacy)';
+			case 'AquaDX-v2':
+				return 'AquaDX';
 			case 'SDGB':
 				return 'SDGB';
 			default:
@@ -52,6 +56,7 @@ export class UserProfile {
 	public get region(): keyof Regions {
 		switch (this._type) {
 			case 'AquaDX':
+			case 'AquaDX-v2':
 				return 'jp';
 			case 'SDGB':
 				return 'cn';
