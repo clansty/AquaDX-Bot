@@ -1,5 +1,11 @@
 import { createBot } from './bot';
 import { Env } from './types';
+import { createLogg, Format, LogLevel, setGlobalFormat, setGlobalLogLevel } from '@guiiai/logg';
+
+setGlobalLogLevel(LogLevel.Debug);
+setGlobalFormat(Format.Pretty);
+
+const log = createLogg('Main').useGlobalConfig();
 
 export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
@@ -9,13 +15,9 @@ export default {
 		}
 		try {
 			const req = await request.json();
-			if (process.env.NODE_ENV === 'development')
-				console.log(JSON.stringify(req));
-			else
-				console.log(req);
 			ctx.waitUntil(createBot(env).handleUpdate(req as any));
 		} catch (e) {
-			console.error(e);
+			log.errorWithError('处理请求时发生错误', e);
 		}
 		return new Response();
 	}

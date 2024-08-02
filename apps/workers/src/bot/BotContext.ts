@@ -1,5 +1,5 @@
 import { Context } from 'telegraf';
-import { AquaApi, UserProfile } from '@clansty/maibot-clients';
+import { AquaDxLegacy, UserProfile } from '@clansty/maibot-clients';
 import { UserMusic, UserProfilesKVStorage, UserRating } from '@clansty/maibot-types';
 import { Env } from '../types';
 import { xxhash64 } from 'cf-workers-hash';
@@ -60,18 +60,6 @@ export default class BotContext extends Context {
 		}
 		profiles.splice(id, 1);
 		await this.saveProfiles(profiles);
-	}
-
-	async getUserMusic(reply = true) {
-		if (this._userMusic) return this._userMusic;
-		this._userMusic = await (await this.getCurrentProfile(reply)).getUserMusic();
-		return this._userMusic;
-	}
-
-	async getUserRating(reply = true) {
-		if (this._userRating) return this._userRating;
-		this._userRating = await (await this.getCurrentProfile(reply)).getUserRating();
-		return this._userRating;
 	}
 
 	async getCacheImage(key: any) {

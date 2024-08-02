@@ -9,6 +9,7 @@
     "tail": "pnpm run --filter=@clansty/maibot-workers tail"
   },
   "dependencies": {
+    "@guiiai/logg": "^1.0.1",
     "lodash": "^4.17.21"
   },
   "pnpm": {

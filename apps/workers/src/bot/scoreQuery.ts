@@ -8,8 +8,8 @@ import { computeRa } from '@clansty/maibot-utils';
 
 export default (bot: Telegraf<BotContext>, env: Env) => {
 	bot.inlineQuery(/^ ?query (.+)/, async (ctx) => {
-		const userMusic = await ctx.getUserMusic(false);
-		if (!userMusic?.length) {
+		const profile = await ctx.getCurrentProfile(false);
+		if (!profile) {
 			await ctx.answerInlineQuery([], {
 				button: { text: '请绑定用户', start_parameter: 'bind' },
 				is_personal: true
@@ -22,9 +22,10 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 			await ctx.answerInlineQuery([]);
 		}
 		const results = Song.search(query);
+		const userMusic = await profile.getUserMusic(results);
 		const ret = [] as InlineQueryResult[];
 		for (const song of results) {
-			const userScores = (await ctx.getUserMusic()).filter(it => it.musicId === song.id || it.musicId === song.id + 1e4);
+			const userScores = userMusic.filter(it => it.musicId === song.id || it.musicId === song.id + 1e4);
 			if (!userScores.length) continue;
 			_.sortBy(userScores, it => it.level);
 
@@ -81,8 +82,10 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 			await ctx.reply('找不到匹配的歌');
 			return;
 		}
+		const profile = await ctx.getCurrentProfile();
+		const userMusic = await profile.getUserMusic(results);
 		for (const song of results) {
-			const userScores = (await ctx.getUserMusic()).filter(it => it.musicId === song.id || it.musicId === song.id + 1e4);
+			const userScores = userMusic.filter(it => it.musicId === song.id || it.musicId === song.id + 1e4);
 			if (!userScores.length) continue;
 			_.sortBy(userScores, it => it.level);
 

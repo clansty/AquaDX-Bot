@@ -19,7 +19,8 @@ export default async ({ params }: { params: { tguid: string, type: string, profi
 	}
 
 	const profile = await getUserProfile(params.tguid, params.profile);
-	const userMusic = await profile.getUserMusic();
+	const requiredList = profile.plateSongs[ver]
+	const userMusic = await profile.getUserMusic(requiredList);
 
-	return <PlateProgress userMusic={userMusic} type={type} ver={ver} requiredList={profile.plateSongs[ver]} />;
+	return <PlateProgress userMusic={userMusic} type={type} ver={ver} requiredList={requiredList} />;
 }

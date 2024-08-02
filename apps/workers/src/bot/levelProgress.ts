@@ -1,12 +1,14 @@
 import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
 import { Env } from '../types';
-import { LEVELS } from '@clansty/maibot-types/src';
+import { LEVELS, Song } from '@clansty/maibot-types/src';
 import { InlineQueryResult } from 'telegraf/types';
 
 export default (bot: Telegraf<BotContext>, env: Env) => {
 	const sendProgressImage = async (ctx: BotContext, level: typeof LEVELS[number], isFromStart = false) => {
-		const userMusic = await ctx.getUserMusic();
+		const profile = await ctx.getCurrentProfile();
+		const requiredSongList = Song.getByCondition(it => it.sheets.some(chart => chart.level === level));
+		const userMusic = await profile.getUserMusic(requiredSongList);
 
 		return await ctx.genCacheSendImage([level, userMusic], `https://maibot-web.pages.dev/levelProgress/${ctx.from.id}/${ctx.currentProfileId}/${encodeURIComponent(level)}`,
 			1500, `LV ${level} 完成表.png`, ctx.chat?.type === 'private' ? level : undefined, isFromStart, [
@@ -16,8 +18,8 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 
 	for (const level of LEVELS) {
 		bot.inlineQuery(RegExp(`^ ?\\/?${level} ?(进度)?(完成表)?$`), async (ctx) => {
-			const userMusic = await ctx.getUserMusic();
-			if (!userMusic?.length) {
+			const profile = await ctx.getCurrentProfile();
+			if (!profile) {
 				await ctx.answerInlineQuery([], {
 					button: { text: '请绑定用户', start_parameter: 'bind' },
 					is_personal: true
@@ -25,6 +27,8 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 				return;
 			}
 
+			const requiredSongList = Song.getByCondition(it => it.sheets.some(chart => chart.level === level));
+			const userMusic = await profile.getUserMusic(requiredSongList);
 			const cachedImage = await ctx.getCacheImage([level, userMusic]);
 			const results: InlineQueryResult[] = [];
 			let button = undefined;

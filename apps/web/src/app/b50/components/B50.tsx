@@ -1,11 +1,11 @@
-import { RatingListEntry, UserMusic, UserRating, Song, BUDDIES_LOGO, Nameplate as NameplateData } from '@clansty/maibot-types';
+import { RatingListEntry, UserMusic, UserRating, Song, BUDDIES_LOGO, Nameplate as NameplateData, UserCombinedRating } from '@clansty/maibot-types';
 import React from 'react';
 import B50Song from './B50Song';
 import { computeRa, ratingAnalyse } from '@clansty/maibot-utils';
 import styles from './B50.module.css';
 import Nameplate from '@/components/Nameplate';
 
-export default ({ rating, userMusic, user }: { rating: UserRating, userMusic: UserMusic[], user: NameplateData }) =>
+export default ({ rating, user }: { rating: UserCombinedRating, user: NameplateData }) =>
 	<div style={{ padding: '0 20px' }}>
 		<div className={`${styles.b50Header} flex items-center p-[20px_0] gap-[10px_40px]`}>
 			<div className="text-1.8em">
@@ -15,8 +15,8 @@ export default ({ rating, userMusic, user }: { rating: UserRating, userMusic: Us
 			<img className={styles.hideOnSmallScreen} src={BUDDIES_LOGO} alt="" height={120} />
 		</div>
 
-		<RatingTable rating={rating.ratingList} userMusic={userMusic} title="旧版本 Best 35" />
-		<RatingTable rating={rating.newRatingList} userMusic={userMusic} title="当前版本 Best 15" />
+		<RatingTable rating={rating.best35} userMusic={rating.musicList} title="旧版本 Best 35" />
+		<RatingTable rating={rating.best15} userMusic={rating.musicList} title="当前版本 Best 15" />
 	</div>
 
 const RatingTable = ({ rating, userMusic, title }: { rating: RatingListEntry[], userMusic: UserMusic[], title: string }) => {

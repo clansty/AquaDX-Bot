@@ -1,5 +1,5 @@
 import LevelProgress from '../../../components/LevelProgress';
-import { LEVELS } from '@clansty/maibot-types';
+import { LEVELS, Song } from '@clansty/maibot-types';
 import { notFound } from 'next/navigation';
 import getUserProfile from '@/utils/getUserProfile';
 
@@ -11,7 +11,8 @@ export default async ({ params }: { params: { tguid: string, level: string, prof
 	if (!LEVELS.includes(level)) notFound();
 
 	const profile = await getUserProfile(params.tguid, params.profile);
-	const userMusic = await profile.getUserMusic();
+	const requiredSongList = Song.getByCondition(it => it.sheets.some(chart => chart.level === level));
+	const userMusic = await profile.getUserMusic(requiredSongList);
 
-	return <LevelProgress userMusic={userMusic} level={level} region={profile.region} />;
+	return <LevelProgress userMusic={userMusic} level={level} region={profile.region} requiredSongList={requiredSongList} />;
 }

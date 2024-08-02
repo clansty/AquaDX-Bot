@@ -4,7 +4,9 @@ import { Env } from '../types';
 
 export default (bot: Telegraf<BotContext>, env: Env) => {
 	const sendB50Image = async (ctx: BotContext) => {
-		const rating = await ctx.getUserRating();
+		const profile = await ctx.getCurrentProfile();
+		const rating = await profile.getNameplate();
+		// 因为只是算 hash 所以 nameplate 就可以
 
 		return await ctx.genCacheSendImage(['b50', rating, ctx.from.id],
 			`https://maibot-web.pages.dev/b50/${ctx.from.id}/${ctx.currentProfileId}`,
@@ -21,7 +23,9 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 	});
 
 	bot.inlineQuery(['b50', 'B50'], async (ctx) => {
-		const rating = await ctx.getUserRating();
+		const profile = await ctx.getCurrentProfile();
+		const rating = await profile.getNameplate();
+
 		const cached = await ctx.getCacheImage(['b50', rating, ctx.from.id]);
 		if (cached?.type === 'image') {
 			await ctx.answerInlineQuery([{

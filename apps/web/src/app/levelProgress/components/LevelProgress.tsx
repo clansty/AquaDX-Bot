@@ -5,9 +5,8 @@ import _ from 'lodash';
 import LevelProgress from '../../../components/LevelProgress';
 import styles from './LevelProgress.module.css';
 
-export default ({ userMusic, level, region }: { userMusic: UserMusic[], level: typeof LEVELS[number], region: keyof Regions }) => {
+export default ({ userMusic, level, region, requiredSongList }: { userMusic: UserMusic[], level: typeof LEVELS[number], region: keyof Regions, requiredSongList: Song[] }) => {
 	let displayData = [] as TableContentRenderData[];
-	const requiredSongList = Song.getByCondition(it => it.sheets.some(chart => chart.level === level));
 	const progress = Array(5).fill(null).map(() => ({ all: 0, done: 0 })) as ProgressCalcResult[];
 	// 用于计算是否全部 S 了之类的
 	let userMaxScore = 101e4;

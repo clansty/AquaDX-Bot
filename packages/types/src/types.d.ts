@@ -27,6 +27,12 @@ export type UserRating = {
 	newRatingList: RatingListEntry[]
 }
 
+export type UserCombinedRating = {
+	best35: RatingListEntry[],
+	best15: RatingListEntry[],
+	musicList: UserMusic[]
+}
+
 export type UserPreview = {
 	'userId': number,
 	'userName': string,
@@ -177,6 +183,11 @@ export type UserProfileDtoAquaDx = {
 	type: 'AquaDX',
 }
 
+export type UserProfileDtoAquaDxV2 = {
+	username: string,
+	type: 'AquaDX-v2',
+}
+
 export type UserProfileDtoSdgb = {
 	userId: number,
 	type: 'SDGB',
@@ -189,7 +200,7 @@ export type UserProfileDtoAnyAqua = {
 	type: 'AnyAqua',
 }
 
-export type UserProfileDto = UserProfileDtoAquaDx | UserProfileDtoSdgb
+export type UserProfileDto = UserProfileDtoAquaDx | UserProfileDtoSdgb | UserProfileDtoAquaDxV2
 
 export type UserProfilesKVStorage = {
 	profiles: UserProfileDto[],

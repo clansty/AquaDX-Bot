@@ -1,39 +1,56 @@
-import { CloudflareEnv, GameVariantPlateMusicList, PLATE_MUSIC_LIST_CN, PLATE_MUSIC_LIST_JP, Regions, UserProfileDto } from '@clansty/maibot-types';
+import { CloudflareEnv, GameVariantPlateMusicList, PLATE_MUSIC_LIST_CN, PLATE_MUSIC_LIST_JP, Regions, Song, UserProfileDto } from '@clansty/maibot-types';
 import { UserSource } from './UserSource';
-import AquaApi from './AquaApi';
+import AquaDxLegacy from './AquaDxLegacy';
 import SdgbProxied from './SdgbProxied';
 
 export class UserProfile {
-	private constructor(public readonly type: UserProfileDto['type'],
-		public readonly userId: number,
+	private constructor(private readonly _type: UserProfileDto['type'],
+		public readonly userId: string | number,
 		private readonly client: UserSource) {
 	}
 
 	static async create(dto: UserProfileDto, env: CloudflareEnv) {
 		let client: UserSource;
+		let userId: string | number;
 		switch (dto.type) {
 			case 'AquaDX':
-				client = await AquaApi.create(env.KV, env.POWERON_TOKEN);
+				client = await AquaDxLegacy.create(env.KV, env.POWERON_TOKEN);
+				userId = dto.userId;
 				break;
 			case 'SDGB':
 				client = SdgbProxied.create(env.CF_ACCESS_CLIENT_ID, env.CF_ACCESS_CLIENT_SECRET);
+				userId = dto.userId;
 				break;
-			default:
-				throw new Error('Unknown user source');
+			case 'AquaDX-v2':
+				userId = dto.username;
 		}
 
-		return new this(dto.type, dto.userId, client);
+		return new this(dto.type, userId, client);
 	}
 
 	get dto(): UserProfileDto {
-		return {
-			type: this.type,
-			userId: this.userId
-		};
+		switch (this._type) {
+			case 'AquaDX':
+			case 'SDGB':
+				return { type: this._type, userId: this.userId as number };
+			case 'AquaDX-v2':
+				return { type: this._type, username: this.userId as string };
+		}
+	}
+
+	get type() {
+		switch (this._type) {
+			case 'AquaDX':
+				return 'AquaDX (Legacy)';
+			case 'SDGB':
+				return 'SDGB';
+			default:
+				throw new Error('Unknown user source');
+		}
 	}
 
 	public get region(): keyof Regions {
-		switch (this.type) {
+		switch (this._type) {
 			case 'AquaDX':
 				return 'jp';
 			case 'SDGB':
@@ -52,8 +69,15 @@ export class UserProfile {
 		}
 	}
 
-	async getUserMusic() {
-		return this.client.getUserMusic(this.userId);
+	async getUserMusic(musicIdList: number[] | Song[]) {
+		const convertedList = [] as number[];
+		for (const music of musicIdList) {
+			convertedList.push(music instanceof Song ? music.id : music);
+			if (music instanceof Song) {
+				convertedList.push(music.id, music.id + 1e4);
+			}
+		}
+		return this.client.getUserMusic(this.userId, convertedList);
 	}
 
 	async getUserRating() {
