@@ -244,7 +244,7 @@
 				"lv": 8.9
 			},
 			{
-				"lv": 11.3
+				"lv": 11.4
 			},
 			{
 				"lv": 13.9
@@ -862,7 +862,7 @@
 				"lv": 9.7
 			},
 			{
-				"lv": 12.9
+				"lv": 12.8
 			},
 			{
 				"lv": 13.3
@@ -971,7 +971,7 @@
 				"lv": 11.7
 			},
 			{
-				"lv": 13.3
+				"lv": 13.2
 			}
 		]
 	},
@@ -1048,7 +1048,7 @@
 				"lv": 7.8
 			},
 			{
-				"lv": 10.6
+				"lv": 10.5
 			},
 			{
 				"lv": 12.7
@@ -1263,7 +1263,7 @@
 				"lv": 9.1
 			},
 			{
-				"lv": 13.6
+				"lv": 13.7
 			}
 		]
 	},
@@ -1303,7 +1303,7 @@
 				"lv": 10.7
 			},
 			{
-				"lv": 13.5
+				"lv": 13.6
 			}
 		]
 	},
@@ -1632,7 +1632,7 @@
 				"lv": 11.2
 			},
 			{
-				"lv": 12.6
+				"lv": 12.5
 			}
 		]
 	},
@@ -1749,7 +1749,7 @@
 				"lv": 7.8
 			},
 			{
-				"lv": 12.6
+				"lv": 12.5
 			},
 			{
 				"lv": 12.5
@@ -2004,7 +2004,7 @@
 				"lv": 14.2
 			},
 			{
-				"lv": 14.6
+				"lv": 14.5
 			}
 		]
 	},
@@ -2027,7 +2027,7 @@
 				"lv": 13.3
 			},
 			{
-				"lv": 13.6
+				"lv": 13.5
 			}
 		]
 	},
@@ -2236,7 +2236,7 @@
 				"lv": 11.8
 			},
 			{
-				"lv": 12.6
+				"lv": 12.5
 			}
 		]
 	},
@@ -2842,7 +2842,7 @@
 				"lv": 9.7
 			},
 			{
-				"lv": 13.4
+				"lv": 13.3
 			}
 		]
 	},
@@ -2879,7 +2879,7 @@
 				"lv": 8
 			},
 			{
-				"lv": 12
+				"lv": 11.9
 			},
 			{
 				"lv": 13.3
@@ -3085,7 +3085,7 @@
 				"lv": 11.7
 			},
 			{
-				"lv": 12.6
+				"lv": 12.5
 			}
 		]
 	},
@@ -3102,7 +3102,7 @@
 				"lv": 7.8
 			},
 			{
-				"lv": 11.6
+				"lv": 11.5
 			},
 			{
 				"lv": 13.4
@@ -3125,7 +3125,7 @@
 				"lv": 11.2
 			},
 			{
-				"lv": 13.6
+				"lv": 13.5
 			},
 			{
 				"lv": 14.2
@@ -3294,7 +3294,7 @@
 				"lv": 9.8
 			},
 			{
-				"lv": 12.6
+				"lv": 12.5
 			}
 		]
 	},
@@ -3414,7 +3414,7 @@
 				"lv": 12.6
 			},
 			{
-				"lv": 14
+				"lv": 13.9
 			}
 		]
 	},
@@ -3597,7 +3597,7 @@
 				"lv": 7.6
 			},
 			{
-				"lv": 11.6
+				"lv": 11.5
 			},
 			{
 				"lv": 13.2
@@ -3623,7 +3623,7 @@
 				"lv": 13.4
 			},
 			{
-				"lv": 13.6
+				"lv": 13.5
 			}
 		]
 	},
@@ -3802,7 +3802,7 @@
 	"259": {
 		"name": "ぽっぴっぽー",
 		"ver": "12006",
-		"composer": "",
+		"composer": null,
 		"genre": "niconicoボーカロイド",
 		"notes": [
 			{
@@ -3987,7 +3987,7 @@
 				"lv": 11.9
 			},
 			{
-				"lv": 12.6
+				"lv": 12.5
 			}
 		]
 	},
@@ -4027,7 +4027,7 @@
 				"lv": 12.6
 			},
 			{
-				"lv": 13.9
+				"lv": 13.8
 			}
 		]
 	},
@@ -4187,7 +4187,7 @@
 				"lv": 10.1
 			},
 			{
-				"lv": 12.6
+				"lv": 12.5
 			},
 			{
 				"lv": 12.8
@@ -4393,7 +4393,7 @@
 				"lv": 10
 			},
 			{
-				"lv": 12.5
+				"lv": 12.4
 			},
 			{
 				"lv": 12.7
@@ -4456,7 +4456,7 @@
 				"lv": 10.8
 			},
 			{
-				"lv": 13.6
+				"lv": 13.5
 			},
 			{
 				"lv": 14.2
@@ -5132,6 +5132,12 @@
 			},
 			{
 				"lv": 11.1
+			},
+			{
+				"lv": 0
+			},
+			{
+				"lv": 0
 			}
 		]
 	},
@@ -5231,7 +5237,7 @@
 				"lv": 10.1
 			},
 			{
-				"lv": 13.3
+				"lv": 13.2
 			}
 		]
 	},
@@ -5761,6 +5767,12 @@
 			},
 			{
 				"lv": 11
+			},
+			{
+				"lv": 0
+			},
+			{
+				"lv": 0
 			}
 		]
 	},
@@ -5984,6 +5996,9 @@
 			},
 			{
 				"lv": 12.5
+			},
+			{
+				"lv": 0
 			}
 		]
 	},
@@ -6003,7 +6018,7 @@
 				"lv": 11.9
 			},
 			{
-				"lv": 14.6
+				"lv": 14.5
 			}
 		]
 	},
@@ -6930,6 +6945,12 @@
 			},
 			{
 				"lv": 11.4
+			},
+			{
+				"lv": 0
+			},
+			{
+				"lv": 0
 			}
 		]
 	},
@@ -6950,6 +6971,12 @@
 			},
 			{
 				"lv": 11.7
+			},
+			{
+				"lv": 0
+			},
+			{
+				"lv": 0
 			}
 		]
 	},
@@ -6970,6 +6997,12 @@
 			},
 			{
 				"lv": 11.4
+			},
+			{
+				"lv": 0
+			},
+			{
+				"lv": 0
 			}
 		]
 	},
@@ -6990,6 +7023,12 @@
 			},
 			{
 				"lv": 12.5
+			},
+			{
+				"lv": 0
+			},
+			{
+				"lv": 0
 			}
 		]
 	},
@@ -7049,7 +7088,7 @@
 				"lv": 9.9
 			},
 			{
-				"lv": 13.6
+				"lv": 13.5
 			}
 		]
 	},
@@ -8450,7 +8489,7 @@
 				"lv": 10.8
 			},
 			{
-				"lv": 13.6
+				"lv": 13.7
 			}
 		]
 	},
@@ -8527,7 +8566,7 @@
 				"lv": 6.8
 			},
 			{
-				"lv": 10.5
+				"lv": 10.6
 			},
 			{
 				"lv": 12.8
@@ -9296,7 +9335,7 @@
 				"lv": 13.3
 			},
 			{
-				"lv": 14
+				"lv": 13.9
 			}
 		]
 	},
@@ -9316,7 +9355,7 @@
 				"lv": 12.9
 			},
 			{
-				"lv": 14.3
+				"lv": 14.2
 			}
 		]
 	},
@@ -9633,7 +9672,7 @@
 				"lv": 7.3
 			},
 			{
-				"lv": 10.5
+				"lv": 10.6
 			},
 			{
 				"lv": 12.5
@@ -9676,7 +9715,7 @@
 				"lv": 12.9
 			},
 			{
-				"lv": 14.3
+				"lv": 14.2
 			},
 			{
 				"lv": 14.1
@@ -9920,6 +9959,12 @@
 			},
 			{
 				"lv": 10.9
+			},
+			{
+				"lv": 0
+			},
+			{
+				"lv": 0
 			}
 		]
 	},
@@ -9939,7 +9984,7 @@
 				"lv": 11.3
 			},
 			{
-				"lv": 13.8
+				"lv": 13.7
 			}
 		]
 	},
@@ -10262,7 +10307,7 @@
 				"lv": 13.4
 			},
 			{
-				"lv": 13.7
+				"lv": 13.8
 			}
 		]
 	},
@@ -10462,7 +10507,7 @@
 				"lv": 12.9
 			},
 			{
-				"lv": 14
+				"lv": 13.9
 			}
 		]
 	},
@@ -10503,6 +10548,12 @@
 			},
 			{
 				"lv": 11
+			},
+			{
+				"lv": 0
+			},
+			{
+				"lv": 0
 			}
 		]
 	},
@@ -10623,6 +10674,12 @@
 			},
 			{
 				"lv": 11.2
+			},
+			{
+				"lv": 0
+			},
+			{
+				"lv": 0
 			}
 		]
 	},
@@ -10702,7 +10759,7 @@
 				"lv": 10.6
 			},
 			{
-				"lv": 13.6
+				"lv": 13.7
 			}
 		]
 	},
@@ -10763,6 +10820,12 @@
 			},
 			{
 				"lv": 10.8
+			},
+			{
+				"lv": 0
+			},
+			{
+				"lv": 0
 			}
 		]
 	},
@@ -10779,10 +10842,16 @@
 				"lv": 7
 			},
 			{
-				"lv": 9.3
+				"lv": 8.8
 			},
 			{
-				"lv": 11.4
+				"lv": 11
+			},
+			{
+				"lv": 0
+			},
+			{
+				"lv": 0
 			}
 		]
 	},
@@ -10925,7 +10994,7 @@
 				"lv": 11.9
 			},
 			{
-				"lv": 13.6
+				"lv": 13.7
 			}
 		]
 	},
@@ -10942,7 +11011,7 @@
 				"lv": 7.3
 			},
 			{
-				"lv": 12.6
+				"lv": 12.5
 			},
 			{
 				"lv": 13.8
@@ -11262,7 +11331,7 @@
 				"lv": 8
 			},
 			{
-				"lv": 11.5
+				"lv": 11.6
 			},
 			{
 				"lv": 13.3
@@ -11568,7 +11637,7 @@
 				"lv": 9.8
 			},
 			{
-				"lv": 12.9
+				"lv": 12.8
 			}
 		]
 	},
@@ -11749,6 +11818,12 @@
 			},
 			{
 				"lv": 11.7
+			},
+			{
+				"lv": 0
+			},
+			{
+				"lv": 0
 			}
 		]
 	},
@@ -11788,7 +11863,7 @@
 				"lv": 11.7
 			},
 			{
-				"lv": 13.6
+				"lv": 13.4
 			}
 		]
 	},
@@ -12266,7 +12341,7 @@
 				"lv": 8.6
 			},
 			{
-				"lv": 12.6
+				"lv": 12.5
 			},
 			{
 				"lv": 14
@@ -12369,7 +12444,7 @@
 				"lv": 12.4
 			},
 			{
-				"lv": 14.5
+				"lv": 14.4
 			}
 		]
 	},
@@ -12698,7 +12773,7 @@
 				"lv": 11
 			},
 			{
-				"lv": 13.6
+				"lv": 13.7
 			}
 		]
 	},
@@ -13107,7 +13182,7 @@
 				"lv": 7.6
 			},
 			{
-				"lv": 10.5
+				"lv": 10.6
 			},
 			{
 				"lv": 12.6
@@ -13339,7 +13414,7 @@
 				"lv": 12.9
 			},
 			{
-				"lv": 14.2
+				"lv": 14
 			},
 			{
 				"lv": 14.9
@@ -13405,7 +13480,7 @@
 				"lv": 11.9
 			},
 			{
-				"lv": 12.8
+				"lv": 12.7
 			}
 		]
 	},
@@ -13740,7 +13815,7 @@
 				"lv": 12.8
 			},
 			{
-				"lv": 14.7
+				"lv": 14.6
 			},
 			{
 				"lv": 14.8
@@ -13909,7 +13984,7 @@
 				"lv": 5
 			},
 			{
-				"lv": 10.6
+				"lv": 10.5
 			},
 			{
 				"lv": 13.4
@@ -14084,7 +14159,7 @@
 				"lv": 12.4
 			},
 			{
-				"lv": 13.7
+				"lv": 13.8
 			}
 		]
 	},
@@ -14268,26 +14343,6 @@
 			}
 		]
 	},
-	"854": {
-		"name": "全世界共通リズム感テスト",
-		"ver": "21005",
-		"composer": "☆リズムに合わせてボタンを叩き達成率を競うゲームです☆",
-		"genre": "maimai",
-		"notes": [
-			{
-				"lv": 6
-			},
-			{
-				"lv": 8
-			},
-			{
-				"lv": 10
-			},
-			{
-				"lv": 12
-			}
-		]
-	},
 	"902": {
 		"name": "麻煩下一位",
 		"ver": "10000",
@@ -14390,7 +14445,7 @@
 	},
 	"1020": {
 		"name": "Technicians High",
-		"ver": "22006",
+		"ver": "22005",
 		"composer": "HiTECH NINJA",
 		"genre": "maimai",
 		"notes": [
@@ -14430,7 +14485,7 @@
 	},
 	"1081": {
 		"name": "サンバランド",
-		"ver": "22507",
+		"ver": "22506",
 		"composer": "SAMBA MASTER 佐藤",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -14470,7 +14525,7 @@
 	},
 	"1103": {
 		"name": "渦状銀河のシンフォニエッタ",
-		"ver": "24012",
+		"ver": "24013",
 		"composer": "山本真央樹",
 		"genre": "maimai",
 		"notes": [
@@ -14490,7 +14545,7 @@
 	},
 	"1235": {
 		"name": "VIIIbit Explorer",
-		"ver": "23004",
+		"ver": "23007",
 		"composer": "Lime",
 		"genre": "maimai",
 		"notes": [
@@ -14531,29 +14586,9 @@
 			}
 		]
 	},
-	"10044": {
-		"name": "ハッピーシンセサイザ",
-		"ver": "24500",
-		"composer": "EasyPop",
-		"genre": "niconicoボーカロイド",
-		"notes": [
-			{
-				"lv": 3
-			},
-			{
-				"lv": 6
-			},
-			{
-				"lv": 9.5
-			},
-			{
-				"lv": 12.8
-			}
-		]
-	},
 	"10070": {
 		"name": "ジングルベル",
-		"ver": "23506",
+		"ver": "23009",
 		"composer": "SEGA Sound Unit [H.]",
 		"genre": "maimai",
 		"notes": [
@@ -14568,26 +14603,6 @@
 			},
 			{
 				"lv": 14.7
-			}
-		]
-	},
-	"10117": {
-		"name": "炎歌 -ほむらうた-",
-		"ver": "24503",
-		"composer": "Hiro/森山愛子",
-		"genre": "maimai",
-		"notes": [
-			{
-				"lv": 2
-			},
-			{
-				"lv": 5.8
-			},
-			{
-				"lv": 9.8
-			},
-			{
-				"lv": 13
 			}
 		]
 	},
@@ -14611,29 +14626,9 @@
 			}
 		]
 	},
-	"10128": {
-		"name": "御旗のもとに",
-		"ver": "24501",
-		"composer": "「サクラ大戦」",
-		"genre": "ゲームバラエティ",
-		"notes": [
-			{
-				"lv": 3
-			},
-			{
-				"lv": 6.8
-			},
-			{
-				"lv": 10.7
-			},
-			{
-				"lv": 13
-			}
-		]
-	},
 	"10145": {
 		"name": "Starlight Disco",
-		"ver": "22513",
+		"ver": "22510",
 		"composer": "loos feat. Meramipop",
 		"genre": "maimai",
 		"notes": [
@@ -14653,7 +14648,7 @@
 	},
 	"10146": {
 		"name": "39",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "sasakure.UK x DECO*27",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -14693,7 +14688,7 @@
 	},
 	"10185": {
 		"name": "＊ハロー、プラネット。",
-		"ver": "24006",
+		"ver": "24008",
 		"composer": "sasakure.UK",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -14713,7 +14708,7 @@
 	},
 	"10188": {
 		"name": "天ノ弱",
-		"ver": "21013",
+		"ver": "21009",
 		"composer": "164",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -14733,7 +14728,7 @@
 	},
 	"10190": {
 		"name": "モザイクロール",
-		"ver": "23001",
+		"ver": "23000",
 		"composer": "DECO*27",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -14753,7 +14748,7 @@
 	},
 	"10191": {
 		"name": "脳漿炸裂ガール",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "れるりり",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -14807,13 +14802,13 @@
 				"lv": 9.5
 			},
 			{
-				"lv": 13.4
+				"lv": 13.5
 			}
 		]
 	},
 	"10204": {
 		"name": "ナイト・オブ・ナイツ",
-		"ver": "23504",
+		"ver": "23506",
 		"composer": "ビートまりお(COOL＆CREATE)",
 		"genre": "東方Project",
 		"notes": [
@@ -14831,29 +14826,9 @@
 			}
 		]
 	},
-	"10225": {
-		"name": "sweet little sister",
-		"ver": "24500",
-		"composer": "Silver Forest",
-		"genre": "東方Project",
-		"notes": [
-			{
-				"lv": 0
-			},
-			{
-				"lv": 0
-			},
-			{
-				"lv": 0
-			},
-			{
-				"lv": 13.2
-			}
-		]
-	},
 	"10235": {
 		"name": "火炎地獄",
-		"ver": "23001",
+		"ver": "23002",
 		"composer": "山根ミチル",
 		"genre": "maimai",
 		"notes": [
@@ -14893,7 +14868,7 @@
 	},
 	"10251": {
 		"name": "Monochrome Rainbow",
-		"ver": "23505",
+		"ver": "23506",
 		"composer": "Sta",
 		"genre": "maimai",
 		"notes": [
@@ -14913,7 +14888,7 @@
 	},
 	"10256": {
 		"name": "いーあるふぁんくらぶ",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "みきとP",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -14933,7 +14908,7 @@
 	},
 	"10288": {
 		"name": "六兆年と一夜物語",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "kemu",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -14953,7 +14928,7 @@
 	},
 	"10301": {
 		"name": "患部で止まってすぐ溶ける～狂気の優曇華院",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "ARM＋夕野ヨシミ(IOSYS)feat. miko",
 		"genre": "東方Project",
 		"notes": [
@@ -14993,7 +14968,7 @@
 	},
 	"10315": {
 		"name": "深海少女",
-		"ver": "23501",
+		"ver": "23500",
 		"composer": "ゆうゆ",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -15013,7 +14988,7 @@
 	},
 	"10316": {
 		"name": "M.S.S.Planet",
-		"ver": "23001",
+		"ver": "23000",
 		"composer": "M.S.S Project",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -15033,7 +15008,7 @@
 	},
 	"10319": {
 		"name": "幻想のサテライト",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "豚乙女",
 		"genre": "東方Project",
 		"notes": [
@@ -15047,13 +15022,13 @@
 				"lv": 10.4
 			},
 			{
-				"lv": 13.5
+				"lv": 13.6
 			}
 		]
 	},
 	"10363": {
 		"name": "Oshama Scramble!",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "t+pazolite",
 		"genre": "maimai",
 		"notes": [
@@ -15067,13 +15042,13 @@
 				"lv": 11.4
 			},
 			{
-				"lv": 13.6
+				"lv": 13.7
 			}
 		]
 	},
 	"10366": {
 		"name": "oboro",
-		"ver": "24005",
+		"ver": "24002",
 		"composer": "ヒゲドライバー",
 		"genre": "maimai",
 		"notes": [
@@ -15093,7 +15068,7 @@
 	},
 	"10404": {
 		"name": "響縁",
-		"ver": "23001",
+		"ver": "23000",
 		"composer": "豚乙女",
 		"genre": "東方Project",
 		"notes": [
@@ -15133,7 +15108,7 @@
 	},
 	"10420": {
 		"name": "Change Our MIRAI！",
-		"ver": "20013",
+		"ver": "20011",
 		"composer": "イロドリミドリ「CHUNITHM」",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -15213,7 +15188,7 @@
 	},
 	"10535": {
 		"name": "色は匂へど散りぬるを",
-		"ver": "24009",
+		"ver": "24007",
 		"composer": "幽閉サテライト",
 		"genre": "東方Project",
 		"notes": [
@@ -15233,7 +15208,7 @@
 	},
 	"10536": {
 		"name": "月に叢雲華に風",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "幽閉サテライト",
 		"genre": "東方Project",
 		"notes": [
@@ -15293,7 +15268,7 @@
 	},
 	"10572": {
 		"name": "Scream out! -maimai SONIC WASHER Edit-",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "A-One",
 		"genre": "東方Project",
 		"notes": [
@@ -15307,13 +15282,13 @@
 				"lv": 11.2
 			},
 			{
-				"lv": 13.5
+				"lv": 13.6
 			}
 		]
 	},
 	"10574": {
 		"name": "Selector",
-		"ver": "23506",
+		"ver": "23509",
 		"composer": "Aliesrite* (Ym1024 feat. lamie*)",
 		"genre": "maimai",
 		"notes": [
@@ -15333,7 +15308,7 @@
 	},
 	"10593": {
 		"name": "conflict",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "siromaru + cranky",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -15393,7 +15368,7 @@
 	},
 	"10625": {
 		"name": "Maxi",
-		"ver": "23009",
+		"ver": "23007",
 		"composer": "Nizikawa",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -15413,7 +15388,7 @@
 	},
 	"10641": {
 		"name": "Calamity Fortune",
-		"ver": "20009",
+		"ver": "20010",
 		"composer": "LeaF",
 		"genre": "東方Project",
 		"notes": [
@@ -15427,13 +15402,13 @@
 				"lv": 11.4
 			},
 			{
-				"lv": 13.6
+				"lv": 13.5
 			}
 		]
 	},
 	"10665": {
 		"name": "チルノのパーフェクトさんすう教室　⑨周年バージョン",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "IOSYSと愉快な⑨周年フレンズ",
 		"genre": "東方Project",
 		"notes": [
@@ -15493,7 +15468,7 @@
 	},
 	"10702": {
 		"name": "WARNING×WARNING×WARNING",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "暁Records",
 		"genre": "東方Project",
 		"notes": [
@@ -15513,7 +15488,7 @@
 	},
 	"10706": {
 		"name": "シャルル",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "バルーン",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -15553,7 +15528,7 @@
 	},
 	"10734": {
 		"name": "ENERGY SYNERGY MATRIX",
-		"ver": "20015",
+		"ver": "20007",
 		"composer": "Tanchiky",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -15573,7 +15548,7 @@
 	},
 	"11001": {
 		"name": "BLACK ROSE",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "S!N・+α/あるふぁきゅん。×ALI PROJECT",
 		"genre": "maimai",
 		"notes": [
@@ -15593,7 +15568,7 @@
 	},
 	"11002": {
 		"name": "Secret Sleuth",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "島爺×蜂屋ななし",
 		"genre": "maimai",
 		"notes": [
@@ -15616,7 +15591,7 @@
 	},
 	"11003": {
 		"name": "でらっくmaimai♪てんてこまい!",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "やしきん feat.でらっくま(CV:三森すずこ)",
 		"genre": "maimai",
 		"notes": [
@@ -15636,7 +15611,7 @@
 	},
 	"11004": {
 		"name": "MAXRAGE",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "EBIMAYO",
 		"genre": "maimai",
 		"notes": [
@@ -15659,7 +15634,7 @@
 	},
 	"11005": {
 		"name": "バーチャルダム　ネーション",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "Sampling Masters MEGA",
 		"genre": "maimai",
 		"notes": [
@@ -15673,7 +15648,7 @@
 				"lv": 10.8
 			},
 			{
-				"lv": 13.6
+				"lv": 13.5
 			},
 			{
 				"lv": 14.4
@@ -15682,7 +15657,7 @@
 	},
 	"11006": {
 		"name": "P-qoq",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "owl＊tree",
 		"genre": "maimai",
 		"notes": [
@@ -15702,7 +15677,7 @@
 	},
 	"11007": {
 		"name": "超常マイマイン",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "ナユタン星人",
 		"genre": "maimai",
 		"notes": [
@@ -15725,7 +15700,7 @@
 	},
 	"11008": {
 		"name": "Crazy Circle",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "みきとP feat. FantasticYouth",
 		"genre": "maimai",
 		"notes": [
@@ -15745,7 +15720,7 @@
 	},
 	"11009": {
 		"name": "STEREOSCAPE",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "164 feat. めいちゃん",
 		"genre": "maimai",
 		"notes": [
@@ -15768,7 +15743,7 @@
 	},
 	"11010": {
 		"name": "STARTLINER",
-		"ver": "20007",
+		"ver": "20002",
 		"composer": "曲：kz(livetune)／歌：オンゲキシューターズ",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -15791,7 +15766,7 @@
 	},
 	"11014": {
 		"name": "♡マイマイマイラブ♡",
-		"ver": "20015",
+		"ver": "20007",
 		"composer": "ビートまりお",
 		"genre": "maimai",
 		"notes": [
@@ -15897,7 +15872,7 @@
 	},
 	"11019": {
 		"name": "Scarlet Wings",
-		"ver": "20006",
+		"ver": "20003",
 		"composer": "REDALiCE feat. Ayumi Nomiya",
 		"genre": "maimai",
 		"notes": [
@@ -15917,7 +15892,7 @@
 	},
 	"11020": {
 		"name": "Technicians High",
-		"ver": "20006",
+		"ver": "20003",
 		"composer": "HiTECH NINJA",
 		"genre": "maimai",
 		"notes": [
@@ -15928,7 +15903,7 @@
 				"lv": 8.2
 			},
 			{
-				"lv": 11.6
+				"lv": 11.5
 			},
 			{
 				"lv": 13.4
@@ -15937,7 +15912,7 @@
 	},
 	"11021": {
 		"name": "魔ジョ狩リ",
-		"ver": "20006",
+		"ver": "20003",
 		"composer": "Nothing But Requiem (feat.Aikapin & Chiyoko)",
 		"genre": "maimai",
 		"notes": [
@@ -15957,7 +15932,7 @@
 	},
 	"11022": {
 		"name": "TwisteD! XD",
-		"ver": "20006",
+		"ver": "20003",
 		"composer": "t+pazolite",
 		"genre": "maimai",
 		"notes": [
@@ -15977,7 +15952,7 @@
 	},
 	"11023": {
 		"name": "Blows Up Everything",
-		"ver": "20006",
+		"ver": "20003",
 		"composer": "USAO",
 		"genre": "maimai",
 		"notes": [
@@ -16000,7 +15975,7 @@
 	},
 	"11024": {
 		"name": "Agitation！",
-		"ver": "20013",
+		"ver": "20011",
 		"composer": "舞ヶ原高校軽音部",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -16020,7 +15995,7 @@
 	},
 	"11025": {
 		"name": "管弦楽組曲 第3番 ニ長調「第2曲（G線上のアリア）」BWV.1068-2",
-		"ver": "20013",
+		"ver": "20011",
 		"composer": "月鈴 那知（ヴァイオリン） 伴奏：イロドリミドリ",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -16040,7 +16015,7 @@
 	},
 	"11026": {
 		"name": "TEmPTaTiON",
-		"ver": "20010",
+		"ver": "20013",
 		"composer": "かねこちはる",
 		"genre": "maimai",
 		"notes": [
@@ -16060,7 +16035,7 @@
 	},
 	"11027": {
 		"name": "アポカリプスに反逆の焔を焚べろ",
-		"ver": "20010",
+		"ver": "20013",
 		"composer": "cosMo＠暴走AlterEgo",
 		"genre": "maimai",
 		"notes": [
@@ -16080,7 +16055,7 @@
 	},
 	"11028": {
 		"name": "玩具狂奏曲 -終焉-",
-		"ver": "20011",
+		"ver": "20009",
 		"composer": "きくお",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -16100,7 +16075,7 @@
 	},
 	"11029": {
 		"name": "Titania",
-		"ver": "20011",
+		"ver": "20009",
 		"composer": "xi",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -16120,7 +16095,7 @@
 	},
 	"11030": {
 		"name": "BOKUTO",
-		"ver": "20012",
+		"ver": "20015",
 		"composer": "じーざすP feat.kradness",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -16140,7 +16115,7 @@
 	},
 	"11031": {
 		"name": "立川浄穢捕物帳",
-		"ver": "20012",
+		"ver": "20015",
 		"composer": "青島探偵事務所器楽捜査部B担",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -16174,13 +16149,13 @@
 				"lv": 11.9
 			},
 			{
-				"lv": 13.7
+				"lv": 13.6
 			}
 		]
 	},
 	"11034": {
 		"name": "METEOR",
-		"ver": "20014",
+		"ver": "20004",
 		"composer": "DIVELA feat.初音ミク",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -16243,7 +16218,7 @@
 	},
 	"11037": {
 		"name": "HOT LIMIT",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "T.M.Revolution [covered by 光吉猛修]",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -16343,7 +16318,7 @@
 	},
 	"11043": {
 		"name": "メルト",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "supercell",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -16363,7 +16338,7 @@
 	},
 	"11044": {
 		"name": "メルティランドナイトメア",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "はるまきごはん feat.初音ミク",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -16403,7 +16378,7 @@
 	},
 	"11046": {
 		"name": "アディショナルメモリー",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "じん",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -16443,7 +16418,7 @@
 	},
 	"11048": {
 		"name": "ナイト・オブ・ナイツ (Cranky Remix)",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "ビートまりお × Cranky",
 		"genre": "東方Project",
 		"notes": [
@@ -16463,7 +16438,7 @@
 	},
 	"11049": {
 		"name": "Bad Apple!! feat.nomico (REDALiCE Remix)",
-		"ver": "20501",
+		"ver": "20500",
 		"composer": "Masayoshi Minoshima × REDALiCE",
 		"genre": "東方Project",
 		"notes": [
@@ -16483,7 +16458,7 @@
 	},
 	"11050": {
 		"name": "Strobe♡Girl",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "colate",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -16503,7 +16478,7 @@
 	},
 	"11051": {
 		"name": "Destr0yer",
-		"ver": "20004",
+		"ver": "20000",
 		"composer": "削除 feat. Nikki Simmons",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -16523,7 +16498,7 @@
 	},
 	"11052": {
 		"name": "グリーンライツ・セレナーデ",
-		"ver": "20014",
+		"ver": "20004",
 		"composer": "Omoi feat. 初音ミク",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -16603,7 +16578,7 @@
 	},
 	"11058": {
 		"name": "デンパラダイム",
-		"ver": "20005",
+		"ver": "20006",
 		"composer": "lumo",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -16623,7 +16598,7 @@
 	},
 	"11059": {
 		"name": "骸骨楽団とリリア",
-		"ver": "20005",
+		"ver": "20006",
 		"composer": "トーマ",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -16643,7 +16618,7 @@
 	},
 	"11060": {
 		"name": "星屑ユートピア",
-		"ver": "20005",
+		"ver": "20006",
 		"composer": "otetsu",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -16663,7 +16638,7 @@
 	},
 	"11061": {
 		"name": "アマツキツネ",
-		"ver": "20005",
+		"ver": "20006",
 		"composer": "まらしぃ",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -16723,7 +16698,7 @@
 	},
 	"11064": {
 		"name": "Little \"Sister\" Bitch",
-		"ver": "20009",
+		"ver": "20010",
 		"composer": "t+pazolite",
 		"genre": "東方Project",
 		"notes": [
@@ -16743,7 +16718,7 @@
 	},
 	"11065": {
 		"name": "Yakumo >>JOINT STRUGGLE (2019 Update)",
-		"ver": "20009",
+		"ver": "20010",
 		"composer": "くっちー (DARKSIDE APPROACH)",
 		"genre": "東方Project",
 		"notes": [
@@ -16763,7 +16738,7 @@
 	},
 	"11066": {
 		"name": "げきオコスティックファイナリアリティぷんぷんマスタースパーク",
-		"ver": "20009",
+		"ver": "20010",
 		"composer": "ARM (IOSYS)",
 		"genre": "東方Project",
 		"notes": [
@@ -16783,7 +16758,7 @@
 	},
 	"11067": {
 		"name": "CocktaiL",
-		"ver": "20016",
+		"ver": "20012",
 		"composer": "XYZ",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -16803,7 +16778,7 @@
 	},
 	"11069": {
 		"name": "太陽系デスコ",
-		"ver": "20016",
+		"ver": "20012",
 		"composer": "ナユタン星人",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -16823,7 +16798,7 @@
 	},
 	"11070": {
 		"name": "だからパンを焼いたんだ",
-		"ver": "20016",
+		"ver": "20012",
 		"composer": "あわのあゆむ",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -16883,7 +16858,7 @@
 	},
 	"11073": {
 		"name": "アカリがやってきたぞっ",
-		"ver": "20004",
+		"ver": "20002",
 		"composer": "GYARI",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -16903,7 +16878,7 @@
 	},
 	"11075": {
 		"name": "プナイプナイせんそう",
-		"ver": "20012",
+		"ver": "20015",
 		"composer": "立秋 feat.ちょこ",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -16943,7 +16918,7 @@
 	},
 	"11077": {
 		"name": "デビル☆アイドル",
-		"ver": "20016",
+		"ver": "20005",
 		"composer": "アイラ（CV：三森すずこ）シマ（CV:井口裕香）はな（CV:花澤香菜）",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -16963,7 +16938,7 @@
 	},
 	"11078": {
 		"name": "quiet room",
-		"ver": "20016",
+		"ver": "20012",
 		"composer": "有機酸",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -16983,7 +16958,7 @@
 	},
 	"11080": {
 		"name": "Jump!! Jump!! Jump!!",
-		"ver": "20007",
+		"ver": "20002",
 		"composer": "曲：宮崎誠／歌：オンゲキシューターズ",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -17003,7 +16978,7 @@
 	},
 	"11081": {
 		"name": "サンバランド",
-		"ver": "20012",
+		"ver": "20015",
 		"composer": "SAMBA MASTER 佐藤",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -17023,7 +16998,7 @@
 	},
 	"11083": {
 		"name": "サヨナラチェーンソー",
-		"ver": "20011",
+		"ver": "20014",
 		"composer": "くらげP",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -17043,7 +17018,7 @@
 	},
 	"11084": {
 		"name": "イカサマライフゲイム",
-		"ver": "20011",
+		"ver": "20001",
 		"composer": "kemu",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -17054,7 +17029,7 @@
 				"lv": 7.8
 			},
 			{
-				"lv": 10.6
+				"lv": 10.5
 			},
 			{
 				"lv": 12.9
@@ -17063,7 +17038,7 @@
 	},
 	"11085": {
 		"name": "Halcyon",
-		"ver": "20007",
+		"ver": "20001",
 		"composer": "xi",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -17077,13 +17052,13 @@
 				"lv": 11.4
 			},
 			{
-				"lv": 13.5
+				"lv": 13.6
 			}
 		]
 	},
 	"11086": {
 		"name": "だれかの心臓になれたなら",
-		"ver": "20014",
+		"ver": "20004",
 		"composer": "ユリイ・カノン feat.GUMI",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -17103,7 +17078,7 @@
 	},
 	"11087": {
 		"name": "幾望の月",
-		"ver": "20006",
+		"ver": "20014",
 		"composer": "なきゃむりゃ",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -17123,7 +17098,7 @@
 	},
 	"11088": {
 		"name": "39みゅーじっく！",
-		"ver": "20014",
+		"ver": "20004",
 		"composer": "みきとP",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -17143,7 +17118,7 @@
 	},
 	"11089": {
 		"name": "STEEL TRANSONIC",
-		"ver": "20502",
+		"ver": "20505",
 		"composer": "BlackY vs. WAiKURO",
 		"genre": "maimai",
 		"notes": [
@@ -17163,7 +17138,7 @@
 	},
 	"11090": {
 		"name": "Flashkick",
-		"ver": "20502",
+		"ver": "20505",
 		"composer": "Yooh",
 		"genre": "maimai",
 		"notes": [
@@ -17183,7 +17158,7 @@
 	},
 	"11091": {
 		"name": "Stardust Memories",
-		"ver": "20505",
+		"ver": "20509",
 		"composer": "Maozon",
 		"genre": "maimai",
 		"notes": [
@@ -17203,7 +17178,7 @@
 	},
 	"11092": {
 		"name": "My My My",
-		"ver": "20505",
+		"ver": "20509",
 		"composer": "C-Show",
 		"genre": "maimai",
 		"notes": [
@@ -17237,7 +17212,7 @@
 				"lv": 11.8
 			},
 			{
-				"lv": 14.4
+				"lv": 14.3
 			}
 		]
 	},
@@ -17303,7 +17278,7 @@
 	},
 	"11097": {
 		"name": "ブレインジャックシンドローム",
-		"ver": "20502",
+		"ver": "20505",
 		"composer": "かいりきベア feat.利香",
 		"genre": "maimai",
 		"notes": [
@@ -17314,7 +17289,7 @@
 				"lv": 7.8
 			},
 			{
-				"lv": 10.6
+				"lv": 10.8
 			},
 			{
 				"lv": 13.3
@@ -17323,7 +17298,7 @@
 	},
 	"11098": {
 		"name": "共鳴",
-		"ver": "20505",
+		"ver": "20509",
 		"composer": "SADA 2Futureanthem feat. ellie",
 		"genre": "maimai",
 		"notes": [
@@ -17343,7 +17318,7 @@
 	},
 	"11099": {
 		"name": "Ututu",
-		"ver": "20505",
+		"ver": "20509",
 		"composer": "中山真斗",
 		"genre": "maimai",
 		"notes": [
@@ -17363,7 +17338,7 @@
 	},
 	"11100": {
 		"name": "シエルブルーマルシェ",
-		"ver": "20502",
+		"ver": "20505",
 		"composer": "OSTER project feat. かなたん",
 		"genre": "maimai",
 		"notes": [
@@ -17386,7 +17361,7 @@
 	},
 	"11101": {
 		"name": "GRÄNDIR",
-		"ver": "20510",
+		"ver": "20512",
 		"composer": "Rigel Theatre feat. ミーウェル",
 		"genre": "maimai",
 		"notes": [
@@ -17406,7 +17381,7 @@
 	},
 	"11102": {
 		"name": "封焔の135秒",
-		"ver": "20510",
+		"ver": "20512",
 		"composer": "大国奏音",
 		"genre": "maimai",
 		"notes": [
@@ -17426,7 +17401,7 @@
 	},
 	"11103": {
 		"name": "渦状銀河のシンフォニエッタ",
-		"ver": "20510",
+		"ver": "20512",
 		"composer": "山本真央樹",
 		"genre": "maimai",
 		"notes": [
@@ -17466,7 +17441,7 @@
 	},
 	"11105": {
 		"name": "ワードワードワード",
-		"ver": "20505",
+		"ver": "20508",
 		"composer": "syudou",
 		"genre": "maimai",
 		"notes": [
@@ -17486,7 +17461,7 @@
 	},
 	"11106": {
 		"name": "Valsqotch",
-		"ver": "20500",
+		"ver": "20502",
 		"composer": "owl＊tree feat.chi＊tree",
 		"genre": "maimai",
 		"notes": [
@@ -17506,7 +17481,7 @@
 	},
 	"11107": {
 		"name": "最強 the サマータイム!!!!!",
-		"ver": "20512",
+		"ver": "20503",
 		"composer": "曲：村カワ基成／歌：オンゲキシューターズ",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -17526,7 +17501,7 @@
 	},
 	"11108": {
 		"name": "UTAKATA",
-		"ver": "20512",
+		"ver": "20503",
 		"composer": "曲：ゆよゆっぺ／歌：九條 楓(CV：佳村 はるか)",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -17546,7 +17521,7 @@
 	},
 	"11109": {
 		"name": "タテマエと本心の大乱闘",
-		"ver": "20512",
+		"ver": "20503",
 		"composer": "曲：鯨井国家／歌：藍原 椿(CV：橋本 ちなみ)",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -17709,7 +17684,7 @@
 	},
 	"11118": {
 		"name": "いつかいい感じにアレしよう",
-		"ver": "20500",
+		"ver": "20510",
 		"composer": "カクとイムラ(CV：松本慶祐)",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -17929,7 +17904,7 @@
 	},
 	"11129": {
 		"name": "すーぱーぬこになれんかった",
-		"ver": "20513",
+		"ver": "20510",
 		"composer": "まふまふ",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -17949,7 +17924,7 @@
 	},
 	"11130": {
 		"name": "アスヘノBRAVE",
-		"ver": "20513",
+		"ver": "20510",
 		"composer": "M.S.S Project",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -17969,7 +17944,7 @@
 	},
 	"11131": {
 		"name": "深海シティアンダーグラウンド",
-		"ver": "20513",
+		"ver": "20510",
 		"composer": "田中Ｂ",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -17989,7 +17964,7 @@
 	},
 	"11132": {
 		"name": "表裏一体",
-		"ver": "20513",
+		"ver": "20510",
 		"composer": "すりぃ",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -18009,7 +17984,7 @@
 	},
 	"11133": {
 		"name": "Catch the Wave",
-		"ver": "20500",
+		"ver": "20508",
 		"composer": "livetune",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -18049,7 +18024,7 @@
 	},
 	"11135": {
 		"name": "全力ハッピーライフ",
-		"ver": "20508",
+		"ver": "20513",
 		"composer": "森羅万象",
 		"genre": "東方Project",
 		"notes": [
@@ -18069,7 +18044,7 @@
 	},
 	"11136": {
 		"name": "Oath Act",
-		"ver": "20508",
+		"ver": "20513",
 		"composer": "暁Records",
 		"genre": "東方Project",
 		"notes": [
@@ -18089,7 +18064,7 @@
 	},
 	"11137": {
 		"name": "Witches night",
-		"ver": "20508",
+		"ver": "20513",
 		"composer": "Liz Triangle",
 		"genre": "東方Project",
 		"notes": [
@@ -18109,7 +18084,7 @@
 	},
 	"11138": {
 		"name": "Drive Your Fire",
-		"ver": "20508",
+		"ver": "20513",
 		"composer": "A-One",
 		"genre": "東方Project",
 		"notes": [
@@ -18129,7 +18104,7 @@
 	},
 	"11139": {
 		"name": "wheel",
-		"ver": "20508",
+		"ver": "20513",
 		"composer": "Syrufit + HDLV",
 		"genre": "東方Project",
 		"notes": [
@@ -18169,7 +18144,7 @@
 	},
 	"11141": {
 		"name": "energy trixxx",
-		"ver": "20503",
+		"ver": "20501",
 		"composer": "KAH",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -18189,7 +18164,7 @@
 	},
 	"11142": {
 		"name": "NULCTRL",
-		"ver": "20503",
+		"ver": "20501",
 		"composer": "Silentroom",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -18209,7 +18184,7 @@
 	},
 	"11143": {
 		"name": "アトロポスと最果の探究者",
-		"ver": "20503",
+		"ver": "20501",
 		"composer": "しーけー",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -18249,7 +18224,7 @@
 	},
 	"11145": {
 		"name": "Entrance",
-		"ver": "20511",
+		"ver": "20506",
 		"composer": "Ice",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -18269,7 +18244,7 @@
 	},
 	"11146": {
 		"name": "Lunar Mare",
-		"ver": "20511",
+		"ver": "20506",
 		"composer": "xi vs sakuzyo",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -18289,7 +18264,7 @@
 	},
 	"11147": {
 		"name": "Saika",
-		"ver": "20511",
+		"ver": "20506",
 		"composer": "Rabpit",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -18309,7 +18284,7 @@
 	},
 	"11148": {
 		"name": "CHAOS",
-		"ver": "20511",
+		"ver": "20506",
 		"composer": "Æsir",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -18329,7 +18304,7 @@
 	},
 	"11149": {
 		"name": "Maboroshi",
-		"ver": "20511",
+		"ver": "20506",
 		"composer": "かめりあ(EDP)",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -18572,7 +18547,7 @@
 	},
 	"11161": {
 		"name": "オリフィス",
-		"ver": "21007",
+		"ver": "21006",
 		"composer": "40mP feat. シャノ",
 		"genre": "maimai",
 		"notes": [
@@ -18586,13 +18561,13 @@
 				"lv": 10.4
 			},
 			{
-				"lv": 12.9
+				"lv": 13
 			}
 		]
 	},
 	"11162": {
 		"name": "ユメヒバナ",
-		"ver": "21007",
+		"ver": "21006",
 		"composer": "RD-Sounds feat.中恵光城",
 		"genre": "maimai",
 		"notes": [
@@ -18612,7 +18587,7 @@
 	},
 	"11163": {
 		"name": "REAL VOICE",
-		"ver": "21007",
+		"ver": "21006",
 		"composer": "達見 恵 featured by 佐野 宏晃",
 		"genre": "maimai",
 		"notes": [
@@ -18632,7 +18607,7 @@
 	},
 	"11164": {
 		"name": "パラボラ",
-		"ver": "21007",
+		"ver": "21006",
 		"composer": "*Luna feat.NORISTRY",
 		"genre": "maimai",
 		"notes": [
@@ -18726,13 +18701,13 @@
 				"lv": 10.8
 			},
 			{
-				"lv": 12.8
+				"lv": 12.7
 			}
 		]
 	},
 	"11169": {
 		"name": "ステップアンドライム",
-		"ver": "21503",
+		"ver": "21504",
 		"composer": "YASUHIRO(康寛)",
 		"genre": "maimai",
 		"notes": [
@@ -18752,7 +18727,7 @@
 	},
 	"11170": {
 		"name": "届かない花束",
-		"ver": "21503",
+		"ver": "21504",
 		"composer": "ELECTROCUTICA",
 		"genre": "maimai",
 		"notes": [
@@ -18772,7 +18747,7 @@
 	},
 	"11171": {
 		"name": "YURUSHITE",
-		"ver": "21008",
+		"ver": "21007",
 		"composer": "t+pazolite",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -18872,7 +18847,7 @@
 	},
 	"11176": {
 		"name": "Climax",
-		"ver": "21008",
+		"ver": "21007",
 		"composer": "USAO",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -18892,7 +18867,7 @@
 	},
 	"11177": {
 		"name": "レーイレーイ",
-		"ver": "21006",
+		"ver": "21005",
 		"composer": "かいりきベア feat.松下",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -19018,7 +18993,7 @@
 	},
 	"11184": {
 		"name": "Virtual to LIVE",
-		"ver": "21008",
+		"ver": "21007",
 		"composer": "にじさんじ",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -19221,7 +19196,7 @@
 	},
 	"11194": {
 		"name": "ベノム",
-		"ver": "21006",
+		"ver": "21005",
 		"composer": "かいりきベア feat.flower",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -19241,7 +19216,7 @@
 	},
 	"11195": {
 		"name": "マネマネサイコトロピック",
-		"ver": "21006",
+		"ver": "21005",
 		"composer": "かいりきベア feat.GUMI",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -19261,7 +19236,7 @@
 	},
 	"11197": {
 		"name": "劣等上等",
-		"ver": "23002",
+		"ver": "21009",
 		"composer": "Giga / 鏡音リン・レン / Vivid BAD SQUAD「プロジェクトセカイ カラフルステージ！ feat. 初音ミク」",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -19281,7 +19256,7 @@
 	},
 	"11198": {
 		"name": "アスノヨゾラ哨戒班",
-		"ver": "21013",
+		"ver": "21009",
 		"composer": "Orangestar feat.IA",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -19441,7 +19416,7 @@
 	},
 	"11207": {
 		"name": "Ether Strike",
-		"ver": "21009",
+		"ver": "21008",
 		"composer": "Akira Complex",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -19461,7 +19436,7 @@
 	},
 	"11208": {
 		"name": "Cyaegha",
-		"ver": "21009",
+		"ver": "21008",
 		"composer": "USAO",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -19481,7 +19456,7 @@
 	},
 	"11209": {
 		"name": "Grievous Lady",
-		"ver": "21009",
+		"ver": "21008",
 		"composer": "Team Grimoire vs Laur",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -19561,7 +19536,7 @@
 	},
 	"11213": {
 		"name": "Arty Party",
-		"ver": "21008",
+		"ver": "21007",
 		"composer": "yaseta",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -19661,7 +19636,7 @@
 	},
 	"11218": {
 		"name": "自傷無色",
-		"ver": "23002",
+		"ver": "21009",
 		"composer": "ササノマリイ / 初音ミク / 25時、ナイトコードで。「プロジェクトセカイ カラフルステージ！ feat. 初音ミク」",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -19675,7 +19650,7 @@
 				"lv": 9
 			},
 			{
-				"lv": 12.8
+				"lv": 12.7
 			}
 		]
 	},
@@ -19701,7 +19676,7 @@
 	},
 	"11221": {
 		"name": "≠彡\"/了→",
-		"ver": "21000",
+		"ver": "21001",
 		"composer": "水野健治",
 		"genre": "maimai",
 		"notes": [
@@ -19721,7 +19696,7 @@
 	},
 	"11222": {
 		"name": "BREaK! BREaK! BREaK!",
-		"ver": "21003",
+		"ver": "21500",
 		"composer": "HiTECH NINJA vs Cranky",
 		"genre": "maimai",
 		"notes": [
@@ -19841,7 +19816,7 @@
 	},
 	"11228": {
 		"name": "星めぐり、果ての君へ。",
-		"ver": "21505",
+		"ver": "21506",
 		"composer": "TAKU1175 ft.駄々子",
 		"genre": "maimai",
 		"notes": [
@@ -19864,7 +19839,7 @@
 	},
 	"11229": {
 		"name": "スローアライズ",
-		"ver": "21505",
+		"ver": "21506",
 		"composer": "Endorfin.",
 		"genre": "maimai",
 		"notes": [
@@ -19884,7 +19859,7 @@
 	},
 	"11230": {
 		"name": "チエルカ／エソテリカ",
-		"ver": "21505",
+		"ver": "21506",
 		"composer": "ツミキ × 宮下遊",
 		"genre": "maimai",
 		"notes": [
@@ -19904,7 +19879,7 @@
 	},
 	"11231": {
 		"name": "生命不詳",
-		"ver": "21505",
+		"ver": "21506",
 		"composer": "蜂屋ななし",
 		"genre": "maimai",
 		"notes": [
@@ -19924,7 +19899,7 @@
 	},
 	"11232": {
 		"name": "Never Give Up!",
-		"ver": "21509",
+		"ver": "21510",
 		"composer": "nanobii",
 		"genre": "maimai",
 		"notes": [
@@ -19947,7 +19922,7 @@
 	},
 	"11233": {
 		"name": "Starry Colors",
-		"ver": "21509",
+		"ver": "21510",
 		"composer": "BlackY feat. Risa Yuzuki",
 		"genre": "maimai",
 		"notes": [
@@ -19967,7 +19942,7 @@
 	},
 	"11234": {
 		"name": "ほしぞらスペクタクル",
-		"ver": "21509",
+		"ver": "21510",
 		"composer": "奏音",
 		"genre": "maimai",
 		"notes": [
@@ -19987,7 +19962,7 @@
 	},
 	"11235": {
 		"name": "VIIIbit Explorer",
-		"ver": "21509",
+		"ver": "21510",
 		"composer": "Lime",
 		"genre": "maimai",
 		"notes": [
@@ -20007,7 +19982,7 @@
 	},
 	"11236": {
 		"name": "Last Samurai",
-		"ver": "21507",
+		"ver": "21508",
 		"composer": "Street",
 		"genre": "maimai",
 		"notes": [
@@ -20027,7 +20002,7 @@
 	},
 	"11237": {
 		"name": "蒼穹舞楽",
-		"ver": "21507",
+		"ver": "21508",
 		"composer": "Capchii",
 		"genre": "maimai",
 		"notes": [
@@ -20047,7 +20022,7 @@
 	},
 	"11238": {
 		"name": "AMABIE",
-		"ver": "21507",
+		"ver": "21508",
 		"composer": "OSTER project",
 		"genre": "maimai",
 		"notes": [
@@ -20067,7 +20042,7 @@
 	},
 	"11239": {
 		"name": "オーケー？　オーライ！",
-		"ver": "21501",
+		"ver": "21502",
 		"composer": "五十嵐 撫子(CV:花井 美春)",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -20087,7 +20062,7 @@
 	},
 	"11240": {
 		"name": "サヨナラフリーウェイ",
-		"ver": "21501",
+		"ver": "21502",
 		"composer": "萩原 七々瀬(CV:東城 日沙子)",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -20107,7 +20082,7 @@
 	},
 	"11241": {
 		"name": "単一指向性オーバーブルーム",
-		"ver": "21501",
+		"ver": "21502",
 		"composer": "葛城 華(CV:丸岡 和佳奈)",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -20130,7 +20105,7 @@
 	},
 	"11242": {
 		"name": "みなえをチェック！",
-		"ver": "21501",
+		"ver": "21502",
 		"composer": "小野 美苗(CV:伊藤 美来)",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -20150,7 +20125,7 @@
 	},
 	"11243": {
 		"name": "ハジマリノピアノ",
-		"ver": "21500",
+		"ver": "21501",
 		"composer": "ゆゆうた",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -20170,7 +20145,7 @@
 	},
 	"11246": {
 		"name": "BOUNCE & DANCE",
-		"ver": "21512",
+		"ver": "21513",
 		"composer": "IOSYS TRAX",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -20190,7 +20165,7 @@
 	},
 	"11247": {
 		"name": "Kiss Me Kiss",
-		"ver": "21512",
+		"ver": "21513",
 		"composer": "曲：大畑拓也／歌：bitter flavor [桜井 春菜(CV：近藤 玲奈)、早乙女 彩華(CV：中島 唯)]",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -20210,7 +20185,7 @@
 	},
 	"11248": {
 		"name": "MEGATON BLAST",
-		"ver": "21512",
+		"ver": "21513",
 		"composer": "BlackY vs. Yooh",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -20230,7 +20205,7 @@
 	},
 	"11249": {
 		"name": "Splash Dance!!",
-		"ver": "21512",
+		"ver": "21513",
 		"composer": "曲：Q-MHz／歌：オンゲキシューターズ",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -20362,7 +20337,7 @@
 	},
 	"11255": {
 		"name": "タケモトピアノCMソング",
-		"ver": "21500",
+		"ver": "21501",
 		"composer": "タケモトピアノCM",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -20536,13 +20511,13 @@
 				"lv": 9.7
 			},
 			{
-				"lv": 13
+				"lv": 12.9
 			}
 		]
 	},
 	"11264": {
 		"name": "幽霊東京",
-		"ver": "21503",
+		"ver": "21504",
 		"composer": "Ayase",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -20562,7 +20537,7 @@
 	},
 	"11265": {
 		"name": "Alice in 冷凍庫",
-		"ver": "21508",
+		"ver": "21509",
 		"composer": "Orangestar",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -20582,7 +20557,7 @@
 	},
 	"11266": {
 		"name": "キラメキ居残り大戦争",
-		"ver": "21508",
+		"ver": "21509",
 		"composer": "森羅万象",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -20602,7 +20577,7 @@
 	},
 	"11267": {
 		"name": "ディカディズム",
-		"ver": "21510",
+		"ver": "21511",
 		"composer": "ぬゆり",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -20622,7 +20597,7 @@
 	},
 	"11268": {
 		"name": "猫猫的宇宙論",
-		"ver": "21510",
+		"ver": "21511",
 		"composer": "ナユタン星人",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -20642,7 +20617,7 @@
 	},
 	"11269": {
 		"name": "ラットが死んだnew words",
-		"ver": "21510",
+		"ver": "21511",
 		"composer": "P.I.N.A.",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -20662,7 +20637,7 @@
 	},
 	"11270": {
 		"name": "阿吽のビーツ",
-		"ver": "21510",
+		"ver": "21511",
 		"composer": "羽生まゐご",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -20682,7 +20657,7 @@
 	},
 	"11271": {
 		"name": "再会",
-		"ver": "21511",
+		"ver": "21512",
 		"composer": "はるまきごはん",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -20702,7 +20677,7 @@
 	},
 	"11272": {
 		"name": "約束",
-		"ver": "21511",
+		"ver": "21512",
 		"composer": "はるまきごはん",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -20722,7 +20697,7 @@
 	},
 	"11273": {
 		"name": "トラフィック・ジャム",
-		"ver": "21511",
+		"ver": "21512",
 		"composer": "煮ル果実",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -20742,7 +20717,7 @@
 	},
 	"11274": {
 		"name": "アルティメットセンパイ",
-		"ver": "21511",
+		"ver": "21512",
 		"composer": "ピノキオピー",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -20802,7 +20777,7 @@
 	},
 	"11277": {
 		"name": "Melody！",
-		"ver": "21506",
+		"ver": "21507",
 		"composer": "あ～るの～と（いえろ～ぜぶら）",
 		"genre": "東方Project",
 		"notes": [
@@ -20822,7 +20797,7 @@
 	},
 	"11278": {
 		"name": "下克上々",
-		"ver": "21506",
+		"ver": "21507",
 		"composer": "豚乙女",
 		"genre": "東方Project",
 		"notes": [
@@ -20842,7 +20817,7 @@
 	},
 	"11279": {
 		"name": "ハウリング",
-		"ver": "21506",
+		"ver": "21507",
 		"composer": "Liz Triangle",
 		"genre": "東方Project",
 		"notes": [
@@ -20862,7 +20837,7 @@
 	},
 	"11280": {
 		"name": "トランスダンスアナーキー",
-		"ver": "21506",
+		"ver": "21507",
 		"composer": "暁Records",
 		"genre": "東方Project",
 		"notes": [
@@ -20942,7 +20917,7 @@
 	},
 	"11284": {
 		"name": "CO5M1C R4ILR0AD",
-		"ver": "21502",
+		"ver": "21503",
 		"composer": "kanone",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -20962,7 +20937,7 @@
 	},
 	"11285": {
 		"name": "MAKE IT FUNKY NOW",
-		"ver": "21502",
+		"ver": "21503",
 		"composer": "DOT96",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -20982,7 +20957,7 @@
 	},
 	"11286": {
 		"name": "Rush-More",
-		"ver": "21502",
+		"ver": "21503",
 		"composer": "litmus*",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -21002,7 +20977,7 @@
 	},
 	"11287": {
 		"name": "Strange Bar",
-		"ver": "21504",
+		"ver": "21505",
 		"composer": "Laur",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -21022,7 +20997,7 @@
 	},
 	"11288": {
 		"name": "Big Daddy",
-		"ver": "21504",
+		"ver": "21505",
 		"composer": "USAO",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -21042,7 +21017,7 @@
 	},
 	"11289": {
 		"name": "ベースラインやってる？笑",
-		"ver": "21504",
+		"ver": "21505",
 		"composer": "かめりあ feat. ななひら",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -21062,7 +21037,7 @@
 	},
 	"11290": {
 		"name": "ALiVE",
-		"ver": "21504",
+		"ver": "21505",
 		"composer": "REDALiCE",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -21082,7 +21057,7 @@
 	},
 	"11291": {
 		"name": "ヒミツCULT",
-		"ver": "21504",
+		"ver": "21505",
 		"composer": "t+pazolite",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -21102,7 +21077,7 @@
 	},
 	"11292": {
 		"name": "MEGATON KICK",
-		"ver": "21504",
+		"ver": "21505",
 		"composer": "DJ Myosuke",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -21122,7 +21097,7 @@
 	},
 	"11293": {
 		"name": "LOSE CONTROL",
-		"ver": "21504",
+		"ver": "21505",
 		"composer": "Massive New Krew",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -21142,7 +21117,7 @@
 	},
 	"11294": {
 		"name": "宿星審判",
-		"ver": "21500",
+		"ver": "22000",
 		"composer": "suzu",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -21262,7 +21237,7 @@
 	},
 	"11300": {
 		"name": "U&iVERSE -銀河鸞翔-",
-		"ver": "22005",
+		"ver": "22008",
 		"composer": "Kai VS 大国奏音 VS 水野健治",
 		"genre": "maimai",
 		"notes": [
@@ -21282,7 +21257,7 @@
 	},
 	"11301": {
 		"name": "華の集落、秋のお届け",
-		"ver": "22005",
+		"ver": "22004",
 		"composer": "Umiai",
 		"genre": "maimai",
 		"notes": [
@@ -21302,7 +21277,7 @@
 	},
 	"11302": {
 		"name": "BLACK SWAN",
-		"ver": "22005",
+		"ver": "22004",
 		"composer": "ぺのれり",
 		"genre": "maimai",
 		"notes": [
@@ -21322,7 +21297,7 @@
 	},
 	"11303": {
 		"name": "星詠みとデスペラード",
-		"ver": "22005",
+		"ver": "22004",
 		"composer": "しょご/野村渉悟",
 		"genre": "maimai",
 		"notes": [
@@ -21342,7 +21317,7 @@
 	},
 	"11304": {
 		"name": "Round Round Spinning Around",
-		"ver": "22008",
+		"ver": "22007",
 		"composer": "Nhato",
 		"genre": "maimai",
 		"notes": [
@@ -21362,7 +21337,7 @@
 	},
 	"11305": {
 		"name": "Alcyone",
-		"ver": "22008",
+		"ver": "22007",
 		"composer": "PRASTIK DANCEFLOOR",
 		"genre": "maimai",
 		"notes": [
@@ -21382,7 +21357,7 @@
 	},
 	"11306": {
 		"name": "Raven Emperor",
-		"ver": "22008",
+		"ver": "22007",
 		"composer": "Kobaryo",
 		"genre": "maimai",
 		"notes": [
@@ -21402,7 +21377,7 @@
 	},
 	"11307": {
 		"name": "Yorugao",
-		"ver": "22008",
+		"ver": "22007",
 		"composer": "An & Ryunosuke Kudo",
 		"genre": "maimai",
 		"notes": [
@@ -21416,7 +21391,7 @@
 				"lv": 12.2
 			},
 			{
-				"lv": 14.6
+				"lv": 14.7
 			}
 		]
 	},
@@ -21516,7 +21491,7 @@
 				"lv": 10.2
 			},
 			{
-				"lv": 13.1
+				"lv": 13
 			}
 		]
 	},
@@ -21573,7 +21548,7 @@
 				"lv": 8
 			},
 			{
-				"lv": 12.6
+				"lv": 12.5
 			},
 			{
 				"lv": 14.5
@@ -21582,7 +21557,7 @@
 	},
 	"11316": {
 		"name": "We Are Us",
-		"ver": "22016",
+		"ver": "22015",
 		"composer": "舞ヶ原シンセ研究会",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -21602,7 +21577,7 @@
 	},
 	"11317": {
 		"name": "Limits",
-		"ver": "22016",
+		"ver": "22015",
 		"composer": "舞ヶ原シンセ研究会",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -21616,13 +21591,13 @@
 				"lv": 10.5
 			},
 			{
-				"lv": 13.5
+				"lv": 13.6
 			}
 		]
 	},
 	"11318": {
 		"name": "スピカの天秤",
-		"ver": "22016",
+		"ver": "22015",
 		"composer": "Acotto",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -21642,7 +21617,7 @@
 	},
 	"11319": {
 		"name": "ハードコア・シンドローム",
-		"ver": "22016",
+		"ver": "22015",
 		"composer": "t+pazolite (HARDCORE TANO*C) feat.TANO*C ALL STARS",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -21679,7 +21654,7 @@
 				"lv": 11.2
 			},
 			{
-				"lv": 13
+				"lv": 12.8
 			}
 		]
 	},
@@ -21871,7 +21846,7 @@
 	},
 	"11333": {
 		"name": "Southern Cross",
-		"ver": "22002",
+		"ver": "22001",
 		"composer": "403",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -21894,7 +21869,7 @@
 	},
 	"11334": {
 		"name": "Upshift",
-		"ver": "22003",
+		"ver": "22002",
 		"composer": "s-don as Iriss-Frantzz",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -21914,7 +21889,7 @@
 	},
 	"11335": {
 		"name": "MOBILYS",
-		"ver": "22003",
+		"ver": "22002",
 		"composer": "Dachs",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -21954,7 +21929,7 @@
 	},
 	"11337": {
 		"name": "セカイはまだ始まってすらいない",
-		"ver": "23011",
+		"ver": "22003",
 		"composer": "ピノキオピー / 初音ミク / ワンダーランズ×ショウタイム「プロジェクトセカイ カラフルステージ！ feat. 初音ミク」",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -21974,7 +21949,7 @@
 	},
 	"11340": {
 		"name": "Sweets Time",
-		"ver": "22006",
+		"ver": "22005",
 		"composer": "SYNC.ART'S feat. 3L",
 		"genre": "東方Project",
 		"notes": [
@@ -21994,7 +21969,7 @@
 	},
 	"11341": {
 		"name": "紅星ミゼラブル～廃憶編",
-		"ver": "22006",
+		"ver": "22005",
 		"composer": "東京アクティブNEETs",
 		"genre": "東方Project",
 		"notes": [
@@ -22014,7 +21989,7 @@
 	},
 	"11342": {
 		"name": "幻想に咲いた花",
-		"ver": "22006",
+		"ver": "22005",
 		"composer": "岸田教団&THE明星ロケッツ×草野華余子「東方ダンマクカグラ」",
 		"genre": "東方Project",
 		"notes": [
@@ -22034,7 +22009,7 @@
 	},
 	"11343": {
 		"name": "マツヨイナイトバグ",
-		"ver": "22006",
+		"ver": "22005",
 		"composer": "COOL&CREATE feat.ビートまりおとまろん「東方ダンマクカグラ」",
 		"genre": "東方Project",
 		"notes": [
@@ -22054,7 +22029,7 @@
 	},
 	"11344": {
 		"name": "ポッピンキャンディ☆フィーバー！",
-		"ver": "22007",
+		"ver": "22006",
 		"composer": "キノシタ",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -22074,7 +22049,7 @@
 	},
 	"11345": {
 		"name": "どぅーまいべすと！",
-		"ver": "22007",
+		"ver": "22006",
 		"composer": "キノシタ",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -22094,7 +22069,7 @@
 	},
 	"11346": {
 		"name": "春を告げる",
-		"ver": "22509",
+		"ver": "22508",
 		"composer": "yama",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -22114,7 +22089,7 @@
 	},
 	"11347": {
 		"name": "泥の分際で私だけの大切を奪おうだなんて",
-		"ver": "22007",
+		"ver": "22006",
 		"composer": "ツユ",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -22134,7 +22109,7 @@
 	},
 	"11348": {
 		"name": "VOLTAGE",
-		"ver": "22510",
+		"ver": "22009",
 		"composer": "Rain Drops",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -22154,7 +22129,7 @@
 	},
 	"11349": {
 		"name": "失敗作少女",
-		"ver": "22010",
+		"ver": "22009",
 		"composer": "かいりきベア・MARETU feat.初音ミク",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -22174,7 +22149,7 @@
 	},
 	"11350": {
 		"name": "悪魔の踊り方",
-		"ver": "22010",
+		"ver": "22009",
 		"composer": "キタニタツヤ",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -22194,7 +22169,7 @@
 	},
 	"11351": {
 		"name": "ノイローゼ",
-		"ver": "22010",
+		"ver": "22009",
 		"composer": "蜂屋ななし",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -22394,7 +22369,7 @@
 	},
 	"11362": {
 		"name": "響け！CHIREI MY WAY!",
-		"ver": "22012",
+		"ver": "22010",
 		"composer": "森羅万象",
 		"genre": "東方Project",
 		"notes": [
@@ -22414,7 +22389,7 @@
 	},
 	"11363": {
 		"name": "神々が恋した幻想郷",
-		"ver": "22012",
+		"ver": "22010",
 		"composer": "Unlucky Morpheus",
 		"genre": "東方Project",
 		"notes": [
@@ -22454,7 +22429,7 @@
 	},
 	"11365": {
 		"name": "アンビバレンス",
-		"ver": "22002",
+		"ver": "22001",
 		"composer": "すりぃ×相沢",
 		"genre": "maimai",
 		"notes": [
@@ -22474,7 +22449,7 @@
 	},
 	"11367": {
 		"name": "veil",
-		"ver": "22007",
+		"ver": "22006",
 		"composer": "須田景凪",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -22517,7 +22492,7 @@
 	},
 	"11370": {
 		"name": "さんさーら！",
-		"ver": "22002",
+		"ver": "22001",
 		"composer": "ARuFa",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -22537,7 +22512,7 @@
 	},
 	"11371": {
 		"name": "アイドル新鋭隊",
-		"ver": "23011",
+		"ver": "22003",
 		"composer": "Mitchie M / 初音ミク / MORE MORE JUMP！「プロジェクトセカイ カラフルステージ！ feat. 初音ミク」",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -22557,7 +22532,7 @@
 	},
 	"11372": {
 		"name": "needLe",
-		"ver": "23011",
+		"ver": "22003",
 		"composer": "DECO*27 / 初音ミク / Leo/need「プロジェクトセカイ カラフルステージ！ feat. 初音ミク」",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -22597,7 +22572,7 @@
 	},
 	"11374": {
 		"name": "GIGANTØMAKHIA",
-		"ver": "22004",
+		"ver": "22015",
 		"composer": "BlackYooh vs. siromaru",
 		"genre": "maimai",
 		"notes": [
@@ -22608,7 +22583,7 @@
 				"lv": 8.2
 			},
 			{
-				"lv": 13
+				"lv": 12.9
 			},
 			{
 				"lv": 14.7
@@ -22671,7 +22646,7 @@
 				"lv": 11.7
 			},
 			{
-				"lv": 14
+				"lv": 13.9
 			}
 		]
 	},
@@ -22731,7 +22706,7 @@
 				"lv": 10.8
 			},
 			{
-				"lv": 13.4
+				"lv": 13.5
 			}
 		]
 	},
@@ -22757,7 +22732,7 @@
 	},
 	"11382": {
 		"name": "HECATONCHEIR",
-		"ver": "22508",
+		"ver": "22507",
 		"composer": "Yuta Imai",
 		"genre": "maimai",
 		"notes": [
@@ -22777,7 +22752,7 @@
 	},
 	"11383": {
 		"name": "Irresistible",
-		"ver": "22508",
+		"ver": "22507",
 		"composer": "MK",
 		"genre": "maimai",
 		"notes": [
@@ -22791,13 +22766,13 @@
 				"lv": 11
 			},
 			{
-				"lv": 13.6
+				"lv": 13.7
 			}
 		]
 	},
 	"11384": {
 		"name": "HAGAKIRI",
-		"ver": "22508",
+		"ver": "22507",
 		"composer": "Masayoshi Iimori",
 		"genre": "maimai",
 		"notes": [
@@ -22817,7 +22792,7 @@
 	},
 	"11385": {
 		"name": "N3V3R G3T OV3R",
-		"ver": "22508",
+		"ver": "22507",
 		"composer": "C-Show",
 		"genre": "maimai",
 		"notes": [
@@ -22837,7 +22812,7 @@
 	},
 	"11386": {
 		"name": "Swift Swing",
-		"ver": "22511",
+		"ver": "22509",
 		"composer": "Laur",
 		"genre": "maimai",
 		"notes": [
@@ -22857,7 +22832,7 @@
 	},
 	"11387": {
 		"name": "星空パーティーチューン",
-		"ver": "22511",
+		"ver": "22509",
 		"composer": "OSTER project feat. そらこ",
 		"genre": "maimai",
 		"notes": [
@@ -22877,7 +22852,7 @@
 	},
 	"11388": {
 		"name": "チューリングの跡",
-		"ver": "22511",
+		"ver": "22509",
 		"composer": "Frums",
 		"genre": "maimai",
 		"notes": [
@@ -22897,7 +22872,7 @@
 	},
 	"11389": {
 		"name": "Sage",
-		"ver": "22511",
+		"ver": "22509",
 		"composer": "かめりあ",
 		"genre": "maimai",
 		"notes": [
@@ -22911,13 +22886,13 @@
 				"lv": 12.9
 			},
 			{
-				"lv": 14.5
+				"lv": 14.6
 			}
 		]
 	},
 	"11390": {
 		"name": "OTOGEMA",
-		"ver": "22015",
+		"ver": "22511",
 		"composer": "ビートまりお",
 		"genre": "maimai",
 		"notes": [
@@ -22931,13 +22906,13 @@
 				"lv": 10.7
 			},
 			{
-				"lv": 13.6
+				"lv": 13.7
 			}
 		]
 	},
 	"11391": {
 		"name": "WiPE OUT MEMORIES",
-		"ver": "22501",
+		"ver": "22511",
 		"composer": "t+pazolite",
 		"genre": "maimai",
 		"notes": [
@@ -22957,7 +22932,7 @@
 	},
 	"11392": {
 		"name": "Metamorphosism",
-		"ver": "22504",
+		"ver": "22513",
 		"composer": "削除",
 		"genre": "maimai",
 		"notes": [
@@ -22977,7 +22952,7 @@
 	},
 	"11393": {
 		"name": "白花の天使",
-		"ver": "22504",
+		"ver": "22513",
 		"composer": "Yu-dachi",
 		"genre": "maimai",
 		"notes": [
@@ -22991,13 +22966,13 @@
 				"lv": 12
 			},
 			{
-				"lv": 13.8
+				"lv": 13.9
 			}
 		]
 	},
 	"11394": {
 		"name": "World's end loneliness",
-		"ver": "22504",
+		"ver": "22513",
 		"composer": "打打だいず",
 		"genre": "maimai",
 		"notes": [
@@ -23017,7 +22992,7 @@
 	},
 	"11395": {
 		"name": "Jouez Avec Moi?",
-		"ver": "22504",
+		"ver": "22513",
 		"composer": "Retropolitaliens (Ms.+駄々子)",
 		"genre": "maimai",
 		"notes": [
@@ -23051,7 +23026,7 @@
 				"lv": 10
 			},
 			{
-				"lv": 13.6
+				"lv": 13.5
 			}
 		]
 	},
@@ -23077,7 +23052,7 @@
 	},
 	"11399": {
 		"name": "ツクヨミステップ",
-		"ver": "22513",
+		"ver": "22512",
 		"composer": "ユリイ・カノン feat.nameless",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -23097,7 +23072,7 @@
 	},
 	"11400": {
 		"name": "folern",
-		"ver": "22513",
+		"ver": "22512",
 		"composer": "ぬゆり",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -23117,7 +23092,7 @@
 	},
 	"11401": {
 		"name": "コスモポップファンクラブ",
-		"ver": "22004",
+		"ver": "22512",
 		"composer": "ナユタン星人",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -23377,7 +23352,7 @@
 				"lv": 8.8
 			},
 			{
-				"lv": 12.6
+				"lv": 12.5
 			},
 			{
 				"lv": 13.9
@@ -23426,7 +23401,7 @@
 	},
 	"11420": {
 		"name": "Photon Melodies",
-		"ver": "22506",
+		"ver": "22504",
 		"composer": "Photon Maiden",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -23446,7 +23421,7 @@
 	},
 	"11421": {
 		"name": "吾輩よ猫であれ",
-		"ver": "22506",
+		"ver": "22504",
 		"composer": "Lyrical Lily",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -23465,8 +23440,8 @@
 		]
 	},
 	"11422": {
-		"name": "",
-		"ver": "22503",
+		"name": null,
+		"ver": "22504",
 		"composer": "x0o0x_",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -23506,7 +23481,7 @@
 	},
 	"11424": {
 		"name": "Estahv",
-		"ver": "22507",
+		"ver": "22506",
 		"composer": "Feryquitous",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -23526,7 +23501,7 @@
 	},
 	"11425": {
 		"name": "First Dance",
-		"ver": "22507",
+		"ver": "22506",
 		"composer": "削除",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -23546,7 +23521,7 @@
 	},
 	"11426": {
 		"name": "Mjölnir",
-		"ver": "22507",
+		"ver": "22506",
 		"composer": "xi",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -23566,7 +23541,7 @@
 	},
 	"11427": {
 		"name": "Define",
-		"ver": "22507",
+		"ver": "22506",
 		"composer": "Zekk",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -23580,13 +23555,13 @@
 				"lv": 11.7
 			},
 			{
-				"lv": 13.5
+				"lv": 13.6
 			}
 		]
 	},
 	"11428": {
 		"name": "BANG!",
-		"ver": "22507",
+		"ver": "22506",
 		"composer": "Shoichiro Hirata feat.Sana",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -23600,13 +23575,13 @@
 				"lv": 10.8
 			},
 			{
-				"lv": 13.1
+				"lv": 13
 			}
 		]
 	},
 	"11429": {
 		"name": "Love's Theme of BADASS ～バッド・アス 愛のテーマ～",
-		"ver": "22507",
+		"ver": "22506",
 		"composer": "Hommarju",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -23626,7 +23601,7 @@
 	},
 	"11430": {
 		"name": "オントロジー",
-		"ver": "22510",
+		"ver": "22508",
 		"composer": "Rain Drops",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -23646,7 +23621,7 @@
 	},
 	"11431": {
 		"name": "剣を抜け！GCCX MAX",
-		"ver": "22509",
+		"ver": "22508",
 		"composer": "メッセメッセクラブ",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -23666,7 +23641,7 @@
 	},
 	"11432": {
 		"name": "Princess♂",
-		"ver": "22509",
+		"ver": "22508",
 		"composer": "TOPHAMHAT-KYO",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -23686,7 +23661,7 @@
 	},
 	"11433": {
 		"name": "ヒトガタ",
-		"ver": "22510",
+		"ver": "22508",
 		"composer": "HIMEHINA",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -23706,7 +23681,7 @@
 	},
 	"11434": {
 		"name": "Spring of Dreams",
-		"ver": "22512",
+		"ver": "22510",
 		"composer": "3L (NJK Record)",
 		"genre": "東方Project",
 		"notes": [
@@ -23726,7 +23701,7 @@
 	},
 	"11435": {
 		"name": "大輪の魂 (feat. AO, 司芭扶)",
-		"ver": "22512",
+		"ver": "22510",
 		"composer": "魂音泉",
 		"genre": "東方Project",
 		"notes": [
@@ -23746,7 +23721,7 @@
 	},
 	"11436": {
 		"name": "紅に染まる恋の花",
-		"ver": "22512",
+		"ver": "22510",
 		"composer": "幽閉サテライト",
 		"genre": "東方Project",
 		"notes": [
@@ -23766,7 +23741,7 @@
 	},
 	"11437": {
 		"name": "三妖精SAY YA!!!",
-		"ver": "22512",
+		"ver": "22510",
 		"composer": "森羅万象",
 		"genre": "東方Project",
 		"notes": [
@@ -23786,7 +23761,7 @@
 	},
 	"11438": {
 		"name": "Reach For The Stars (Re-Colors)",
-		"ver": "22513",
+		"ver": "22511",
 		"composer": "大谷智哉「ソニックカラーズ アルティメット」",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -23846,7 +23821,7 @@
 	},
 	"11443": {
 		"name": "8-EM",
-		"ver": "22004",
+		"ver": "22501",
 		"composer": "Sampling Masters AYA",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -23857,7 +23832,7 @@
 				"lv": 8.5
 			},
 			{
-				"lv": 12.6
+				"lv": 12.5
 			},
 			{
 				"lv": 13.8
@@ -24026,7 +24001,7 @@
 	},
 	"11452": {
 		"name": "ホシシズク",
-		"ver": "23001",
+		"ver": "23000",
 		"composer": "森羅万象",
 		"genre": "maimai",
 		"notes": [
@@ -24040,13 +24015,13 @@
 				"lv": 10.5
 			},
 			{
-				"lv": 13
+				"lv": 12.9
 			}
 		]
 	},
 	"11453": {
 		"name": "Rainbow Rush Story",
-		"ver": "23001",
+		"ver": "23000",
 		"composer": "いるかアイス feat.ちょこ",
 		"genre": "maimai",
 		"notes": [
@@ -24066,7 +24041,7 @@
 	},
 	"11454": {
 		"name": "Tricolor⁂circuS",
-		"ver": "23001",
+		"ver": "23000",
 		"composer": "ああ…翡翠茶漬け…",
 		"genre": "maimai",
 		"notes": [
@@ -24086,7 +24061,7 @@
 	},
 	"11455": {
 		"name": "[X]",
-		"ver": "23001",
+		"ver": "23000",
 		"composer": "Blacklolita",
 		"genre": "maimai",
 		"notes": [
@@ -24106,7 +24081,7 @@
 	},
 	"11456": {
 		"name": "分解収束テイル",
-		"ver": "23001",
+		"ver": "23000",
 		"composer": "un:c・konoco×cosMo＠暴走P",
 		"genre": "maimai",
 		"notes": [
@@ -24126,7 +24101,7 @@
 	},
 	"11457": {
 		"name": "mystique as iris",
-		"ver": "23001",
+		"ver": "23000",
 		"composer": "かねこちはる",
 		"genre": "maimai",
 		"notes": [
@@ -24140,13 +24115,13 @@
 				"lv": 12.8
 			},
 			{
-				"lv": 14.6
+				"lv": 14.7
 			}
 		]
 	},
 	"11458": {
 		"name": "Rising on the horizon",
-		"ver": "23004",
+		"ver": "23005",
 		"composer": "TAG",
 		"genre": "maimai",
 		"notes": [
@@ -24166,7 +24141,7 @@
 	},
 	"11459": {
 		"name": "You Mean the World to Me",
-		"ver": "23008",
+		"ver": "23006",
 		"composer": "Mameyudoufu feat. Shully",
 		"genre": "maimai",
 		"notes": [
@@ -24186,7 +24161,7 @@
 	},
 	"11460": {
 		"name": "Neon Kingdom",
-		"ver": "23008",
+		"ver": "23006",
 		"composer": "litmus*",
 		"genre": "maimai",
 		"notes": [
@@ -24206,7 +24181,7 @@
 	},
 	"11461": {
 		"name": "#狂った民族２ PRAVARGYAZOOQA",
-		"ver": "23008",
+		"ver": "23006",
 		"composer": "DJ Raisei",
 		"genre": "maimai",
 		"notes": [
@@ -24226,7 +24201,7 @@
 	},
 	"11462": {
 		"name": "VSpook!",
-		"ver": "23008",
+		"ver": "23006",
 		"composer": "s-don",
 		"genre": "maimai",
 		"notes": [
@@ -24246,7 +24221,7 @@
 	},
 	"11463": {
 		"name": "RIFFRAIN",
-		"ver": "23010",
+		"ver": "23008",
 		"composer": "夏代孝明",
 		"genre": "maimai",
 		"notes": [
@@ -24260,13 +24235,13 @@
 				"lv": 9.7
 			},
 			{
-				"lv": 13.2
+				"lv": 13
 			}
 		]
 	},
 	"11464": {
 		"name": "Falling",
-		"ver": "23010",
+		"ver": "23008",
 		"composer": "シノ feat.しほ",
 		"genre": "maimai",
 		"notes": [
@@ -24286,7 +24261,7 @@
 	},
 	"11465": {
 		"name": "ピリオドサイン",
-		"ver": "23010",
+		"ver": "23008",
 		"composer": "Ponchi♪ feat.はぁち",
 		"genre": "maimai",
 		"notes": [
@@ -24300,13 +24275,13 @@
 				"lv": 10.7
 			},
 			{
-				"lv": 13.5
+				"lv": 13.6
 			}
 		]
 	},
 	"11466": {
 		"name": "群青シグナル",
-		"ver": "23010",
+		"ver": "23008",
 		"composer": "テヅカ feat. 獅子神レオナ",
 		"genre": "maimai",
 		"notes": [
@@ -24326,7 +24301,7 @@
 	},
 	"11467": {
 		"name": "Beat Opera op.1",
-		"ver": "23013",
+		"ver": "23012",
 		"composer": "bermei.inazawa",
 		"genre": "maimai",
 		"notes": [
@@ -24346,7 +24321,7 @@
 	},
 	"11468": {
 		"name": "星見草",
-		"ver": "23013",
+		"ver": "23012",
 		"composer": "秋田 真典",
 		"genre": "maimai",
 		"notes": [
@@ -24366,7 +24341,7 @@
 	},
 	"11469": {
 		"name": "\"411Ψ892\"",
-		"ver": "23013",
+		"ver": "23012",
 		"composer": "Tanchiky",
 		"genre": "maimai",
 		"notes": [
@@ -24386,7 +24361,7 @@
 	},
 	"11470": {
 		"name": "康莊大道",
-		"ver": "23013",
+		"ver": "23012",
 		"composer": "Spiegel vs Yukino",
 		"genre": "maimai",
 		"notes": [
@@ -24406,7 +24381,7 @@
 	},
 	"11471": {
 		"name": "蜘蛛の糸",
-		"ver": "23001",
+		"ver": "23000",
 		"composer": "きくお×cosMo＠暴走P feat.影縫英",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -24426,7 +24401,7 @@
 	},
 	"11472": {
 		"name": "Don't Fight The Music",
-		"ver": "23011",
+		"ver": "23000",
 		"composer": "黒魔",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -24506,7 +24481,7 @@
 	},
 	"11477": {
 		"name": "Ghost Dance",
-		"ver": "23006",
+		"ver": "23011",
 		"composer": "亜沙 feat.くろくも",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -24526,7 +24501,7 @@
 	},
 	"11478": {
 		"name": "電光石火",
-		"ver": "23006",
+		"ver": "23011",
 		"composer": "HiTECH NINJA",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -24546,7 +24521,7 @@
 	},
 	"11479": {
 		"name": "Hainuwele",
-		"ver": "23006",
+		"ver": "23011",
 		"composer": "ETIA.",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -24586,7 +24561,7 @@
 	},
 	"11481": {
 		"name": "アニマル",
-		"ver": "23001",
+		"ver": "23000",
 		"composer": "DECO*27",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -24606,7 +24581,7 @@
 	},
 	"11482": {
 		"name": "ジレンマ",
-		"ver": "23001",
+		"ver": "23000",
 		"composer": "DECO*27",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -24626,7 +24601,7 @@
 	},
 	"11483": {
 		"name": "踊",
-		"ver": "23001",
+		"ver": "23000",
 		"composer": "Ado",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -24649,7 +24624,7 @@
 	},
 	"11484": {
 		"name": "残響散歌",
-		"ver": "23001",
+		"ver": "23000",
 		"composer": "Aimer",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -24669,7 +24644,7 @@
 	},
 	"11485": {
 		"name": "フォニイ",
-		"ver": "23001",
+		"ver": "23000",
 		"composer": "ツミキ　feat.音楽的同位体　可不（KAFU）",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -24692,7 +24667,7 @@
 	},
 	"11486": {
 		"name": "ヴィラン",
-		"ver": "23001",
+		"ver": "23000",
 		"composer": "flower・てにをは",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -24715,7 +24690,7 @@
 	},
 	"11487": {
 		"name": "EYE",
-		"ver": "23001",
+		"ver": "23000",
 		"composer": "Kanaria",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -24735,7 +24710,7 @@
 	},
 	"11488": {
 		"name": "スカーレット警察のゲットーパトロール24時",
-		"ver": "23001",
+		"ver": "23000",
 		"composer": "七条レタスグループ",
 		"genre": "東方Project",
 		"notes": [
@@ -24755,7 +24730,7 @@
 	},
 	"11489": {
 		"name": "田中",
-		"ver": "23001",
+		"ver": "23000",
 		"composer": "立秋 feat.ちょこ",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -24775,7 +24750,7 @@
 	},
 	"11490": {
 		"name": "Random",
-		"ver": "23002",
+		"ver": "23001",
 		"composer": "Sobrem × Silentroom",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -24795,7 +24770,7 @@
 	},
 	"11491": {
 		"name": "Luminaria",
-		"ver": "23002",
+		"ver": "23001",
 		"composer": "Lime",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -24815,7 +24790,7 @@
 	},
 	"11492": {
 		"name": "群青讃歌",
-		"ver": "23504",
+		"ver": "23002",
 		"composer": "Eve / 初音ミク、星乃一歌、花里みのり、小豆沢こはね、天馬司、宵崎奏「プロジェクトセカイ カラフルステージ！ feat. 初音ミク」",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -24835,7 +24810,7 @@
 	},
 	"11493": {
 		"name": "セカイ",
-		"ver": "23504",
+		"ver": "23002",
 		"composer": "DECO*27 × 堀江晶太(kemu) / 初音ミク、星乃一歌、天馬司、宵崎奏「プロジェクトセカイ カラフルステージ！ feat. 初音ミク」",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -24855,7 +24830,7 @@
 	},
 	"11494": {
 		"name": "ワーワーワールド",
-		"ver": "23504",
+		"ver": "23002",
 		"composer": "Giga & Mitchie M / 初音ミク、花里みのり、小豆沢こはね「プロジェクトセカイ カラフルステージ！ feat. 初音ミク」",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -24915,7 +24890,7 @@
 	},
 	"11497": {
 		"name": "アマカミサマ",
-		"ver": "23005",
+		"ver": "23004",
 		"composer": "名取さな",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -24935,7 +24910,7 @@
 	},
 	"11498": {
 		"name": "モンダイナイトリッパー！",
-		"ver": "23005",
+		"ver": "23004",
 		"composer": "名取さな",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -24949,13 +24924,13 @@
 				"lv": 10.7
 			},
 			{
-				"lv": 13.6
+				"lv": 13.7
 			}
 		]
 	},
 	"11499": {
 		"name": "マーシャル・マキシマイザー",
-		"ver": "23005",
+		"ver": "23004",
 		"composer": "柊マグネタイト　feat.音楽的同位体　可不（KAFU）",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -24975,7 +24950,7 @@
 	},
 	"11500": {
 		"name": "秋の未確認生物",
-		"ver": "23005",
+		"ver": "23004",
 		"composer": "子牛 feat.音街ウナ",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -25015,7 +24990,7 @@
 	},
 	"11502": {
 		"name": "エナドリおいしいソング",
-		"ver": "23009",
+		"ver": "23007",
 		"composer": "冥堂院・アレクサンドル・ヴィクトリア・リヒテンシュタイン・聖斗 feat.TINOP",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -25035,7 +25010,7 @@
 	},
 	"11503": {
 		"name": "Baddest",
-		"ver": "23007",
+		"ver": "23009",
 		"composer": "樋口楓",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -25055,7 +25030,7 @@
 	},
 	"11504": {
 		"name": "ばかみたい【Taxi Driver Edition】",
-		"ver": "23007",
+		"ver": "23009",
 		"composer": "桐生一馬(黒田崇矢)",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -25075,7 +25050,7 @@
 	},
 	"11505": {
 		"name": "れっつ！みらくる☆はーどこあっ！",
-		"ver": "23007",
+		"ver": "23009",
 		"composer": "Laur feat.みしゃも",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -25095,7 +25070,7 @@
 	},
 	"11506": {
 		"name": "Blank Paper (Prod. TEMPLIME)",
-		"ver": "23012",
+		"ver": "23010",
 		"composer": "日高零奈・東雲和音・茅野ふたば「電音部」",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -25115,7 +25090,7 @@
 	},
 	"11507": {
 		"name": "In my world (Prod. KOTONOHOUSE)",
-		"ver": "23012",
+		"ver": "23010",
 		"composer": "鳳凰火凛・瀬戸海月・大賀ルキア「電音部」",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -25135,7 +25110,7 @@
 	},
 	"11508": {
 		"name": "アイム・マイヒーロー",
-		"ver": "23009",
+		"ver": "23010",
 		"composer": "Ino(chronoize) feat. 柳瀬マサキ",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -25155,7 +25130,7 @@
 	},
 	"11509": {
 		"name": "NightTheater",
-		"ver": "23009",
+		"ver": "23010",
 		"composer": "わかどり",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -25175,7 +25150,7 @@
 	},
 	"11510": {
 		"name": "キュートなカノジョ",
-		"ver": "23014",
+		"ver": "23013",
 		"composer": "syudou　feat.音楽的同位体　可不（KAFU）",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -25195,7 +25170,7 @@
 	},
 	"11511": {
 		"name": "へべれけジャンキー",
-		"ver": "23014",
+		"ver": "23013",
 		"composer": "syudou",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -25215,7 +25190,7 @@
 	},
 	"11512": {
 		"name": "きゅうくらりん",
-		"ver": "23014",
+		"ver": "23013",
 		"composer": "いよわ",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -25226,7 +25201,7 @@
 				"lv": 7.5
 			},
 			{
-				"lv": 11.6
+				"lv": 11.5
 			},
 			{
 				"lv": 13.7
@@ -25235,7 +25210,7 @@
 	},
 	"11513": {
 		"name": "回る空うさぎ",
-		"ver": "23014",
+		"ver": "23013",
 		"composer": "Orangestar",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -25255,7 +25230,7 @@
 	},
 	"11514": {
 		"name": "Lost Desire",
-		"ver": "23015",
+		"ver": "23014",
 		"composer": "Powerless feat. Sennzai",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -25275,7 +25250,7 @@
 	},
 	"11516": {
 		"name": "Aegleseeker",
-		"ver": "23015",
+		"ver": "23014",
 		"composer": "Silentroom vs Frums",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -25295,7 +25270,7 @@
 	},
 	"11517": {
 		"name": "最強STRONGER",
-		"ver": "23015",
+		"ver": "23014",
 		"composer": "REDALiCE vs USAO",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -25309,13 +25284,13 @@
 				"lv": 12.8
 			},
 			{
-				"lv": 14.5
+				"lv": 14.6
 			}
 		]
 	},
 	"11518": {
 		"name": "ボッカデラベリタ",
-		"ver": "23016",
+		"ver": "23015",
 		"composer": "柊キライ",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -25335,7 +25310,7 @@
 	},
 	"11519": {
 		"name": "『んっあっあっ。』",
-		"ver": "23016",
+		"ver": "23015",
 		"composer": "SLAVE.V-V-R",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -25355,7 +25330,7 @@
 	},
 	"11520": {
 		"name": "独りんぼエンヴィー",
-		"ver": "23016",
+		"ver": "23015",
 		"composer": "koyori（電ポルP）",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -25375,7 +25350,7 @@
 	},
 	"11521": {
 		"name": "ロータスイーター",
-		"ver": "23016",
+		"ver": "23015",
 		"composer": "青栗鼠",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -25395,7 +25370,7 @@
 	},
 	"11523": {
 		"name": "ViRTUS",
-		"ver": "23012",
+		"ver": "23014",
 		"composer": "Hiro",
 		"genre": "maimai",
 		"notes": [
@@ -25409,13 +25384,13 @@
 				"lv": 13.2
 			},
 			{
-				"lv": 14.6
+				"lv": 14.7
 			}
 		]
 	},
 	"11524": {
 		"name": "Alice's Suitcase",
-		"ver": "23015",
+		"ver": "23014",
 		"composer": "Endorfin.",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -25435,7 +25410,7 @@
 	},
 	"11525": {
 		"name": "ピュグマリオンの咒文",
-		"ver": "23006",
+		"ver": "23011",
 		"composer": "アリスシャッハと魔法の楽団",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -25455,7 +25430,7 @@
 	},
 	"11526": {
 		"name": "トノサマビーム",
-		"ver": "23501",
+		"ver": "23500",
 		"composer": "ぼっちぼろまる",
 		"genre": "maimai",
 		"notes": [
@@ -25475,7 +25450,7 @@
 	},
 	"11527": {
 		"name": "enchanted wanderer",
-		"ver": "23501",
+		"ver": "23500",
 		"composer": "linear ring",
 		"genre": "maimai",
 		"notes": [
@@ -25495,7 +25470,7 @@
 	},
 	"11528": {
 		"name": "Comet Panto Men!",
-		"ver": "23501",
+		"ver": "23500",
 		"composer": "MYUKKE.",
 		"genre": "maimai",
 		"notes": [
@@ -25509,13 +25484,13 @@
 				"lv": 12
 			},
 			{
-				"lv": 13.9
+				"lv": 14
 			}
 		]
 	},
 	"11529": {
 		"name": "ツムギボシ",
-		"ver": "23501",
+		"ver": "23500",
 		"composer": "大国奏音 feat.timao",
 		"genre": "maimai",
 		"notes": [
@@ -25529,13 +25504,13 @@
 				"lv": 11.9
 			},
 			{
-				"lv": 14
+				"lv": 14.1
 			}
 		]
 	},
 	"11530": {
 		"name": "VeRForTe αRtE:VEiN",
-		"ver": "23501",
+		"ver": "23500",
 		"composer": "orangentle",
 		"genre": "maimai",
 		"notes": [
@@ -25555,7 +25530,7 @@
 	},
 	"11532": {
 		"name": "ヱデン",
-		"ver": "23502",
+		"ver": "23503",
 		"composer": "koyori（電ポルP）",
 		"genre": "maimai",
 		"notes": [
@@ -25575,7 +25550,7 @@
 	},
 	"11533": {
 		"name": "にゃーにゃー冒険譚",
-		"ver": "23502",
+		"ver": "23503",
 		"composer": "黒魔",
 		"genre": "maimai",
 		"notes": [
@@ -25595,7 +25570,7 @@
 	},
 	"11534": {
 		"name": "The Great Banquet",
-		"ver": "24013",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 4
@@ -25608,14 +25583,15 @@
 			},
 			{
 				"lv": 14.1
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "Iris",
-		"genre": "maimai"
+		]
 	},
 	"11535": {
 		"name": "Redemption",
-		"ver": "24013",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 4
@@ -25628,14 +25604,15 @@
 			},
 			{
 				"lv": 13.9
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "XinG、10lulu",
-		"genre": "maimai"
+		]
 	},
 	"11536": {
 		"name": "Ether Second",
-		"ver": "24013",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 4
@@ -25648,14 +25625,15 @@
 			},
 			{
 				"lv": 13.9
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "Akira Complex",
-		"genre": "maimai"
+		]
 	},
 	"11537": {
 		"name": "Straight into the lights",
-		"ver": "24013",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 4
@@ -25668,14 +25646,15 @@
 			},
 			{
 				"lv": 14.8
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "Cosmograph",
-		"genre": "maimai"
+		]
 	},
 	"11538": {
 		"name": "アンバークロニクル",
-		"ver": "23503",
+		"ver": "23507",
 		"composer": "しーけー feat.ricono",
 		"genre": "maimai",
 		"notes": [
@@ -25695,7 +25674,7 @@
 	},
 	"11539": {
 		"name": "リフヴェイン",
-		"ver": "23503",
+		"ver": "23507",
 		"composer": "青栗鼠 feat.sekai",
 		"genre": "maimai",
 		"notes": [
@@ -25715,7 +25694,7 @@
 	},
 	"11540": {
 		"name": "Kairos",
-		"ver": "23503",
+		"ver": "23507",
 		"composer": "ARForest feat.nayuta",
 		"genre": "maimai",
 		"notes": [
@@ -25729,13 +25708,13 @@
 				"lv": 11.2
 			},
 			{
-				"lv": 13.6
+				"lv": 13.8
 			}
 		]
 	},
 	"11541": {
 		"name": "宵の鳥",
-		"ver": "23503",
+		"ver": "23507",
 		"composer": "n.k feat.影縫英",
 		"genre": "maimai",
 		"notes": [
@@ -25749,13 +25728,13 @@
 				"lv": 10.7
 			},
 			{
-				"lv": 13.7
+				"lv": 13.8
 			}
 		]
 	},
 	"11542": {
 		"name": "ここからはじまるプロローグ。 (Kanon Remix)",
-		"ver": "23505",
+		"ver": "23508",
 		"composer": "ああああ／大国奏音",
 		"genre": "maimai",
 		"notes": [
@@ -25775,7 +25754,7 @@
 	},
 	"11543": {
 		"name": "モ°ルモ°ル (MZK Skippin' Remix)",
-		"ver": "23505",
+		"ver": "23508",
 		"composer": "sasakure.UK／水野健治",
 		"genre": "maimai",
 		"notes": [
@@ -25795,7 +25774,7 @@
 	},
 	"11544": {
 		"name": "VERTeX (rintaro soma deconstructed remix)",
-		"ver": "23505",
+		"ver": "23508",
 		"composer": "Hiro／rintaro soma",
 		"genre": "maimai",
 		"notes": [
@@ -25809,13 +25788,13 @@
 				"lv": 12.8
 			},
 			{
-				"lv": 14.6
+				"lv": 14.7
 			}
 		]
 	},
 	"11545": {
 		"name": "隠密あんみつDX",
-		"ver": "23506",
+		"ver": "23510",
 		"composer": "カルロス袴田 feat. 日南めい, 古川由彩",
 		"genre": "maimai",
 		"notes": [
@@ -25835,7 +25814,7 @@
 	},
 	"11546": {
 		"name": "地球",
-		"ver": "23506",
+		"ver": "23510",
 		"composer": "立秋 feat.ちょこ",
 		"genre": "maimai",
 		"notes": [
@@ -25855,7 +25834,7 @@
 	},
 	"11547": {
 		"name": "Churros Parlor",
-		"ver": "23506",
+		"ver": "23510",
 		"composer": "ピエロ☆マン",
 		"genre": "maimai",
 		"notes": [
@@ -25875,7 +25854,7 @@
 	},
 	"11548": {
 		"name": "超熊猫的周遊記（ワンダーパンダートラベラー）",
-		"ver": "23506",
+		"ver": "23510",
 		"composer": "FANTAGIRAFF",
 		"genre": "maimai",
 		"notes": [
@@ -25889,13 +25868,13 @@
 				"lv": 12.7
 			},
 			{
-				"lv": 14.7
+				"lv": 14.8
 			}
 		]
 	},
 	"11549": {
 		"name": "Trrricksters!!",
-		"ver": "23004",
+		"ver": "23500",
 		"composer": "s-don vs. 翡乃イスカ",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -25909,13 +25888,13 @@
 				"lv": 12.8
 			},
 			{
-				"lv": 14.4
+				"lv": 14.5
 			}
 		]
 	},
 	"11550": {
 		"name": "FLUFFY FLASH",
-		"ver": "23501",
+		"ver": "23500",
 		"composer": "Kobaryo",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -25929,13 +25908,13 @@
 				"lv": 12.8
 			},
 			{
-				"lv": 14.4
+				"lv": 14.3
 			}
 		]
 	},
 	"11551": {
 		"name": "STARRED HEART",
-		"ver": "23506",
+		"ver": "23512",
 		"composer": "曲：広川恵一 (MONACA)／歌：オンゲキシューターズ",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -25955,7 +25934,7 @@
 	},
 	"11552": {
 		"name": "Y.Y.Y.計画!!!!",
-		"ver": "23506",
+		"ver": "23512",
 		"composer": "曲：烏屋茶房／歌：R.B.P. [九條 楓(CV：佳村 はるか)、逢坂 茜(CV：大空 直美)、珠洲島 有栖(CV：長縄 まりあ)]",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -25975,7 +25954,7 @@
 	},
 	"11553": {
 		"name": "Last Kingdom",
-		"ver": "23506",
+		"ver": "23512",
 		"composer": "USAO",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -25995,7 +25974,7 @@
 	},
 	"11554": {
 		"name": "LAMIA",
-		"ver": "23506",
+		"ver": "23512",
 		"composer": "BlackY",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -26015,7 +25994,7 @@
 	},
 	"11555": {
 		"name": "ヒバリ",
-		"ver": "23502",
+		"ver": "23500",
 		"composer": "HIMEHINA",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -26035,7 +26014,7 @@
 	},
 	"11556": {
 		"name": "Hello, Hologram",
-		"ver": "23502",
+		"ver": "23500",
 		"composer": "HIMEHINA",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -26055,7 +26034,7 @@
 	},
 	"11557": {
 		"name": "不機嫌なスリーカード",
-		"ver": "23502",
+		"ver": "23500",
 		"composer": "HIMEHINA",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -26069,13 +26048,13 @@
 				"lv": 10.5
 			},
 			{
-				"lv": 13
+				"lv": 12.9
 			}
 		]
 	},
 	"11558": {
 		"name": "神っぽいな",
-		"ver": "23501",
+		"ver": "23500",
 		"composer": "ピノキオピー",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -26098,7 +26077,7 @@
 	},
 	"11559": {
 		"name": "魔法少女とチョコレゐト",
-		"ver": "23501",
+		"ver": "23500",
 		"composer": "ピノキオピー",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -26118,7 +26097,7 @@
 	},
 	"11560": {
 		"name": "阿修羅ちゃん",
-		"ver": "23501",
+		"ver": "23500",
 		"composer": "Ado",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -26138,7 +26117,7 @@
 	},
 	"11561": {
 		"name": "おとせサンダー",
-		"ver": "23501",
+		"ver": "23500",
 		"composer": "ぼっちぼろまる",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -26161,7 +26140,7 @@
 	},
 	"11562": {
 		"name": "ロウワー",
-		"ver": "23501",
+		"ver": "23500",
 		"composer": "ぬゆり",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -26184,7 +26163,7 @@
 	},
 	"11563": {
 		"name": "キャットラビング",
-		"ver": "23501",
+		"ver": "23500",
 		"composer": "香椎モイミ",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -26204,7 +26183,7 @@
 	},
 	"11564": {
 		"name": "リスペク風神",
-		"ver": "23501",
+		"ver": "23500",
 		"composer": "ビートまりおとまろん",
 		"genre": "東方Project",
 		"notes": [
@@ -26224,7 +26203,7 @@
 	},
 	"11565": {
 		"name": "Let you DIVE!",
-		"ver": "23003",
+		"ver": "23500",
 		"composer": "HARDCORE TANO*C & エリザベス（CV:大西沙織）",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -26235,7 +26214,7 @@
 				"lv": 7.8
 			},
 			{
-				"lv": 11.5
+				"lv": 11.7
 			},
 			{
 				"lv": 12.8
@@ -26244,7 +26223,7 @@
 	},
 	"11566": {
 		"name": "Knight Rider",
-		"ver": "23003",
+		"ver": "23500",
 		"composer": "USAO",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -26264,7 +26243,7 @@
 	},
 	"11567": {
 		"name": "I’m Here (feat. Merry Kirk-Holmes)",
-		"ver": "24005",
+		"ver": "24007",
 		"composer": "大谷智哉「ソニックフロンティア」",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -26284,9 +26263,9 @@
 	},
 	"11568": {
 		"name": "INTERNET OVERDOSE",
-		"ver": "23003",
+		"ver": "23500",
 		"composer": "Aiobahn feat. KOTOKO",
-		"genre": "POPSアニメ",
+		"genre": "ゲームバラエティ",
 		"notes": [
 			{
 				"lv": 4
@@ -26304,7 +26283,7 @@
 	},
 	"11569": {
 		"name": "魂のルフラン",
-		"ver": "23502",
+		"ver": "23501",
 		"composer": "高橋洋子 [covered by 光吉猛修]",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -26324,7 +26303,7 @@
 	},
 	"11570": {
 		"name": "Shooting Shower～DANCE TIME(シンディ)～",
-		"ver": "23502",
+		"ver": "23501",
 		"composer": "Sammy Sound Team",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -26344,7 +26323,7 @@
 	},
 	"11571": {
 		"name": "Lights of Muse",
-		"ver": "23501",
+		"ver": "23502",
 		"composer": "Ayatsugu_Otowa",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -26364,7 +26343,7 @@
 	},
 	"11572": {
 		"name": "tape/stop/night",
-		"ver": "23501",
+		"ver": "23502",
 		"composer": "Sugar & Co.",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -26384,7 +26363,7 @@
 	},
 	"11573": {
 		"name": "Final Step!",
-		"ver": "23501",
+		"ver": "23502",
 		"composer": "Lime",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -26404,7 +26383,7 @@
 	},
 	"11574": {
 		"name": "The 90's Decision",
-		"ver": "23501",
+		"ver": "23502",
 		"composer": "MYUKKE.",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -26424,7 +26403,7 @@
 	},
 	"11575": {
 		"name": "僕の和風本当上手",
-		"ver": "23501",
+		"ver": "23502",
 		"composer": "ボス",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -26444,7 +26423,7 @@
 	},
 	"11576": {
 		"name": "Cthugha",
-		"ver": "23501",
+		"ver": "23502",
 		"composer": "USAO",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -26464,7 +26443,7 @@
 	},
 	"11577": {
 		"name": "はんぶんこ",
-		"ver": "23506",
+		"ver": "23509",
 		"composer": "三枝明那",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -26524,7 +26503,7 @@
 	},
 	"11583": {
 		"name": "インターネットサバイバー",
-		"ver": "23503",
+		"ver": "23505",
 		"composer": "あやぽんず＊ feat.ビートまりお × まろん",
 		"genre": "東方Project",
 		"notes": [
@@ -26558,7 +26537,7 @@
 				"lv": 10.7
 			},
 			{
-				"lv": 13.6
+				"lv": 13.7
 			}
 		]
 	},
@@ -26664,7 +26643,7 @@
 	},
 	"11590": {
 		"name": "あつすぎの歌",
-		"ver": "23505",
+		"ver": "23508",
 		"composer": "からめる",
 		"genre": "POPSアニメ",
 		"notes": [
@@ -26684,7 +26663,7 @@
 	},
 	"11591": {
 		"name": "ULTRA SYNERGY MATRIX",
-		"ver": "23505",
+		"ver": "23508",
 		"composer": "Tanchiky",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -26704,7 +26683,7 @@
 	},
 	"11592": {
 		"name": "花となれ",
-		"ver": "23503",
+		"ver": "23505",
 		"composer": "雄之助　feat.音楽的同位体　可不（KAFU）",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -26724,7 +26703,7 @@
 	},
 	"11593": {
 		"name": "私のドッペルゲンガー",
-		"ver": "23503",
+		"ver": "23505",
 		"composer": "DIVELA　feat.音楽的同位体　可不（KAFU）",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -26744,7 +26723,7 @@
 	},
 	"11594": {
 		"name": "BULK UP (GAME EXCLUSIVE EDIT)",
-		"ver": "23502",
+		"ver": "23503",
 		"composer": "USAO & Yuta Imai",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -26764,7 +26743,7 @@
 	},
 	"11596": {
 		"name": "Vallista",
-		"ver": "23506",
+		"ver": "23509",
 		"composer": "削除",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -26775,16 +26754,16 @@
 				"lv": 8
 			},
 			{
-				"lv": 12.6
+				"lv": 12.5
 			},
 			{
-				"lv": 14
+				"lv": 14.1
 			}
 		]
 	},
 	"11597": {
 		"name": "ノンブレス・オブリージュ",
-		"ver": "24003",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 3
@@ -26797,14 +26776,15 @@
 			},
 			{
 				"lv": 13
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "ピノキオピー",
-		"genre": "niconicoボーカロイド"
+		]
 	},
 	"11598": {
 		"name": "テオ",
-		"ver": "23506",
+		"ver": "23509",
 		"composer": "Omoi",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -26824,7 +26804,7 @@
 	},
 	"11599": {
 		"name": "まにまに",
-		"ver": "23506",
+		"ver": "23511",
 		"composer": "r-906",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -26838,13 +26818,13 @@
 				"lv": 9.8
 			},
 			{
-				"lv": 12.7
+				"lv": 12.8
 			}
 		]
 	},
 	"11600": {
 		"name": "感情ディシーブ",
-		"ver": "23506",
+		"ver": "23511",
 		"composer": "ろーある",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -26864,7 +26844,7 @@
 	},
 	"11601": {
 		"name": "ド屑",
-		"ver": "23506",
+		"ver": "23511",
 		"composer": "なきそ",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -26884,7 +26864,7 @@
 	},
 	"11602": {
 		"name": "絶対敵対メチャキライヤー",
-		"ver": "23506",
+		"ver": "23511",
 		"composer": "メドミア",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -26904,7 +26884,7 @@
 	},
 	"11603": {
 		"name": "つるぺったん",
-		"ver": "23505",
+		"ver": "23506",
 		"composer": "Silver Forest",
 		"genre": "東方Project",
 		"notes": [
@@ -26918,13 +26898,13 @@
 				"lv": 10
 			},
 			{
-				"lv": 12.5
+				"lv": 12.7
 			}
 		]
 	},
 	"11604": {
 		"name": "『ウソテイ』 ～一回戦せりなvsしろなvsなずな～",
-		"ver": "23505",
+		"ver": "23506",
 		"composer": "イロドリミドリ「CHUNITHM」",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -26944,7 +26924,7 @@
 	},
 	"11605": {
 		"name": "Bad Apple!! feat.nomico ～五十嵐 撫子 Ver.～",
-		"ver": "23505",
+		"ver": "23506",
 		"composer": "Masayoshi Minoshima [covered by 五十嵐 撫子(CV:花井 美春)]",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -26964,7 +26944,7 @@
 	},
 	"11606": {
 		"name": "Snow Colored Score",
-		"ver": "23505",
+		"ver": "23506",
 		"composer": "イロドリミドリ「CHUNITHM」",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -26984,7 +26964,7 @@
 	},
 	"11607": {
 		"name": "MAGENTA POTION",
-		"ver": "23506",
+		"ver": "23509",
 		"composer": "EmoCosine",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -27058,7 +27038,7 @@
 				"lv": 11.5
 			},
 			{
-				"lv": 14
+				"lv": 13.9
 			}
 		]
 	},
@@ -27084,7 +27064,7 @@
 	},
 	"11612": {
 		"name": "Latent Kingdom",
-		"ver": "24000",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 6
@@ -27097,14 +27077,15 @@
 			},
 			{
 				"lv": 14.9
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "Laur vs 大国奏音",
-		"genre": "maimai"
+		]
 	},
 	"11613": {
 		"name": "Mystic Parade",
-		"ver": "24004",
+		"ver": "24001",
 		"composer": "ひとしずく×やま△ feat.悠佑＆ないこ（いれいす）",
 		"genre": "maimai",
 		"notes": [
@@ -27124,7 +27105,7 @@
 	},
 	"11614": {
 		"name": "Cry Cry Cry",
-		"ver": "24004",
+		"ver": "24001",
 		"composer": "FLG4 feat.Flower",
 		"genre": "maimai",
 		"notes": [
@@ -27144,7 +27125,7 @@
 	},
 	"11615": {
 		"name": "ぽわわん劇場",
-		"ver": "24002",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 5
@@ -27157,14 +27138,15 @@
 			},
 			{
 				"lv": 13.5
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "ぽわわん劇場",
-		"genre": "maimai"
+		]
 	},
 	"11616": {
 		"name": "my flow",
-		"ver": "24002",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 4
@@ -27177,14 +27159,15 @@
 			},
 			{
 				"lv": 13.7
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "crayvxn",
-		"genre": "maimai"
+		]
 	},
 	"11617": {
 		"name": "POWER OF UNITY",
-		"ver": "24002",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 5
@@ -27197,14 +27180,15 @@
 			},
 			{
 				"lv": 13.9
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "Zekk",
-		"genre": "maimai"
+		]
 	},
 	"11618": {
 		"name": "Energizing Flame",
-		"ver": "24002",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 6
@@ -27217,14 +27201,15 @@
 			},
 			{
 				"lv": 14.4
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "Artifact vs. Dualcast",
-		"genre": "maimai"
+		]
 	},
 	"11619": {
 		"name": "KHYMΞXΛ",
-		"ver": "23504",
+		"ver": "24005",
 		"composer": "のらねこさい feat.ricono",
 		"genre": "maimai",
 		"notes": [
@@ -27244,7 +27229,7 @@
 	},
 	"11620": {
 		"name": "フェイクフェイス・フェイルセイフ",
-		"ver": "24008",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 5
@@ -27257,14 +27242,15 @@
 			},
 			{
 				"lv": 13.8
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "カラスヤサボウ feat. もるでお",
-		"genre": "maimai"
+		]
 	},
 	"11621": {
 		"name": "ふらふらふら、",
-		"ver": "24008",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 3
@@ -27277,14 +27263,15 @@
 			},
 			{
 				"lv": 13.8
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "アオワイファイ feat.犀羅",
-		"genre": "maimai"
+		]
 	},
 	"11622": {
 		"name": "シックスプラン",
-		"ver": "24008",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 2
@@ -27297,14 +27284,15 @@
 			},
 			{
 				"lv": 13.2
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "針原翼（はりーP）feat. はく",
-		"genre": "maimai"
+		]
 	},
 	"11623": {
 		"name": "フタタビ",
-		"ver": "24008",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 2
@@ -27317,14 +27305,15 @@
 			},
 			{
 				"lv": 13.4
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "KAZE Lab",
-		"genre": "maimai"
+		]
 	},
 	"11624": {
 		"name": "SQUAD-Phvntom-",
-		"ver": "24005",
+		"ver": "24000",
 		"composer": "Getty vs DJ DiA",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -27338,7 +27327,7 @@
 				"lv": 12.8
 			},
 			{
-				"lv": 14.3
+				"lv": 14.4
 			}
 		]
 	},
@@ -27364,7 +27353,7 @@
 	},
 	"11626": {
 		"name": "Ring",
-		"ver": "24009",
+		"ver": "24015",
 		"composer": "R Sound Design feat.向日葵",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -27384,7 +27373,7 @@
 	},
 	"11627": {
 		"name": "インパアフェクシオン・ホワイトガアル",
-		"ver": "24009",
+		"ver": "24015",
 		"composer": "ツミキ feat.月乃",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -27404,7 +27393,7 @@
 	},
 	"11628": {
 		"name": "WE'RE BACK!!",
-		"ver": "24009",
+		"ver": "24015",
 		"composer": "Zekk",
 		"genre": "オンゲキCHUNITHM",
 		"notes": [
@@ -27438,7 +27427,7 @@
 				"lv": 10.2
 			},
 			{
-				"lv": 12
+				"lv": 11.8
 			},
 			{
 				"lv": 13.9
@@ -27584,7 +27573,7 @@
 				"lv": 9.7
 			},
 			{
-				"lv": 12.6
+				"lv": 12.7
 			}
 		]
 	},
@@ -27613,7 +27602,7 @@
 	},
 	"11638": {
 		"name": "星界ちゃんと可不ちゃんのおつかい合騒曲",
-		"ver": "24003",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 5
@@ -27626,14 +27615,15 @@
 			},
 			{
 				"lv": 13.8
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "南ノ南",
-		"genre": "niconicoボーカロイド"
+		]
 	},
 	"11639": {
 		"name": "Burn My Soul",
-		"ver": "24003",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 4
@@ -27646,14 +27636,15 @@
 			},
 			{
 				"lv": 12.8
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "She is Legend",
-		"genre": "POPSアニメ"
+		]
 	},
 	"11640": {
 		"name": "with U",
-		"ver": "24011",
+		"ver": "24006",
 		"composer": "t+pazolite & Massive New Krew feat. リリィ(CV:青木志貴)",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -27673,7 +27664,7 @@
 	},
 	"11641": {
 		"name": "Love Kills U",
-		"ver": "24011",
+		"ver": "24006",
 		"composer": "EmoCosine",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -27693,7 +27684,7 @@
 	},
 	"11642": {
 		"name": "DANGEROOOOUS JUNGLE",
-		"ver": "24011",
+		"ver": "24006",
 		"composer": "Laur",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -27713,7 +27704,7 @@
 	},
 	"11643": {
 		"name": "天使光輪",
-		"ver": "24011",
+		"ver": "24006",
 		"composer": "REDALiCE & cosMo＠暴走P",
 		"genre": "ゲームバラエティ",
 		"notes": [
@@ -27724,7 +27715,7 @@
 				"lv": 8.2
 			},
 			{
-				"lv": 12.6
+				"lv": 12.5
 			},
 			{
 				"lv": 14.4
@@ -27753,7 +27744,7 @@
 	},
 	"11645": {
 		"name": "トンデモワンダーズ",
-		"ver": "24006",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 3
@@ -27766,14 +27757,15 @@
 			},
 			{
 				"lv": 13.6
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "sasakure.UK",
-		"genre": "niconicoボーカロイド"
+		]
 	},
 	"11646": {
 		"name": "神威",
-		"ver": "24006",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 6
@@ -27786,14 +27778,15 @@
 			},
 			{
 				"lv": 14.6
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "TJ.hangneil",
-		"genre": "ゲームバラエティ"
+		]
 	},
 	"11647": {
 		"name": "ozma",
-		"ver": "24006",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 6
@@ -27806,14 +27799,15 @@
 			},
 			{
 				"lv": 13.9
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "TJ.hangneil",
-		"genre": "ゲームバラエティ"
+		]
 	},
 	"11648": {
 		"name": "月面基地",
-		"ver": "24006",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 5
@@ -27826,14 +27820,15 @@
 			},
 			{
 				"lv": 13.7
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "sasakure.UK",
-		"genre": "ゲームバラエティ"
+		]
 	},
 	"11650": {
 		"name": "ずんだもんの朝食　〜目覚ましずんラップ〜",
-		"ver": "24001",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 3
@@ -27846,14 +27841,15 @@
 			},
 			{
 				"lv": 13.2
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "ひらうみ",
-		"genre": "niconicoボーカロイド"
+		]
 	},
 	"11651": {
 		"name": "あなたは世界の終わりにずんだを食べるのだ",
-		"ver": "24001",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 2
@@ -27866,14 +27862,15 @@
 			},
 			{
 				"lv": 12.9
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "なみぐる",
-		"genre": "niconicoボーカロイド"
+		]
 	},
 	"11652": {
 		"name": "HUMANBORG",
-		"ver": "24010",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 4
@@ -27886,14 +27883,15 @@
 			},
 			{
 				"lv": 13.8
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "SARUKANI",
-		"genre": "POPSアニメ"
+		]
 	},
 	"11653": {
 		"name": "ULTRA POWER",
-		"ver": "24010",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 3
@@ -27906,14 +27904,15 @@
 			},
 			{
 				"lv": 13.5
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "SARUKANI",
-		"genre": "POPSアニメ"
+		]
 	},
 	"11654": {
 		"name": "ジェヘナ",
-		"ver": "24012",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 2
@@ -27926,14 +27925,15 @@
 			},
 			{
 				"lv": 13.3
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "wotaku",
-		"genre": "niconicoボーカロイド"
+		]
 	},
 	"11655": {
 		"name": "ツギハギスタッカート",
-		"ver": "24012",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 1
@@ -27946,14 +27946,15 @@
 			},
 			{
 				"lv": 12.7
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "とあ",
-		"genre": "niconicoボーカロイド"
+		]
 	},
 	"11656": {
 		"name": "HANIPAGANDA",
-		"ver": "24012",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 4
@@ -27966,14 +27967,15 @@
 			},
 			{
 				"lv": 13.6
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "暁Records",
-		"genre": "東方Project"
+		]
 	},
 	"11657": {
 		"name": "Rush-Hour",
-		"ver": "24012",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 4
@@ -27986,14 +27988,15 @@
 			},
 			{
 				"lv": 13.8
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "litmus*",
-		"genre": "ゲームバラエティ"
+		]
 	},
 	"11658": {
 		"name": "QUEEN",
-		"ver": "24015",
+		"ver": "24016",
 		"composer": "Kanaria",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -28013,7 +28016,7 @@
 	},
 	"11659": {
 		"name": "天使の翼。",
-		"ver": "24015",
+		"ver": "24016",
 		"composer": "A4。",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -28033,7 +28036,7 @@
 	},
 	"11660": {
 		"name": "さよならプリンセス",
-		"ver": "24015",
+		"ver": "24016",
 		"composer": "Kai",
 		"genre": "niconicoボーカロイド",
 		"notes": [
@@ -28053,7 +28056,7 @@
 	},
 	"11661": {
 		"name": "Apollo",
-		"ver": "24014",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 7
@@ -28066,14 +28069,15 @@
 			},
 			{
 				"lv": 14.7
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "TJ.hangneil",
-		"genre": "オンゲキCHUNITHM"
+		]
 	},
 	"11662": {
 		"name": "raputa",
-		"ver": "24014",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 7
@@ -28086,14 +28090,15 @@
 			},
 			{
 				"lv": 14.9
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "sasakure.UK × TJ.hangneil",
-		"genre": "maimai"
+		]
 	},
 	"11663": {
 		"name": "系ぎて",
-		"ver": "24004",
+		"ver": "24015",
 		"composer": "rintaro soma",
 		"genre": "maimai",
 		"notes": [
@@ -28199,7 +28204,7 @@
 	},
 	"11668": {
 		"name": "PinqPiq (xovevox Remix)",
-		"ver": "24006",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 4
@@ -28212,10 +28217,11 @@
 			},
 			{
 				"lv": 13.8
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "owl＊tree Remixed by sasakure.UK",
-		"genre": "オンゲキCHUNITHM"
+		]
 	},
 	"11669": {
 		"name": "エスオーエス",
@@ -28232,10 +28238,11 @@
 			},
 			{
 				"lv": 13.6
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "カロンズベカラズ",
-		"genre": "maimai"
+		]
 	},
 	"11670": {
 		"name": "のじゃロリック",
@@ -28252,10 +28259,11 @@
 			},
 			{
 				"lv": 13.1
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "なみぐる feat.ちょこ 桃寝ちのい",
-		"genre": "maimai"
+		]
 	},
 	"11671": {
 		"name": "Edelweiss",
@@ -28272,10 +28280,11 @@
 			},
 			{
 				"lv": 13.9
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "やどりぎ",
-		"genre": "maimai"
+		]
 	},
 	"11672": {
 		"name": "QuiQ",
@@ -28292,10 +28301,11 @@
 			},
 			{
 				"lv": 14.4
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "owl＊tree feat.nie＊tree",
-		"genre": "maimai"
+		]
 	},
 	"11673": {
 		"name": "IF:U",
@@ -28312,10 +28322,11 @@
 			},
 			{
 				"lv": 14.7
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "MisoilePunch♪",
-		"genre": "maimai"
+		]
 	},
 	"11674": {
 		"name": "Cider P@rty",
@@ -28401,106 +28412,6 @@
 			}
 		]
 	},
-	"11678": {
-		"name": "RE:INCARNATED DRAGNER",
-		"ver": "24500",
-		"composer": "黒沢ダイスケ × 小寺可南子",
-		"genre": "maimai",
-		"notes": [
-			{
-				"lv": 0
-			},
-			{
-				"lv": 0
-			},
-			{
-				"lv": 0
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"11679": {
-		"name": "Beginning together!",
-		"ver": "24500",
-		"composer": "高瀬一矢 feat. R.I.N.A",
-		"genre": "maimai",
-		"notes": [
-			{
-				"lv": 0
-			},
-			{
-				"lv": 0
-			},
-			{
-				"lv": 0
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"11680": {
-		"name": "Shining Ray ～僕らの絆～",
-		"ver": "24500",
-		"composer": "伊藤和馬(Arte Refact) feat.konoco",
-		"genre": "maimai",
-		"notes": [
-			{
-				"lv": 0
-			},
-			{
-				"lv": 0
-			},
-			{
-				"lv": 0
-			},
-			{
-				"lv": 13.4
-			}
-		]
-	},
-	"11681": {
-		"name": "DEVOTION",
-		"ver": "24500",
-		"composer": "AJURIKA feat.SAK.",
-		"genre": "maimai",
-		"notes": [
-			{
-				"lv": 0
-			},
-			{
-				"lv": 0
-			},
-			{
-				"lv": 0
-			},
-			{
-				"lv": 14.3
-			}
-		]
-	},
-	"11686": {
-		"name": "Λzure Vixen",
-		"ver": "24004",
-		"composer": "かめりあ",
-		"genre": "オンゲキCHUNITHM",
-		"notes": [
-			{
-				"lv": 6
-			},
-			{
-				"lv": 8
-			},
-			{
-				"lv": 13.2
-			},
-			{
-				"lv": 14.7
-			}
-		]
-	},
 	"11687": {
 		"name": "MarbleBlue.",
 		"ver": "24500",
@@ -28541,9 +28452,7 @@
 			{
 				"lv": 13.8
 			}
-		],
-		"composer": "Aiobahn feat. KOTOKO",
-		"genre": "POPSアニメ"
+		]
 	},
 	"11693": {
 		"name": "過去を喰らう",
@@ -28560,10 +28469,11 @@
 			},
 			{
 				"lv": 12.9
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "花譜",
-		"genre": "POPSアニメ"
+		]
 	},
 	"11694": {
 		"name": "強風オールバック",
@@ -28580,10 +28490,11 @@
 			},
 			{
 				"lv": 12.6
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "ゆこぴ",
-		"genre": "niconicoボーカロイド"
+		]
 	},
 	"11695": {
 		"name": "寝起きヤシの木",
@@ -28600,10 +28511,11 @@
 			},
 			{
 				"lv": 12.8
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "ゆこぴ",
-		"genre": "niconicoボーカロイド"
+		]
 	},
 	"11696": {
 		"name": "アイドル",
@@ -28624,9 +28536,7 @@
 			{
 				"lv": 13.1
 			}
-		],
-		"composer": "YOASOBI",
-		"genre": "POPSアニメ"
+		]
 	},
 	"11697": {
 		"name": "ラビットホール",
@@ -28647,9 +28557,7 @@
 			{
 				"lv": 13.3
 			}
-		],
-		"composer": "DECO*27",
-		"genre": "niconicoボーカロイド"
+		]
 	},
 	"11698": {
 		"name": "酔いどれ知らず",
@@ -28670,9 +28578,7 @@
 			{
 				"lv": 13.2
 			}
-		],
-		"composer": "Kanaria",
-		"genre": "niconicoボーカロイド"
+		]
 	},
 	"11699": {
 		"name": "新人類",
@@ -28710,10 +28616,11 @@
 			},
 			{
 				"lv": 13.3
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "雄之助 feat. POPY & ROSE",
-		"genre": "niconicoボーカロイド"
+		]
 	},
 	"11701": {
 		"name": "さよならヒストリー",
@@ -28730,10 +28637,11 @@
 			},
 			{
 				"lv": 13.1
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "森羅万象",
-		"genre": "東方Project"
+		]
 	},
 	"11702": {
 		"name": "New York Back Raise",
@@ -28750,14 +28658,15 @@
 			},
 			{
 				"lv": 13.7
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "saaa + kei_iwata + stuv + わかどり",
-		"genre": "ゲームバラエティ"
+		]
 	},
 	"11704": {
 		"name": "DUAL ROZES",
-		"ver": "24503",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 3
@@ -28770,14 +28679,15 @@
 			},
 			{
 				"lv": 13.7
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "SOUND HOLIC Vs. Eurobeat Union feat. Nana Takahashi",
-		"genre": "ゲームバラエティ"
+		]
 	},
 	"11705": {
 		"name": "VOLT",
-		"ver": "24502",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 3
@@ -28790,14 +28700,15 @@
 			},
 			{
 				"lv": 13.4
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "aran",
-		"genre": "ゲームバラエティ"
+		]
 	},
 	"11706": {
 		"name": "tiny tales continue",
-		"ver": "24502",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 5
@@ -28810,14 +28721,15 @@
 			},
 			{
 				"lv": 13.9
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "黒魔",
-		"genre": "ゲームバラエティ"
+		]
 	},
 	"11707": {
 		"name": "ouroboros -twin stroke of the end-",
-		"ver": "24502",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 6
@@ -28830,10 +28742,11 @@
 			},
 			{
 				"lv": 14.4
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "Cranky VS MASAKI",
-		"genre": "ゲームバラエティ"
+		]
 	},
 	"11708": {
 		"name": "カーニバルハッピー",
@@ -28879,7 +28792,7 @@
 	},
 	"11710": {
 		"name": "サイバーサンダーサイダー",
-		"ver": "24501",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 4
@@ -28892,14 +28805,15 @@
 			},
 			{
 				"lv": 13.6
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "EZFG",
-		"genre": "niconicoボーカロイド"
+		]
 	},
 	"11711": {
 		"name": "おくすり飲んで寝よう",
-		"ver": "24501",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 3
@@ -28912,10 +28826,11 @@
 			},
 			{
 				"lv": 12.8
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "もちうつね",
-		"genre": "niconicoボーカロイド"
+		]
 	},
 	"11712": {
 		"name": "バラバラ〜仮初レインボーローズ〜",
@@ -28938,26 +28853,6 @@
 			}
 		]
 	},
-	"11713": {
-		"name": "QUATTUORUX",
-		"ver": "24509",
-		"composer": "打打だいず Vs. Tanchiky Vs. からめる",
-		"genre": "ゲームバラエティ",
-		"notes": [
-			{
-				"lv": 6
-			},
-			{
-				"lv": 8.8
-			},
-			{
-				"lv": 13
-			},
-			{
-				"lv": 14.5
-			}
-		]
-	},
 	"11714": {
 		"name": "匿名M",
 		"ver": "24500",
@@ -28973,10 +28868,11 @@
 			},
 			{
 				"lv": 12.8
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "ピノキオピー",
-		"genre": "niconicoボーカロイド"
+		]
 	},
 	"11715": {
 		"name": "ライアーダンサー",
@@ -29020,109 +28916,9 @@
 			}
 		]
 	},
-	"11717": {
-		"name": "LOSTPHANTASIA",
-		"ver": "24500",
-		"composer": "岸田教団 & THE明星ロケッツ",
-		"genre": "東方Project",
-		"notes": [
-			{
-				"lv": 0
-			},
-			{
-				"lv": 0
-			},
-			{
-				"lv": 0
-			},
-			{
-				"lv": 12.9
-			}
-		]
-	},
-	"11718": {
-		"name": "Bad Apple!! feat.nomico (Tetsuya Komuro Remix)",
-		"ver": "24500",
-		"composer": "Masayoshi Minoshima Remixed by 小室哲哉",
-		"genre": "東方Project",
-		"notes": [
-			{
-				"lv": 0
-			},
-			{
-				"lv": 0
-			},
-			{
-				"lv": 9.8
-			},
-			{
-				"lv": 13.1
-			}
-		]
-	},
-	"11720": {
-		"name": "Re:Unknown X",
-		"ver": "24500",
-		"composer": "まらしぃ",
-		"genre": "東方Project",
-		"notes": [
-			{
-				"lv": 0
-			},
-			{
-				"lv": 0
-			},
-			{
-				"lv": 0
-			},
-			{
-				"lv": 14.7
-			}
-		]
-	},
-	"11721": {
-		"name": "INFiNiTE ENERZY -Overdoze-",
-		"ver": "24500",
-		"composer": "Reku Mochizuki",
-		"genre": "ゲーム＆バラエティ",
-		"notes": [
-			{
-				"lv": 0
-			},
-			{
-				"lv": 0
-			},
-			{
-				"lv": 0
-			},
-			{
-				"lv": 14.3
-			}
-		]
-	},
-	"11725": {
-		"name": "ミラクルポップ☆アドベンチャー!!!!!",
-		"ver": "24500",
-		"composer": "DJ Genki",
-		"genre": "ゲーム＆バラエティ",
-		"notes": [
-			{
-				"lv": 0
-			},
-			{
-				"lv": 0
-			},
-			{
-				"lv": 0
-			},
-			{
-				"lv": 14.2
-			}
-		]
-	},
 	"11733": {
 		"name": "MUSIC PЯAYER",
-		"ver": "24503",
+		"ver": "24500",
 		"notes": [
 			{
 				"lv": 4
@@ -29135,10 +28931,11 @@
 			},
 			{
 				"lv": 13.5
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "A-One",
-		"genre": "オンゲキCHUNITHM"
+		]
 	},
 	"11734": {
 		"name": "壱雫空",
@@ -29155,10 +28952,11 @@
 			},
 			{
 				"lv": 13.6
+			},
+			{
+				"lv": null
 			}
-		],
-		"composer": "MyGO!!!!!",
-		"genre": "POPSアニメ"
+		]
 	},
 	"11735": {
 		"name": "ザムザ",
@@ -29178,46 +28976,6 @@
 			},
 			{
 				"lv": null
-			}
-		]
-	},
-	"18049": {
-		"name": "QUATTUORUX",
-		"ver": "24500",
-		"composer": "打打だいず Vs. Tanchiky Vs. からめる",
-		"genre": "maimai",
-		"notes": [
-			{
-				"lv": 0
-			},
-			{
-				"lv": 0
-			},
-			{
-				"lv": 13
-			},
-			{
-				"lv": 14.5
-			}
-		]
-	},
-	"100017": {
-		"name": "[星]Future",
-		"ver": "24000",
-		"composer": "★STAR GUiTAR [cover]",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 12
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
 			}
 		]
 	},
@@ -29243,226 +29001,6 @@
 			}
 		]
 	},
-	"100042": {
-		"name": "[宴]jelly",
-		"ver": "24000",
-		"composer": "capsule [cover]",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 12.7
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100056": {
-		"name": "[耐]ウッーウッーウマウマ(ﾟ∀ﾟ)",
-		"ver": "24000",
-		"composer": "Caramell/Caramelldansen [cover]",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 13.9
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100070": {
-		"name": "[即]ジングルベル",
-		"ver": "24000",
-		"composer": "SEGA Sound Unit [H.]",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14.6
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100082": {
-		"name": "[光]Reach For The Stars",
-		"ver": "24000",
-		"composer": "L\"大谷智哉",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 13.7
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100101": {
-		"name": "[逆]おちゃめ機能",
-		"ver": "24000",
-		"composer": "ゴジマジP",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 13
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100118": {
-		"name": "[逆]犬日和。",
-		"ver": "24000",
-		"composer": "RYOHEI KOHNO/森綾香",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 12.7
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100121": {
-		"name": "[撫]スイートマジック",
-		"ver": "24000",
-		"composer": "ろん×Junky",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 12.7
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100132": {
-		"name": "[蛸]Turn around",
-		"ver": "24000",
-		"composer": "Clean Tears",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 12.7
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100138": {
-		"name": "[蔵]Lionheart",
-		"ver": "24000",
-		"composer": "Masayoshi Minoshima",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100145": {
-		"name": "[宴]Starlight Disco",
-		"ver": "24000",
-		"composer": "loos feat. Meramipop",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 12.7
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100191": {
-		"name": "[蔵]脳漿炸裂ガール",
-		"ver": "24000",
-		"composer": "れるりり",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14.5
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
 	"100199": {
 		"name": "[蛸]チルノのパーフェクトさんすう教室",
 		"ver": "24010",
@@ -29471,26 +29009,6 @@
 		"notes": [
 			{
 				"lv": 12.7
-			}
-		]
-	},
-	"100201": {
-		"name": "[宴]魔理沙は大変なものを盗んでいきました",
-		"ver": "24000",
-		"composer": "ARM＋夕野ヨシミ(IOSYS)feat. 藤咲かりん",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 13.5
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
 			}
 		]
 	},
@@ -29505,26 +29023,6 @@
 			}
 		]
 	},
-	"100207": {
-		"name": "[蛸]時空を超えて久しぶり！",
-		"ver": "24000",
-		"composer": "アルル(CV 園崎未恵)「ぷよぷよ」",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 13.6
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
 	"100220": {
 		"name": "[宴]セガサターン起動音[H.][Remix]",
 		"ver": "24010",
@@ -29536,28 +29034,8 @@
 			}
 		]
 	},
-	"100224": {
-		"name": "[傾]ウサテイ",
-		"ver": "24000",
-		"composer": "あまね＋ビートまりお(COOL＆CREATE)",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 13.7
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
 	"100227": {
-		"name": "[は]Garakuta Doll Play",
+		"name": "[宴]Garakuta Doll Play",
 		"ver": "24010",
 		"composer": "t+pazolite",
 		"genre": "宴会場",
@@ -29581,142 +29059,11 @@
 	"100259": {
 		"name": "[協]ぽっぴっぽー",
 		"ver": "24000",
-		"composer": "",
+		"composer": null,
 		"genre": "宴会場",
 		"notes": [
 			{
 				"lv": 13.7
-			}
-		]
-	},
-	"100282": {
-		"name": "[撫]からくりピエロ",
-		"ver": "24000",
-		"composer": "40mP",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 12
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100305": {
-		"name": "[星]POP STAR",
-		"ver": "24000",
-		"composer": "平井堅 [cover]",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 13
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100308": {
-		"name": "[傾]Back 2 Back",
-		"ver": "24000",
-		"composer": "長沼英樹「ソニック ラッシュ」",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 13
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100319": {
-		"name": "[藏]幻想のサテライト",
-		"ver": "24000",
-		"composer": "豚乙女",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14
-			}
-		]
-	},
-	"100320": {
-		"name": "[即]最速最高シャッターガール",
-		"ver": "24000",
-		"composer": "ビートまりお(COOL＆CREATE)",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 12.7
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100322": {
-		"name": "[蔵]林檎華憐歌",
-		"ver": "24000",
-		"composer": "ビートまりお母(尾崎順子)",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 13.7
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100326": {
-		"name": "[宴]コトバ・カラフル",
-		"ver": "24000",
-		"composer": "うたよめ575＜正岡小豆(大坪由佳)小林抹茶(大橋彩香)＞",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 12.7
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
 			}
 		]
 	},
@@ -29731,165 +29078,14 @@
 			}
 		]
 	},
-	"100339": {
-		"name": "[宴]DRAGONLADY",
-		"ver": "24000",
-		"composer": "Nankumo/CUBE3",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14.6
-			}
-		]
-	},
 	"100363": {
 		"name": "[宴]Oshama Scramble!",
-		"ver": "24005",
+		"ver": "24003",
 		"composer": "t+pazolite",
 		"genre": "宴会場",
 		"notes": [
 			{
 				"lv": 13
-			}
-		]
-	},
-	"100364": {
-		"name": "[覚]D✪N’T  ST✪P  R✪CKIN’",
-		"ver": "24000",
-		"composer": "EB(aka EarBreaker)",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 12.7
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100380": {
-		"name": "[蔵]どうしてこうなった",
-		"ver": "24000",
-		"composer": "うどんゲルゲ",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14.7
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100385": {
-		"name": "[蔵]Ignis Danse",
-		"ver": "24000",
-		"composer": "Yuji Masubuchi「太鼓の達人」より",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14.9
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100413": {
-		"name": "[覚]キャプテン・ムラサのケツアンカー",
-		"ver": "24000",
-		"composer": "ARM＋夕野ヨシミ(IOSYS)feat.山本椛",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 12.7
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100422": {
-		"name": "[覚]LANCE",
-		"ver": "24000",
-		"composer": "Ras",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 13.7
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100429": {
-		"name": "[宴]Wonderland Wars オープニング",
-		"ver": "24000",
-		"composer": "「童話」は、全て「戦記」だった",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 13
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100446": {
-		"name": "[宴]GEMINI -M-",
-		"ver": "24000",
-		"composer": "Tatsh",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14.7
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
 			}
 		]
 	},
@@ -29904,17 +29100,6 @@
 			}
 		]
 	},
-	"100496": {
-		"name": "[藏]AMAZING MIGHTYYYY!!!!",
-		"ver": "24000",
-		"composer": "WAiKURO",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14.8
-			}
-		]
-	},
 	"100508": {
 		"name": "[協]恋愛裁判",
 		"ver": "24000",
@@ -29923,46 +29108,6 @@
 		"notes": [
 			{
 				"lv": 13
-			}
-		]
-	},
-	"100513": {
-		"name": "[耐]だんだん早くなる",
-		"ver": "24000",
-		"composer": "40mP",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 13.5
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100516": {
-		"name": "[狂]ココロ",
-		"ver": "24000",
-		"composer": "トラボルタ",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 12
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
 			}
 		]
 	},
@@ -29989,153 +29134,13 @@
 		]
 	},
 	"100548": {
-		"name": "[疑]DETARAME ROCK&ROLL THEORY",
+		"name": "[宴]DETARAME ROCK&ROLL THEORY",
 		"ver": "24010",
 		"composer": "箱部 なる(CV:M・A・O)",
 		"genre": "宴会場",
 		"notes": [
 			{
 				"lv": 13
-			}
-		]
-	},
-	"100571": {
-		"name": "[即]Our Wrenally",
-		"ver": "24000",
-		"composer": "t+pazolite",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14.9
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100573": {
-		"name": "[宴]四月の雨",
-		"ver": "24000",
-		"composer": "cubesato",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14.4
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100598": {
-		"name": "[蛸]すーぱーぬこになりたい",
-		"ver": "24000",
-		"composer": "まふまふ",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 12.7
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100603": {
-		"name": "[星]その群青が愛しかったようだった",
-		"ver": "24000",
-		"composer": "n-buna feat.ヤギヌマカナ",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 13.7
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100614": {
-		"name": "[宴]夢花火",
-		"ver": "24000",
-		"composer": "豚乙女",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100617": {
-		"name": "[協]オトヒメモリー☆ウタゲーション",
-		"ver": "24000",
-		"composer": "Junky",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 13.7
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100689": {
-		"name": "[蔵]Credits",
-		"ver": "24000",
-		"composer": "Frums",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14.9
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
 			}
 		]
 	},
@@ -30150,262 +29155,14 @@
 			}
 		]
 	},
-	"100712": {
-		"name": "[蛸]ミラクル・ショッピング",
-		"ver": "24000",
-		"composer": "田中マイミ",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14.4
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100749": {
-		"name": "[蔵]Ievan Polkka",
-		"ver": "24000",
-		"composer": "Otomania feat. 初音ミク",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 12.7
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100772": {
-		"name": "[狂]FREEDOM DiVE (tpz Overcute Remix",
-		"ver": "24000",
-		"composer": "t+pazolite",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 15
-			}
-		]
-	},
-	"100775": {
-		"name": "[宴]ジンギスカン",
-		"ver": "24000",
-		"composer": "仁井山征弘 Feat. GREAT G and surprise",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 13.7
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100793": {
-		"name": "[疑]ロキ",
-		"ver": "24500",
-		"composer": "みきとP",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 13
-			}
-		]
-	},
-	"100845": {
-		"name": "[宴]怒槌～光吉猛修一部謎～",
-		"ver": "24000",
-		"composer": "光吉猛修",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 13.5
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100846": {
-		"name": "[宴]Oshama Scramble! (Cranky Remix)",
-		"ver": "24000",
-		"composer": "Cranky",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14.8
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100851": {
-		"name": "[宴]犬日和。(はっぴー歌唱Ver)",
-		"ver": "24000",
-		"composer": "こうのさんとはっぴーちゃん/Hiroの犯行",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 12.7
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100854": {
-		"name": "[宴]全世界共通リズム感テスト",
-		"ver": "24000",
-		"composer": "☆リズムに合わせてボタンを叩き達成率を競うゲームです☆",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 0
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"100998": {
-		"name": "[宴]Oshama Scramble! (Cranky Remix)",
-		"ver": "24503",
-		"composer": "Cranky",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14.7
-			}
-		]
-	},
-	"100999": {
-		"name": "[宴]全世界共通リズム感テスト",
-		"ver": "24000",
-		"composer": "☆リズムに合わせてボタンを叩き達成率を競うゲームです☆",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 0
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"101222": {
-		"name": "[光]BREaK! BREaK! BREaK!",
-		"ver": "24000",
-		"composer": "HiTECH NINJA vs Cranky",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14.7
-			}
-		]
-	},
-	"101516": {
-		"name": "[藏]Aegleseeker",
-		"ver": "24000",
-		"composer": "Silentroom vs Frums",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14.7
-			}
-		]
-	},
-	"110082": {
-		"name": "[藏]Reach For The Stars",
-		"ver": "24000",
-		"composer": "大谷智哉, Jean Paul Makhlouf of Cash Cash「ソニック カラーズ」",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14
-			}
-		]
-	},
 	"110114": {
 		"name": "[耐]Space Harrier Main Theme [Reborn]",
-		"ver": "24014",
+		"ver": "24015",
 		"composer": "佐野 信義「スペースハリアー」",
 		"genre": "宴会場",
 		"notes": [
 			{
 				"lv": 14.7
-			}
-		]
-	},
-	"110227": {
-		"name": "[J]Garakuta Doll Play",
-		"ver": "24500",
-		"composer": "t+pazolite",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14
-			}
-		]
-	},
-	"110553": {
-		"name": "[奏]チュルリラ・チュルリラ・ダッダッダ！",
-		"ver": "24500",
-		"composer": "和田たけあき(くらげP)",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 13
 			}
 		]
 	},
@@ -30422,7 +29179,7 @@
 	},
 	"110606": {
 		"name": "[右]The wheel to the right",
-		"ver": "24014",
+		"ver": "24015",
 		"composer": "Sampling Masters MEGA",
 		"genre": "宴会場",
 		"notes": [
@@ -30433,7 +29190,7 @@
 	},
 	"110631": {
 		"name": "[逆]KING is BACK!!",
-		"ver": "24014",
+		"ver": "24015",
 		"composer": "A-One",
 		"genre": "宴会場",
 		"notes": [
@@ -30442,47 +29199,14 @@
 			}
 		]
 	},
-	"110647": {
-		"name": "[協]エイリアンエイリアン",
-		"ver": "24500",
-		"composer": "ナユタン星人",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 13
-			}
-		]
-	},
-	"110793": {
-		"name": "[疑]ロキ",
-		"ver": "24500",
-		"composer": "みきとP",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 13
-			}
-		]
-	},
 	"111222": {
 		"name": "[光]BREaK! BREaK! BREaK!",
-		"ver": "24005",
+		"ver": "24003",
 		"composer": "HiTECH NINJA vs Cranky",
 		"genre": "宴会場",
 		"notes": [
 			{
 				"lv": 14.7
-			}
-		]
-	},
-	"111325": {
-		"name": "[奏]テレキャスタービーボーイ",
-		"ver": "24500",
-		"composer": "すりぃ",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 12.7
 			}
 		]
 	},
@@ -30498,7 +29222,7 @@
 		]
 	},
 	"111359": {
-		"name": "[奏]アカツキアライヴァル",
+		"name": "[協]アカツキアライヴァル",
 		"ver": "24000",
 		"composer": "Last Note.",
 		"genre": "宴会場",
@@ -30510,7 +29234,7 @@
 	},
 	"111513": {
 		"name": "[回]回る空うさぎ",
-		"ver": "24014",
+		"ver": "24015",
 		"composer": "Orangestar",
 		"genre": "宴会場",
 		"notes": [
@@ -30521,23 +29245,12 @@
 	},
 	"111516": {
 		"name": "[蔵]Aegleseeker",
-		"ver": "24005",
+		"ver": "24003",
 		"composer": "Silentroom vs Frums",
 		"genre": "宴会場",
 		"notes": [
 			{
 				"lv": 14.7
-			}
-		]
-	},
-	"111597": {
-		"name": "[息]ノンブレス・オブリージュ",
-		"ver": "24500",
-		"composer": "ピノキオピー",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 13.7
 			}
 		]
 	},
@@ -30552,39 +29265,6 @@
 			}
 		]
 	},
-	"111636": {
-		"name": "[奏]さくゆいたいそう",
-		"ver": "24502",
-		"composer": "さくゆい",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 12.7
-			}
-		]
-	},
-	"120227": {
-		"name": "[r]Garakuta Doll Play",
-		"ver": "24500",
-		"composer": "t+pazolite",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14
-			}
-		]
-	},
-	"121437": {
-		"name": "[協]三妖精SAY YA!!!",
-		"ver": "24500",
-		"composer": "森羅万象",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 13.5
-			}
-		]
-	},
 	"121634": {
 		"name": "[協]青春コンプレックス",
 		"ver": "24000",
@@ -30596,276 +29276,23 @@
 			}
 		]
 	},
-	"123363": {
-		"name": "[宴] Oshama Scramble! (Cranky Remix)",
-		"ver": "24500",
-		"composer": "t+pazolite",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14.8
-			}
-		]
-	},
-	"130227": {
-		"name": "[玉]Garakuta Doll Play",
-		"ver": "24500",
-		"composer": "t+pazolite",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14.7
-			}
-		]
-	},
-	"140227": {
-		"name": "[某]Garakuta Doll Play",
-		"ver": "24500",
-		"composer": "t+pazolite",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14.7
-			}
-		]
-	},
-	"200082": {
-		"name": "[蔵]Reach For The Stars",
-		"ver": "24000",
-		"composer": "L\"大谷智哉",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"200227": {
-		"name": "[宴]Garakuta Doll Play No.2",
-		"ver": "24000",
-		"composer": "t+pazolite",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14.7
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"200429": {
-		"name": "[宴]Wonderland Wars オープニング",
-		"ver": "24000",
-		"composer": "「童話」は、全て「戦記」だった",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 0
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"200854": {
-		"name": "[宴]全世界共通リズム感テスト",
-		"ver": "24000",
+	"854": {
+		"name": "全世界共通リズム感テスト",
+		"ver": "",
 		"composer": "☆リズムに合わせてボタンを叩き達成率を競うゲームです☆",
-		"genre": "宴会場",
+		"genre": "maimai",
 		"notes": [
 			{
-				"lv": 0
+				"lv": 6
 			},
 			{
-				"lv": 8.4
+				"lv": 8
 			},
 			{
-				"lv": 11
+				"lv": 10
 			},
 			{
-				"lv": 13.8
-			}
-		]
-	},
-	"200999": {
-		"name": "[宴]全世界共通リズム感テスト",
-		"ver": "24000",
-		"composer": "☆リズムに合わせてボタンを叩き達成率を競うゲームです☆",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 0
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"300227": {
-		"name": "[宴]Garakuta Doll Play No.3",
-		"ver": "24000",
-		"composer": "t+pazolite",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14.9
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"300429": {
-		"name": "[宴]Wonderland Wars オープニング",
-		"ver": "24000",
-		"composer": "「童話」は、全て「戦記」だった",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 0
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"400227": {
-		"name": "[宴]Garakuta Doll Play No.4",
-		"ver": "24000",
-		"composer": "t+pazolite",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 15
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"400429": {
-		"name": "[宴]Wonderland Wars オープニング",
-		"ver": "24000",
-		"composer": "「童話」は、全て「戦記」だった",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 0
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"500227": {
-		"name": "[宴]Garakuta Doll Play No.5",
-		"ver": "24000",
-		"composer": "t+pazolite",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 14.9
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"500429": {
-		"name": "[宴]Wonderland Wars オープニング",
-		"ver": "24000",
-		"composer": "「童話」は、全て「戦記」だった",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 0
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
-			}
-		]
-	},
-	"600429": {
-		"name": "[宴]Wonderland Wars オープニング",
-		"ver": "24000",
-		"composer": "「童話」は、全て「戦記」だった",
-		"genre": "宴会場",
-		"notes": [
-			{
-				"lv": 0
-			},
-			{
-				"lv": 8.4
-			},
-			{
-				"lv": 11
-			},
-			{
-				"lv": 13.8
+				"lv": 12
 			}
 		]
 	}
