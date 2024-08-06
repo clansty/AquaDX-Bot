@@ -11,6 +11,8 @@ import levelProgress from './levelProgress';
 import musicSearch from './musicSearch';
 import b50 from './b50';
 import levelConstTable from './levelConstTable';
+import NoReportError from '../utils/NoReportError';
+import admin from './admin';
 
 export const createBot = (env: Env) => {
 	const bot = new Telegraf(env.BOT_TOKEN, { contextType: BotContext });
@@ -18,14 +20,15 @@ export const createBot = (env: Env) => {
 	bot.use(useNewReplies());
 
 	// musicSearch 必须是最后一个，因为它的 inlineQuery 的正则匹配会匹配所有消息
-	for (const attachHandlers of [callbackQuery, help, bind, scoreQuery, plateProgress, levelProgress, levelConstTable, b50, musicSearch]) {
+	for (const attachHandlers of [callbackQuery, help, bind, scoreQuery, plateProgress, levelProgress, levelConstTable, b50, musicSearch, admin]) {
 		attachHandlers(bot, env);
 	}
 
 
 	bot.catch(async (err: any, ctx) => {
 		console.error(err);
-		if (['message is not modified', 'User not bound'].some(it => err?.message?.includes?.(it))) return;
+		if (err instanceof NoReportError) return;
+		if (['message is not modified'].some(it => err?.message?.includes?.(it))) return;
 		ctx.reply && await ctx.reply('发生错误：' + err.message);
 	});
 

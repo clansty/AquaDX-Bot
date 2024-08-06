@@ -4,13 +4,14 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "deploy": "wrangler deploy",
+    "deploy": "wrangler deploy && nu clear-cache.nu",
     "dev": "cross-env NODE_ENV=development wrangler dev --ip 0.0.0.0 --port 8080",
     "tail": "wrangler tail"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240512.0",
     "cross-env": "^7.0.3",
+    "nushell": "^0.96.1",
     "wrangler": "^3.56.0"
   },
   "dependencies": {

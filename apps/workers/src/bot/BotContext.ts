@@ -4,6 +4,7 @@ import { UserMusic, UserProfilesKVStorage, UserRating } from '@clansty/maibot-ty
 import { Env } from '../types';
 import { xxhash64 } from 'cf-workers-hash';
 import { InlineKeyboardButton, Message } from 'telegraf/types';
+import NoReportError from '../utils/NoReportError';
 
 export default class BotContext extends Context {
 	private _userMusic?: UserMusic[];
@@ -36,7 +37,7 @@ export default class BotContext extends Context {
 		const profiles = await this.getProfiles();
 		if (!profiles.length && reply) {
 			await this.reply('请先绑定用户');
-			throw new Error('User not bound');
+			throw new NoReportError('User not bound');
 		}
 		if (this.currentProfileId >= profiles.length) {
 			this.currentProfileId = 0;

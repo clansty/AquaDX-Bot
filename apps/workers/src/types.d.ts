@@ -10,4 +10,6 @@ export type RENDER_REQUEST = {
 export type Env = CloudflareEnv & {
 	MYBROWSER: BrowserWorker;
 	RENDERER: DurableObjectNamespace;
+	ADMIN_UIDS: string;
+	ADMIN_SECRET: string;
 }
