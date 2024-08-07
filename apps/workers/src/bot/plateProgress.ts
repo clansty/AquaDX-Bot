@@ -22,7 +22,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 		for (const type of version === BA_VE ? [''] as const : PLATE_TYPE) {
 			bot.inlineQuery(RegExp(`^ ?\\/?${version} ?${type} ?(进度)?$`), async (ctx) => {
 				const profile = await ctx.getCurrentProfile();
-				if (profile) {
+				if (!profile) {
 					await ctx.answerInlineQuery([], {
 						button: { text: '请绑定用户', start_parameter: 'bind' },
 						is_personal: true
