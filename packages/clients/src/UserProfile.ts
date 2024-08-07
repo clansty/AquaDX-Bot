@@ -1,4 +1,4 @@
-import { BUDDIES_LOGO, BUDDIES_PLUS_LOGO, CloudflareEnv, GameVariantPlateMusicList, PLATE_MUSIC_LIST_CN, PLATE_MUSIC_LIST_JP, Regions, Song, UserProfileDto } from '@clansty/maibot-types';
+import { BUDDIES_LOGO, BUDDIES_PLUS_LOGO, CloudflareEnv, GameVariantPlateMusicList, PLATE_MUSIC_LIST_145, PLATE_MUSIC_LIST_CN, PLATE_MUSIC_LIST_JP, Regions, Song, UserPreviewSummary, UserProfileDto } from '@clansty/maibot-types';
 import { UserSource } from './UserSource';
 import AquaDxLegacy from './AquaDxLegacy';
 import SdgbProxied from './SdgbProxied';
@@ -67,6 +67,12 @@ export class UserProfile {
 	public async plateSongs(): Promise<GameVariantPlateMusicList> {
 		switch (this.region) {
 			case 'jp':
+				switch (await this.getVersion()) {
+					case 140:
+						return PLATE_MUSIC_LIST_JP;
+					case 145:
+						return PLATE_MUSIC_LIST_145;
+				}
 				return PLATE_MUSIC_LIST_JP;
 			case 'cn':
 				return PLATE_MUSIC_LIST_CN;
@@ -128,8 +134,17 @@ export class UserProfile {
 		return this.client.getUserRating(this.userId);
 	}
 
-	async getUserPreview() {
+	private _preview: UserPreviewSummary | null = null;
+
+	private async _getUserPreview() {
 		return this.client.getUserPreview(this.userId);
+	}
+
+	public async getUserPreview() {
+		if (this._preview === null) {
+			this._preview = await this._getUserPreview();
+		}
+		return this._preview;
 	}
 
 	async getNameplate() {
