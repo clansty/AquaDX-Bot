@@ -54,7 +54,8 @@ export default class AquaDx extends UserSource {
 		// 只需要返回这两个
 		return {
 			userName: res.name,
-			playerRating: res.rating
+			playerRating: res.rating,
+			lastRomVersion: res.lastVersion
 		};
 	}
 }

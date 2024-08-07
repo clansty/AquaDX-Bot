@@ -38,7 +38,6 @@ export interface UserPreview extends UserPreviewSummary {
 	'isLogin': boolean,
 	'lastGameId': string,
 	'lastDataVersion': string,
-	'lastRomVersion': string,
 	'lastLoginDate': string,
 	'lastPlayDate': string,
 	'nameplateId': number,
@@ -57,7 +56,8 @@ export interface UserPreview extends UserPreviewSummary {
 
 export interface UserPreviewSummary {
 	'userName': string,
-	'playerRating': number
+	'playerRating': number,
+	lastRomVersion: string,
 }
 
 export type UserData = {

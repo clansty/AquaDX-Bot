@@ -9,7 +9,7 @@ import { xxhash32 } from 'cf-workers-hash';
 export default (bot: Telegraf<BotContext>, env: Env) => {
 	const sendProgressImage = async (ctx: BotContext, ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | '', isFromStart = false) => {
 		const profile = await ctx.getCurrentProfile();
-		const requiredSongs = profile.plateSongs[ver];
+		const requiredSongs = (await profile.plateSongs())[ver];
 		const userMusic = await profile.getUserMusic(requiredSongs);
 
 		return await ctx.genCacheSendImage([ver, type, userMusic], `https://maibot-web.pages.dev/plateProgress/${ctx.from.id}/${ctx.currentProfileId}/${encodeURIComponent(ver + type)}`,
@@ -30,7 +30,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 					return;
 				}
 
-				const requiredSongs = profile.plateSongs[version];
+				const requiredSongs = (await profile.plateSongs())[version];
 				const text = calcProgressText(await profile.getUserMusic(requiredSongs), version, type, requiredSongs);
 				const userMusic = await profile.getUserMusic(requiredSongs);
 				const cachedImage = await ctx.getCacheImage([version, type, userMusic]);
@@ -59,7 +59,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 
 			bot.hears(RegExp(`^\\/?${version} ?${type} ?进度$`), async (ctx) => {
 				const profile = await ctx.getCurrentProfile();
-				const requiredSongs = profile.plateSongs[version];
+				const requiredSongs = (await profile.plateSongs())[version];
 				await ctx.reply(calcProgressText(await profile.getUserMusic(requiredSongs), version, type, requiredSongs));
 			});
 

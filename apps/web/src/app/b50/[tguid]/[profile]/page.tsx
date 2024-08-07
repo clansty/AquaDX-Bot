@@ -8,5 +8,5 @@ export default async ({ params }: { params: { tguid: string, profile: string } }
 	const userRating = await profile.getUserRating();
 	const userData = await profile.getNameplate();
 
-	return <B50 rating={userRating} user={userData} />;
+	return <B50 rating={userRating} user={userData} logo={await profile.getVersionLogo()} />;
 }

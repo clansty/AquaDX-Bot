@@ -1,4 +1,4 @@
-import { BA_VE, BUDDIES_LOGO, MAIMAI_DX_RELEASE_DATE, PLATE_IMAGES, PLATE_TYPE, PLATE_VER, Song, TableContentRenderData, TableContentRenderRow, UserMusic } from '@clansty/maibot-types';
+import { BA_VE, MAIMAI_DX_RELEASE_DATE, PLATE_IMAGES, PLATE_TYPE, PLATE_VER, Song, TableContentRenderData, TableContentRenderRow, UserMusic } from '@clansty/maibot-types';
 import React from 'react';
 import TableContent from '../../../components/TableContent';
 import _ from 'lodash';
@@ -6,11 +6,12 @@ import LevelProgress from '../../../components/LevelProgress';
 import { calcProgress } from '@clansty/maibot-utils';
 import styles from './PlateProgress.module.css';
 
-export default ({ userMusic, ver, type, requiredList }: {
+export default ({ userMusic, ver, type, requiredList, logo }: {
 	userMusic: UserMusic[],
 	ver: typeof PLATE_VER[number] | typeof BA_VE,
 	type: typeof PLATE_TYPE[number] | '',
-	requiredList: number[]
+	requiredList: number[],
+	logo: string,
 }) => {
 	let displayData = [] as TableContentRenderData[];
 	const requiredSongList = requiredList.map(id => Song.fromId(id));
@@ -45,7 +46,7 @@ export default ({ userMusic, ver, type, requiredList }: {
 
 	return <div>
 		<div className={styles.header}>
-			<img src={BUDDIES_LOGO} alt="" height={120} className={styles.hideOnSmallScreen} />
+			<img src={logo} alt="" height={120} className={styles.hideOnSmallScreen} />
 			<div style={{ flexGrow: 1 }} className={styles.hideOnSmallScreen} />
 			{
 				PLATE_IMAGES[ver + (type || '')] ?

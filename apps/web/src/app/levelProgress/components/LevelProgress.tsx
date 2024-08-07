@@ -1,11 +1,11 @@
-import { BUDDIES_LOGO, LEVEL_EN, LEVELS, Song, VersionEnum, ProgressCalcResult, TableContentRenderData, TableContentRenderRow, UserMusic, Regions } from '@clansty/maibot-types';
+import { LEVEL_EN, LEVELS, Song, VersionEnum, ProgressCalcResult, TableContentRenderData, TableContentRenderRow, UserMusic, Regions } from '@clansty/maibot-types';
 import React from 'react';
 import TableContent from '../../../components/TableContent';
 import _ from 'lodash';
 import LevelProgress from '../../../components/LevelProgress';
 import styles from './LevelProgress.module.css';
 
-export default ({ userMusic, level, region, requiredSongList }: { userMusic: UserMusic[], level: typeof LEVELS[number], region: keyof Regions, requiredSongList: Song[] }) => {
+export default ({ userMusic, level, region, requiredSongList, logo }: { userMusic: UserMusic[], level: typeof LEVELS[number], region: keyof Regions, requiredSongList: Song[], logo: string }) => {
 	let displayData = [] as TableContentRenderData[];
 	const progress = Array(5).fill(null).map(() => ({ all: 0, done: 0 })) as ProgressCalcResult[];
 	// 用于计算是否全部 S 了之类的
@@ -42,7 +42,7 @@ export default ({ userMusic, level, region, requiredSongList }: { userMusic: Use
 
 	return <div>
 		<div className={styles.header}>
-			<img src={BUDDIES_LOGO} alt="" height={120} className={styles.hideOnSmallScreen} />
+			<img src={logo} alt="" height={120} className={styles.hideOnSmallScreen} />
 			<div style={{ flexGrow: 1 }} className={styles.hideOnSmallScreen2} />
 			<div className={styles.title}>
 				LV {level} {userMusic.length ? '完成进度' : '定数表'}

@@ -1,5 +1,5 @@
 import { DifficultyEnum, VersionEnum } from '@gekichumai/dxdata';
-import { GameVariantPlateMusicList, UserMusic, UserRating } from './types';
+import { GameVariantPlateMusicList } from './types';
 
 export const LEVEL = ['绿', '黄', '红', '紫', '白'] as const;
 export const LEVEL_COLOR = ['rgb(34, 187, 91)', 'rgb(251, 156, 45)', 'rgb(246, 72, 97)', 'rgb(158, 69, 226)',
@@ -44,6 +44,7 @@ export const PLATE_VER_LIST = {
 	'全曲': [...STD_VERSIONS, ...DX_VERSIONS]
 } as const;
 export const BUDDIES_LOGO = 'https://shama.dxrating.net/images/version-logo/buddies.webp';
+export const BUDDIES_PLUS_LOGO = 'https://shama.dxrating.net/images/version-logo/buddies-plus.webp';
 export const PLATE_IMAGES = {
 	'真极': 'https://static.wikia.nocookie.net/maimai/images/6/64/%E7%9C%9F%E6%A5%B5_n.png/revision/latest?cb=20170913173303&path-prefix=zh',
 	'真神': 'https://static.wikia.nocookie.net/maimai/images/b/bb/%E7%9C%9F%E7%A5%9E_p.jpg/revision/latest?cb=20151209165607&path-prefix=zh',

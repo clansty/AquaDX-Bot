@@ -14,5 +14,5 @@ export default async ({ params }: { params: { tguid: string, level: string, prof
 	const requiredSongList = Song.getByCondition(it => it.sheets.some(chart => chart.level === level));
 	const userMusic = await profile.getUserMusic(requiredSongList);
 
-	return <LevelProgress userMusic={userMusic} level={level} region={profile.region} requiredSongList={requiredSongList} />;
+	return <LevelProgress userMusic={userMusic} level={level} region={profile.region} requiredSongList={requiredSongList} logo={await profile.getVersionLogo()} />;
 }
