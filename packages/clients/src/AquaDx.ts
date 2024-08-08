@@ -18,6 +18,7 @@ export default class AquaDx extends UserSource {
 			headers: body ? { 'Content-Type': 'application/json' } : undefined
 		});
 		if (!req.ok) {
+			console.error(await req.text());
 			throw new Error(`获取数据时出错: ${req.statusText}`);
 		}
 		return await req.json() as any;
