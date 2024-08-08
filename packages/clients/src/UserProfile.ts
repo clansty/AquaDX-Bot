@@ -119,12 +119,16 @@ export class UserProfile {
 		}
 	}
 
-	async getUserMusic(musicIdList: number[] | Song[]) {
+	async getUserMusic(musicIdList: (number | Song)[]) {
 		const convertedList = [] as number[];
 		for (const music of musicIdList) {
-			convertedList.push(music instanceof Song ? music.id : music);
 			if (music instanceof Song) {
-				convertedList.push(music.id, music.id + 1e4);
+				const std = music.sheets.find(it => it.type === 'std');
+				const dx = music.sheets.find(it => it.type === 'dx');
+				std?.internalId && convertedList.push(std.internalId);
+				dx?.internalId && convertedList.push(dx.internalId);
+			} else {
+				convertedList.push(music);
 			}
 		}
 		return this.client.getUserMusic(this.userId, convertedList);

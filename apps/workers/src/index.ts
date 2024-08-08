@@ -2,6 +2,7 @@ import { Update } from 'grammy/types';
 import { createBot } from './bot';
 import { Env } from './types';
 import NoReportError from './utils/NoReportError';
+import { BotError } from 'grammy';
 
 export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
@@ -21,6 +22,7 @@ const tryHandleUpdate = async (update: Update, env: Env) => {
 		await bot.handleUpdate(update);
 	} catch (err: any) {
 		console.error('处理请求时发生错误', err);
+		if (err instanceof BotError) err = err.error;
 		if (update.message?.chat) {
 			if (err instanceof NoReportError) return;
 			if (['message is not modified'].some(it => err?.message?.includes?.(it))) return;
