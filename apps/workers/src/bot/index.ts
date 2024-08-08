@@ -27,8 +27,8 @@ export const createBot = (env: Env) => {
 
 
 	bot.catch(async ({ ctx, error }) => {
+		console.error('Error caught in bot.catch', error);
 		const err = error as any;
-		console.error(err);
 		if (err instanceof NoReportError) return;
 		if (['message is not modified'].some(it => err?.message?.includes?.(it))) return;
 		ctx.reply && await ctx.reply('发生错误：' + err.message);
