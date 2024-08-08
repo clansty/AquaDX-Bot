@@ -1,12 +1,12 @@
-import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
 import { Env } from '../types';
 import { BA_VE, PLATE_TYPE, PLATE_VER } from '@clansty/maibot-types';
 import { calcProgressText } from '@clansty/maibot-utils';
-import { InlineQueryResult } from 'telegraf/types';
+import { InlineQueryResult } from 'grammy/types';
 import { xxhash32 } from 'cf-workers-hash';
+import { Bot } from 'grammy';
 
-export default (bot: Telegraf<BotContext>, env: Env) => {
+export default (bot: Bot<BotContext>, env: Env) => {
 	const sendProgressImage = async (ctx: BotContext, ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | '', isFromStart = false) => {
 		const profile = await ctx.getCurrentProfile();
 		const requiredSongs = (await profile.plateSongs())[ver];
@@ -14,7 +14,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 
 		return await ctx.genCacheSendImage([ver, type, userMusic], `https://maibot-web.pages.dev/plateProgress/${ctx.from.id}/${ctx.currentProfileId}/${encodeURIComponent(ver + type)}`,
 			1500, `${ver}${type}完成表.png`, ctx.chat?.type === 'private' ? `${ver}${type}` : undefined, isFromStart, [
-				[{ text: '查看详情', url: `tg://resolve?domain=${ctx.botInfo.username}&appname=webapp&startapp=${encodeURIComponent(btoa(`/plateProgress/${ctx.from.id}/${ctx.currentProfileId}/${encodeURIComponent(ver + type)}`))}` }]
+				[{ text: '查看详情', url: `tg://resolve?domain=${ctx.me.username}&appname=webapp&startapp=${encodeURIComponent(btoa(`/plateProgress/${ctx.from.id}/${ctx.currentProfileId}/${encodeURIComponent(ver + type)}`))}` }]
 			]);
 	};
 
@@ -52,8 +52,8 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 				await ctx.answerInlineQuery(results, { is_personal: true, button, cache_time: 10 });
 			});
 
-			bot.start(async (ctx, next) => {
-				if (ctx.payload !== await xxhash32(`${version}${type}`)) return next();
+			bot.command('start', async (ctx, next) => {
+				if (ctx.match !== await xxhash32(`${version}${type}`)) return next();
 				await sendProgressImage(ctx, version, type, true);
 			});
 

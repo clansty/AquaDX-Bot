@@ -18,6 +18,19 @@ mode = "smart"
 # - https://developers.cloudflare.com/workers/configuration/secrets/
 [vars]
 ADMIN_UIDS = "351768429,751414718,879777248,6085537379"
+BOT_INFO = """
+{
+    "id": 6790593618,
+    "is_bot": true,
+    "first_name": "AquaDX Bot",
+    "username": "AquaDXBot",
+    "can_join_groups": true,
+    "can_read_all_group_messages": true,
+    "supports_inline_queries": true,
+    "can_connect_to_business": false,
+    "has_main_web_app": false
+}
+"""
 
 # Bind the Workers AI model catalog. Run machine learning models, powered by serverless GPUs, on Cloudflare’s global network
 # Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#workers-ai

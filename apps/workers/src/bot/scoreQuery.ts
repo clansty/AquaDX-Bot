@@ -1,12 +1,12 @@
-import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
 import { Env } from '../types';
-import { InlineQueryResult } from 'telegraf/types';
+import { InlineQueryResult } from 'grammy/types';
 import _ from 'lodash';
 import { FC, LEVEL_EMOJI, Song } from '@clansty/maibot-types/src';
 import { computeRa } from '@clansty/maibot-utils';
+import { Bot } from 'grammy';
 
-export default (bot: Telegraf<BotContext>, env: Env) => {
+export default (bot: Bot<BotContext>, env: Env) => {
 	bot.inlineQuery(/^ ?query (.+)/, async (ctx) => {
 		const profile = await ctx.getCurrentProfile(false);
 		if (!profile) {
@@ -70,7 +70,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 	});
 
 	bot.command('query', async (ctx) => {
-		const kw = ctx.payload.trim().toLowerCase();
+		const kw = ctx.match.trim().toLowerCase();
 		if (!kw) {
 			await ctx.reply('请输入关键词');
 			return;

@@ -1,10 +1,10 @@
-import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
 import { Env } from '../types';
-import { LEVELS, Song } from '@clansty/maibot-types/src';
-import { InlineQueryResult } from 'telegraf/types';
+import { LEVELS, Song } from '@clansty/maibot-types';
+import { Bot } from 'grammy';
+import type { InlineQueryResult } from 'grammy/types';
 
-export default (bot: Telegraf<BotContext>, env: Env) => {
+export default (bot: Bot<BotContext>, env: Env) => {
 	const sendProgressImage = async (ctx: BotContext, level: typeof LEVELS[number], isFromStart = false) => {
 		const profile = await ctx.getCurrentProfile();
 		const requiredSongList = Song.getByCondition(it => it.sheets.some(chart => chart.level === level));
@@ -12,7 +12,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 
 		return await ctx.genCacheSendImage([level, userMusic], `https://maibot-web.pages.dev/levelProgress/${ctx.from.id}/${ctx.currentProfileId}/${encodeURIComponent(level)}`,
 			1500, `LV ${level} 完成表.png`, ctx.chat?.type === 'private' ? level : undefined, isFromStart, [
-				[{ text: '查看详情', url: `tg://resolve?domain=${ctx.botInfo.username}&appname=webapp&startapp=${encodeURIComponent(btoa(`/levelProgress/${ctx.from.id}/${ctx.currentProfileId}/${encodeURIComponent(level)}`))}` }]
+				[{ text: '查看详情', url: `tg://resolve?domain=${ctx.me.username}&appname=webapp&startapp=${encodeURIComponent(btoa(`/levelProgress/${ctx.from.id}/${ctx.currentProfileId}/${encodeURIComponent(level)}`))}` }]
 			]);
 	};
 
@@ -43,8 +43,8 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 			await ctx.answerInlineQuery(results, { is_personal: true, button, cache_time: 10 });
 		});
 
-		bot.start(async (ctx, next) => {
-			if (ctx.payload !== level) return next();
+		bot.command('start', async (ctx, next) => {
+			if (ctx.match !== level) return next();
 			await sendProgressImage(ctx, level, true);
 		});
 

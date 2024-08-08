@@ -1,10 +1,10 @@
-import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
 import { Env } from '../types';
 import { SdgbProxied, UserProfile } from '@clansty/maibot-clients';
 import _ from 'lodash';
+import { Bot } from 'grammy';
 
-export default (bot: Telegraf<BotContext>, env: Env) => {
+export default (bot: Bot<BotContext>, env: Env) => {
 	const handleQueryBind = async (ctx: BotContext) => {
 		const profiles = await ctx.getProfiles();
 		let bond = '';
@@ -14,8 +14,8 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 		await ctx.replyWithHTML('用法: /bind <code>AquaDX 的用户名</code> 或 <code>国服微信二维码识别出来的文字</code>' + bond);
 	};
 
-	bot.start(async (ctx, next) => {
-		if (ctx.payload !== 'bind') return next();
+	bot.command('start', async (ctx, next) => {
+		if (ctx.match !== 'bind') return next();
 		await handleQueryBind(ctx);
 	});
 
@@ -112,10 +112,10 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 		await ctx.reply('切换成功');
 	});
 
-	bot.action(/^select_profile:(\d+)$/, async (ctx) => {
+	bot.callbackQuery(/^select_profile:(\d+)$/, async (ctx) => {
 		const index = Number(ctx.match[1]);
 		await ctx.selectProfile(index);
-		await ctx.answerCbQuery('切换成功');
+		await ctx.answerCallbackQuery('切换成功');
 		await ctx.editMessageText(await getProfilesText(ctx), {
 			parse_mode: 'HTML',
 			reply_markup: {
@@ -160,10 +160,10 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 		await ctx.reply('删除成功');
 	});
 
-	bot.action(/^del_profile:(\d+)$/, async (ctx) => {
+	bot.callbackQuery(/^del_profile:(\d+)$/, async (ctx) => {
 		const index = Number(ctx.match[1]);
 		await ctx.delProfile(index);
-		await ctx.answerCbQuery('删除成功');
+		await ctx.answerCallbackQuery('删除成功');
 		await ctx.editMessageText(await getProfilesText(ctx), {
 			parse_mode: 'HTML',
 			reply_markup: {

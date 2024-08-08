@@ -4,14 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  rollup-plugin-node-polyfills@0.2.1:
-    hash: h5ds5csqjpdvsndz6yipxstrlm
-    path: patches/rollup-plugin-node-polyfills@0.2.1.patch
-  telegraf@4.16.3:
-    hash: 4iycakhvrxzj25c55x6u43nfh4
-    path: patches/telegraf@4.16.3.patch
-
 importers:
 
   .:
@@ -135,9 +127,9 @@ importers:
       cf-workers-hash:
         specifier: ^1.0.3
         version: 1.0.3
-      telegraf:
-        specifier: ^4.16.3
-        version: 4.16.3(patch_hash=4iycakhvrxzj25c55x6u43nfh4)
+      grammy:
+        specifier: ^1.28.0
+        version: 1.28.0
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20240512.0
@@ -1029,6 +1021,9 @@ packages:
     resolution: {tarball: https://gitpkg.now.sh/gekichumai/dxrating/packages/dxdata?a6c507f7ef09cfb9ad1679e568c36f12c08cdb5b}
     version: 0.0.0
 
+  '@grammyjs/types@3.12.0':
+    resolution: {integrity: sha512-ttC8mFeE+52XwpuXzWarvj5CXWRL2PfHSf1X3WDBC7EzQUqrbPLjJTMnm2ikSOqyTwVseJhtujZ+v42A6NbZmQ==}
+
   '@iconify-json/twemoji@1.1.15':
     resolution: {integrity: sha512-ze2CAOwIWBKIP6ih6qMDItasVjRicktl2Qr3/ohZSMToAHm9z3Q6HCwE48eT0+D+uFpGBlNRQ22HHyE5izyhDg==}
 
@@ -1375,9 +1370,6 @@ packages:
 
   '@swc/helpers@0.5.5':
     resolution: {integrity: sha512-KGYxvIOXcceOAbEk4bi/dVLEK9z8sZ0uBB3Il5b1rhfClSpcX0yfRO0KmTkqR2cnQDymwLB+25ZyMzICg/cm/A==}
-
-  '@telegraf/types@7.1.0':
-    resolution: {integrity: sha512-kGevOIbpMcIlCDeorKGpwZmdH7kHbqlk/Yj6dEpJMKEQw5lk0KVQY0OLXaCswy8GqlIVLd5625OB+rAntP9xVw==}
 
   '@tootallnate/once@2.0.0':
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
@@ -1761,17 +1753,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
 
-  buffer-alloc-unsafe@1.1.0:
-    resolution: {integrity: sha512-TEM2iMIEQdJ2yjPJoSIsldnleVaAk1oW3DBVUykyOLsEsFmEc9kn+SFFPz+gl54KQNxlDnAwCXosOS9Okx2xAg==}
-
-  buffer-alloc@1.2.0:
-    resolution: {integrity: sha512-CFsHQgjtW1UChdXgbyJGtnm+O/uLQeZdtbDo8mfUgYXCHSM1wgrVxXm6bSyrUuErEb+4sYVGCzASBRot7zyrow==}
-
   buffer-crc32@0.2.13:
     resolution: {integrity: sha512-VO9Ht/+p3SN7SKWqcrgEzjGbRSJYTx+Q1pTQC0wrWqHx0vpJraQ6GtHx8tvcg1rlK1byhU5gccxgOgj7B0TDkQ==}
-
-  buffer-fill@1.0.0:
-    resolution: {integrity: sha512-T7zexNBwiiaCOGDg9xNX9PBmjrubblRkENuptryuI64URkXDFum9il/JGL8Lm8wYfAXpredVXXZz7eMHilimiQ==}
 
   buffer-from@1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
@@ -2501,6 +2484,10 @@ packages:
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
 
+  grammy@1.28.0:
+    resolution: {integrity: sha512-TwCj5IHlK0I1fhfIGPIhMP61L5mmub7NMMswrpsqZSjtzo7iDDwVIz1dvsKj8FhX046AfAM/Lt99nW8FzIEKgQ==}
+    engines: {node: ^12.20.0 || >=14.13.1}
+
   gzip-size@6.0.0:
     resolution: {integrity: sha512-ax7ZYomf6jqPTQ4+XCpUGyXKHk5WweS+e05MBO4/y3WJ5RkmPXNKvX+bx1behVILVwr6JSQvZAku021CHPXG3Q==}
     engines: {node: '>=10'}
@@ -2958,10 +2945,6 @@ packages:
     resolution: {integrity: sha512-LaNjtRWUBY++zB5nE/NwcaoMylSPk+S+ZHNB1TzdbMJMny6dynpAGt7X/tl/QYq3TIeE6nxHppbo2LGymrG5Pw==}
     engines: {node: '>=10'}
 
-  p-timeout@4.1.0:
-    resolution: {integrity: sha512-+/wmHtzJuWii1sXn3HCuH/FTwGhrp4tmJTxSKJbfS+vkipci6osxXM5mY0jUiRzWKMTgUT8l7HFbeSwZAynqHw==}
-    engines: {node: '>=10'}
-
   package-manager-manager@0.2.0:
     resolution: {integrity: sha512-V02gl0bafXJ2gcY6j+5IHM7UdnYwmF+2OsFZuqVcha6iMSStD4dpIOBOsypnUIwOi4jLcPz6RQuyifmAE3mG8g==}
 
@@ -3152,15 +3135,8 @@ packages:
   safe-buffer@5.2.1:
     resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}
 
-  safe-compare@1.1.4:
-    resolution: {integrity: sha512-b9wZ986HHCo/HbKrRpBJb2kqXMK9CEWIE1egeEvZsYn69ay3kdfl9nG3RyOcR+jInTDf7a86WQ1d4VJX7goSSQ==}
-
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
-
-  sandwich-stream@2.0.2:
-    resolution: {integrity: sha512-jLYV0DORrzY3xaz/S9ydJL6Iz7essZeAfnAavsJ+zsJGZ1MOnsS52yRjU3uF3pJa/lla7+wisp//fxOwOH8SKQ==}
-    engines: {node: '>= 0.10'}
 
   sass@1.77.8:
     resolution: {integrity: sha512-4UHg6prsrycW20fqLGPShtEvo/WyHRVRHwOP4DzkUrObWoWI05QBSfzU71TVB7PFaL104TwNaHpjlWXAZbQiNQ==}
@@ -3343,11 +3319,6 @@ packages:
   tar@6.2.1:
     resolution: {integrity: sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==}
     engines: {node: '>=10'}
-
-  telegraf@4.16.3:
-    resolution: {integrity: sha512-yjEu2NwkHlXu0OARWoNhJlIjX09dRktiMQFsM678BAH/PEPVwctzL67+tvXqLCRQQvm3SDtki2saGO9hLlz68w==}
-    engines: {node: ^12.20.0 || >=14.13.1}
-    hasBin: true
 
   terser-webpack-plugin@5.3.10:
     resolution: {integrity: sha512-BKFPWlPDndPs+NGGCr1U59t0XScL5317Y0UReNrHaw9/FwhPENlq6bfgs+4yPfyP51vqC1bQ4rp1EfXW5ZSH9w==}
@@ -4077,7 +4048,7 @@ snapshots:
     dependencies:
       esbuild: 0.17.19
       escape-string-regexp: 4.0.0
-      rollup-plugin-node-polyfills: 0.2.1(patch_hash=h5ds5csqjpdvsndz6yipxstrlm)
+      rollup-plugin-node-polyfills: 0.2.1
 
   '@esbuild/aix-ppc64@0.20.2':
     optional: true
@@ -4365,6 +4336,8 @@ snapshots:
 
   '@gekichumai/dxdata@https://gitpkg.now.sh/gekichumai/dxrating/packages/dxdata?a6c507f7ef09cfb9ad1679e568c36f12c08cdb5b': {}
 
+  '@grammyjs/types@3.12.0': {}
+
   '@iconify-json/twemoji@1.1.15':
     dependencies:
       '@iconify/types': 2.0.0
@@ -4627,8 +4600,6 @@ snapshots:
     dependencies:
       '@swc/counter': 0.1.3
       tslib: 2.6.3
-
-  '@telegraf/types@7.1.0': {}
 
   '@tootallnate/once@2.0.0': {}
 
@@ -5200,16 +5171,7 @@ snapshots:
       node-releases: 2.0.18
       update-browserslist-db: 1.1.0(browserslist@4.23.2)
 
-  buffer-alloc-unsafe@1.1.0: {}
-
-  buffer-alloc@1.2.0:
-    dependencies:
-      buffer-alloc-unsafe: 1.1.0
-      buffer-fill: 1.0.0
-
   buffer-crc32@0.2.13: {}
-
-  buffer-fill@1.0.0: {}
 
   buffer-from@1.1.2: {}
 
@@ -5922,6 +5884,16 @@ snapshots:
 
   graceful-fs@4.2.11: {}
 
+  grammy@1.28.0:
+    dependencies:
+      '@grammyjs/types': 3.12.0
+      abort-controller: 3.0.0
+      debug: 4.3.6
+      node-fetch: 2.7.0
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
+
   gzip-size@6.0.0:
     dependencies:
       duplexer: 0.1.2
@@ -6366,8 +6338,6 @@ snapshots:
     dependencies:
       p-limit: 3.1.0
 
-  p-timeout@4.1.0: {}
-
   package-manager-manager@0.2.0:
     dependencies:
       js-yaml: 4.1.0
@@ -6518,7 +6488,7 @@ snapshots:
       magic-string: 0.25.9
       rollup-pluginutils: 2.8.2
 
-  rollup-plugin-node-polyfills@0.2.1(patch_hash=h5ds5csqjpdvsndz6yipxstrlm):
+  rollup-plugin-node-polyfills@0.2.1:
     dependencies:
       rollup-plugin-inject: 3.0.2
 
@@ -6576,13 +6546,7 @@ snapshots:
 
   safe-buffer@5.2.1: {}
 
-  safe-compare@1.1.4:
-    dependencies:
-      buffer-alloc: 1.2.0
-
   safer-buffer@2.1.2: {}
-
-  sandwich-stream@2.0.2: {}
 
   sass@1.77.8:
     dependencies:
@@ -6758,20 +6722,6 @@ snapshots:
       minizlib: 2.1.2
       mkdirp: 1.0.4
       yallist: 4.0.0
-
-  telegraf@4.16.3(patch_hash=4iycakhvrxzj25c55x6u43nfh4):
-    dependencies:
-      '@telegraf/types': 7.1.0
-      abort-controller: 3.0.0
-      debug: 4.3.4
-      mri: 1.2.0
-      node-fetch: 2.7.0
-      p-timeout: 4.1.0
-      safe-compare: 1.1.4
-      sandwich-stream: 2.0.2
-    transitivePeerDependencies:
-      - encoding
-      - supports-color
 
   terser-webpack-plugin@5.3.10(esbuild@0.17.19)(webpack@5.93.0(esbuild@0.17.19)):
     dependencies:

@@ -8,6 +8,8 @@ export type RENDER_REQUEST = {
 }
 
 export type Env = CloudflareEnv & {
+	BOT_TOKEN: string;
+	BOT_INFO: string;
 	MYBROWSER: BrowserWorker;
 	RENDERER: DurableObjectNamespace;
 	ADMIN_UIDS: string;

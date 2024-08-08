@@ -11,12 +11,6 @@
   "dependencies": {
     "lodash": "^4.17.21"
   },
-  "pnpm": {
-    "patchedDependencies": {
-      "telegraf@4.16.3": "patches/telegraf@4.16.3.patch",
-      "rollup-plugin-node-polyfills@0.2.1": "patches/rollup-plugin-node-polyfills@0.2.1.patch"
-    }
-  },
   "packageManager": "pnpm@9.1.2+sha256.19c17528f9ca20bd442e4ca42f00f1b9808a9cb419383cd04ba32ef19322aba7",
   "devDependencies": {
     "@types/lodash": "^4.17.4",

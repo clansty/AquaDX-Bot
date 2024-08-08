@@ -1,10 +1,10 @@
-import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
 import { Env } from '../types';
 import { LEVEL_CONST_TABLES, LEVELS } from '@clansty/maibot-types';
 import _ from 'lodash';
+import { Bot } from 'grammy';
 
-export default (bot: Telegraf<BotContext>, env: Env) => {
+export default (bot: Bot<BotContext>, env: Env) => {
 	for (const level of LEVELS) {
 		bot.hears(RegExp(`^\\/?${level.replace('+', '\\+')} ?定数表$`), async (ctx) => {
 			await ctx.replyWithPhoto(LEVEL_CONST_TABLES[level]);

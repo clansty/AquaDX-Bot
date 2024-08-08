@@ -1,7 +1,5 @@
-import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
 import { Env } from '../types';
-import { useNewReplies } from 'telegraf/future';
 import bind from './bind';
 import callbackQuery from './callbackQuery';
 import help from './help';
@@ -13,11 +11,14 @@ import b50 from './b50';
 import levelConstTable from './levelConstTable';
 import NoReportError from '../utils/NoReportError';
 import admin from './admin';
+import { Bot } from 'grammy';
 
 export const createBot = (env: Env) => {
-	const bot = new Telegraf(env.BOT_TOKEN, { contextType: BotContext });
-	bot.context.env = env;
-	bot.use(useNewReplies());
+	const bot = new Bot(env.BOT_TOKEN, { botInfo: JSON.parse(env.BOT_INFO), ContextConstructor: BotContext });
+	bot.use(async (ctx, next) => {
+		ctx.env = env;
+		await next();
+	});
 
 	// musicSearch 必须是最后一个，因为它的 inlineQuery 的正则匹配会匹配所有消息
 	for (const attachHandlers of [callbackQuery, help, bind, scoreQuery, plateProgress, levelProgress, levelConstTable, b50, musicSearch, admin]) {
@@ -25,7 +26,8 @@ export const createBot = (env: Env) => {
 	}
 
 
-	bot.catch(async (err: any, ctx) => {
+	bot.catch(async ({ ctx, error }) => {
+		const err = error as any;
 		console.error(err);
 		if (err instanceof NoReportError) return;
 		if (['message is not modified'].some(it => err?.message?.includes?.(it))) return;

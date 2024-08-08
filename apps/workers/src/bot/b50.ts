@@ -1,8 +1,8 @@
-import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
 import { Env } from '../types';
+import { Bot } from 'grammy';
 
-export default (bot: Telegraf<BotContext>, env: Env) => {
+export default (bot: Bot<BotContext>, env: Env) => {
 	const sendB50Image = async (ctx: BotContext) => {
 		const profile = await ctx.getCurrentProfile();
 		const rating = await profile.getNameplate();
@@ -11,14 +11,14 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 		return await ctx.genCacheSendImage(['b50', rating, ctx.from.id],
 			`https://maibot-web.pages.dev/b50/${ctx.from.id}/${ctx.currentProfileId}`,
 			2000, 'B50.png', ctx.chat?.type === 'private' ? 'b50' : undefined, false, [
-			[{ text: '查看详情', url: `tg://resolve?domain=${ctx.botInfo.username}&appname=webapp&startapp=${encodeURIComponent(btoa(`/b50/${ctx.from.id}/${ctx.currentProfileId}`))}` }]
-		]);
+				[{ text: '查看详情', url: `tg://resolve?domain=${ctx.me.username}&appname=webapp&startapp=${encodeURIComponent(btoa(`/b50/${ctx.from.id}/${ctx.currentProfileId}`))}` }]
+			]);
 	};
 
 	bot.command('b50', sendB50Image);
 
-	bot.start(async (ctx, next) => {
-		if (ctx.payload !== 'b50') return next();
+	bot.command('start', async (ctx, next) => {
+		if (ctx.match !== 'b50') return next();
 		await sendB50Image(ctx);
 	});
 

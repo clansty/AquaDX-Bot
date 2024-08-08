@@ -214,7 +214,6 @@ export type GameVariantPlateMusicList = { [k in typeof PLATE_VER[number] | typeo
 
 export type CloudflareEnv = {
 	KV: KVNamespace;
-	BOT_TOKEN: string;
 	API_SECRET: string;
 	POWERON_TOKEN: string;
 	CF_ACCESS_CLIENT_ID: string;

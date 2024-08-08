@@ -1,17 +1,25 @@
-import { Context } from 'telegraf';
-import { AquaDxLegacy, UserProfile } from '@clansty/maibot-clients';
-import { UserMusic, UserProfilesKVStorage, UserRating } from '@clansty/maibot-types';
+import { Context, InputFile } from 'grammy';
+import { UserProfile } from '@clansty/maibot-clients';
+import { UserProfilesKVStorage } from '@clansty/maibot-types';
 import { Env } from '../types';
 import { xxhash64 } from 'cf-workers-hash';
-import { InlineKeyboardButton, Message } from 'telegraf/types';
 import NoReportError from '../utils/NoReportError';
+import { InlineKeyboardButton, Message } from 'grammy/types';
 
 export default class BotContext extends Context {
-	private _userMusic?: UserMusic[];
-	private _userRating?: UserRating;
 	private _profiles?: UserProfile[];
 	currentProfileId? = 0;
 	env: Env;
+
+	async replyWithHTML(html: string, other: Parameters<this['reply']>[1] = {}) {
+		return await this.reply(html, { parse_mode: 'HTML', ...other });
+	}
+
+	get args() {
+		if (typeof this.match === 'string')
+			return this.match.split(' ').filter(it => it);
+		return [];
+	}
 
 	async getProfiles() {
 		if (this._profiles) return this._profiles;
@@ -95,7 +103,7 @@ export default class BotContext extends Context {
 		const { data, height } = await this.genImage(url, width);
 		let messageSent: Message;
 		if (height / width > 2) {
-			messageSent = await this.replyWithDocument({ source: Buffer.from(data), filename }, {
+			messageSent = await this.replyWithDocument(new InputFile(Buffer.from(data), filename), {
 				reply_markup: { inline_keyboard: inlineKeyboard }
 			});
 			if (hash)
@@ -109,7 +117,7 @@ export default class BotContext extends Context {
 			}
 			isFromStart = false;
 
-			messageSent = await this.replyWithPhoto({ source: Buffer.from(data), filename }, {
+			messageSent = await this.replyWithPhoto(new InputFile(Buffer.from(data), filename), {
 				reply_markup: { inline_keyboard: inlineKeyboard }
 			});
 			if (hash)
@@ -117,7 +125,7 @@ export default class BotContext extends Context {
 		}
 
 		try {
-			await this.deleteMessage(genMsg.message_id);
+			await this.deleteMessages([genMsg.message_id]);
 			console.log('删除消息完成', new Date());
 		} catch (e) {
 			console.log('删除消息失败', e, '无所谓');

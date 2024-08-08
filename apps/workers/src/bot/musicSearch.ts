@@ -1,10 +1,10 @@
-import { Telegraf } from 'telegraf';
 import BotContext from './BotContext';
 import { Env } from '../types';
 import genSongInfoButtons from '../utils/genSongInfoButtons';
 import { Song } from '@clansty/maibot-types/src';
+import { Bot } from 'grammy';
 
-export default (bot: Telegraf<BotContext>, env: Env) => {
+export default (bot: Bot<BotContext>, env: Env) => {
 	bot.inlineQuery(/.+/, async (ctx) => {
 		if (ctx.inlineQuery.query.trim() === '') {
 			await ctx.answerInlineQuery([]);
@@ -32,11 +32,11 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 	});
 
 	bot.command(['search', 'maimai', 's'], async (ctx) => {
-		if (ctx.payload.trim() === '') {
+		if (ctx.match === '') {
 			await ctx.reply('请输入要搜索的歌曲名');
 			return;
 		}
-		const results = Song.search(ctx.payload.trim().toLowerCase());
+		const results = Song.search(ctx.match.toLowerCase());
 		if (!results.length) {
 			await ctx.reply('找不到匹配的歌');
 			return;
@@ -45,7 +45,7 @@ export default (bot: Telegraf<BotContext>, env: Env) => {
 			await ctx.reply(`共找到 ${results.length} 个结果：\n\n` + results.map(song => (song.id ? song.id + '. ' : '') + song.title).join('\n'), {
 				reply_markup: {
 					inline_keyboard: [[
-						{ text: '选择结果', switch_inline_query_current_chat: ctx.payload.trim() }
+						{ text: '选择结果', switch_inline_query_current_chat: ctx.match }
 					]]
 				}
 			});

@@ -20,6 +20,6 @@
     "@clansty/maibot-utils": "workspace:^",
     "@cloudflare/puppeteer": "^0.0.8",
     "cf-workers-hash": "^1.0.3",
-    "telegraf": "^4.16.3"
+    "grammy": "^1.28.0"
   }
 }
