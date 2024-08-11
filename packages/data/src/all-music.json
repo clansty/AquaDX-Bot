@@ -28481,6 +28481,46 @@
 			}
 		]
 	},
+	"11684": {
+		"name": "RondeauX of RagnaroQ",
+		"ver": "24500",
+		"composer": "Morrigan feat.Lily and 結城碧",
+		"genre": "POPSアニメ",
+		"notes": [
+			{
+				"lv": 0
+			},
+			{
+				"lv": 0
+			},
+			{
+				"lv": 0
+			},
+			{
+				"lv": 14.5
+			}
+		]
+	},
+	"11685": {
+		"name": "ℝ∈Χ LUNATiCA",
+		"ver": "24500",
+		"composer": "Kai",
+		"genre": "POPSアニメ",
+		"notes": [
+			{
+				"lv": 0
+			},
+			{
+				"lv": 0
+			},
+			{
+				"lv": 0
+			},
+			{
+				"lv": 14.6
+			}
+		]
+	},
 	"11686": {
 		"name": "Λzure Vixen",
 		"ver": "24004",
@@ -29100,6 +29140,66 @@
 			}
 		]
 	},
+	"11722": {
+		"name": "Make Up Your World feat. キョンシーのCiちゃん",
+		"ver": "24500",
+		"composer": "t+pazolite",
+		"genre": "POPSアニメ",
+		"notes": [
+			{
+				"lv": 0
+			},
+			{
+				"lv": 0
+			},
+			{
+				"lv": 10.6
+			},
+			{
+				"lv": 13.4
+			}
+		]
+	},
+	"11723": {
+		"name": "BOOM! BOOM!! BOOM!!!",
+		"ver": "24500",
+		"composer": "P*Light",
+		"genre": "POPSアニメ",
+		"notes": [
+			{
+				"lv": 0
+			},
+			{
+				"lv": 0
+			},
+			{
+				"lv": 0
+			},
+			{
+				"lv": 13.6
+			}
+		]
+	},
+	"11724": {
+		"name": "Everybody Say HARDCORE TANO*C",
+		"ver": "24500",
+		"composer": "DJ Noriken",
+		"genre": "POPSアニメ",
+		"notes": [
+			{
+				"lv": 0
+			},
+			{
+				"lv": 0
+			},
+			{
+				"lv": 0
+			},
+			{
+				"lv": 13.5
+			}
+		]
+	},
 	"11725": {
 		"name": "ミラクルポップ☆アドベンチャー!!!!!",
 		"ver": "24500",
@@ -29117,6 +29217,26 @@
 			},
 			{
 				"lv": 14.2
+			}
+		]
+	},
+	"11726": {
+		"name": "Trust",
+		"ver": "24500",
+		"composer": "Massive New Krew feat. 光吉猛修",
+		"genre": "POPSアニメ",
+		"notes": [
+			{
+				"lv": 0
+			},
+			{
+				"lv": 0
+			},
+			{
+				"lv": 11
+			},
+			{
+				"lv": 13.6
 			}
 		]
 	},
