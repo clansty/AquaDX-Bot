@@ -15,7 +15,7 @@ const BASE_HELP = `<a href="https://aquadx.net/">AquaDX.Net</a> 查分 & maimai 
 本 Bot 主要基于 AquaDX.Net 制作，同时支持国服
 
 <b>绑定账号</b>
-使用 <b>/bind <code>AquaDX 的用户名</code> 或 <code>国服微信二维码识别出来的文字</code></b> 来绑定账号
+使用 <b>/bind <code>AquaDX 的用户名</code> 或 <code>国服微信二维码识别出来的文字</code> 或 <code>AIME 卡背后的 20 位数字（国际服）</code></b> 来绑定账号
 支持一个人同时绑定多个账号，可以通过 <b>/profile</b> 来查看和切换绑定的账号
 通过 <b>/delprofile</b> 来删除绑定的账号
 

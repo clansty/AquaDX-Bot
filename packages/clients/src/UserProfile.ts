@@ -3,11 +3,13 @@ import { UserSource } from './UserSource';
 import AquaDxLegacy from './AquaDxLegacy';
 import SdgbProxied from './SdgbProxied';
 import AquaDx from './AquaDx';
+import { SdgaProxied } from './index';
 
 export class UserProfile {
 	private constructor(private readonly _type: UserProfileDto['type'],
 		public readonly userId: string | number,
-		private readonly client: UserSource) {
+		private readonly client: UserSource,
+		public readonly dto: UserProfileDto) {
 	}
 
 	static async create(dto: UserProfileDto, env: CloudflareEnv) {
@@ -22,23 +24,27 @@ export class UserProfile {
 				client = SdgbProxied.create(env.CF_ACCESS_CLIENT_ID, env.CF_ACCESS_CLIENT_SECRET);
 				userId = dto.userId;
 				break;
+			case 'SDGA':
+				client = SdgaProxied.create(env.CF_ACCESS_CLIENT_ID, env.CF_ACCESS_CLIENT_SECRET);
+				userId = dto.userId;
+				break;
 			case 'AquaDX-v2':
 				client = new AquaDx();
 				userId = dto.username;
 		}
 
-		return new this(dto.type, userId, client);
+		return new this(dto.type, userId, client, dto);
 	}
 
-	get dto(): UserProfileDto {
-		switch (this._type) {
-			case 'AquaDX':
-			case 'SDGB':
-				return { type: this._type, userId: this.userId as number };
-			case 'AquaDX-v2':
-				return { type: this._type, username: this.userId as string };
-		}
-	}
+	// get dto(): UserProfileDto {
+	// 	switch (this._type) {
+	// 		case 'AquaDX':
+	// 		case 'SDGB':
+	// 			return { type: this._type, userId: this.userId as number };
+	// 		case 'AquaDX-v2':
+	// 			return { type: this._type, username: this.userId as string };
+	// 	}
+	// }
 
 	get type() {
 		switch (this._type) {
@@ -47,7 +53,9 @@ export class UserProfile {
 			case 'AquaDX-v2':
 				return 'AquaDX';
 			case 'SDGB':
-				return 'SDGB';
+				return '国服';
+			case 'SDGA':
+				return '国际服';
 			default:
 				throw new Error('Unknown user source');
 		}
@@ -57,6 +65,7 @@ export class UserProfile {
 		switch (this._type) {
 			case 'AquaDX':
 			case 'AquaDX-v2':
+			case 'SDGA':
 				return 'jp';
 			case 'SDGB':
 				return 'cn';
@@ -86,6 +95,8 @@ export class UserProfile {
 		switch (this._type) {
 			case 'SDGB':
 				return 140;
+			case 'SDGA':
+				return 145;
 			case 'AquaDX':
 			case 'AquaDX-v2':
 				try {

@@ -196,6 +196,13 @@ export type UserProfileDtoSdgb = {
 	type: 'SDGB',
 }
 
+export type UserProfileDtoSdga = {
+	userId: number,
+	aime: string,
+	authKey: string,
+	type: 'SDGA',
+}
+
 // TODO
 export type UserProfileDtoAnyAqua = {
 	userId: number,
@@ -203,7 +210,7 @@ export type UserProfileDtoAnyAqua = {
 	type: 'AnyAqua',
 }
 
-export type UserProfileDto = UserProfileDtoAquaDx | UserProfileDtoSdgb | UserProfileDtoAquaDxV2
+export type UserProfileDto = UserProfileDtoAquaDx | UserProfileDtoSdgb | UserProfileDtoAquaDxV2 | UserProfileDtoSdga
 
 export type UserProfilesKVStorage = {
 	profiles: UserProfileDto[],

@@ -1,6 +1,6 @@
 import BotContext from './BotContext';
 import { Env } from '../types';
-import { SdgbProxied, UserProfile } from '@clansty/maibot-clients';
+import { SdgaProxied, SdgbProxied, UserProfile } from '@clansty/maibot-clients';
 import _ from 'lodash';
 import { Bot } from 'grammy';
 
@@ -11,7 +11,7 @@ export default (bot: Bot<BotContext>, env: Env) => {
 		if (profiles.length) {
 			bond += `\n\n现在已经绑定 ${profiles.length} 个账号\n使用 /profile 命令来查看已经绑定的账号\n使用 /delprofile 命令可以删除已经绑定的账号`;
 		}
-		await ctx.replyWithHTML('用法: /bind <code>AquaDX 的用户名</code> 或 <code>国服微信二维码识别出来的文字</code>' + bond);
+		await ctx.replyWithHTML('用法: /bind <code>AquaDX 的用户名</code> 或 <code>国服微信二维码识别出来的文字</code> 或 <code>AIME 卡背后的 20 位数字（国际服）</code>' + bond);
 	};
 
 	bot.command('start', async (ctx, next) => {
@@ -32,10 +32,19 @@ export default (bot: Bot<BotContext>, env: Env) => {
 			return;
 		}
 
-		const param = ctx.args[0];
+		const param = ctx.args.join('');
 		let profile: UserProfile;
 
-		if (!isNaN(Number(param))) { // is number
+		if (/^\d{20}$/.test(param)) { // is AIME
+			const client = SdgaProxied.create(env.CF_ACCESS_CLIENT_ID, env.CF_ACCESS_CLIENT_SECRET);
+			try {
+				const { userId, authKey } = await client.resolveAime(param);
+				profile = await UserProfile.create({ type: 'SDGA', userId, authKey, aime: param }, env);
+			} catch (e) {
+				await ctx.reply('绑定失败\n' + e.message);
+				return;
+			}
+		} else if (!isNaN(Number(param))) { // is number
 			await ctx.reply('现在请使用有户名绑定 AquaDX 的账号');
 			// profile = await UserProfile.create({ type: 'AquaDX', userId: Number(param) }, env);
 		} else if (param.startsWith('SGWCMAI' + 'D') && param.length === 64 + 8 + 12) {
