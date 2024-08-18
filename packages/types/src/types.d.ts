@@ -226,3 +226,5 @@ export type CloudflareEnv = {
 	CF_ACCESS_CLIENT_ID: string;
 	CF_ACCESS_CLIENT_SECRET: string;
 }
+
+export type MaiVersion = 140 | 145

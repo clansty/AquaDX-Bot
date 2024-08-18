@@ -1,4 +1,4 @@
-import { BUDDIES_LOGO, BUDDIES_PLUS_LOGO, CloudflareEnv, GameVariantPlateMusicList, PLATE_MUSIC_LIST_145, PLATE_MUSIC_LIST_CN, PLATE_MUSIC_LIST_JP, Regions, Song, UserPreviewSummary, UserProfileDto } from '@clansty/maibot-types';
+import { BUDDIES_LOGO, BUDDIES_PLUS_LOGO, CloudflareEnv, GameVariantPlateMusicList, MaiVersion, PLATE_MUSIC_LIST_145, PLATE_MUSIC_LIST_CN, PLATE_MUSIC_LIST_JP, Regions, Song, UserPreviewSummary, UserProfileDto } from '@clansty/maibot-types';
 import { UserSource } from './UserSource';
 import AquaDxLegacy from './AquaDxLegacy';
 import SdgbProxied from './SdgbProxied';
@@ -35,16 +35,6 @@ export class UserProfile {
 
 		return new this(dto.type, userId, client, dto);
 	}
-
-	// get dto(): UserProfileDto {
-	// 	switch (this._type) {
-	// 		case 'AquaDX':
-	// 		case 'SDGB':
-	// 			return { type: this._type, userId: this.userId as number };
-	// 		case 'AquaDX-v2':
-	// 			return { type: this._type, username: this.userId as string };
-	// 	}
-	// }
 
 	get type() {
 		switch (this._type) {
@@ -89,9 +79,9 @@ export class UserProfile {
 		}
 	}
 
-	private _version: 140 | 145 | null = null;
+	private _version: MaiVersion | null = null;
 
-	private async _getVersion() {
+	private async _getVersion(): Promise<MaiVersion> {
 		switch (this._type) {
 			case 'SDGB':
 				return 140;

@@ -21,21 +21,21 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.13.1",
-    "@cloudflare/workers-types": "^4.20240725.0",
-    "@iconify-json/twemoji": "^1.1.15",
-    "@types/node": "^22.0.0",
+    "@cloudflare/next-on-pages": "^1.13.2",
+    "@cloudflare/workers-types": "^4.20240815.0",
+    "@iconify-json/twemoji": "^1.1.16",
+    "@types/node": "^22.4.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "@unocss/postcss": "^0.61.8",
+    "@unocss/postcss": "^0.62.2",
     "esbuild-loader": "^4.2.2",
     "json-loader": "^0.5.7",
-    "postcss": "^8.4.40",
+    "postcss": "^8.4.41",
     "ts-loader": "^9.5.1",
     "typescript": "^5.5.4",
-    "unocss": "^0.61.8",
-    "vercel": "^35.2.2",
+    "unocss": "^0.62.2",
+    "vercel": "^36.0.0",
     "webpack": "^5.93.0",
-    "wrangler": "^3.67.1"
+    "wrangler": "^3.72.0"
   }
 }

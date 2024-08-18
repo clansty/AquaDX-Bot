@@ -1,5 +1,5 @@
-import { InlineKeyboardButton } from 'telegraf/types';
 import { LEVEL, LEVEL_EN, Song, TypeEnum } from '@clansty/maibot-types';
+import { InlineKeyboardButton } from 'grammy/types';
 
 export default (song: Song) => {
 	if (song.unlisted) return [];

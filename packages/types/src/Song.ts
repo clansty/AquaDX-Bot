@@ -19,7 +19,10 @@ export default class Song implements DataSong {
 	// 一定是 1e4 以内的数
 	public readonly id: number;
 
-	private constructor(data: DataSong, public dx?: boolean, public unlisted = false) {
+	private constructor(data: DataSong, public dx?: boolean,
+		// 指 DXRating 中没有的歌
+		public unlisted = false
+	) {
 		Object.assign(this, data);
 
 		const stdChart = data.sheets.find(it => it.type === TypeEnum.STD);

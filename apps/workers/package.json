@@ -9,17 +9,17 @@
     "tail": "wrangler tail"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20240512.0",
+    "@cloudflare/workers-types": "^4.20240815.0",
     "cross-env": "^7.0.3",
     "nushell": "^0.96.1",
-    "wrangler": "^3.56.0"
+    "wrangler": "^3.72.0"
   },
   "dependencies": {
     "@clansty/maibot-clients": "workspace:^",
     "@clansty/maibot-types": "workspace:^",
     "@clansty/maibot-utils": "workspace:^",
-    "@cloudflare/puppeteer": "^0.0.8",
+    "@cloudflare/puppeteer": "^0.0.12",
     "cf-workers-hash": "^1.0.3",
-    "grammy": "^1.28.0"
+    "grammy": "^1.29.0"
   }
 }
