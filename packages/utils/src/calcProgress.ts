@@ -20,7 +20,7 @@ const checkPlateMusic = (music: UserMusic, type: typeof PLATE_TYPE[number] | '')
 	}
 };
 
-export const calcProgress = (musicList: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | '', requiredSongList: number[]): ProgressCalcResult[] => {
+export const calcProgress = (musicList: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | '', requiredSongList: Song[]): ProgressCalcResult[] => {
 	const result = [] as ProgressCalcResult[];
 	let total = 0, totalDone = 0, maxLevel = 4;
 	// 只有舞x 和霸者需要打白谱
@@ -28,14 +28,14 @@ export const calcProgress = (musicList: UserMusic[], ver: typeof PLATE_VER[numbe
 	for (let lv = 0; lv < maxLevel; lv++) {
 		let all = 0, done = 0;
 		for (const required of requiredSongList) {
-			const chart = Song.fromId(required).getChart(lv);
+			const chart = required.getChart(lv);
 			if (!chart) continue;
 			// 屏蔽追加谱面
 			if (type !== 'clear' && (ver === BA_VE || PLATE_VER.indexOf(ver) < PLATE_VER.indexOf('熊'))) {
 				if (chart.releaseDate && new Date(chart.releaseDate) >= MAIMAI_DX_RELEASE_DATE) continue;
 			}
 			all++;
-			let userScore = musicList.find(it => it.musicId === required && it.level === lv);
+			let userScore = musicList.find(it => it.musicId === required.dxId && it.level === lv);
 			if (!userScore) continue;
 			if (checkPlateMusic(userScore, type)) done++;
 		}
@@ -47,7 +47,7 @@ export const calcProgress = (musicList: UserMusic[], ver: typeof PLATE_VER[numbe
 	return result;
 };
 
-export const calcProgressText = (musicList: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | '', requiredSongList: number[]): string => {
+export const calcProgressText = (musicList: UserMusic[], ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | '', requiredSongList: Song[]): string => {
 	const result = calcProgress(musicList, ver, type, requiredSongList);
 	const ret = result.map(({ done, all }, lv) => `${LEVEL[lv]} ${done}/${all}`);
 	ret.push(`总计 ${result.reduce((acc, { done }) => acc + done, 0)}/${result.reduce((acc, { all }) => acc + all, 0)}`);

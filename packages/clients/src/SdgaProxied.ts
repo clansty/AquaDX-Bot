@@ -1,7 +1,7 @@
 import { UserSource } from './UserSource';
 import { Nameplate, UserPreview } from '@clansty/maibot-types';
 
-export default class SdgbProxied extends UserSource {
+export default class SdgaProxied extends UserSource {
 	public constructor(private readonly CF_ACCESS_CLIENT_ID: string,
 		private readonly CF_ACCESS_CLIENT_SECRET: string) {
 		super('https://sdgb-proxy.init.ink/api/exp/');

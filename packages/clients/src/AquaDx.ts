@@ -34,7 +34,7 @@ export default class AquaDx extends UserSource {
 		return await this.fetch('/api/v2/game/mai2/user-name-plate', { username });
 	}
 
-	public override async getUserRating(username: string) {
+	protected override async _getUserRating(username: string) {
 		console.log('请求 user-rating', { username });
 		const data = await this.fetch('/api/v2/game/mai2/user-rating', { username });
 		for (const key of ['best35', 'best15']) {
@@ -48,7 +48,7 @@ export default class AquaDx extends UserSource {
 		return data;
 	}
 
-	public async getUserPreview(username: string) {
+	protected override async _getUserPreview(username: string) {
 		console.log('请求 user-summary', { username });
 		const res = await this.fetch('/api/v2/game/mai2/user-summary', { username });
 

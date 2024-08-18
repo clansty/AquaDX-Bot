@@ -1,6 +1,6 @@
 import BotContext from './BotContext';
 import { Env } from '../types';
-import { BA_VE, PLATE_TYPE, PLATE_VER } from '@clansty/maibot-types';
+import { BA_VE, PLATE_TYPE, PLATE_VER, Song } from '@clansty/maibot-types';
 import { calcProgressText } from '@clansty/maibot-utils';
 import { InlineQueryResult } from 'grammy/types';
 import { xxhash32 } from 'cf-workers-hash';
@@ -30,7 +30,8 @@ export default (bot: Bot<BotContext>, env: Env) => {
 					return;
 				}
 
-				const requiredSongs = (await profile.plateSongs())[version];
+				const profileVer = await profile.getVersion();
+				const requiredSongs = (await profile.plateSongs())[version].map(it => Song.fromId(it, profileVer));
 				const text = calcProgressText(await profile.getUserMusic(requiredSongs), version, type, requiredSongs);
 				const userMusic = await profile.getUserMusic(requiredSongs);
 				const cachedImage = await ctx.getCacheImage([version, type, userMusic]);
@@ -59,7 +60,8 @@ export default (bot: Bot<BotContext>, env: Env) => {
 
 			bot.hears(RegExp(`^\\/?${version} ?${type} ?进度$`), async (ctx) => {
 				const profile = await ctx.getCurrentProfile();
-				const requiredSongs = (await profile.plateSongs())[version];
+				const profileVer = await profile.getVersion();
+				const requiredSongs = (await profile.plateSongs())[version].map(it => Song.fromId(it, profileVer));
 				await ctx.reply(calcProgressText(await profile.getUserMusic(requiredSongs), version, type, requiredSongs));
 			});
 

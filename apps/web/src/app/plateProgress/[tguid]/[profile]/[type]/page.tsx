@@ -1,4 +1,4 @@
-import { BA_VE, PLATE_TYPE, PLATE_VER } from '@clansty/maibot-types';
+import { BA_VE, PLATE_TYPE, PLATE_VER, Song } from '@clansty/maibot-types';
 import { notFound } from 'next/navigation';
 import PlateProgress from '@/app/plateProgress/components/PlateProgress';
 import getUserProfile from '@/utils/getUserProfile';
@@ -19,7 +19,8 @@ export default async ({ params }: { params: { tguid: string, type: string, profi
 	}
 
 	const profile = await getUserProfile(params.tguid, params.profile);
-	const requiredList = (await profile.plateSongs())[ver]
+	const profileVer = await profile.getVersion();
+	const requiredList = (await profile.plateSongs())[ver].map(it => Song.fromId(it, profileVer))
 	const userMusic = await profile.getUserMusic(requiredList);
 
 	return <PlateProgress userMusic={userMusic} type={type} ver={ver} requiredList={requiredList} logo={await profile.getVersionLogo()} />;

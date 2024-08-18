@@ -16,12 +16,13 @@ export default (bot: Bot<BotContext>, env: Env) => {
 			});
 			return;
 		}
+		const profileVer = await profile.getVersion();
 
 		const query = ctx.match[1].trim().toLowerCase();
 		if (query === '') {
 			await ctx.answerInlineQuery([]);
 		}
-		const results = Song.search(query);
+		const results = Song.search(query, profileVer);
 		const userMusic = await profile.getUserMusic(results);
 		const ret = [] as InlineQueryResult[];
 		for (const song of results) {
@@ -70,19 +71,20 @@ export default (bot: Bot<BotContext>, env: Env) => {
 	});
 
 	bot.command('query', async (ctx) => {
+		const profile = await ctx.getCurrentProfile();
 		const kw = ctx.match.trim().toLowerCase();
 		if (!kw) {
 			await ctx.reply('请输入关键词');
 			return;
 		}
 
-		const results = Song.search(kw);
+		const profileVer = await profile.getVersion();
+		const results = Song.search(kw, profileVer);
 
 		if (!results.length) {
 			await ctx.reply('找不到匹配的歌');
 			return;
 		}
-		const profile = await ctx.getCurrentProfile();
 		const userMusic = await profile.getUserMusic(results);
 		for (const song of results) {
 			const userScores = userMusic.filter(it => it.musicId === song.id || it.musicId === song.id + 1e4);

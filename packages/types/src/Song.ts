@@ -1,8 +1,9 @@
 import { CategoryEnum, DifficultyEnum, dxdata, Regions, Song as DataSong, TypeEnum } from '@gekichumai/dxdata';
 import Chart from './Chart';
 import _ from 'lodash';
-import { ALL_MUSIC, TG_MUSIC_IDS } from '@clansty/maibot-data';
+import { ALL_MUSIC, ALL_MUSIC_140, TG_MUSIC_IDS } from '@clansty/maibot-data';
 import { LEVEL, LEVEL_EN } from './consts';
+import { MaiVersion } from './types';
 
 export default class Song implements DataSong {
 	songId: never;
@@ -19,12 +20,15 @@ export default class Song implements DataSong {
 	// 一定是 1e4 以内的数
 	public readonly id: number;
 
-	private constructor(data: DataSong, public dx?: boolean,
+	private constructor(data: DataSong,
+		public readonly dx?: boolean,
 		// 指 DXRating 中没有的歌
-		public unlisted = false
+		public readonly unlisted = false,
+		public readonly ver: MaiVersion = 145
 	) {
 		Object.assign(this, data);
 
+		const allMusic = ver === 145 ? ALL_MUSIC : ALL_MUSIC_140;
 		const stdChart = data.sheets.find(it => it.type === TypeEnum.STD);
 		const dxChart = data.sheets.find(it => it.type === TypeEnum.DX);
 
@@ -34,7 +38,7 @@ export default class Song implements DataSong {
 			this.id %= 1e4;
 		} else {
 			// DXRating.net 中一些歌，比如说 LOSER 和俊达萌起床歌，没有 ID
-			const findId = Object.entries(ALL_MUSIC).find(([id, dataFromAllMusic]) => dataFromAllMusic.name?.toLowerCase() === data.title.toLowerCase());
+			const findId = Object.entries(allMusic).find(([id, dataFromAllMusic]) => dataFromAllMusic.name?.toLowerCase() === data.title.toLowerCase());
 			if (findId) {
 				this.id = Number(findId[0]) % 1e4;
 				// console.log('修复了 ID 丢失', data.title, this.id);
@@ -43,13 +47,14 @@ export default class Song implements DataSong {
 			}
 		}
 
-		const stdDataFromAllMusic = ALL_MUSIC[this.id];
-		const dxDataFromAllMusic = ALL_MUSIC[this.id + 1e4];
+		const stdDataFromAllMusic = allMusic[this.id];
+		const dxDataFromAllMusic = allMusic[this.id + 1e4];
 
 		this.sheets = data.sheets.map(sheet => new Chart(sheet,
 			// 缓解 DXRating.net 定数错误
 			sheet.type === TypeEnum.DX ? dxDataFromAllMusic : stdDataFromAllMusic,
-			this.id && (sheet.type === TypeEnum.DX ? this.id + 1e4 : this.id)));
+			this.id && (sheet.type === TypeEnum.DX ? this.id + 1e4 : this.id),
+			this.ver));
 	}
 
 	public get dxId() {
@@ -111,17 +116,18 @@ export default class Song implements DataSong {
 		return message;
 	}
 
-	public static fromId(id: number) {
+	public static fromId(id: number, ver: MaiVersion = 145) {
+		const allMusic = ver === 145 ? ALL_MUSIC : ALL_MUSIC_140;
 		const dx = id > 1e4;
 		id %= 1e4;
 		let song = dxdata.songs.find(song => song.sheets.some(sheet => sheet.internalId === id || sheet.internalId === id + 1e4));
-		if (song) return new this(song, dx);
+		if (song) return new this(song, dx, false, ver);
 
-		const dataFromAllMusic = ALL_MUSIC[id] || ALL_MUSIC[id + 1e4];
+		const dataFromAllMusic = allMusic[id] || allMusic[id + 1e4];
 		if (!dataFromAllMusic) return null;
 
 		song = dxdata.songs.find(song => song.title.toLowerCase() === dataFromAllMusic.name.toLowerCase());
-		if (song) return new this(song, dx);
+		if (song) return new this(song, dx, false, ver);
 		return new this({
 			title: dataFromAllMusic.name,
 			artist: dataFromAllMusic.composer,
@@ -144,32 +150,32 @@ export default class Song implements DataSong {
 				internalLevelValue: chart.lv,
 				isSpecial: undefined
 			}, dataFromAllMusic, dx ? id + 1e4 : id))
-		}, dx, true);
+		}, dx, true, ver);
 	}
 
-	public static search(kw: string) {
+	public static search(kw: string, ver: MaiVersion = 145) {
 		const results = [] as Song[];
 		if (Number(kw)) {
-			const song = this.fromId(Number(kw));
+			const song = this.fromId(Number(kw), ver);
 			results.push(song);
 		}
 		for (const songRaw of dxdata.songs) {
 			if (songRaw.title.toLowerCase().includes(kw)) {
-				results.push(new this(songRaw));
+				results.push(new this(songRaw, undefined, false, ver));
 			} else if (songRaw.searchAcronyms.some(alias => alias === kw)) {
-				results.push(new this(songRaw));
+				results.push(new this(songRaw, undefined, false, ver));
 			}
 		}
 		for (const [id, data] of Object.entries(ALL_MUSIC)) {
 			if (data.name?.toLowerCase().includes(kw)) {
-				results.push(this.fromId(Number(id)));
+				results.push(this.fromId(Number(id), ver));
 			}
 		}
 		return _.uniqBy(results, 'id');
 	}
 
-	public static getByCondition(condition: (song: DataSong) => boolean) {
-		return dxdata.songs.filter(condition).map(songRaw => new this(songRaw));
+	public static getByCondition(condition: (song: DataSong) => boolean, ver: MaiVersion = 145) {
+		return dxdata.songs.filter(condition).map(songRaw => new this(songRaw, undefined, false, ver));
 	}
 
 	public static getAllIds = () => Object.keys(ALL_MUSIC).map(Number).map(it => it % 1e4);

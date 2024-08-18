@@ -10,15 +10,14 @@ export default ({ userMusic, ver, type, requiredList, logo }: {
 	userMusic: UserMusic[],
 	ver: typeof PLATE_VER[number] | typeof BA_VE,
 	type: typeof PLATE_TYPE[number] | '',
-	requiredList: number[],
+	requiredList: Song[],
 	logo: string,
 }) => {
 	let displayData = [] as TableContentRenderData[];
-	const requiredSongList = requiredList.map(id => Song.fromId(id));
 	const levelsRequired = [3];
 	// 只有舞x 和霸者需要打白谱
 	if ([BA_VE, '舞', '全曲'].includes(ver) || ['clear', 'fc', 'ap'].includes(type)) levelsRequired.push(4);
-	for (const song of requiredSongList) {
+	for (const song of requiredList) {
 		for (const level of levelsRequired) {
 			const chart = song.getChart(level);
 			if (!chart) continue;

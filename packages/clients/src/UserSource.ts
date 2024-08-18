@@ -19,7 +19,7 @@ export abstract class UserSource {
 		return data.userMusicList[0].userMusicDetailList as UserMusic[];
 	}
 
-	async getUserRating(userId: number | string): Promise<UserCombinedRating> {
+	protected async _getUserRating(userId: number | string): Promise<UserCombinedRating> {
 		console.log('请求 GetUserRatingApi', userId);
 		const req = await fetch(this.baseUrl + 'GetUserRatingApi', {
 			method: 'POST',
@@ -36,7 +36,19 @@ export abstract class UserSource {
 		};
 	}
 
-	public async getUserPreview(userId: number | string): Promise<UserPreviewSummary> {
+	private _getUserRatingCache = new Map<number | string, Promise<UserCombinedRating>>();
+
+	// final
+	public getUserRating(userId: number | string): Promise<UserCombinedRating> {
+		if (this._getUserRatingCache.has(userId)) {
+			return this._getUserRatingCache.get(userId);
+		}
+		const promise = this._getUserRating(userId);
+		this._getUserRatingCache.set(userId, promise);
+		return promise;
+	}
+
+	protected async _getUserPreview(userId: number | string): Promise<UserPreviewSummary> {
 		console.log('请求 GetUserPreviewApi', { userId });
 		const req = await fetch(this.baseUrl + 'GetUserPreviewApi', {
 			method: 'POST',
@@ -45,6 +57,18 @@ export abstract class UserSource {
 		});
 
 		return await req.json() as UserPreview;
+	}
+
+	private _getUserPreviewCache = new Map<number | string, Promise<UserPreviewSummary>>();
+
+	// final
+	public getUserPreview(userId: number | string): Promise<UserPreviewSummary> {
+		if (this._getUserPreviewCache.has(userId)) {
+			return this._getUserPreviewCache.get(userId);
+		}
+		const promise = this._getUserPreview(userId);
+		this._getUserPreviewCache.set(userId, promise);
+		return promise;
 	}
 
 	public abstract getNameplate(userId: number | string): Promise<Nameplate>;

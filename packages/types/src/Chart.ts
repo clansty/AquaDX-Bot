@@ -2,6 +2,7 @@ import { DifficultyEnum, NoteCounts, Regions, Sheet, TypeEnum, VersionEnum } fro
 import _ from 'lodash';
 import { DX_VERSIONS, LEVEL_EMOJI, LEVEL_EN, LEVELS } from './consts';
 import { ALL_MUSIC } from '@clansty/maibot-data';
+import { MaiVersion } from './types';
 
 export default class Chart implements Sheet {
 	internalId?: number;
@@ -17,7 +18,11 @@ export default class Chart implements Sheet {
 	version: VersionEnum;
 	comment?: string;
 
-	public constructor(data: Sheet, dataFromAllMusic?: typeof ALL_MUSIC[number], internalId?: number) {
+	public constructor(data: Sheet,
+		dataFromAllMusic?: typeof ALL_MUSIC[number],
+		internalId?: number,
+		public readonly ver: MaiVersion = 145
+	) {
 		const dataCopy = { ...data };
 		delete dataCopy.level;
 		Object.assign(this, dataCopy);
@@ -35,7 +40,7 @@ export default class Chart implements Sheet {
 	get level(): typeof LEVELS[number] {
 		const base = Math.floor(this.internalLevelValue);
 		const decimal = this.internalLevelValue * 10 - base * 10;
-		if (decimal >= 6) {
+		if (decimal >= (this.ver >= 145 ? 6 : 7)) {
 			return `${base}+` as typeof LEVELS[number];
 		}
 		return base.toString() as typeof LEVELS[number];

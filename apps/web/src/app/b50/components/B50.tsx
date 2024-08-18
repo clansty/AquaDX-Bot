@@ -1,29 +1,29 @@
-import { RatingListEntry, UserMusic, Song, Nameplate as NameplateData, UserCombinedRating } from '@clansty/maibot-types';
+import { RatingListEntry, UserMusic, Song, Nameplate as NameplateData, UserCombinedRating, MaiVersion, BUDDIES_PLUS_LOGO, BUDDIES_LOGO, Chart } from '@clansty/maibot-types';
 import React from 'react';
 import B50Song from './B50Song';
 import { computeRa, ratingAnalyse } from '@clansty/maibot-utils';
 import styles from './B50.module.css';
 import Nameplate from '@/components/Nameplate';
 
-export default ({ rating, user, logo }: { rating: UserCombinedRating, user: NameplateData, logo: string }) =>
+export default ({ rating, user, ver }: { rating: UserCombinedRating, user: NameplateData, ver: MaiVersion }) =>
 	<div style={{ padding: '0 20px' }}>
 		<div className={`${styles.b50Header} flex items-center p-[20px_0] gap-[10px_40px]`}>
 			<div className="text-1.8em">
 				<Nameplate user={user} />
 			</div>
 			<div className={`${styles.hideOnSmallScreen} grow`} />
-			<img className={styles.hideOnSmallScreen} src={logo} alt="" height={120} />
+			<img className={styles.hideOnSmallScreen} src={ver === 145 ? BUDDIES_PLUS_LOGO : BUDDIES_LOGO} alt="" height={120} />
 		</div>
 
-		<RatingTable rating={rating.best35} userMusic={rating.musicList} title="旧版本 Best 35" />
-		<RatingTable rating={rating.best15} userMusic={rating.musicList} title="当前版本 Best 15" />
+		<RatingTable rating={rating.best35} userMusic={rating.musicList} title="旧版本 Best 35" ver={ver} />
+		<RatingTable rating={rating.best15} userMusic={rating.musicList} title="当前版本 Best 15" ver={ver} />
 	</div>
 
-const RatingTable = ({ rating, userMusic, title }: { rating: RatingListEntry[], userMusic: UserMusic[], title: string }) => {
+const RatingTable = ({ rating, userMusic, title, ver }: { rating: RatingListEntry[], userMusic: UserMusic[], title: string, ver: MaiVersion }) => {
 	const scores = [] as number[];
-	let entries = [] as { rating: RatingListEntry, score?: number }[];
+	let entries = [] as { rating: RatingListEntry, score?: number, song?: Song, chart?: Chart }[];
 	for (const ratingListEntry of rating) {
-		const song = Song.fromId(ratingListEntry.musicId);
+		const song = Song.fromId(ratingListEntry.musicId, ver);
 		const chart = song?.getChart(ratingListEntry.level);
 		if (!chart) {
 			entries.push({ rating: ratingListEntry });
@@ -31,7 +31,7 @@ const RatingTable = ({ rating, userMusic, title }: { rating: RatingListEntry[], 
 		}
 		const score = computeRa(chart.internalLevelValue, ratingListEntry.achievement);
 		scores.push(score);
-		entries.push({ rating: ratingListEntry, score });
+		entries.push({ rating: ratingListEntry, score, song, chart });
 	}
 	// 游戏给的排序没问题。要是顺序真的不对，那就是算法有问题，或者是数据有问题。
 	// entries = _.sortBy(entries, it => -it.score || 1);
@@ -55,7 +55,7 @@ const RatingTable = ({ rating, userMusic, title }: { rating: RatingListEntry[], 
 			</div>
 		</div>
 		<div className={styles.b50Grid}>
-			{entries.map(it => <B50Song entry={it.rating} score={userMusic.find(music => music.musicId === it.rating.musicId && music.level === it.rating.level)} key={it.rating.musicId} />)}
+			{entries.map(it => <B50Song entry={it.rating} song={it.song} score={userMusic.find(music => music.musicId === it.rating.musicId && music.level === it.rating.level)} key={it.rating.musicId} />)}
 		</div>
 	</div>;
 };
