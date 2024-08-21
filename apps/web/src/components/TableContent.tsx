@@ -28,7 +28,7 @@ const Row = ({ scoreType, data, showSdDx }: { scoreType: ScoreRenderType, data: 
 	</div>;
 
 const Cell = ({ scoreType, data, showSdDx }: { scoreType: ScoreRenderType, data: TableContentRenderData, showSdDx: boolean }) =>
-	<Link href={`https://t.me/aquadxbot?start=${data.song.id}`}>
+	<Link href={`https://t.me/aquadxbot?start=song-${data.song.id}`}>
 		<div style={{
 			backgroundImage: `url(${data.song.coverUrl})`, height: '100%', width: '100%', backgroundSize: 'cover', position: 'relative',
 			boxSizing: 'border-box', borderWidth: BORDER_SIZE, borderStyle: 'solid', borderColor: LEVEL_COLOR[LEVEL_EN.indexOf(data.chart.difficulty)]
