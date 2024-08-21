@@ -5,6 +5,15 @@ import { Song } from '@clansty/maibot-types/src';
 import { Bot } from 'grammy';
 
 export default (bot: Bot<BotContext>, env: Env) => {
+	const genSongInfoButtonsWithCachedLyrics = async (song: Song) => {
+		const origin = genSongInfoButtons(song);
+		const data = await env.KV.get(`lyrics:${song.id}`);
+		if (data && data !== 'None') {
+			origin.push([{ text: '查看歌词', url: data }]);
+		}
+		return origin;
+	};
+
 	bot.callbackQuery(/^song:(\d+):(\d)$/, async (ctx) => {
 		const song = Song.fromId(Number(ctx.match[1]));
 		if (!song) return;
@@ -32,7 +41,7 @@ export default (bot: Bot<BotContext>, env: Env) => {
 
 		await ctx.editMessageCaption({
 			caption: song.display,
-			reply_markup: { inline_keyboard: genSongInfoButtons(song) }
+			reply_markup: { inline_keyboard: await genSongInfoButtonsWithCachedLyrics(song) }
 		});
 	});
 

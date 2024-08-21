@@ -14,4 +14,7 @@ export type Env = CloudflareEnv & {
 	RENDERER: DurableObjectNamespace;
 	ADMIN_UIDS: string;
 	ADMIN_SECRET: string;
+	GENIUS_SECRET: string;
+	TELEGRAPH_SECRET: string;
+	DEEPL_AUTH_KEY: string;
 }

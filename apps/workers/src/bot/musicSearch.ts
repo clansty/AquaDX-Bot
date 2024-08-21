@@ -3,32 +3,65 @@ import { Env } from '../types';
 import genSongInfoButtons from '../utils/genSongInfoButtons';
 import { Song } from '@clansty/maibot-types/src';
 import { Bot } from 'grammy';
+import { Message } from 'grammy/types';
+import LyricsHelper from '../utils/LyricsHelper';
 
 export default (bot: Bot<BotContext>, env: Env) => {
+	const genSongInfoButtonsWithCachedLyrics = async (song: Song) => {
+		const origin = genSongInfoButtons(song);
+		const data = await env.KV.get(`lyrics:${song.id}`);
+		if (data && data !== 'None') {
+			origin.push([{ text: '查看歌词', url: data }]);
+		}
+		return { buttons: origin, lyrics: data };
+	};
+
 	bot.inlineQuery(/.+/, async (ctx) => {
 		if (ctx.inlineQuery.query.trim() === '') {
 			await ctx.answerInlineQuery([]);
 		}
 		const results = Song.search(ctx.inlineQuery.query.trim().toLowerCase());
-		await ctx.answerInlineQuery(results.map(song =>
+		await ctx.answerInlineQuery(await Promise.all(results.map(async song =>
 			song.tgMusicId ?
 				{
 					type: 'audio',
 					audio_file_id: song.tgMusicId,
-					id: song.dxId?.toString() || song.title,
+					id: `search:${song.dxId?.toString()}` || song.title,
 					caption: song.display,
-					reply_markup: { inline_keyboard: genSongInfoButtons(song) }
+					reply_markup: { inline_keyboard: (await genSongInfoButtonsWithCachedLyrics(song)).buttons }
 				} :
 				{
 					type: 'photo',
 					title: song.title,
 					description: song.title,
-					id: song.dxId?.toString() || song.title,
+					id: `search:${song.dxId?.toString()}` || song.title,
 					photo_url: song.coverUrl,
 					thumbnail_url: song.coverUrl,
 					caption: song.display,
-					reply_markup: { inline_keyboard: genSongInfoButtons(song) }
-				}), { cache_time: 3600 });
+					reply_markup: { inline_keyboard: (await genSongInfoButtonsWithCachedLyrics(song)).buttons }
+				})), { cache_time: 3600 });
+	});
+
+	bot.chosenInlineResult(/^search:(\d+)$/, async (ctx) => {
+		console.log('chosenInlineResult', ctx.chosenInlineResult.inline_message_id, ctx.match[1]);
+		const song = Song.fromId(parseInt(ctx.match[1]));
+		if (!song) return;
+		const { buttons, lyrics } = await genSongInfoButtonsWithCachedLyrics(song);
+		if (lyrics === 'None') return;
+		if (!lyrics) {
+			const helper = new LyricsHelper(env.GENIUS_SECRET, env.TELEGRAPH_SECRET, env.DEEPL_AUTH_KEY);
+			const lyricsUrl = await helper.getLyricsTelegraf(song);
+			await env.KV.put(`lyrics:${song.id}`, lyricsUrl);
+			if (lyricsUrl !== 'None') {
+				buttons.push([{ text: '查看歌词', url: lyricsUrl }]);
+			}
+		}
+		// 由于可能那个没有歌词按钮的结果被 tg 缓存了，然后要是被触发了两次的话，就算第一次按钮的时候找到了歌词，第二次发出来还会没有歌词按钮
+		// 所以这里无论如何都 edit 一次
+		// 就算 error 了也没事
+		await ctx.api.editMessageReplyMarkupInline(ctx.inlineMessageId, {
+			reply_markup: { inline_keyboard: buttons }
+		});
 	});
 
 	bot.command(['search', 'maimai', 's'], async (ctx) => {
@@ -53,14 +86,29 @@ export default (bot: Bot<BotContext>, env: Env) => {
 		}
 
 		const song = results[0];
+		const { buttons, lyrics } = await genSongInfoButtonsWithCachedLyrics(song);
 		const extra = {
 			caption: song.display,
-			reply_markup: { inline_keyboard: genSongInfoButtons(song) }
+			reply_markup: { inline_keyboard: buttons }
 		};
+		let message: Message.CommonMessage;
 		if (song.tgMusicId) {
-			await ctx.replyWithAudio(song.tgMusicId, extra);
+			message = await ctx.replyWithAudio(song.tgMusicId, extra);
 		} else {
-			await ctx.replyWithPhoto(song.coverUrl, extra);
+			message = await ctx.replyWithPhoto(song.coverUrl, extra);
+		}
+		// 异步获取歌词，只在 undefined 的时候
+		if (!lyrics) {
+			const helper = new LyricsHelper(env.GENIUS_SECRET, env.TELEGRAPH_SECRET, env.DEEPL_AUTH_KEY);
+			const lyricsUrl = await helper.getLyricsTelegraf(song);
+			await env.KV.put(`lyrics:${song.id}`, lyricsUrl);
+			if (lyricsUrl !== 'None') {
+				await ctx.api.editMessageReplyMarkup(message.chat.id, message.message_id, {
+					reply_markup: {
+						inline_keyboard: [...buttons, [{ text: '查看歌词', url: lyricsUrl }]]
+					}
+				});
+			}
 		}
 	});
 }

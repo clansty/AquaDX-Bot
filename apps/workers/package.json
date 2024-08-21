@@ -20,6 +20,11 @@
     "@clansty/maibot-utils": "workspace:^",
     "@cloudflare/puppeteer": "^0.0.12",
     "cf-workers-hash": "^1.0.3",
-    "grammy": "^1.29.0"
+    "franc": "^6.2.0",
+    "genius-lyrics": "^4.4.7",
+    "grammy": "^1.29.0",
+    "iso-639-3": "^3.0.1",
+    "telegra.ph": "^1.0.1",
+    "wiki-saikou": "^3.3.1"
   }
 }

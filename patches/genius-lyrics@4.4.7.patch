@@ -1,0 +1,59 @@
+diff --git a/dist/request.js b/dist/request.js
+index dc23508cb883ad8917e7bf12e768ee3a429aa2c7..76c320f5d80bfcc7670befe0656a4a297dcf3d67 100644
+--- a/dist/request.js
++++ b/dist/request.js
+@@ -1,7 +1,6 @@
+ "use strict";
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.RequestClient = void 0;
+-const http_1 = require("./helpers/http");
+ const errors_1 = require("./errors");
+ class RequestClient {
+     constructor(base, options) {
+@@ -11,7 +10,7 @@ class RequestClient {
+     async get(route, options) {
+         const url = this.base ? `${this.base}${route}` : route;
+         try {
+-            const { body } = await (0, http_1.request)(url, {
++            const body = await fetch(url, {
+                 ...this.options,
+                 ...options,
+                 headers: {
+@@ -20,7 +19,7 @@ class RequestClient {
+                 },
+                 throwOnError: true,
+             });
+-            return body.text();
++            return await body.text();
+         }
+         catch (err) {
+             throw this._handleError(err);
+diff --git a/dist/songs/client.js b/dist/songs/client.js
+index a58436670a88223292eee4c930deca30d48541ea..61ad6c18f1a323a01080cf4be86f2970da3c40ca 100644
+--- a/dist/songs/client.js
++++ b/dist/songs/client.js
+@@ -1,7 +1,6 @@
+ "use strict";
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.SongsClient = void 0;
+-const http_1 = require("../helpers/http");
+ const song_1 = require("./song");
+ const constants_1 = require("../helpers/constants");
+ const errors_1 = require("../errors");
+@@ -34,14 +33,14 @@ class SongsClient {
+             result = parsed.response.hits;
+         }
+         else {
+-            const res = await (0, http_1.request)(`${this.client.config.origin?.url || constants_1.Constants.unofficialApiURL}/search/song?per_page=5&q=${encodedQuery}`, {
++            const res = await fetch(`${this.client.config.origin?.url || constants_1.Constants.unofficialApiURL}/search/song?per_page=5&q=${encodedQuery}`, {
+                 ...this.client.config.requestOptions,
+                 headers: {
+                     "User-Agent": constants_1.Constants.defaultUserAgent,
+                     ...this.client.config.requestOptions?.headers,
+                 },
+             });
+-            const parsed = JSON.parse(await res.body.text());
++            const parsed = await res.json();
+             if (!parsed?.response?.sections) {
+                 throw new errors_1.NoResultError();
+             }
