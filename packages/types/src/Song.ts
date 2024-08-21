@@ -157,7 +157,7 @@ export default class Song implements DataSong {
 		const results = [] as Song[];
 		if (Number(kw)) {
 			const song = this.fromId(Number(kw), ver);
-			results.push(song);
+			song && results.push(song);
 		}
 		for (const songRaw of dxdata.songs) {
 			if (songRaw.title.toLowerCase().includes(kw)) {
