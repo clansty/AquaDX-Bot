@@ -227,7 +227,7 @@ export default class LyricsHelper {
 			for (const line of lang.text.split('\n')) {
 				nodes.push({
 					tag: 'p',
-					children: [line.trim() ? line : { tag: 'br' }]
+					children: [line.trim() ? line.trim() : { tag: 'br' }]
 				});
 			}
 			nodes.push({
