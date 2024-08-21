@@ -6,9 +6,20 @@ import Telegraph from 'telegra.ph';
 import tph from 'telegra.ph/typings/telegraph';
 import { Song } from '@clansty/maibot-types';
 
+type Lyrics = {
+	text: string,
+	from: string,
+	lang: string,
+	link?: string,
+}
+
+const WIKI_URL = 'https://silentblue.remywiki.com';
+const WIKI_NAME = 'SilentBlue Wiki';
+const NETEASE_API = 'https://music.fairysen.com/api';
+
 export default class LyricsHelper {
 	private readonly geniusClient: Genius.Client;
-	private readonly wiki: MediaWikiApi = new MediaWikiApi('https://silentblue.remywiki.com/api.php');
+	private readonly wiki: MediaWikiApi = new MediaWikiApi(WIKI_URL + '/api.php');
 	private readonly telegraph: Telegraph;
 
 	constructor(geniusSecret: string, telegraphSecret: string, private readonly deeplAuthKey: string) {
@@ -24,24 +35,28 @@ export default class LyricsHelper {
 		return await this.createTelegraphPage(lyrics, song.title, song.coverUrl);
 	}
 
-	async getLyrics(name: string, artist: string): Promise<'None' | Record<string, string>> {
+	async getLyrics(name: string, artist: string): Promise<'None' | Lyrics[]> {
 		let lyrics = await this.getLyricsFromWiki(name, artist);
 		if (lyrics === 'None') return 'None';
-		if (!lyrics) {
+		if (!lyrics?.length) {
 			lyrics = await this.getLyricsFromGenius(name, artist);
 		}
 		if (!lyrics) {
 			return 'None';
 		}
 		// 翻译
-		if (!Object.keys(lyrics).some(it => it.toLowerCase().includes('mandarin'))) {
-			const base = Object.values(lyrics)[0];
-			lyrics['中文（DeepL 翻译）'] = await this.translate(base);
+		if (!lyrics.some(it => it.lang.toLowerCase().includes('mandarin'))) {
+			const base = lyrics[0];
+			lyrics.push({
+				lang: '中文',
+				text: await this.translate(base.text),
+				from: 'DeepL'
+			});
 		}
 		return lyrics;
 	}
 
-	async getLyricsFromGenius(name: string, artist: string): Promise<Record<string, string>> {
+	async getLyricsFromGenius(name: string, artist: string): Promise<Lyrics[]> {
 		console.log('从 Genius 获取歌词');
 		let searches = await this.geniusClient.songs.search(`${name}`);
 		console.log(searches.map(it => it.title));
@@ -52,11 +67,11 @@ export default class LyricsHelper {
 		if (!lyrics) return;
 		const langCode = franc(lyrics);
 		const lang = iso6393.find(it => it.iso6393 === langCode)?.name;
-		return { [lang || '']: lyrics };
+		return [{ lang, text: lyrics, from: 'Genius' }];
 	}
 
 	// 返回 undefined = NotFound，返回 None = 纯音乐没有歌词
-	async getLyricsFromWiki(name: string, artist: string): Promise<Record<string, string> | undefined | 'None'> {
+	async getLyricsFromWiki(name: string, artist: string): Promise<Lyrics[] | undefined | 'None'> {
 		console.log('从 Wiki 获取歌词');
 		const search = await this.wiki.get({
 			action: 'query',
@@ -80,17 +95,22 @@ export default class LyricsHelper {
 			return;
 		}
 
-		const data = this.parseLyricsFromWikitext(wikiText);
+		const data = this.parseLyricsFromWikitext(wikiText, WIKI_NAME);
 		console.log(data);
+		if (!data?.length) return;
 		// 过滤掉无歌词的情况
-		if (Object.keys(data).length === 1 && data[''] && data[''].length < 10 && data[''].startsWith('None'))
+		const noKey = data.find(it => it.lang === '');
+		if (noKey && noKey.text.length < 10 && noKey.text.startsWith('None'))
 			return 'None';
-		if (Object.keys(data).length === 1 && data[''] && data[''].length < 20 && data[''].includes('Need lyrics'))
+		if (noKey && noKey.text.length < 20 && noKey.text.includes('Need lyrics'))
 			return;
+		for (const lang of data) {
+			lang.link = `${WIKI_URL}?curid=${match.pageid}`;
+		}
 		return data;
 	}
 
-	parseLyricsFromWikitext(text: string): Record<string, string> | undefined {
+	parseLyricsFromWikitext(text: string, from: string): Lyrics[] | undefined {
 		const lines = text.split(/\n/);
 		const lyrics = {} as Record<string, string>;
 
@@ -118,7 +138,7 @@ export default class LyricsHelper {
 		for (const lang of Object.keys(lyrics)) {
 			lyrics[lang] = lyrics[lang].trim().replace('<pre>', '').replace('</pre>', '');
 		}
-		return lyrics;
+		return Object.entries(lyrics).map(([lang, text]) => ({ lang, text, from }));
 	}
 
 	async translate(text: string) {
@@ -140,7 +160,7 @@ export default class LyricsHelper {
 		return res.translations[0].text;
 	}
 
-	convertToTelegraph(lyrics: Record<string, string>, cover?: string) {
+	convertToTelegraph(lyrics: Lyrics[], cover?: string) {
 		const nodes = [] as tph.Node[];
 		if (cover) {
 			nodes.push({
@@ -148,12 +168,21 @@ export default class LyricsHelper {
 				attrs: { src: cover }
 			});
 		}
-		for (const lang of Object.keys(lyrics)) {
+		for (const lang of lyrics) {
 			nodes.push({
 				tag: 'h3',
-				children: [lang]
+				children: [lang.lang]
 			});
-			for (const line of lyrics[lang].split('\n')) {
+			nodes.push({
+				tag: 'blockquote',
+				children: [
+					'来源：',
+					lang.link ?
+						{ tag: 'a', attrs: { href: lang.link }, children: [lang.from] } :
+						lang.from
+				]
+			});
+			for (const line of lang.text.split('\n')) {
 				nodes.push({
 					tag: 'p',
 					children: [line.trim() ? line : { tag: 'br' }]
@@ -167,7 +196,7 @@ export default class LyricsHelper {
 		return nodes;
 	}
 
-	async createTelegraphPage(lyrics: Record<string, string>, title: string, cover?: string) {
+	async createTelegraphPage(lyrics: Lyrics[], title: string, cover?: string) {
 		console.log('上传 Telegraph');
 		const content = this.convertToTelegraph(lyrics, cover);
 		const page = await this.telegraph.createPage(title, content, 'AquaDX Bot', 'https://t.me/AquaDXBot');
