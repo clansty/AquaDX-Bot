@@ -42,6 +42,7 @@ export default class LyricsHelper {
 	}
 
 	async getLyricsFromGenius(name: string, artist: string): Promise<Record<string, string>> {
+		console.log('从 Genius 获取歌词');
 		let searches = await this.geniusClient.songs.search(`${name}`);
 		console.log(searches.map(it => it.title));
 		searches = searches.filter(it => !it.title.toLowerCase().includes('translat')); // ion / ed
@@ -56,6 +57,7 @@ export default class LyricsHelper {
 
 	// 返回 undefined = NotFound，返回 None = 纯音乐没有歌词
 	async getLyricsFromWiki(name: string, artist: string): Promise<Record<string, string> | undefined | 'None'> {
+		console.log('从 Wiki 获取歌词');
 		const search = await this.wiki.get({
 			action: 'query',
 			list: 'search',
@@ -120,7 +122,8 @@ export default class LyricsHelper {
 	}
 
 	async translate(text: string) {
-		const req = await fetch('https://api-free.deepl.com/v2/translate', {
+		console.log('请求翻译');
+		const req = await fetch('https://deepl-proxy.netlify.app/v2/translate', {
 			method: 'POST',
 			headers: {
 				Authorization: 'DeepL-Auth-Key ' + this.deeplAuthKey,
@@ -165,6 +168,7 @@ export default class LyricsHelper {
 	}
 
 	async createTelegraphPage(lyrics: Record<string, string>, title: string, cover?: string) {
+		console.log('上传 Telegraph');
 		const content = this.convertToTelegraph(lyrics, cover);
 		const page = await this.telegraph.createPage(title, content, 'AquaDX Bot', 'https://t.me/AquaDXBot');
 		return page.url;
