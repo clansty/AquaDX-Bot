@@ -14,7 +14,7 @@ const BORDER_SIZE = 3;
 const SIZE = 90;
 
 export default ({ entry, score, song }: { entry: RatingListEntry, score: UserMusic, song: Song }) => {
-	const href = song && `/song/byId/${song.id}`;
+	const href = song && `https://t.me/aquadxbot?start=${song.id}`;
 
 	return href ? <Link href={href}><Component entry={entry} score={score} song={song} /></Link> : <Component entry={entry} score={score} song={song} />;
 }

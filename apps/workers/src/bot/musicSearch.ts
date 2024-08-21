@@ -64,28 +64,9 @@ export default (bot: Bot<BotContext>, env: Env) => {
 		});
 	});
 
-	bot.command(['search', 'maimai', 's'], async (ctx) => {
-		if (ctx.match === '') {
-			await ctx.reply('请输入要搜索的歌曲名');
-			return;
-		}
-		const results = Song.search(ctx.match.toLowerCase());
-		if (!results.length) {
-			await ctx.reply('找不到匹配的歌');
-			return;
-		}
-		if (results.length > 1) {
-			await ctx.reply(`共找到 ${results.length} 个结果：\n\n` + results.map(song => (song.id ? song.id + '. ' : '') + song.title).join('\n'), {
-				reply_markup: {
-					inline_keyboard: [[
-						{ text: '选择结果', switch_inline_query_current_chat: ctx.match }
-					]]
-				}
-			});
-			return;
-		}
+	const sendSong = async (ctx: BotContext, song: Song) => {
+		if (!song) return;
 
-		const song = results[0];
 		const { buttons, lyrics } = await genSongInfoButtonsWithCachedLyrics(song);
 		const extra = {
 			caption: song.display,
@@ -110,5 +91,36 @@ export default (bot: Bot<BotContext>, env: Env) => {
 				});
 			}
 		}
+	};
+
+	bot.command('start', async (ctx, next) => {
+		if (!ctx.match.startsWith('song-')) return next();
+		const song = Song.fromId(parseInt(ctx.match.substring(5)));
+		await sendSong(ctx, song);
+	});
+
+	bot.command(['search', 'maimai', 's'], async (ctx) => {
+		if (ctx.match === '') {
+			await ctx.reply('请输入要搜索的歌曲名');
+			return;
+		}
+		const results = Song.search(ctx.match.toLowerCase());
+		if (!results.length) {
+			await ctx.reply('找不到匹配的歌');
+			return;
+		}
+		if (results.length > 1) {
+			await ctx.reply(`共找到 ${results.length} 个结果：\n\n` + results.map(song => (song.id ? song.id + '. ' : '') + song.title).join('\n'), {
+				reply_markup: {
+					inline_keyboard: [[
+						{ text: '选择结果', switch_inline_query_current_chat: ctx.match }
+					]]
+				}
+			});
+			return;
+		}
+
+		const song = results[0];
+		await sendSong(ctx, song);
 	});
 }
