@@ -39,16 +39,24 @@ export default class LyricsHelper {
 		let lyrics = await this.getLyricsFromWiki(name, artist);
 		if (lyrics === 'None') return 'None';
 		if (!lyrics?.length) {
+			lyrics = await this.getLyricsFromNetease(name, artist);
+		}
+		if (!lyrics?.length) {
 			lyrics = await this.getLyricsFromGenius(name, artist);
 		}
 		if (!lyrics) {
 			return 'None';
 		}
 		// 翻译
-		if (!lyrics.some(it => it.lang.toLowerCase().includes('mandarin'))) {
+		if (!lyrics.some(it => it.lang.toLowerCase().includes('mandarin') || it.lang.toLowerCase().includes('中文') || it.lang.toLowerCase().includes('chinese'))) {
+			const neteaseLyrics = await this.getLyricsFromNetease(name, artist) || [];
+			const translated = neteaseLyrics.find(it => it.lang === '中文（翻译）');
+			if (translated) lyrics.push(translated);
+		}
+		if (!lyrics.some(it => it.lang.toLowerCase().includes('mandarin') || it.lang.toLowerCase().includes('中文') || it.lang.toLowerCase().includes('chinese'))) {
 			const base = lyrics[0];
 			lyrics.push({
-				lang: '中文',
+				lang: '中文（机翻）',
 				text: await this.translate(base.text),
 				from: 'DeepL'
 			});
@@ -108,6 +116,40 @@ export default class LyricsHelper {
 			lang.link = `${WIKI_URL}?curid=${match.pageid}`;
 		}
 		return data;
+	}
+
+	async getLyricsFromNetease(name: string, artist: string): Promise<Lyrics[] | undefined> {
+		console.log('请求网易云');
+		const searchUrl = new URL(NETEASE_API + '/search');
+		searchUrl.searchParams.set('keywords', `${name} ${artist}`);
+		const searchReq = await fetch(searchUrl);
+		const search = await searchReq.json() as any;
+		const song = search?.result?.songs?.[0];
+		console.log(song);
+		if (!song) return;
+
+		const getLrcUrl = new URL(NETEASE_API + '/lyric');
+		getLrcUrl.searchParams.set('id', song.id);
+		const lrcReq = await fetch(getLrcUrl);
+		const lyrics = await lrcReq.json() as any;
+		console.log(lyrics);
+
+		const res = [] as Lyrics[];
+		let lrc = lyrics?.lrc?.lyric as string;
+		let translate = lyrics?.tlyric?.lyric as string;
+		const link = `https://music.163.com/song?id=${song.id}`;
+
+		if (lrc) {
+			lrc = lrc.replaceAll(/^\[[\d.:]*]/gm, '').trim();
+			const langCode = franc(lrc);
+			const lang = iso6393.find(it => it.iso6393 === langCode)?.name;
+			res.push({ lang, text: lrc, from: '网易云音乐', link });
+		}
+		if (translate) {
+			translate = translate.replaceAll(/^\[[\d.:]*]/gm, '').trim();
+			res.push({ lang: '中文（翻译）', text: translate, from: '网易云音乐', link });
+		}
+		return res;
 	}
 
 	parseLyricsFromWikitext(text: string, from: string): Lyrics[] | undefined {
