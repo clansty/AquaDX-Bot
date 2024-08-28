@@ -24,6 +24,7 @@ for (const f of await fsP.readdir(baseDir)) {
 	}
 
 	music.name = meta.MusicData.name.str.toString();
+	console.log(music.name);
 	music.ver = meta.MusicData.version.toString();
 	music.composer = meta.MusicData.artistName.str.toString();
 	music.genre = meta.MusicData.genreName.str.toString();

@@ -28319,7 +28319,7 @@
 	},
 	"11674": {
 		"name": "Cider P@rty",
-		"ver": "24500",
+		"ver": "24504",
 		"notes": [
 			{
 				"lv": 3
@@ -28332,15 +28332,14 @@
 			},
 			{
 				"lv": 13.5
-			},
-			{
-				"lv": null
 			}
-		]
+		],
+		"composer": "Ryo Fukuda",
+		"genre": "maimai"
 	},
 	"11675": {
 		"name": "勦滅",
-		"ver": "24500",
+		"ver": "24504",
 		"notes": [
 			{
 				"lv": 5
@@ -28353,15 +28352,14 @@
 			},
 			{
 				"lv": 14.2
-			},
-			{
-				"lv": null
 			}
-		]
+		],
+		"composer": "siqlo",
+		"genre": "maimai"
 	},
 	"11676": {
 		"name": "Lunatic Vibes",
-		"ver": "24500",
+		"ver": "24504",
 		"notes": [
 			{
 				"lv": 5
@@ -28374,15 +28372,14 @@
 			},
 			{
 				"lv": 13.8
-			},
-			{
-				"lv": null
 			}
-		]
+		],
+		"composer": "K-forest",
+		"genre": "maimai"
 	},
 	"11677": {
 		"name": "Bloody Trail",
-		"ver": "24500",
+		"ver": "24504",
 		"notes": [
 			{
 				"lv": 6
@@ -28395,11 +28392,10 @@
 			},
 			{
 				"lv": 14.5
-			},
-			{
-				"lv": null
 			}
-		]
+		],
+		"composer": "Hommarju",
+		"genre": "maimai"
 	},
 	"11678": {
 		"name": "RE:INCARNATED DRAGNER",
@@ -28716,7 +28712,7 @@
 	},
 	"11699": {
 		"name": "新人類",
-		"ver": "24500",
+		"ver": "24505",
 		"notes": [
 			{
 				"lv": 3
@@ -28729,11 +28725,10 @@
 			},
 			{
 				"lv": 13.7
-			},
-			{
-				"lv": null
 			}
-		]
+		],
+		"composer": "まらしぃ×じん×堀江晶太(kemu) feat.鏡音リン",
+		"genre": "niconicoボーカロイド"
 	},
 	"11700": {
 		"name": "Freak Out Hr.",
@@ -28959,7 +28954,7 @@
 	},
 	"11712": {
 		"name": "バラバラ〜仮初レインボーローズ〜",
-		"ver": "24500",
+		"ver": "24505",
 		"notes": [
 			{
 				"lv": 2
@@ -28972,11 +28967,10 @@
 			},
 			{
 				"lv": 12.7
-			},
-			{
-				"lv": null
 			}
-		]
+		],
+		"composer": "花畑チャイカ＆椎名唯華",
+		"genre": "POPSアニメ"
 	},
 	"11713": {
 		"name": "QUATTUORUX",
@@ -29020,7 +29014,7 @@
 	},
 	"11715": {
 		"name": "ライアーダンサー",
-		"ver": "24500",
+		"ver": "24505",
 		"notes": [
 			{
 				"lv": 3
@@ -29033,15 +29027,14 @@
 			},
 			{
 				"lv": 13.2
-			},
-			{
-				"lv": null
 			}
-		]
+		],
+		"composer": "マサラダ",
+		"genre": "niconicoボーカロイド"
 	},
 	"11716": {
 		"name": "バカ通信",
-		"ver": "24500",
+		"ver": "24505",
 		"notes": [
 			{
 				"lv": 5
@@ -29054,11 +29047,10 @@
 			},
 			{
 				"lv": 13.7
-			},
-			{
-				"lv": null
 			}
-		]
+		],
+		"composer": "isonosuke",
+		"genre": "niconicoボーカロイド"
 	},
 	"11717": {
 		"name": "LOSTPHANTASIA",
@@ -29282,7 +29274,7 @@
 	},
 	"11735": {
 		"name": "ザムザ",
-		"ver": "24500",
+		"ver": "24505",
 		"notes": [
 			{
 				"lv": 1
@@ -29295,11 +29287,10 @@
 			},
 			{
 				"lv": 12.9
-			},
-			{
-				"lv": null
 			}
-		]
+		],
+		"composer": "てにをは",
+		"genre": "niconicoボーカロイド"
 	},
 	"18049": {
 		"name": "QUATTUORUX",
