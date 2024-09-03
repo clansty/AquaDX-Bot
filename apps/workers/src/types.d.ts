@@ -19,4 +19,5 @@ export type Env = CloudflareEnv & {
 	DEEPL_AUTH_KEY: string;
 	SENTRY_DSN: string;
 	ANAENG: AnalyticsEngineDataset;
+	ANAENG_CF_API_TOKEN: string;
 }

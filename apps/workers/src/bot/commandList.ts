@@ -17,5 +17,6 @@ export const commandListPrivate = [
 export const commandListAdmin = [
 	...commandListPrivate,
 	{ command: 'ban', description: '在排行榜中封禁用户' },
-	{ command: 'set_my_command', description: '更新 Bot 命令列表' }
+	{ command: 'set_my_command', description: '更新 Bot 命令列表' },
+	{ command: 'stats', description: '统计信息' }
 ] as const;
