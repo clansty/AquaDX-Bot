@@ -17,6 +17,7 @@ export default (bot: Bot<BotContext>, env: Env) => {
 	};
 
 	bot.inlineQuery(/.+/, async (ctx) => {
+		ctx.transaction('inlineQuery 歌曲搜索');
 		if (ctx.inlineQuery.query.trim() === '') {
 			await ctx.answerInlineQuery([]);
 		}
@@ -43,6 +44,7 @@ export default (bot: Bot<BotContext>, env: Env) => {
 	});
 
 	bot.chosenInlineResult(/^search:(\d+)$/, async (ctx) => {
+		ctx.transaction('chosenInlineResult 歌曲搜索');
 		console.log('chosenInlineResult', ctx.chosenInlineResult.inline_message_id, ctx.match[1]);
 		const song = Song.fromId(parseInt(ctx.match[1]));
 		if (!song) return;
@@ -95,11 +97,13 @@ export default (bot: Bot<BotContext>, env: Env) => {
 
 	bot.command('start', async (ctx, next) => {
 		if (!ctx.match.startsWith('song-')) return next();
+		ctx.transaction('start 歌曲搜索');
 		const song = Song.fromId(parseInt(ctx.match.substring(5)));
 		await sendSong(ctx, song);
 	});
 
 	bot.command(['search', 'maimai', 's'], async (ctx) => {
+		ctx.transaction('歌曲搜索');
 		if (ctx.match === '') {
 			await ctx.reply('请输入要搜索的歌曲名');
 			return;

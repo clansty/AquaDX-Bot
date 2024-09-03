@@ -4,6 +4,7 @@ import { Bot } from 'grammy';
 
 export default (bot: Bot<BotContext>, env: Env) => {
 	const sendB50Image = async (ctx: BotContext) => {
+		ctx.transaction('sendB50Image');
 		const profile = await ctx.getCurrentProfile();
 		const rating = await profile.getNameplate();
 		// 因为只是算 hash 所以 nameplate 就可以
@@ -19,10 +20,12 @@ export default (bot: Bot<BotContext>, env: Env) => {
 
 	bot.command('start', async (ctx, next) => {
 		if (ctx.match !== 'b50') return next();
+		ctx.transaction('start b50');
 		await sendB50Image(ctx);
 	});
 
 	bot.inlineQuery(['b50', 'B50'], async (ctx) => {
+		ctx.transaction('inlineQuery b50');
 		const profile = await ctx.getCurrentProfile();
 		const rating = await profile.getNameplate();
 

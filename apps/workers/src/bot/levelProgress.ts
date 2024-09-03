@@ -18,6 +18,7 @@ export default (bot: Bot<BotContext>, env: Env) => {
 
 	for (const level of LEVELS) {
 		bot.inlineQuery(RegExp(`^ ?\\/?${level} ?(进度)?(完成表)?$`), async (ctx) => {
+			ctx.transaction('inlineQuery 等级完成表');
 			const profile = await ctx.getCurrentProfile();
 			if (!profile) {
 				await ctx.answerInlineQuery([], {
@@ -45,10 +46,12 @@ export default (bot: Bot<BotContext>, env: Env) => {
 
 		bot.command('start', async (ctx, next) => {
 			if (ctx.match !== level) return next();
+			ctx.transaction('start 等级完成表');
 			await sendProgressImage(ctx, level, true);
 		});
 
 		bot.hears(RegExp(`^\\/?${level.replace('+', '\\+')} ?(进度|完成[图表])$`), async (ctx) => {
+			ctx.transaction('等级完成表');
 			await sendProgressImage(ctx, level);
 		});
 	}

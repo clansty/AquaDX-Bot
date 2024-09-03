@@ -8,6 +8,7 @@ import { Bot } from 'grammy';
 
 export default (bot: Bot<BotContext>, env: Env) => {
 	bot.inlineQuery(/^ ?query (.+)/, async (ctx) => {
+		ctx.transaction('inlineQuery 查分');
 		const profile = await ctx.getCurrentProfile(false);
 		if (!profile) {
 			await ctx.answerInlineQuery([], {
@@ -71,6 +72,7 @@ export default (bot: Bot<BotContext>, env: Env) => {
 	});
 
 	bot.command('query', async (ctx) => {
+		ctx.transaction('查分');
 		const profile = await ctx.getCurrentProfile();
 		const kw = ctx.match.trim().toLowerCase();
 		if (!kw) {

@@ -5,6 +5,7 @@ import { Env } from '../types';
 import NoReportError from '../utils/NoReportError';
 import { InlineKeyboardButton, Message } from 'grammy/types';
 import XXH from 'xxhashjs';
+import { captureEvent } from '@sentry/cloudflare';
 
 export default class BotContext extends Context {
 	private _profiles?: UserProfile[];
@@ -158,5 +159,20 @@ export default class BotContext extends Context {
 			height: Number(req.headers.get('height')),
 			data: await req.arrayBuffer()
 		};
+	}
+
+	transaction(name: string) {
+		try {
+			captureEvent({
+				type: 'transaction',
+				transaction: name,
+			})
+			this.env.ANAENG.writeDataPoint({
+				indexes: ['transaction'],
+				blobs: [name, this.from?.id?.toString()]
+			});
+		} catch (e) {
+			console.error('Record transaction error', e);
+		}
 	}
 }

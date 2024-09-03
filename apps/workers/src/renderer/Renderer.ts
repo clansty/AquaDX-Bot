@@ -1,5 +1,5 @@
 import { Env, RENDER_REQUEST } from '../types';
-import puppeteer from '@cloudflare/puppeteer';
+import puppeteer, { Browser } from '@cloudflare/puppeteer';
 import { DurableObjectState } from '@cloudflare/workers-types';
 
 // 渲染过程（打开 Page）应该是可以并行的，所以这个更应该用 Durable object 而不是 queue
@@ -8,7 +8,7 @@ const KEEP_BROWSER_ALIVE_IN_SECONDS = 300;
 
 export class Renderer implements DurableObject {
 	keptAliveInSeconds = 0;
-	browser: puppeteer.Browser;
+	browser: Browser;
 
 	constructor(private readonly state: DurableObjectState, private readonly env: Env) {
 	}

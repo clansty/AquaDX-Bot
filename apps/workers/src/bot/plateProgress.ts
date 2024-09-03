@@ -21,6 +21,7 @@ export default (bot: Bot<BotContext>, env: Env) => {
 	for (const version of [...PLATE_VER, BA_VE] as const) {
 		for (const type of version === BA_VE ? [''] as const : PLATE_TYPE) {
 			bot.inlineQuery(RegExp(`^ ?\\/?${version} ?${type} ?(进度)?$`), async (ctx) => {
+				ctx.transaction('inlineQuery 牌子进度');
 				const profile = await ctx.getCurrentProfile();
 				if (!profile) {
 					await ctx.answerInlineQuery([], {
@@ -54,11 +55,13 @@ export default (bot: Bot<BotContext>, env: Env) => {
 			});
 
 			bot.command('start', async (ctx, next) => {
+				ctx.transaction('start 牌子进度');
 				if (ctx.match !== XXH.h32(`${version}${type}`, 0xabcd).toString(16)) return next();
 				await sendProgressImage(ctx, version, type, true);
 			});
 
 			bot.hears(RegExp(`^\\/?${version} ?${type} ?进度$`), async (ctx) => {
+				ctx.transaction('牌子进度');
 				const profile = await ctx.getCurrentProfile();
 				const profileVer = await profile.getVersion();
 				const requiredSongs = (await profile.plateSongs())[version].map(it => Song.fromId(it, profileVer));
@@ -66,6 +69,7 @@ export default (bot: Bot<BotContext>, env: Env) => {
 			});
 
 			bot.hears(RegExp(`^\\/?${version} ?${type} ?(完成|进度)[图表]$`), async (ctx) => {
+				ctx.transaction('牌子完成表');
 				await sendProgressImage(ctx, version, type);
 			});
 		}

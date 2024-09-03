@@ -2,7 +2,9 @@
 name = "aquadx-bot"
 main = "src/index.ts"
 compatibility_date = "2024-04-23"
-compatibility_flags = ["nodejs_compat"]
+# bug: 如果用 compatibility_flags 的 node_compat 会导致发图片时 Buffer is not defined
+node_compat = true
+compatibility_flags = ["nodejs_als"]
 
 # Automatically place your workloads in an optimal location to minimize latency.
 # If you are running back-end logic in a Worker, running it closer to your back-end infrastructure
@@ -40,8 +42,9 @@ SENTRY_DSN = "https://472625460d5087d519e947e61e53f9e6@sentry.c5y.moe/5"
 
 # Bind an Analytics Engine dataset. Use Analytics Engine to write analytics within your Pages Function.
 # Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#analytics-engine-datasets
-# [[analytics_engine_datasets]]
-# binding = "MY_DATASET"
+[[analytics_engine_datasets]]
+binding = "ANAENG"
+dataset = "aquadx_bot"
 
 # Bind a headless browser instance running on Cloudflare's global network.
 # Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#browser-rendering

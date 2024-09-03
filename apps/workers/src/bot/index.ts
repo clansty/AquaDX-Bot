@@ -12,11 +12,16 @@ import levelConstTable from './levelConstTable';
 import NoReportError from '../utils/NoReportError';
 import admin from './admin';
 import { Bot } from 'grammy';
+import { captureException, setUser } from '@sentry/cloudflare';
 
 export const createBot = (env: Env) => {
 	const bot = new Bot(env.BOT_TOKEN, { botInfo: JSON.parse(env.BOT_INFO), ContextConstructor: BotContext });
 	bot.use(async (ctx, next) => {
 		ctx.env = env;
+		setUser(ctx.from && {
+			id: ctx.from.id,
+			username: ctx.from.username
+		});
 		await next();
 	});
 
@@ -27,9 +32,11 @@ export const createBot = (env: Env) => {
 
 
 	bot.catch(async ({ ctx, error }) => {
+		ctx.transaction('发生错误');
 		console.error('Error caught in bot.catch', error);
 		const err = error as any;
 		if (err instanceof NoReportError) return;
+		captureException(error);
 		if (['message is not modified'].some(it => err?.message?.includes?.(it))) return;
 		ctx.reply && await ctx.reply('发生错误：' + err.message);
 	});

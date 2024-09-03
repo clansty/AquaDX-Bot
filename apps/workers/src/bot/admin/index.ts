@@ -10,12 +10,14 @@ export default (bot: Bot<BotContext>, env: Env) => {
 	const admins = env.ADMIN_UIDS.split(',').map(Number);
 
 	const checkAdminUser = (ctx: BotContext) => {
+		ctx.transaction('checkAdminUser');
 		if (!admins.includes(ctx.from.id)) {
 			throw new NoReportError('没有权限');
 		}
 	};
 
 	bot.command('ban', async (ctx) => {
+		ctx.transaction('ban');
 		checkAdminUser(ctx);
 
 		const username = ctx.match;
@@ -24,6 +26,7 @@ export default (bot: Bot<BotContext>, env: Env) => {
 	});
 
 	bot.command('set_my_command', async (ctx) => {
+		ctx.transaction('set_my_command');
 		checkAdminUser(ctx);
 
 		await ctx.api.setMyCommands(commandListGroup, { scope: { type: 'all_group_chats' } });

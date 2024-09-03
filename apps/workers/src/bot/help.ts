@@ -34,6 +34,7 @@ const BASE_HELP = `<a href="https://aquadx.net/">AquaDX.Net</a> 查分 & maimai 
 
 export default (bot: Bot<BotContext>, env: Env) => {
 	bot.inlineQuery(/^$/, async (ctx) => {
+		ctx.transaction('inlineQuery 行内模式说明');
 		await ctx.answerInlineQuery([], {
 			button: { text: '行内模式说明', start_parameter: 'help-inline' },
 			cache_time: 3600
@@ -41,14 +42,19 @@ export default (bot: Bot<BotContext>, env: Env) => {
 	});
 
 	bot.command('help', async (ctx, next) => {
+		ctx.transaction('help');
 		await ctx.replyWithHTML(BASE_HELP, { link_preview_options: { is_disabled: true } });
 	});
 
 	bot.command('start', async (ctx, next) => {
-		if (ctx.match === 'help-inline')
+		if (ctx.match === 'help-inline') {
+			ctx.transaction('start help-inline');
 			await ctx.replyWithHTML(INLINE_HELP);
-		else if (!ctx.match)
+		}
+		else if (!ctx.match) {
+			ctx.transaction('start help');
 			await ctx.replyWithHTML(BASE_HELP, { link_preview_options: { is_disabled: true } });
+		}
 		else return next();
 	});
 }

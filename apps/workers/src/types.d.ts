@@ -18,4 +18,5 @@ export type Env = CloudflareEnv & {
 	TELEGRAPH_SECRET: string;
 	DEEPL_AUTH_KEY: string;
 	SENTRY_DSN: string;
+	ANAENG: AnalyticsEngineDataset;
 }

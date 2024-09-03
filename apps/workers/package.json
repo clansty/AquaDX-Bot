@@ -4,9 +4,10 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "deploy": "wrangler deploy && nu clear-cache.nu",
+    "deploy": "wrangler deploy && pnpm run sentry:sourcemaps && nu clear-cache.nu",
     "dev": "cross-env NODE_ENV=development wrangler dev --ip 0.0.0.0 --port 8080",
-    "tail": "wrangler tail"
+    "tail": "wrangler tail",
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org sentry --project aquadx-bot ./.wrangler/tmp && sentry-cli --url https://sentry.c5y.moe sourcemaps upload --org sentry --project aquadx-bot ./.wrangler/tmp"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240815.0",
@@ -21,6 +22,7 @@
     "@clansty/maibot-types": "workspace:^",
     "@clansty/maibot-utils": "workspace:^",
     "@cloudflare/puppeteer": "^0.0.12",
+    "@sentry/cli": "^2.34.1",
     "@sentry/cloudflare": "^8.27.0",
     "franc": "^6.2.0",
     "genius-lyrics": "^4.4.7",

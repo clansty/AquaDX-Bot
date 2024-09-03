@@ -15,6 +15,7 @@ export default (bot: Bot<BotContext>, env: Env) => {
 	};
 
 	bot.callbackQuery(/^song:(\d+):(\d)$/, async (ctx) => {
+		ctx.transaction('callbackQuery selectChart');
 		const song = Song.fromId(Number(ctx.match[1]));
 		if (!song) return;
 
@@ -36,6 +37,7 @@ export default (bot: Bot<BotContext>, env: Env) => {
 	});
 
 	bot.callbackQuery(/^song:(\d+)$/, async (ctx) => {
+		ctx.transaction('callbackQuery songBack');
 		const song = Song.fromId(Number(ctx.match[1]));
 		if (!song) return;
 
@@ -46,6 +48,7 @@ export default (bot: Bot<BotContext>, env: Env) => {
 	});
 
 	bot.callbackQuery(/^song:(\d+):alias$/, async (ctx) => {
+		ctx.transaction('callbackQuery songAlias');
 		const song = Song.fromId(Number(ctx.match[1]));
 		if (!song) return;
 

@@ -16,10 +16,12 @@ export default (bot: Bot<BotContext>, env: Env) => {
 
 	bot.command('start', async (ctx, next) => {
 		if (ctx.match !== 'bind') return next();
+		ctx.transaction('start bind');
 		await handleQueryBind(ctx);
 	});
 
 	bot.command('bind', async (ctx) => {
+		ctx.transaction('bind');
 		if (ctx.chat.type !== 'private') {
 			await ctx.reply('请在私聊中使用此命令');
 			return;
@@ -89,6 +91,7 @@ export default (bot: Bot<BotContext>, env: Env) => {
 	};
 
 	bot.command(['profile', 'profiles'], async (ctx) => {
+		ctx.transaction('profiles');
 		const profiles = await ctx.getProfiles();
 		if (!profiles.length) {
 			await ctx.reply('请先绑定用户');
@@ -122,6 +125,7 @@ export default (bot: Bot<BotContext>, env: Env) => {
 	});
 
 	bot.callbackQuery(/^select_profile:(\d+)$/, async (ctx) => {
+		ctx.transaction('callbackQuery select_profile');
 		const index = Number(ctx.match[1]);
 		await ctx.selectProfile(index);
 		await ctx.answerCallbackQuery('切换成功');
@@ -137,6 +141,7 @@ export default (bot: Bot<BotContext>, env: Env) => {
 	});
 
 	bot.command(['delprofile', 'delprofiles', 'rmprofile', 'rmprofiles'], async (ctx) => {
+		ctx.transaction('delprofile');
 		const profiles = await ctx.getProfiles();
 		if (!profiles.length) {
 			await ctx.reply('请先绑定用户');
@@ -170,6 +175,7 @@ export default (bot: Bot<BotContext>, env: Env) => {
 	});
 
 	bot.callbackQuery(/^del_profile:(\d+)$/, async (ctx) => {
+		ctx.transaction('callbackQuery delprofile');
 		const index = Number(ctx.match[1]);
 		await ctx.delProfile(index);
 		await ctx.answerCallbackQuery('删除成功');
