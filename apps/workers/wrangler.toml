@@ -2,7 +2,7 @@
 name = "aquadx-bot"
 main = "src/index.ts"
 compatibility_date = "2024-04-23"
-node_compat = true
+compatibility_flags = ["nodejs_compat"]
 
 # Automatically place your workloads in an optimal location to minimize latency.
 # If you are running back-end logic in a Worker, running it closer to your back-end infrastructure
@@ -31,6 +31,7 @@ BOT_INFO = """
     "has_main_web_app": false
 }
 """
+SENTRY_DSN = "https://472625460d5087d519e947e61e53f9e6@sentry.c5y.moe/5"
 
 # Bind the Workers AI model catalog. Run machine learning models, powered by serverless GPUs, on Cloudflare’s global network
 # Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#workers-ai

@@ -3,8 +3,8 @@ import { Env } from '../types';
 import { BA_VE, PLATE_TYPE, PLATE_VER, Song } from '@clansty/maibot-types';
 import { calcProgressText } from '@clansty/maibot-utils';
 import { InlineQueryResult } from 'grammy/types';
-import { xxhash32 } from 'cf-workers-hash';
 import { Bot } from 'grammy';
+import XXH from 'xxhashjs';
 
 export default (bot: Bot<BotContext>, env: Env) => {
 	const sendProgressImage = async (ctx: BotContext, ver: typeof PLATE_VER[number] | typeof BA_VE, type: typeof PLATE_TYPE[number] | '', isFromStart = false) => {
@@ -49,12 +49,12 @@ export default (bot: Bot<BotContext>, env: Env) => {
 					photo_file_id: cachedImage.fileId
 				});
 				else
-					button = { text: `生成图表`, start_parameter: await xxhash32(`${version}${type}`) };
+					button = { text: `生成图表`, start_parameter: XXH.h32(`${version}${type}`, 0xabcd).toString(16) };
 				await ctx.answerInlineQuery(results, { is_personal: true, button, cache_time: 10 });
 			});
 
 			bot.command('start', async (ctx, next) => {
-				if (ctx.match !== await xxhash32(`${version}${type}`)) return next();
+				if (ctx.match !== XXH.h32(`${version}${type}`, 0xabcd).toString(16)) return next();
 				await sendProgressImage(ctx, version, type, true);
 			});
 

@@ -17,4 +17,5 @@ export type Env = CloudflareEnv & {
 	GENIUS_SECRET: string;
 	TELEGRAPH_SECRET: string;
 	DEEPL_AUTH_KEY: string;
+	SENTRY_DSN: string;
 }

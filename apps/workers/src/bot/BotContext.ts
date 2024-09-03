@@ -2,9 +2,9 @@ import { Context, InputFile } from 'grammy';
 import { UserProfile } from '@clansty/maibot-clients';
 import { UserProfilesKVStorage } from '@clansty/maibot-types';
 import { Env } from '../types';
-import { xxhash64 } from 'cf-workers-hash';
 import NoReportError from '../utils/NoReportError';
 import { InlineKeyboardButton, Message } from 'grammy/types';
+import XXH from 'xxhashjs';
 
 export default class BotContext extends Context {
 	private _profiles?: UserProfile[];
@@ -72,12 +72,12 @@ export default class BotContext extends Context {
 	}
 
 	async getCacheImage(key: any) {
-		const hash = await xxhash64(JSON.stringify(key));
+		const hash = XXH.h64(JSON.stringify(key), 0xabcd).toString(16);
 		return await this.env.KV.get(`image:${hash}`, 'json') as { fileId: string, type: 'image' | 'document' };
 	}
 
 	async genCacheSendImage(key: any, url: string, width: number, filename: string, shareKw?: string, isFromStart = false, inlineKeyboard: InlineKeyboardButton[][] = []) {
-		const hash = await xxhash64(JSON.stringify(key));
+		const hash = XXH.h64(JSON.stringify(key), 0xabcd).toString(16);
 		const cached = await this.env.KV.get(`image:${hash}`, 'json') as { fileId: string, type: 'image' | 'document' };
 		if (cached?.type === 'image') {
 			if (shareKw) {

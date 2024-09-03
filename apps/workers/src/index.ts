@@ -3,18 +3,26 @@ import { createBot } from './bot';
 import { Env } from './types';
 import NoReportError from './utils/NoReportError';
 import { BotError } from 'grammy';
+import { withSentry } from '@sentry/cloudflare';
 
-export default {
-	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-		if (request.headers.get('X-Telegram-Bot-Api-Secret-Token') !== env.API_SECRET) {
-			console.log('Secret-Token 错误');
+export default withSentry(
+	env => ({
+		dsn: env.SENTRY_DSN,
+		// Set tracesSampleRate to 1.0 to capture 100% of spans for tracing.
+		tracesSampleRate: 1.0
+	}),
+	{
+		async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+			if (request.headers.get('X-Telegram-Bot-Api-Secret-Token') !== env.API_SECRET) {
+				console.log('Secret-Token 错误');
+				return new Response();
+			}
+			const req = await request.json();
+			ctx.waitUntil(tryHandleUpdate(req as Update, env));
 			return new Response();
 		}
-		const req = await request.json();
-		ctx.waitUntil(tryHandleUpdate(req as Update, env));
-		return new Response();
-	}
-};
+	} satisfies ExportedHandler<Env>
+);
 
 const tryHandleUpdate = async (update: Update, env: Env) => {
 	const bot = createBot(env);
