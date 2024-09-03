@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240815.0",
+    "@roziscoding/grammy-autoquote": "^2.0.6",
     "@types/xxhashjs": "^0.2.4",
     "cross-env": "^7.0.3",
     "nushell": "^0.96.1",

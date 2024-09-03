@@ -13,9 +13,11 @@ import NoReportError from '../utils/NoReportError';
 import admin from './admin';
 import { Bot } from 'grammy';
 import { captureException, setUser } from '@sentry/cloudflare';
+import { autoQuote } from "@roziscoding/grammy-autoquote";
 
 export const createBot = (env: Env) => {
 	const bot = new Bot(env.BOT_TOKEN, { botInfo: JSON.parse(env.BOT_INFO), ContextConstructor: BotContext });
+	bot.use(autoQuote());
 	bot.use(async (ctx, next) => {
 		ctx.env = env;
 		setUser(ctx.from && {
