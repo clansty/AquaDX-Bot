@@ -8,6 +8,7 @@ export class CommandEvent extends CommandEventBase<BotTypes> {
 		super(bot);
 		this.text = ctx.message?.text;
 		this.chatId = ctx.chat?.id;
+		this.fromId = ctx.from?.id;
 		this.messageId = ctx.message?.message_id;
 		this.isPrivate = ctx.chat?.type === 'private';
 		if ('match' in ctx && typeof ctx.match === 'string' && ctx.match.length) {
@@ -29,6 +30,7 @@ export class KeywordEvent extends KeywordEventBase<BotTypes> {
 		super(bot);
 		this.text = ctx.message?.text;
 		this.chatId = ctx.chat?.id;
+		this.fromId = ctx.from?.id;
 		this.messageId = ctx.message?.message_id;
 		this.isPrivate = ctx.chat?.type === 'private';
 		if ('match' in ctx && typeof ctx.match === 'object') {

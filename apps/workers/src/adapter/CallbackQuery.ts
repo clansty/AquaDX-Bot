@@ -8,6 +8,7 @@ export class CallbackQueryEvent extends CallbackQueryEventBase<BotTypes> {
 		super(bot);
 		this.match = ctx.match as any;
 		this.data = ctx.callbackQuery?.data;
+		this.fromId = ctx.from?.id;
 	}
 
 	public editMessage() {

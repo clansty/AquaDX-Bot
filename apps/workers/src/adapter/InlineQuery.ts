@@ -9,6 +9,7 @@ export class InlineQueryEvent extends InlineQueryEventBase<BotTypes> {
 		super(bot);
 		this.match = ctx.match as any;
 		this.data = ctx.inlineQuery.query;
+		this.fromId = ctx.from?.id;
 	}
 
 	public answer() {
@@ -21,6 +22,7 @@ export class InlineQueryResultChosenEvent extends InlineQueryResultChosenEventBa
 		super(bot);
 		this.match = ctx.match as any;
 		this.resultId = ctx.chosenInlineResult.result_id;
+		this.fromId = ctx.from?.id;
 	}
 
 	public editMessage(): EditMessageAction<BotTypes> {
