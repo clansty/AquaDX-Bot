@@ -219,12 +219,28 @@ export type UserProfilesKVStorage = {
 
 export type GameVariantPlateMusicList = { [k in typeof PLATE_VER[number] | typeof BA_VE]: number[] }
 
-export type CloudflareEnv = {
-	KV: KVNamespace;
+export type Env = {
+	KV: KVStorage;
 	API_SECRET: string;
 	POWERON_TOKEN: string;
 	CF_ACCESS_CLIENT_ID: string;
 	CF_ACCESS_CLIENT_SECRET: string;
 }
 
+export type BotEnv = Env & {
+	ADMIN_UIDS: string;
+	ADMIN_SECRET: string;
+	GENIUS_SECRET: string;
+	TELEGRAPH_SECRET: string;
+	DEEPL_AUTH_KEY: string;
+}
+
 export type MaiVersion = 140 | 145
+
+export abstract class KVStorage {
+	abstract get<T>(key: string): Promise<T | undefined>;
+
+	abstract set<T>(key: string, value: T, ttl?: number): Promise<void>;
+
+	abstract delete(key: string): Promise<void>;
+}

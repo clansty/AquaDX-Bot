@@ -1,4 +1,4 @@
-import { UserData } from '@clansty/maibot-types';
+import { KVStorage, UserData } from '@clansty/maibot-types';
 import { UserSource } from './UserSource';
 
 export default class AquaDxLegacy extends UserSource {
@@ -17,8 +17,8 @@ export default class AquaDxLegacy extends UserSource {
 		return res.get('uri') as string;
 	}
 
-	public static async create(kv: KVNamespace, powerOnToken: string) {
-		let uri = await kv.get('apiBase');
+	public static async create(kv: KVStorage, powerOnToken: string) {
+		let uri = await kv.get<string>('apiBase');
 		if (!uri) {
 			console.log('请求 powerOn');
 			uri = await AquaDxLegacy.powerOn('http://aquadx-cf.hydev.org', powerOnToken);
@@ -26,7 +26,7 @@ export default class AquaDxLegacy extends UserSource {
 			// 不然会出现不会自动解压 deflate 的问题
 			url.host = 'aquadx-cf.hydev.org';
 			uri = url.toString();
-			await kv.put('apiBase', uri, { expirationTtl: 172800 });
+			await kv.set('apiBase', uri, 172800);
 		}
 		return new this(uri);
 	}

@@ -1,7 +1,7 @@
 import { CategoryEnum, DifficultyEnum, dxdata, Regions, Song as DataSong, TypeEnum } from '@gekichumai/dxdata';
 import Chart from './Chart';
 import _ from 'lodash';
-import { ALL_MUSIC, ALL_MUSIC_140, TG_MUSIC_IDS } from '@clansty/maibot-data';
+import { ALL_MUSIC, ALL_MUSIC_140 } from '@clansty/maibot-data';
 import { LEVEL, LEVEL_EN } from './consts';
 import { MaiVersion } from './types';
 
@@ -65,10 +65,6 @@ export default class Song implements DataSong {
 
 	public get coverUrl() {
 		return 'https://shama.dxrating.net/images/cover/v2/' + this.imageName;
-	}
-
-	public get tgMusicId() {
-		return TG_MUSIC_IDS[this.id];
 	}
 
 	public get basicInfo() {

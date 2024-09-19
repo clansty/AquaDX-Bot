@@ -117,15 +117,15 @@ importers:
 
   apps/workers:
     dependencies:
-      '@clansty/maibot-clients':
+      '@clansty/maibot-core':
         specifier: workspace:^
-        version: link:../../packages/clients
+        version: link:../../packages/botcore
+      '@clansty/maibot-firm':
+        specifier: workspace:^
+        version: link:../../packages/botfirm
       '@clansty/maibot-types':
         specifier: workspace:^
         version: link:../../packages/types
-      '@clansty/maibot-utils':
-        specifier: workspace:^
-        version: link:../../packages/utils
       '@cloudflare/puppeteer':
         specifier: ^0.0.12
         version: 0.0.12(encoding@0.1.13)
@@ -135,24 +135,9 @@ importers:
       '@sentry/cloudflare':
         specifier: ^8.27.0
         version: 8.27.0
-      franc:
-        specifier: ^6.2.0
-        version: 6.2.0
-      genius-lyrics:
-        specifier: ^4.4.7
-        version: 4.4.7(patch_hash=wulwg3invisf2kj6ojlld73fz4)
       grammy:
         specifier: ^1.29.0
         version: 1.29.0(encoding@0.1.13)
-      iso-639-3:
-        specifier: ^3.0.1
-        version: 3.0.1
-      telegra.ph:
-        specifier: ^1.0.1
-        version: 1.0.1
-      wiki-saikou:
-        specifier: ^3.3.1
-        version: 3.3.1
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20240815.0
@@ -172,9 +157,45 @@ importers:
       wrangler:
         specifier: ^3.72.0
         version: 3.72.0(@cloudflare/workers-types@4.20240815.0)
+
+  packages/botcore:
+    dependencies:
+      '@clansty/maibot-clients':
+        specifier: workspace:^
+        version: link:../clients
+      '@clansty/maibot-firm':
+        specifier: workspace:^
+        version: link:../botfirm
+      '@clansty/maibot-types':
+        specifier: workspace:^
+        version: link:../types
+      '@clansty/maibot-utils':
+        specifier: workspace:^
+        version: link:../utils
+      franc:
+        specifier: ^6.2.0
+        version: 6.2.0
+      genius-lyrics:
+        specifier: ^4.4.7
+        version: 4.4.7(patch_hash=wulwg3invisf2kj6ojlld73fz4)
+      iso-639-3:
+        specifier: ^3.0.1
+        version: 3.0.1
+      telegra.ph:
+        specifier: ^1.0.1
+        version: 1.0.1
+      wiki-saikou:
+        specifier: ^3.3.1
+        version: 3.3.1
       xxhashjs:
         specifier: ^0.2.2
         version: 0.2.2
+    devDependencies:
+      '@types/xxhashjs':
+        specifier: ^0.2.4
+        version: 0.2.4
+
+  packages/botfirm: {}
 
   packages/clients:
     dependencies:

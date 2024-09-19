@@ -1,4 +1,4 @@
-import { BUDDIES_LOGO, BUDDIES_PLUS_LOGO, CloudflareEnv, GameVariantPlateMusicList, MaiVersion, PLATE_MUSIC_LIST_145, PLATE_MUSIC_LIST_CN, PLATE_MUSIC_LIST_JP, Regions, Song, UserPreviewSummary, UserProfileDto } from '@clansty/maibot-types';
+import { BUDDIES_LOGO, BUDDIES_PLUS_LOGO, GameVariantPlateMusicList, MaiVersion, PLATE_MUSIC_LIST_145, PLATE_MUSIC_LIST_CN, PLATE_MUSIC_LIST_JP, Regions, Env, Song, UserPreviewSummary, UserProfileDto } from '@clansty/maibot-types';
 import { UserSource } from './UserSource';
 import AquaDxLegacy from './AquaDxLegacy';
 import SdgbProxied from './SdgbProxied';
@@ -12,7 +12,7 @@ export class UserProfile {
 		public readonly dto: UserProfileDto) {
 	}
 
-	static async create(dto: UserProfileDto, env: CloudflareEnv) {
+	static async create(dto: UserProfileDto, env: Env) {
 		let client: UserSource;
 		let userId: string | number;
 		switch (dto.type) {
