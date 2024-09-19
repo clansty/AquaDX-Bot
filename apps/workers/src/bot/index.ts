@@ -1,25 +1,19 @@
-import BotContext from './BotContext';
 import { Env } from '../types';
-import bind from './bind';
-import callbackQuery from './callbackQuery';
-import help from './help';
-import scoreQuery from './scoreQuery';
-import plateProgress from './plateProgress';
-import levelProgress from './levelProgress';
-import musicSearch from './musicSearch';
-import b50 from './b50';
-import levelConstTable from './levelConstTable';
-import NoReportError from '../utils/NoReportError';
-import admin from './admin';
-import { Bot } from 'grammy';
+import { Bot as GrammyBot } from 'grammy';
 import { captureException, setUser } from '@sentry/cloudflare';
-import { autoQuote } from "@roziscoding/grammy-autoquote";
+import { autoQuote } from '@roziscoding/grammy-autoquote';
+import { buildBot, NoReportError } from '@clansty/maibot-core';
+import { BotAdapter } from '../adapter/Bot';
+import fileIdsDev from './fileIds-dev.json';
+import fileIdsProd from './fileIds-prod.json';
+import { CloudflareKvAdapter } from '@clansty/maibot-types';
+
+const TG_MUSIC_IDS = (process.env.NODE_ENV === 'development' ? fileIdsDev : fileIdsProd) as Record<string | number, string>;
 
 export const createBot = (env: Env) => {
-	const bot = new Bot(env.BOT_TOKEN, { botInfo: JSON.parse(env.BOT_INFO), ContextConstructor: BotContext });
+	const bot = new GrammyBot(env.BOT_TOKEN, { botInfo: JSON.parse(env.BOT_INFO) });
 	bot.use(autoQuote());
 	bot.use(async (ctx, next) => {
-		ctx.env = env;
 		setUser(ctx.from && {
 			id: ctx.from.id,
 			username: ctx.from.username
@@ -27,14 +21,35 @@ export const createBot = (env: Env) => {
 		await next();
 	});
 
-	// musicSearch 必须是最后一个，因为它的 inlineQuery 的正则匹配会匹配所有消息
-	for (const attachHandlers of [callbackQuery, help, bind, scoreQuery, plateProgress, levelProgress, levelConstTable, b50, musicSearch, admin]) {
-		attachHandlers(bot, env);
-	}
+	const internalBot = new BotAdapter(bot);
+	buildBot({
+		bot: internalBot,
+		env: {
+			...env,
+			KV: new CloudflareKvAdapter(env.KV)
+		},
+		musicToFile: TG_MUSIC_IDS,
+		async genImage(url: string, width: number) {
+			const id = this.env.RENDERER.idFromName('browser');
+			const obj = this.env.RENDERER.get(id);
 
+			let req = await obj.fetch('https://do', {
+				method: 'POST',
+				body: JSON.stringify({ url, width })
+			});
+
+			if (!req.ok) {
+				throw new Error(await req.text());
+			}
+
+			return {
+				height: Number(req.headers.get('height')),
+				data: await req.arrayBuffer()
+			};
+		}
+	});
 
 	bot.catch(async ({ ctx, error }) => {
-		ctx.transaction('发生错误');
 		console.error('Error caught in bot.catch', error);
 		const err = error as any;
 		if (err instanceof NoReportError) return;

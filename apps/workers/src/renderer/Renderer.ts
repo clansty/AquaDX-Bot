@@ -1,4 +1,4 @@
-import { Env, RENDER_REQUEST } from '../types';
+import { Env } from '../types';
 import puppeteer, { Browser } from '@cloudflare/puppeteer';
 import { DurableObjectState } from '@cloudflare/workers-types';
 
@@ -15,7 +15,7 @@ export class Renderer implements DurableObject {
 
 	async fetch(request: Request) {
 		try {
-			const { url, width } = await request.json() as RENDER_REQUEST;
+			const { url, width } = await request.json() as { url: string, width: number };
 			const result = await this.renderHtml(url, width);
 
 			// Reset keptAlive after performing tasks to the DO.

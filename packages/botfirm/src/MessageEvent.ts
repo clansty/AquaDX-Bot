@@ -22,7 +22,7 @@ export abstract class MessageEventBase<T extends BotTypes> extends EventBase<T> 
 }
 
 export abstract class CommandEventBase<T extends BotTypes> extends MessageEventBase<T> {
-	public params: string[];
+	public params: string[] = [];
 }
 
 export abstract class KeywordEventBase<T extends BotTypes> extends MessageEventBase<T> {

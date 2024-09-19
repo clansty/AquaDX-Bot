@@ -1,6 +1,6 @@
 import { SdgaProxied, SdgbProxied, UserProfile } from '@clansty/maibot-clients';
 import _ from 'lodash';
-import { BotTypes, SendMessageAction } from '@clansty/maibot-firm';
+import { BotTypes, MessageButtonCallback, SendMessageAction } from '@clansty/maibot-firm';
 import { BuilderEnv } from '../botBuilder';
 import UserContext from '../UserContext';
 
@@ -124,10 +124,8 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 			const reply = event.reply()
 				.setHtml(await getProfilesText(ctx));
 			if (profiles.length > 1) {
-				reply.setButtons(_.chunk(profiles.map((_, i) => ({
-					text: (i + 1).toString(),
-					callback_data: `select_profile:${i}`
-				})), 4));
+				reply.setButtons(_.chunk(profiles.map((_, i) => (
+					new MessageButtonCallback((i + 1).toString(), `select_profile:${i}`))), 4));
 			}
 			await reply.dispatch();
 			return true;
@@ -155,10 +153,8 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 		await event.answer().withNotify('切换成功').dispatch();
 		await event.editMessage()
 			.setHtml(await getProfilesText(ctx))
-			.setButtons(_.chunk((await ctx.getProfiles()).map((_, i) => ({
-				text: (i + 1).toString(),
-				callback_data: `select_profile:${i}`
-			})), 4))
+			.setButtons(_.chunk((await ctx.getProfiles()).map((_, i) => (
+				new MessageButtonCallback((i + 1).toString(), `select_profile:${i}`))), 4))
 			.dispatch();
 		return true;
 	});
@@ -181,11 +177,10 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 				return true;
 			}
 			await event.reply()
-				.setText(await getProfilesText(ctx))
-				.setButtons(_.chunk(profiles.map((_, i) => ({
-					text: (i + 1).toString(),
-					callback_data: `del_profile:${i}`
-				}), 4)))
+				.setHtml(await getProfilesText(ctx))
+				.setButtons(_.chunk(profiles.map(
+						(_, i) => new MessageButtonCallback((i + 1).toString(), `del_profile:${i}`))
+					, 4))
 				.dispatch();
 			return true;
 		}
@@ -212,10 +207,7 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 		await event.answer().withNotify('删除成功').dispatch();
 		await event.editMessage()
 			.setHtml(await getProfilesText(ctx))
-			.setButtons(_.chunk((await ctx.getProfiles()).map((_, i) => ({
-				text: (i + 1).toString(),
-				callback_data: `del_profile:${i}`
-			}), 4)))
+			.setButtons(_.chunk((await ctx.getProfiles()).map((_, i) => new MessageButtonCallback((i + 1).toString(), `del_profile:${i}`), 4)))
 			.dispatch();
 		return true;
 	});

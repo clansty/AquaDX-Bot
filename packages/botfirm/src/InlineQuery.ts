@@ -9,13 +9,11 @@ export abstract class InlineQueryEventBase<T extends BotTypes> extends EventBase
 	public match: RegExpMatchArray;
 	public data: string;
 
-	public abstract editMessage(): EditMessageAction<T>;
-
 	public abstract answer(): AnswerInlineQueryAction<T>;
 }
 
 export abstract class InlineQueryResultChosenEventBase<T extends BotTypes> extends EventBase<T> {
-	protected constructor(public bot: Bot<T>) {
+	protected constructor(protected bot: Bot<T>) {
 		super();
 	}
 
@@ -106,8 +104,8 @@ abstract class InlineQueryAnswer<T extends BotTypes> extends BaseTextMessageActi
 	}
 }
 
-abstract class InlineQueryAnswerText<T extends BotTypes> extends InlineQueryAnswer<T> {
-	public constructor(
+export abstract class InlineQueryAnswerText<T extends BotTypes> extends InlineQueryAnswer<T> {
+	protected constructor(
 		bot: Bot<T>,
 		id: string,
 		title: string
@@ -117,8 +115,8 @@ abstract class InlineQueryAnswerText<T extends BotTypes> extends InlineQueryAnsw
 	}
 }
 
-abstract class InlineQueryAnswerPhoto<T extends BotTypes> extends InlineQueryAnswer<T> {
-	public constructor(
+export abstract class InlineQueryAnswerPhoto<T extends BotTypes> extends InlineQueryAnswer<T> {
+	protected constructor(
 		bot: Bot<T>,
 		id: string,
 		protected _photoUrl: string
@@ -127,8 +125,8 @@ abstract class InlineQueryAnswerPhoto<T extends BotTypes> extends InlineQueryAns
 	}
 }
 
-abstract class InlineQueryAnswerAudio<T extends BotTypes> extends InlineQueryAnswer<T> {
-	public constructor(
+export abstract class InlineQueryAnswerAudio<T extends BotTypes> extends InlineQueryAnswer<T> {
+	protected constructor(
 		bot: Bot<T>,
 		id: string,
 		protected _audioId: string

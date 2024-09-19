@@ -30,10 +30,10 @@ export default class UserContext<T extends BotTypes> {
 
 	async saveProfiles(profiles: UserProfile[]) {
 		this._profiles = profiles;
-		await this.env.KV.set(`profiles:${this.fromId}`, JSON.stringify(<UserProfilesKVStorage>{
+		await this.env.KV.set(`profiles:${this.fromId}`, {
 			profiles: profiles.map(p => p.dto),
 			selected: this.currentProfileId
-		}));
+		} satisfies UserProfilesKVStorage);
 	}
 
 	async getCurrentProfile(reply = true) {
@@ -108,7 +108,7 @@ export default class UserContext<T extends BotTypes> {
 			.setButtons(inlineKeyboard)
 			.dispatch();
 		if (hash)
-			await this.env.KV.set(`image:${hash}`, JSON.stringify({ fileId: messageSent.fileId, type: height / width > 2 ? 'document' : 'image' }));
+			await this.env.KV.set(`image:${hash}`, { fileId: messageSent.fileId, type: height / width > 2 ? 'document' : 'image' });
 
 		try {
 			await genMsg.delete();

@@ -1,9 +1,9 @@
 import { Update } from 'grammy/types';
 import { createBot } from './bot';
 import { Env } from './types';
-import NoReportError from './utils/NoReportError';
 import { BotError } from 'grammy';
 import { withSentry } from '@sentry/cloudflare';
+import { NoReportError } from '@clansty/maibot-core';
 
 export default withSentry(
 	env => ({

@@ -219,7 +219,7 @@ export type UserProfilesKVStorage = {
 
 export type GameVariantPlateMusicList = { [k in typeof PLATE_VER[number] | typeof BA_VE]: number[] }
 
-export type Env = {
+export interface Env {
 	KV: KVStorage;
 	API_SECRET: string;
 	POWERON_TOKEN: string;
@@ -227,7 +227,7 @@ export type Env = {
 	CF_ACCESS_CLIENT_SECRET: string;
 }
 
-export type BotEnv = Env & {
+export interface BotEnv extends Env {
 	ADMIN_UIDS: string;
 	ADMIN_SECRET: string;
 	GENIUS_SECRET: string;
