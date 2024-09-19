@@ -236,11 +236,3 @@ export interface BotEnv extends Env {
 }
 
 export type MaiVersion = 140 | 145
-
-export abstract class KVStorage {
-	abstract get<T>(key: string): Promise<T | undefined>;
-
-	abstract set<T>(key: string, value: T, ttl?: number): Promise<void>;
-
-	abstract delete(key: string): Promise<void>;
-}

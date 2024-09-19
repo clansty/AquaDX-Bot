@@ -1,4 +1,4 @@
-import { KVStorage } from '@clansty/maibot-types';
+import { KVStorage } from './KVStorage';
 
 export class CloudflareKvAdapter extends KVStorage {
 	public constructor(private kv: KVNamespace) {
