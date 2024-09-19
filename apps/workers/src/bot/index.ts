@@ -1,5 +1,5 @@
 import { Env } from '../types';
-import { Bot as GrammyBot } from 'grammy';
+import { Bot as GrammyBot, InputFile } from 'grammy';
 import { captureException, setUser } from '@sentry/cloudflare';
 import { autoQuote } from '@roziscoding/grammy-autoquote';
 import { buildBot, NoReportError } from '@clansty/maibot-core';
@@ -44,7 +44,7 @@ export const createBot = (env: Env) => {
 
 			return {
 				height: Number(req.headers.get('height')),
-				data: await req.arrayBuffer()
+				data: new InputFile(Buffer.from(await req.arrayBuffer()), 'image.png')
 			};
 		}
 	});

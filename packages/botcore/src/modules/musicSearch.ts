@@ -69,7 +69,7 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 		} else {
 			req.addPhoto(song.coverUrl);
 		}
-		const message = await req.setText(song.title).setButtons(buttons).dispatch();
+		const message = await req.setText(song.display).setButtons(buttons).dispatch();
 		// 异步获取歌词，只在 undefined 的时候
 		if (!lyrics) {
 			const helper = new LyricsHelper(env.GENIUS_SECRET, env.TELEGRAPH_SECRET, env.DEEPL_AUTH_KEY);
@@ -92,7 +92,7 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 
 	bot.registerCommand(['search', 'maimai', 's'], async (event) => {
 		const kw = event.params.join(' ').trim();
-		if (kw) {
+		if (!kw) {
 			await event.reply()
 				.setText('请输入要搜索的歌曲名')
 				.dispatch();
