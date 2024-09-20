@@ -39,7 +39,7 @@ export default class UserContext<T extends BotTypes> {
 	async getCurrentProfile(reply = true) {
 		const profiles = await this.getProfiles();
 		if (!profiles.length && reply) {
-			throw new Error('请先绑定用户');
+			throw new Error('请先使用 /bind 绑定用户');
 		}
 		if (this.currentProfileId >= profiles.length) {
 			this.currentProfileId = 0;

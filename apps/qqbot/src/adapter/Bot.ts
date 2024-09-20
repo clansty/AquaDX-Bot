@@ -138,9 +138,9 @@ export class BotAdapter extends Bot<BotTypes> {
 			}
 		} catch (e) {
 			this.logger.withError(e).error('处理消息时出错');
-			console.error(e)
+			console.error(e);
 
-			await this.constructMessage('group_id' in data ? -data.group_id : data.user_id)
+			await this.constructMessage(data.message_type === 'group' ? -data.group_id : data.user_id)
 				.setText('出现错误：' + e.message || e.toString())
 				.dispatch();
 		}
