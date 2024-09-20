@@ -3,8 +3,8 @@ name = "aquadx-bot"
 main = "src/index.ts"
 compatibility_date = "2024-04-23"
 # bug: 如果用 compatibility_flags 的 node_compat 会导致发图片时 Buffer is not defined
-node_compat = true
-compatibility_flags = ["nodejs_als"]
+# wrangler 3.78.6 看起来修复了
+compatibility_flags = ["nodejs_als", "nodejs_compat"]
 
 # Automatically place your workloads in an optimal location to minimize latency.
 # If you are running back-end logic in a Worker, running it closer to your back-end infrastructure

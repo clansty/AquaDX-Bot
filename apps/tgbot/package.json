@@ -14,14 +14,14 @@
     "@roziscoding/grammy-autoquote": "^2.0.6",
     "@types/xxhashjs": "^0.2.4",
     "cross-env": "^7.0.3",
-    "nushell": "^0.96.1",
+    "nushell": "^0.98.0",
     "wrangler": "^3.72.0"
   },
   "dependencies": {
-    "@clansty/maibot-types": "workspace:^",
-    "@clansty/maibot-firm": "workspace:^",
     "@clansty/maibot-core": "workspace:^",
-    "@cloudflare/puppeteer": "^0.0.12",
+    "@clansty/maibot-firm": "workspace:^",
+    "@clansty/maibot-types": "workspace:^",
+    "@cloudflare/puppeteer": "^0.0.14",
     "@sentry/cli": "^2.34.1",
     "@sentry/cloudflare": "^8.27.0",
     "grammy": "^1.29.0"
