@@ -57,6 +57,9 @@ importers:
       node-napcat-ts:
         specifier: ^0.2.18
         version: 0.2.19
+      nushell:
+        specifier: ^0.98.0
+        version: 0.98.0
       tsx:
         specifier: ^4.17.0
         version: 4.19.1
@@ -115,6 +118,9 @@ importers:
       '@clansty/maibot-types':
         specifier: workspace:^
         version: link:../../packages/types
+      '@types/node':
+        specifier: ^22.5.5
+        version: 22.5.5
       fast-xml-parser:
         specifier: ^4.4.1
         version: 4.5.0

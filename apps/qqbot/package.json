@@ -5,7 +5,8 @@
   "main": "./build",
   "scripts": {
     "dev": "tsx src/index.ts",
-    "build": "tsc && tsx build.ts"
+    "build": "tsc && tsx build.ts",
+    "deploy": "nu deploy.nu"
   },
   "files": [
     "build"
@@ -23,6 +24,7 @@
     "@types/node": "^22.4.0",
     "esbuild": "^0.23.1",
     "node-napcat-ts": "^0.2.18",
+    "nushell": "^0.98.0",
     "tsx": "^4.17.0",
     "yaml": "^2.5.1"
   }
