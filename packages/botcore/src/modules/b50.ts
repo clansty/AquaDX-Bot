@@ -9,7 +9,7 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 		// 因为只是算 hash 所以 nameplate 就可以
 
 		return await ctx.genCacheSendImage(['b50', rating, fromId],
-			`https://maibot-web.pages.dev/b50/${fromId}/${ctx.currentProfileId}`,
+			await ctx.getWebUrl('b50'),
 			2000, 'B50.png', isPrivate ? 'b50' : undefined, false, [
 				[new MessageButtonUrl('查看详情', `tg://resolve?domain=AquaDXBot&appname=webapp&startapp=${encodeURIComponent(btoa(`/b50/${fromId}/${ctx.currentProfileId}`))}`)]
 			]);

@@ -70,6 +70,23 @@ export default class UserContext<T extends BotTypes> {
 		return await this.env.KV.get(`image:${hash}`) as { fileId: string, type: 'image' | 'document' };
 	}
 
+	async getWebUrl(type: string, param?: string) {
+		const currentProfile = await this.getCurrentProfile(false);
+		const currentProfileId = this.currentProfileId;
+
+		let url = `https://maibot-web.pages.dev/${type}/`;
+		if (currentProfile.dto.type === 'AquaDX-v2') {
+			url += `aquadx/${currentProfile.dto.username}`;
+		} else {
+			url += `${this.fromId}/${currentProfileId}`;
+		}
+
+		if (param) {
+			url += `/${param}`;
+		}
+		return url;
+	}
+
 
 	// 这可能是史
 	async genCacheSendImage(key: any, url: string, width: number, filename: string, shareKw?: string, isFromStart = false, inlineKeyboard: MessageButton[][] = []) {
