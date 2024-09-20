@@ -71,7 +71,7 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 		}
 		const message = await req.setText(song.display).setButtons(buttons).dispatch();
 		// 异步获取歌词，只在 undefined 的时候
-		if (!lyrics) {
+		if (!lyrics && bot.isEditMessageSupported) {
 			const helper = new LyricsHelper(env.GENIUS_SECRET, env.TELEGRAPH_SECRET, env.DEEPL_AUTH_KEY);
 			const lyricsUrl = await helper.getLyricsTelegraf(song);
 			await env.KV.set(`lyrics:${song.id}`, lyricsUrl);

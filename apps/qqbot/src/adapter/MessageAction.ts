@@ -1,6 +1,7 @@
 import { SendMessageAction as SendMessageActionBase, SendMessageResult as SendMessageResultBase } from '@clansty/maibot-firm';
 import { WSSendParam, WSSendReturn } from 'node-napcat-ts/dist/Interfaces';
 import { BotAdapter, BotTypes } from './Bot';
+import { NoReportError } from '@clansty/maibot-core';
 
 export class SendMessageResult extends SendMessageResultBase<BotTypes> {
 	public constructor(protected bot: BotAdapter, protected data: WSSendReturn['send_msg']) {
@@ -12,7 +13,7 @@ export class SendMessageResult extends SendMessageResultBase<BotTypes> {
 	}
 
 	public edit(): never {
-		throw new Error('不支持编辑消息');
+		throw new NoReportError('不支持编辑消息');
 	}
 
 	public get fileId() {

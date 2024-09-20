@@ -4,6 +4,7 @@ import type { Receive, WSReceiveHandler, WSSendParam, WSSendReturn } from 'node-
 import _ from 'lodash';
 import { SendMessageAction } from './MessageAction';
 import { CommandEvent, KeywordEvent } from './MessageEvent';
+import { NoReportError } from '@clansty/maibot-core';
 
 export interface BotTypes extends BotTypesBase<number, number, string, never> {
 }
@@ -139,6 +140,7 @@ export class BotAdapter extends Bot<BotTypes> {
 		} catch (e) {
 			this.logger.withError(e).error('处理消息时出错');
 			console.error(e);
+			if (e instanceof NoReportError) return;
 
 			await this.constructMessage(data.message_type === 'group' ? -data.group_id : data.user_id)
 				.setText('出现错误：' + e.message || e.toString())

@@ -1,6 +1,7 @@
 import { CommandEventBase, KeywordEventBase } from '@clansty/maibot-firm';
 import { BotAdapter, BotTypes } from './Bot';
 import type { WSReceiveHandler } from 'node-napcat-ts';
+import { NoReportError } from '@clansty/maibot-core';
 
 export class CommandEvent extends CommandEventBase<BotTypes> {
 	public constructor(protected bot: BotAdapter, protected data: WSReceiveHandler['message']) {
@@ -14,7 +15,7 @@ export class CommandEvent extends CommandEventBase<BotTypes> {
 	}
 
 	public edit(): never {
-		throw new Error('不支持编辑消息');
+		throw new NoReportError('不支持编辑消息');
 	}
 
 	public async delete(): Promise<void> {
@@ -34,7 +35,7 @@ export class KeywordEvent extends KeywordEventBase<BotTypes> {
 	}
 
 	public edit(): never {
-		throw new Error('不支持编辑消息');
+		throw new NoReportError('不支持编辑消息');
 	}
 
 	public async delete(): Promise<void> {
