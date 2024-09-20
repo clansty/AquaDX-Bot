@@ -1,6 +1,7 @@
 import { KVStorage } from './KVStorage';
 
 export class CloudflareKvAdapter extends KVStorage {
+	// @ts-ignore
 	public constructor(private kv: KVNamespace) {
 		super();
 	}

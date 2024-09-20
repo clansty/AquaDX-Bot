@@ -49,7 +49,9 @@ export class SendMessageAction extends SendMessageActionBase<BotTypes> {
 				params.message.push({
 					type: 'image',
 					data: {
-						file: this._file
+						file: this._file,
+						name: '猫',
+						summary: '猫',
 					}
 				});
 				break;

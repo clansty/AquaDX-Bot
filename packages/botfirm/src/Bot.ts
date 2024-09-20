@@ -20,6 +20,7 @@ export abstract class Bot<T extends BotTypes> {
 	public abstract readonly isCallbackQuerySupported: boolean;
 	public abstract readonly isHtmlMessageSupported: boolean;
 	public abstract readonly isFileWithTextSupported: boolean;
+	public abstract readonly isEditMessageSupported: boolean;
 
 	public abstract constructMessage(targetChat: T['ChatId']): SendMessageAction<T>;
 

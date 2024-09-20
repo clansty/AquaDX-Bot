@@ -20,6 +20,7 @@ export class BotAdapter extends Bot<BotTypes> {
 	public isCallbackQuerySupported = true;
 	public isHtmlMessageSupported = true;
 	public isFileWithTextSupported = true;
+	public isEditMessageSupported = true;
 
 	public constructMessage(targetChat: number) {
 		return new SendMessageAction(this, targetChat);

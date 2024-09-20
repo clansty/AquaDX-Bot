@@ -2,23 +2,28 @@
   "name": "@clansty/maibot-onebot",
   "version": "1.0.0",
   "private": true,
-  "main": "./src/index.ts",
+  "main": "./build",
   "scripts": {
-    "dev": "tsx src/index.ts"
+    "dev": "tsx src/index.ts",
+    "build": "tsc && tsx build.ts"
   },
+  "files": [
+    "build"
+  ],
   "dependencies": {
+    "level": "^8.0.1",
+    "puppeteer": "^23.4.0"
+  },
+  "devDependencies": {
     "@clansty/maibot-core": "workspace:^",
     "@clansty/maibot-firm": "workspace:^",
     "@clansty/maibot-types": "workspace:^",
     "@guiiai/logg": "^1.0.3",
     "@types/level-ttl": "^3.1.5",
-    "level": "^8.0.1",
-    "puppeteer": "^23.4.0",
-    "yaml": "^2.5.1"
-  },
-  "devDependencies": {
     "@types/node": "^22.4.0",
+    "esbuild": "^0.23.1",
     "node-napcat-ts": "^0.2.18",
-    "tsx": "^4.17.0"
+    "tsx": "^4.17.0",
+    "yaml": "^2.5.1"
   }
 }

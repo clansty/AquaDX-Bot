@@ -26,6 +26,13 @@ importers:
 
   apps/qqbot:
     dependencies:
+      level:
+        specifier: ^8.0.1
+        version: 8.0.1
+      puppeteer:
+        specifier: ^23.4.0
+        version: 23.4.0(typescript@5.6.2)
+    devDependencies:
       '@clansty/maibot-core':
         specifier: workspace:^
         version: link:../../packages/botcore
@@ -41,25 +48,21 @@ importers:
       '@types/level-ttl':
         specifier: ^3.1.5
         version: 3.1.5
-      level:
-        specifier: ^8.0.1
-        version: 8.0.1
-      puppeteer:
-        specifier: ^23.4.0
-        version: 23.4.0(typescript@5.6.2)
-      yaml:
-        specifier: ^2.5.1
-        version: 2.5.1
-    devDependencies:
       '@types/node':
         specifier: ^22.4.0
         version: 22.5.5
+      esbuild:
+        specifier: ^0.23.1
+        version: 0.23.1
       node-napcat-ts:
         specifier: ^0.2.18
         version: 0.2.18
       tsx:
         specifier: ^4.17.0
         version: 4.19.1
+      yaml:
+        specifier: ^2.5.1
+        version: 2.5.1
 
   apps/tgbot:
     dependencies:
@@ -74,7 +77,7 @@ importers:
         version: link:../../packages/types
       '@cloudflare/puppeteer':
         specifier: ^0.0.12
-        version: 0.0.14(encoding@0.1.13)
+        version: 0.0.12(encoding@0.1.13)
       '@sentry/cli':
         specifier: ^2.34.1
         version: 2.36.1(encoding@0.1.13)
@@ -99,7 +102,7 @@ importers:
         version: 7.0.3
       nushell:
         specifier: ^0.96.1
-        version: 0.98.0
+        version: 0.96.3
       wrangler:
         specifier: ^3.72.0
         version: 3.78.6(@cloudflare/workers-types@4.20240919.0)
@@ -169,7 +172,7 @@ importers:
         version: 0.62.4(postcss@8.4.47)
       esbuild-loader:
         specifier: ^4.2.2
-        version: 4.2.2(webpack@5.94.0(esbuild@0.17.19))
+        version: 4.2.2(webpack@5.94.0(esbuild@0.23.1))
       json-loader:
         specifier: ^0.5.7
         version: 0.5.7
@@ -178,7 +181,7 @@ importers:
         version: 8.4.47
       ts-loader:
         specifier: ^9.5.1
-        version: 9.5.1(typescript@5.6.2)(webpack@5.94.0(esbuild@0.17.19))
+        version: 9.5.1(typescript@5.6.2)(webpack@5.94.0(esbuild@0.23.1))
       typescript:
         specifier: ^5.6.2
         version: 5.6.2
@@ -190,7 +193,7 @@ importers:
         version: 37.5.2(encoding@0.1.13)
       webpack:
         specifier: ^5.94.0
-        version: 5.94.0(esbuild@0.17.19)
+        version: 5.94.0(esbuild@0.23.1)
       wrangler:
         specifier: ^3.78.6
         version: 3.78.6(@cloudflare/workers-types@4.20240919.0)
@@ -296,8 +299,8 @@ packages:
       '@cloudflare/workers-types':
         optional: true
 
-  '@cloudflare/puppeteer@0.0.14':
-    resolution: {integrity: sha512-wglNG53M4LbLnaU8i14bWNA3fUqKQy17Spczo+PWaGZO1W6m8rzi6u/x49BZ/s3LGg0VJHK4ZaLjkXo2/5ESdA==}
+  '@cloudflare/puppeteer@0.0.12':
+    resolution: {integrity: sha512-gnaDkNC9V/QXIL1eEhvRt09Iahtyf1GAYUd7I/g4p2rNYjvCpl+5+j/HcDoiOaAwSQCboe0x8UztjoGtAQBGFA==}
     engines: {node: '>=16.3.0'}
 
   '@cloudflare/workerd-darwin-64@1.20240806.0':
@@ -947,43 +950,43 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@nushell/darwin-arm64@0.98.0':
-    resolution: {integrity: sha512-hwEzGa4xziB6monzVaV5OUEZjFZU5L71F4IVVot3RDdPcT7gtBqEiq3WiqL9YEGCMvRFbZVhjL+z479Pi3vH6Q==}
+  '@nushell/darwin-arm64@0.96.3':
+    resolution: {integrity: sha512-T2Hg3hG1BaAEPoCs5iindb6C/b/GE3QnakmrTKWMt9jB6U+fJUbjVw/1rfXOLKhzCBz0pmfUty/GA1zGSncXSw==}
     cpu: [arm64]
     os: [darwin]
 
-  '@nushell/darwin-x64@0.98.0':
-    resolution: {integrity: sha512-olHfpsgbFrXEtx32q+MNQUZPzpQomRLbgiExTVjKvKE3Q+MDbZ0MrUdW0lzbxNRXWGQKDLjDAQwBXw+aoT2jeA==}
+  '@nushell/darwin-x64@0.96.3':
+    resolution: {integrity: sha512-a0whSSCX8IzOo8Tt+nfW+277esn0ovPyMg934qKUh2AdqRwwgKKbhzvf34z+BCXh3mxu/EAbPNT9Ir1Pwm3gjQ==}
     cpu: [x64]
     os: [darwin]
 
-  '@nushell/linux-arm64@0.98.0':
-    resolution: {integrity: sha512-+tTGXruijNf+A0j6C5O+7DKBYoBXWUaYdJZDgsWSLcG1cOoIwjs30LPAtCkwYIuB5YpxIyLSx2VkK6tVifCTyg==}
+  '@nushell/linux-arm64@0.96.3':
+    resolution: {integrity: sha512-Xmc4iG4dVSQW7PEDBHavnFnuCdSqqBAYUz9VQv65jVptEfUKuCU5daE7j/dmMRzB+orfqRr7SKay1l6R4ax4NA==}
     cpu: [arm64]
     os: [linux]
 
-  '@nushell/linux-arm@0.98.0':
-    resolution: {integrity: sha512-ncdwYifR7Fz7GI44dRS0IYpnx80ayhA1MY3Y5J9MMzY5YPp1GRpKQW6XX+0XLOJx1pZpekG9g/esSZUIFrVSbQ==}
+  '@nushell/linux-arm@0.96.3':
+    resolution: {integrity: sha512-8iZUosQQHLn3H5DcyY2acAfBjbPD2xOwEyjcKqfOQrga19k14/9WqsFsD39u4GOqcccPwWXNHsQ6PwoPtToqoQ==}
     cpu: [arm]
     os: [linux]
 
-  '@nushell/linux-riscv64@0.98.0':
-    resolution: {integrity: sha512-Pzc4oa4t4PCdyrhM67R1W2CPYn25SKC0g+Ayn2eoU1DWGsgmp25EbeFHsxt6CIG/Q+xG/DRforcxJmFpKdxpHQ==}
+  '@nushell/linux-riscv64@0.96.3':
+    resolution: {integrity: sha512-j0QLbPzz3H1Tl21bBGxCj7I1eaDC5bRkJQHMMudgX3ZkqlHH2LpYiE7UDXSpaKi1Ljax1CHn22bSxajttBdpng==}
     cpu: [riscv64]
     os: [linux]
 
-  '@nushell/linux-x64@0.98.0':
-    resolution: {integrity: sha512-hYmqfFt6/Csqs8c3R3HFi+vu8GbgJxQ/jLfN6ijVj0gNdskxjiNDq3lQdd7bVCd5KhkufKZbO5jZeT4ezqV2/w==}
+  '@nushell/linux-x64@0.96.3':
+    resolution: {integrity: sha512-lN8fj5Pvu8Aia/m4CdR21QUMvH1ECD1FGjiVyofmrEQmw8nCIAKB02F59u7wBwXBD3WENH4CchoGSvIfSfye0g==}
     cpu: [x64]
     os: [linux]
 
-  '@nushell/windows-arm64@0.98.0':
-    resolution: {integrity: sha512-xe1T9tysFrVzml1mIt5X/Ws47lDm77F9ZUjWRJYpbNfVlcl813AzhiK/R865OI7EtyUxFwCQfe2EtpSCw/sfHg==}
+  '@nushell/windows-arm64@0.96.3':
+    resolution: {integrity: sha512-Zy6h97bMUBHHL7HoBkNGJUN8cyYSM7mshjVFr7GRJPNcES2B+ZnDi1/mH6pzKceZ8oKACZePn0tyUajpvsDqvw==}
     cpu: [arm64]
     os: [win32]
 
-  '@nushell/windows-x64@0.98.0':
-    resolution: {integrity: sha512-PJIQPFgBZmIKgz5GCpEdSf8lb/JMf5//500s38DXj5e9N6Gg1UzNyFQ2vomoxZ2GFr1/TnrlQaQqcUsGFcCMxw==}
+  '@nushell/windows-x64@0.96.3':
+    resolution: {integrity: sha512-IedJwffPCKZ4/CfNV/xQJCFX2MEMCmD/RekxaFBo9H36At2LvwlZFEKSsM0PwUvOoe9s54mTXRppQabd9+EOtA==}
     cpu: [x64]
     os: [win32]
 
@@ -2985,8 +2988,8 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  nushell@0.98.0:
-    resolution: {integrity: sha512-x2kCSQKkMOGqOdmFZR6FxRA3V8QHG5ZB9IsXLAO8AE6hM/bt2GGU7zUvk06X/vhqHwGjlgrqrTrhsRX0kyKiEg==}
+  nushell@0.96.3:
+    resolution: {integrity: sha512-mA+Suq4W5jGSRTUaSRhvov97EPUsaqWq0epR8wIf4kKI8zLxwHpCwSln+YzICFrY1tfrDFOj1PT7Cw1CyqcoPw==}
     engines: {node: '>=20.0.0', pnpm: '>=9'}
     hasBin: true
 
@@ -3937,7 +3940,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@cloudflare/puppeteer@0.0.14(encoding@0.1.13)':
+  '@cloudflare/puppeteer@0.0.12(encoding@0.1.13)':
     dependencies:
       '@puppeteer/browsers': 1.7.0
       chromium-bidi: 0.4.20(devtools-protocol@0.0.1159816)
@@ -4338,28 +4341,28 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
 
-  '@nushell/darwin-arm64@0.98.0':
+  '@nushell/darwin-arm64@0.96.3':
     optional: true
 
-  '@nushell/darwin-x64@0.98.0':
+  '@nushell/darwin-x64@0.96.3':
     optional: true
 
-  '@nushell/linux-arm64@0.98.0':
+  '@nushell/linux-arm64@0.96.3':
     optional: true
 
-  '@nushell/linux-arm@0.98.0':
+  '@nushell/linux-arm@0.96.3':
     optional: true
 
-  '@nushell/linux-riscv64@0.98.0':
+  '@nushell/linux-riscv64@0.96.3':
     optional: true
 
-  '@nushell/linux-x64@0.98.0':
+  '@nushell/linux-x64@0.96.3':
     optional: true
 
-  '@nushell/windows-arm64@0.98.0':
+  '@nushell/windows-arm64@0.96.3':
     optional: true
 
-  '@nushell/windows-x64@0.98.0':
+  '@nushell/windows-x64@0.96.3':
     optional: true
 
   '@polka/url@1.0.0-next.28': {}
@@ -5053,13 +5056,13 @@ snapshots:
 
   agent-base@6.0.2:
     dependencies:
-      debug: 4.3.6
+      debug: 4.3.7
     transitivePeerDependencies:
       - supports-color
 
   agent-base@7.1.1:
     dependencies:
-      debug: 4.3.6
+      debug: 4.3.7
     transitivePeerDependencies:
       - supports-color
 
@@ -5233,7 +5236,7 @@ snapshots:
 
   capnp-ts@0.7.0:
     dependencies:
-      debug: 4.3.6
+      debug: 4.3.7
       tslib: 2.6.3
     transitivePeerDependencies:
       - supports-color
@@ -5602,12 +5605,12 @@ snapshots:
   esbuild-linux-s390x@0.15.18:
     optional: true
 
-  esbuild-loader@4.2.2(webpack@5.94.0(esbuild@0.17.19)):
+  esbuild-loader@4.2.2(webpack@5.94.0(esbuild@0.23.1)):
     dependencies:
       esbuild: 0.21.5
       get-tsconfig: 4.7.6
       loader-utils: 2.0.4
-      webpack: 5.94.0(esbuild@0.17.19)
+      webpack: 5.94.0(esbuild@0.23.1)
       webpack-sources: 1.4.3
 
   esbuild-netbsd-64@0.14.47:
@@ -5834,7 +5837,7 @@ snapshots:
 
   extract-zip@2.0.1:
     dependencies:
-      debug: 4.3.6
+      debug: 4.3.7
       get-stream: 5.2.0
       yauzl: 2.10.0
     optionalDependencies:
@@ -5960,7 +5963,7 @@ snapshots:
     dependencies:
       basic-ftp: 5.0.5
       data-uri-to-buffer: 6.0.2
-      debug: 4.3.6
+      debug: 4.3.7
       fs-extra: 11.2.0
     transitivePeerDependencies:
       - supports-color
@@ -6024,7 +6027,7 @@ snapshots:
   http-proxy-agent@7.0.2:
     dependencies:
       agent-base: 7.1.1
-      debug: 4.3.6
+      debug: 4.3.7
     transitivePeerDependencies:
       - supports-color
 
@@ -6038,7 +6041,7 @@ snapshots:
   https-proxy-agent@7.0.5:
     dependencies:
       agent-base: 7.1.1
-      debug: 4.3.6
+      debug: 4.3.7
     transitivePeerDependencies:
       - supports-color
 
@@ -6464,16 +6467,16 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  nushell@0.98.0:
+  nushell@0.96.3:
     optionalDependencies:
-      '@nushell/darwin-arm64': 0.98.0
-      '@nushell/darwin-x64': 0.98.0
-      '@nushell/linux-arm': 0.98.0
-      '@nushell/linux-arm64': 0.98.0
-      '@nushell/linux-riscv64': 0.98.0
-      '@nushell/linux-x64': 0.98.0
-      '@nushell/windows-arm64': 0.98.0
-      '@nushell/windows-x64': 0.98.0
+      '@nushell/darwin-arm64': 0.96.3
+      '@nushell/darwin-x64': 0.96.3
+      '@nushell/linux-arm': 0.96.3
+      '@nushell/linux-arm64': 0.96.3
+      '@nushell/linux-riscv64': 0.96.3
+      '@nushell/linux-x64': 0.96.3
+      '@nushell/windows-arm64': 0.96.3
+      '@nushell/windows-x64': 0.96.3
 
   object-assign@4.1.1: {}
 
@@ -6505,7 +6508,7 @@ snapshots:
     dependencies:
       '@tootallnate/quickjs-emscripten': 0.23.0
       agent-base: 7.1.1
-      debug: 4.3.6
+      debug: 4.3.7
       get-uri: 6.0.3
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.5
@@ -6609,7 +6612,7 @@ snapshots:
   proxy-agent@6.3.0:
     dependencies:
       agent-base: 7.1.1
-      debug: 4.3.6
+      debug: 4.3.7
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.5
       lru-cache: 7.18.3
@@ -6622,7 +6625,7 @@ snapshots:
   proxy-agent@6.4.0:
     dependencies:
       agent-base: 7.1.1
-      debug: 4.3.6
+      debug: 4.3.7
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.5
       lru-cache: 7.18.3
@@ -6871,7 +6874,7 @@ snapshots:
   socks-proxy-agent@8.0.4:
     dependencies:
       agent-base: 7.1.1
-      debug: 4.3.6
+      debug: 4.3.7
       socks: 2.8.3
     transitivePeerDependencies:
       - supports-color
@@ -7024,16 +7027,16 @@ snapshots:
     dependencies:
       isomorphic-fetch: 2.2.1
 
-  terser-webpack-plugin@5.3.10(esbuild@0.17.19)(webpack@5.94.0(esbuild@0.17.19)):
+  terser-webpack-plugin@5.3.10(esbuild@0.23.1)(webpack@5.94.0(esbuild@0.23.1)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
       terser: 5.33.0
-      webpack: 5.94.0(esbuild@0.17.19)
+      webpack: 5.94.0(esbuild@0.23.1)
     optionalDependencies:
-      esbuild: 0.17.19
+      esbuild: 0.23.1
 
   terser@5.33.0:
     dependencies:
@@ -7076,7 +7079,7 @@ snapshots:
       collapse-white-space: 2.1.0
       n-gram: 2.0.2
 
-  ts-loader@9.5.1(typescript@5.6.2)(webpack@5.94.0(esbuild@0.17.19)):
+  ts-loader@9.5.1(typescript@5.6.2)(webpack@5.94.0(esbuild@0.23.1)):
     dependencies:
       chalk: 4.1.2
       enhanced-resolve: 5.16.1
@@ -7084,7 +7087,7 @@ snapshots:
       semver: 7.6.2
       source-map: 0.7.4
       typescript: 5.6.2
-      webpack: 5.94.0(esbuild@0.17.19)
+      webpack: 5.94.0(esbuild@0.23.1)
 
   ts-morph@12.0.0:
     dependencies:
@@ -7285,7 +7288,7 @@ snapshots:
 
   webpack-sources@3.2.3: {}
 
-  webpack@5.94.0(esbuild@0.17.19):
+  webpack@5.94.0(esbuild@0.23.1):
     dependencies:
       '@types/estree': 1.0.6
       '@webassemblyjs/ast': 1.12.1
@@ -7307,7 +7310,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 3.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(esbuild@0.17.19)(webpack@5.94.0(esbuild@0.17.19))
+      terser-webpack-plugin: 5.3.10(esbuild@0.23.1)(webpack@5.94.0(esbuild@0.23.1))
       watchpack: 2.4.2
       webpack-sources: 3.2.3
     transitivePeerDependencies:
@@ -7419,7 +7422,7 @@ snapshots:
   yargs@17.7.1:
     dependencies:
       cliui: 8.0.1
-      escalade: 3.1.2
+      escalade: 3.2.0
       get-caller-file: 2.0.5
       require-directory: 2.1.1
       string-width: 4.2.3

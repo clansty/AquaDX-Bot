@@ -14,6 +14,7 @@ export class BotAdapter extends Bot<BotTypes> {
 	public isCallbackQuerySupported = false;
 	public isHtmlMessageSupported = false;
 	public isFileWithTextSupported = false;
+	public isEditMessageSupported = false;
 
 	public constructMessage(targetChat: number) {
 		return new SendMessageAction(this, targetChat);
@@ -137,6 +138,7 @@ export class BotAdapter extends Bot<BotTypes> {
 			}
 		} catch (e) {
 			this.logger.withError(e).error('处理消息时出错');
+			console.error(e)
 
 			await this.constructMessage('group_id' in data ? -data.group_id : data.user_id)
 				.setText('出现错误：' + e.message || e.toString())
