@@ -6,6 +6,6 @@
   "main": "src/index.ts",
   "dependencies": {
     "@clansty/maibot-data": "workspace:^",
-    "@gekichumai/dxdata": "https://gitpkg.now.sh/gekichumai/dxrating/packages/dxdata?41886810210d89658da6f9fa6d0c519f05b068ef"
+    "@gekichumai/dxdata": "https://gitpkg.now.sh/gekichumai/dxrating/packages/dxdata?a503679af94f311edf5dea077de2f97e17d74a0d"
   }
 }
