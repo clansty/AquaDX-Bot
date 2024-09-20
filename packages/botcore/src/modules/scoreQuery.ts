@@ -6,7 +6,7 @@ import { BuilderEnv } from '../botBuilder';
 
 export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: BuilderEnv<T>) => {
 	bot.registerInlineQuery(/^ ?query (.+)/, async (event) => {
-		const ctx = getContext(event.fromId);
+		const ctx = getContext(event);
 		const profile = await ctx.getCurrentProfile(false);
 		if (!profile) {
 			await event.answer()
@@ -57,7 +57,7 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 	});
 
 	bot.registerCommand('query', async (event) => {
-		const ctx = getContext(event.fromId);
+		const ctx = getContext(event);
 		const profile = await ctx.getCurrentProfile();
 		const kw = event.params.join(' ').trim();
 		if (!kw) {

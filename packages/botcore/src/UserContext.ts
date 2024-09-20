@@ -107,7 +107,7 @@ export default class UserContext<T extends BotTypes> {
 		const messageSent = await messageToSent
 			.setButtons(inlineKeyboard)
 			.dispatch();
-		if (hash)
+		if (hash && messageSent.fileId)
 			await this.env.KV.set(`image:${hash}`, { fileId: messageSent.fileId, type: height / width > 2 ? 'document' : 'image' });
 
 		try {

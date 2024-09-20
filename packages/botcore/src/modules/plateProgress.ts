@@ -20,7 +20,7 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 	for (const version of [...PLATE_VER, BA_VE] as const) {
 		for (const type of version === BA_VE ? [''] as const : PLATE_TYPE) {
 			bot.registerInlineQuery(RegExp(`^ ?\\/?${version} ?${type} ?(进度)?$`), async (event) => {
-				const ctx = getContext(event.fromId);
+				const ctx = getContext(event);
 				const profile = await ctx.getCurrentProfile();
 				if (!profile) {
 					await event.answer()
@@ -51,12 +51,12 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 
 			bot.registerCommand('start', async (event) => {
 				if (event.params[0] !== XXH.h32(`${version}${type}`, 0xabcd).toString(16)) return false;
-				const ctx = getContext(event.fromId);
+				const ctx = getContext(event);
 				await sendProgressImage(ctx, event.fromId, event.isPrivate, version, type, true);
 			});
 
 			bot.registerKeyword(RegExp(`^\\/?${version} ?${type} ?进度$`), async (event) => {
-				const ctx = getContext(event.fromId);
+				const ctx = getContext(event);
 				const profile = await ctx.getCurrentProfile();
 				const profileVer = await profile.getVersion();
 				const requiredSongs = (await profile.plateSongs())[version].map(it => Song.fromId(it, profileVer));
@@ -67,7 +67,7 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 			});
 
 			bot.registerKeyword(RegExp(`^\\/?${version} ?${type} ?(完成|进度)[图表]$`), async (event) => {
-				const ctx = getContext(event.fromId);
+				const ctx = getContext(event);
 				await sendProgressImage(ctx, event.fromId, event.isPrivate, version, type);
 				return true;
 			});

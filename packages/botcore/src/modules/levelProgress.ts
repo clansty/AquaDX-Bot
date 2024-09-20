@@ -17,7 +17,7 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 
 	for (const level of LEVELS) {
 		bot.registerInlineQuery(RegExp(`^ ?\\/?${level} ?(进度)?(完成表)?$`), async (event) => {
-			const ctx = getContext(event.fromId);
+			const ctx = getContext(event);
 			const profile = await ctx.getCurrentProfile();
 			if (!profile) {
 				await event.answer()
@@ -45,13 +45,13 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 
 		bot.registerCommand('start', async (event) => {
 			if (event.params[0] !== level) return false;
-			const ctx = getContext(event.fromId);
+			const ctx = getContext(event);
 			await sendProgressImage(ctx, event.fromId, event.isPrivate, level, true);
 			return true;
 		});
 
 		bot.registerKeyword(RegExp(`^\\/?${level.replace('+', '\\+')} ?(进度|完成[图表])$`), async (event) => {
-			const ctx = getContext(event.fromId);
+			const ctx = getContext(event);
 			await sendProgressImage(ctx, event.fromId, event.isPrivate, level, true);
 			return true;
 		});

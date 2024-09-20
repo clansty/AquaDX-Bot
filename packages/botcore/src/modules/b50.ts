@@ -16,18 +16,18 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 	};
 
 	bot.registerCommand('b50', async (event) => {
-		await sendB50Image(getContext(event.fromId), event.fromId, event.isPrivate);
+		await sendB50Image(getContext(event), event.fromId, event.isPrivate);
 		return true;
 	});
 
 	bot.registerCommand('start', async (event) => {
 		if (event.params[0] !== 'b50') return false;
-		await sendB50Image(getContext(event.fromId), event.fromId, event.isPrivate);
+		await sendB50Image(getContext(event), event.fromId, event.isPrivate);
 		return true;
 	});
 
 	bot.registerInlineQuery(/^b50$/i, async (event) => {
-		const ctx = getContext(event.fromId);
+		const ctx = getContext(event);
 		const profile = await ctx.getCurrentProfile();
 		const rating = await profile.getNameplate();
 

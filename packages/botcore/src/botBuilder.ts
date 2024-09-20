@@ -1,4 +1,4 @@
-import { Bot, BotTypes } from '@clansty/maibot-firm';
+import { Bot, BotTypes, EventBase } from '@clansty/maibot-firm';
 import { BotEnv } from '@clansty/maibot-types';
 import UserContext from './UserContext';
 import callbackQuery from './modules/callbackQuery';
@@ -19,16 +19,16 @@ interface BuilderEnvBase<T extends BotTypes> {
 }
 
 export interface BuilderEnv<T extends BotTypes> extends BuilderEnvBase<T> {
-	getContext: (fromId: T['ChatId']) => UserContext<T>,
+	getContext: (e: EventBase<T>) => UserContext<T>,
 }
 
 export const buildBot = <T extends BotTypes>(env: BuilderEnvBase<T>) => {
 	const passEnv = {
 		...env,
-		getContext: (fromId: T['ChatId']) => new UserContext(
+		getContext: (event: EventBase<T>) => new UserContext(
 			env.env,
-			fromId,
-			() => env.bot.constructMessage(fromId),
+			event.fromId,
+			() => env.bot.constructMessage('chatId' in event ? event.chatId as any : event.fromId),
 			env.genImage
 		)
 	} satisfies BuilderEnv<T>;

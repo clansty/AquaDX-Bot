@@ -18,7 +18,7 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 
 	bot.registerCommand('start', async (event) => {
 		if (event.params[0] !== 'bind') return false;
-		const ctx = getContext(event.fromId);
+		const ctx = getContext(event);
 		await handleQueryBind(ctx, event.reply());
 		return true;
 	});
@@ -31,7 +31,7 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 			return true;
 		}
 
-		const ctx = getContext(event.fromId);
+		const ctx = getContext(event);
 		const profiles = await ctx.getProfiles();
 
 		if (event.params.length < 1) {
@@ -105,7 +105,7 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 	};
 
 	bot.registerCommand(['profile', 'profiles'], async (event) => {
-		const ctx = getContext(event.fromId);
+		const ctx = getContext(event);
 		const profiles = await ctx.getProfiles();
 		if (!profiles.length) {
 			await event.reply()
@@ -148,7 +148,7 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 
 	bot.registerCallbackQuery(/^select_profile:(\d+)$/, async (event) => {
 		const index = Number(event.match[1]);
-		const ctx = getContext(event.fromId);
+		const ctx = getContext(event);
 		await ctx.selectProfile(index);
 		await event.answer().withNotify('切换成功').dispatch();
 		await event.editMessage()
@@ -160,7 +160,7 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 	});
 
 	bot.registerCommand(['delprofile', 'delprofiles', 'rmprofile', 'rmprofiles'], async (event) => {
-		const ctx = getContext(event.fromId);
+		const ctx = getContext(event);
 		const profiles = await ctx.getProfiles();
 		if (!profiles.length) {
 			await event.reply()
@@ -201,7 +201,7 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 	});
 
 	bot.registerCallbackQuery(/^del_profile:(\d+)$/, async (event) => {
-		const ctx = getContext(event.fromId);
+		const ctx = getContext(event);
 		const index = Number(event.match[1]);
 		await ctx.delProfile(index);
 		await event.answer().withNotify('删除成功').dispatch();

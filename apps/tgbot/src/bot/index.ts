@@ -44,7 +44,7 @@ export const createBot = (env: Env) => {
 
 			return {
 				height: Number(req.headers.get('height')),
-				data: new InputFile(Buffer.from(await req.arrayBuffer()), 'image.png')
+				data: new InputFile(Buffer.from(await req.arrayBuffer()), 'image.jpg')
 			};
 		}
 	});
