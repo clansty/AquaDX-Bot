@@ -24,6 +24,7 @@ export const createBot = (env: Env) => {
 	const internalBot = new BotAdapter(bot);
 	buildBot({
 		bot: internalBot,
+		enableOfficialServers: true,
 		env: {
 			...env,
 			KV: new CloudflareKvAdapter(env.KV)

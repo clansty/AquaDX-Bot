@@ -1,6 +1,7 @@
 import Song from './models/Song';
 import { Sheet } from '@gekichumai/dxdata';
 import { BA_VE, PLATE_VER } from './consts';
+import { KVStorage } from './KVStorage';
 
 export type UserMusic = {
 	'musicId': number,

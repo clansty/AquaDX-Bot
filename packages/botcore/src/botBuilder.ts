@@ -16,6 +16,7 @@ interface BuilderEnvBase<T extends BotTypes> {
 	env: BotEnv,
 	genImage: (url: string, width: number) => Promise<{ data: T['SendableFile'], height: number }>,
 	musicToFile: Record<string | number, string>,
+	enableOfficialServers: boolean,
 }
 
 export interface BuilderEnv<T extends BotTypes> extends BuilderEnvBase<T> {

@@ -4,7 +4,7 @@ import { BotTypes, MessageButtonCallback, SendMessageAction } from '@clansty/mai
 import { BuilderEnv } from '../botBuilder';
 import UserContext from '../UserContext';
 
-export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: BuilderEnv<T>) => {
+export default <T extends BotTypes>({ bot, env, getContext, musicToFile, enableOfficialServers }: BuilderEnv<T>) => {
 	const handleQueryBind = async (ctx: UserContext<T>, reply: SendMessageAction<T>) => {
 		const profiles = await ctx.getProfiles();
 		let bond = '';
@@ -12,7 +12,7 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 			bond += `\n\n现在已经绑定 ${profiles.length} 个账号\n使用 /profile 命令来查看已经绑定的账号\n使用 /delprofile 命令可以删除已经绑定的账号`;
 		}
 		await reply
-			.setHtml('用法: /bind <code>AquaDX 的用户名</code> 或 <code>国服微信二维码识别出来的文字</code> 或 <code>AIME 卡背后的 20 位数字（国际服）</code>' + bond)
+			.setHtml('用法: /bind <code>AquaDX 的用户名</code>' + (enableOfficialServers ? ' 或 <code>国服微信二维码识别出来的文字</code> 或 <code>AIME 卡背后的 20 位数字（国际服）</code>' : '') + bond)
 			.dispatch();
 	};
 
@@ -42,7 +42,7 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 		const param = event.params.join('');
 		let profile: UserProfile;
 
-		if (/^\d{20}$/.test(param)) { // is AIME
+		if (/^\d{20}$/.test(param) && enableOfficialServers) { // is AIME
 			const client = SdgaProxied.create(env.CF_ACCESS_CLIENT_ID, env.CF_ACCESS_CLIENT_SECRET);
 			try {
 				const { userId, authKey } = await client.resolveAime(param);
@@ -58,7 +58,7 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 				.setText('现在请使用有户名绑定 AquaDX 的账号')
 				.dispatch();
 			// profile = await UserProfile.create({ type: 'AquaDX', userId: Number(param) }, env);
-		} else if (param.startsWith('SGWCMAI' + 'D') && param.length === 64 + 8 + 12) {
+		} else if (param.startsWith('SGWCMAI' + 'D') && param.length === 64 + 8 + 12 && enableOfficialServers) {
 			const client = SdgbProxied.create(env.CF_ACCESS_CLIENT_ID, env.CF_ACCESS_CLIENT_SECRET);
 			try {
 				const userId = await client.resolveChime(param);

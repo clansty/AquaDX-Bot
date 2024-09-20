@@ -34,7 +34,8 @@ const bot = new BotAdapter(env.BOT_WS_URL);
 buildBot({
 	bot, env,
 	musicToFile: {},
-	genImage: renderer.renderHtml.bind(renderer)
+	genImage: renderer.renderHtml.bind(renderer),
+	enableOfficialServers: false
 });
 
 logger.log('初始化完成');
