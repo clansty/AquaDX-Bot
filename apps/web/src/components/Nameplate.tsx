@@ -35,7 +35,7 @@ export default ({ user }: { user: Nameplate }) => {
 				<img src={course(user.courseRank)} className="shrink-0 h-1.7em" />
 			</div>
 			<div className="p-t-.15em text-.9em">
-				<Title name={title.name.toString()} rare={title.rare} />
+				<Title name={title?.name.toString() ?? '???'} rare={title?.rare ?? 'Normal'} />
 			</div>
 		</div>
 	</div>;

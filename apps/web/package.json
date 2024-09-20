@@ -10,7 +10,8 @@
     "lint": "next lint",
     "pages:build": "pnpm next-on-pages",
     "preview": "pnpm pages:build && wrangler pages dev --ip 0.0.0.0",
-    "deploy": "pnpm pages:build && wrangler pages deploy"
+    "deploy": "pnpm pages:build && wrangler pages deploy",
+    "tail": "pnpm wrangler pages deployment tail --project-name maibot-web"
   },
   "dependencies": {
     "@clansty/maibot-clients": "workspace:^",
