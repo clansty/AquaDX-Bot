@@ -19,7 +19,7 @@
     "@clansty/maibot-core": "workspace:^",
     "@clansty/maibot-firm": "workspace:^",
     "@clansty/maibot-types": "workspace:^",
-    "@guiiai/logg": "^1.0.3",
+    "@guiiai/logg": "^1.0.5",
     "@types/level-ttl": "^3.1.5",
     "@types/node": "^22.4.0",
     "esbuild": "^0.23.1",
