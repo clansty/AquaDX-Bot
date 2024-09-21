@@ -1,7 +1,7 @@
 import B50 from '@/app/b50/components/B50';
 import getAquaDxUser from '@/utils/getAquaDxUser';
 
-// export const runtime = 'edge';
+export const runtime = 'edge';
 
 export default async ({ params }: { params: { username: string } }) => {
 	const profile = await getAquaDxUser(params.username);
