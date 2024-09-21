@@ -23,7 +23,7 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 		}
 		const results = Song.search(event.data.trim().toLowerCase());
 		const answer = event.answer()
-			.withCacheTime(3600);
+			.withCacheTime(60);
 		await Promise.all(results.map(async song =>
 			musicToFile[song.id] ?
 				answer.addAudioResult(`search:${song.dxId?.toString()}` || song.title, musicToFile[song.id])

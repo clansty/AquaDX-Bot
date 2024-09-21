@@ -163,6 +163,8 @@ export default class Song implements DataSong {
 			}
 		}
 		for (const [id, data] of Object.entries(ALL_MUSIC)) {
+			// 移除自制谱
+			if (Number(id) % 1e4 > 2e3) continue;
 			if (data.name?.toLowerCase().includes(kw)) {
 				results.push(this.fromId(Number(id), ver));
 			}
