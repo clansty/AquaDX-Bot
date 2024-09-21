@@ -90,22 +90,33 @@ export default class Song implements DataSong {
 			if (reg.jp) toAdd += '🇯🇵';
 			if (reg.intl) toAdd += '🌍';
 			if (toAdd) {
-				return `可玩区域:\t${toAdd}`;
+				return `\n可玩区域:\t${toAdd}`;
 			}
-			return '🗑 删除曲';
+			if (this.id < 2000) {
+				return '\n🗑 删除曲';
+			}
+			return '';
 		};
 
 		const std = this.sheets.find(it => it.type === TypeEnum.STD);
 		const dx = this.sheets.find(it => it.type === TypeEnum.DX);
 
 		if (std) {
-			message += `\n\n标准谱面\n添加版本:\t${std.version}\n${regionDisplay(std.regions)}`;
+			message += `\n\n标准谱面`;
+			if (std.version) {
+				message += `\n添加版本:\t${std.version}`;
+			}
+			message += regionDisplay(std.regions);
 		}
 		for (const chart of this.sheets.filter(it => it.type === TypeEnum.STD)) {
 			message += '\n' + chart.displayInline;
 		}
 		if (dx) {
-			message += `\n\nDX 谱面\n添加版本:\t${dx.version}\n${regionDisplay(dx.regions)}`;
+			message += `\n\nDX 谱面`;
+			if (dx.version) {
+				message += `\n添加版本:\t${dx.version}`;
+			}
+			message += regionDisplay(dx.regions);
 		}
 		for (const chart of this.sheets.filter(it => it.type === TypeEnum.DX)) {
 			message += '\n' + chart.displayInline;
@@ -125,6 +136,25 @@ export default class Song implements DataSong {
 
 		song = dxdata.songs.find(song => song.title.toLowerCase() === dataFromAllMusic.name.toLowerCase());
 		if (song) return new this(song, dx, false, ver);
+
+		const sheets = dataFromAllMusic.notes.map((chart, index) => new Chart({
+			difficulty: LEVEL_EN[index],
+			internalId: dx ? id + 1e4 : id,
+			type: dx ? TypeEnum.DX : TypeEnum.STD,
+			level: undefined,
+			regions: { cn: false, intl: false, jp: false },
+			version: undefined,
+			noteCounts: undefined,
+			noteDesigner: '',
+			internalLevelValue: chart?.lv,
+			isSpecial: undefined
+		}, dataFromAllMusic, dx ? id + 1e4 : id));
+
+		for (let i = sheets.length - 1; i > -1; i--) {
+			if (!sheets[i].internalLevelValue) sheets.pop();
+			else break;
+		}
+
 		return new this({
 			title: dataFromAllMusic.name,
 			artist: dataFromAllMusic.composer,
@@ -135,18 +165,7 @@ export default class Song implements DataSong {
 			isLocked: false,
 			searchAcronyms: [],
 			songId: undefined,
-			sheets: dataFromAllMusic.notes.filter(it => it.lv).map((chart, index) => new Chart({
-				difficulty: LEVEL_EN[index],
-				internalId: dx ? id + 1e4 : id,
-				type: dx ? TypeEnum.DX : TypeEnum.STD,
-				level: undefined,
-				regions: { cn: false, intl: false, jp: false },
-				version: undefined,
-				noteCounts: undefined,
-				noteDesigner: '',
-				internalLevelValue: chart.lv,
-				isSpecial: undefined
-			}, dataFromAllMusic, dx ? id + 1e4 : id))
+			sheets
 		}, dx, true, ver);
 	}
 
