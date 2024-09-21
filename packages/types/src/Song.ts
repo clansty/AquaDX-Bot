@@ -39,7 +39,7 @@ export default class Song implements DataSong {
 			this.id %= 1e4;
 		} else {
 			// DXRating.net 中一些歌，比如说 LOSER 和俊达萌起床歌，没有 ID
-			const findId = Object.entries(allMusic).find(([id, dataFromAllMusic]) => dataFromAllMusic.name?.toLowerCase() === data.title.toLowerCase());
+			const findId = Object.entries(allMusic).find(([id, dataFromAllMusic]) => dataFromAllMusic.name?.toLowerCase() === data.title.toLowerCase() && Number(id) % 1e4 < 2e3);
 			if (findId) {
 				this.id = Number(findId[0]) % 1e4;
 				// console.log('修复了 ID 丢失', data.title, this.id);
