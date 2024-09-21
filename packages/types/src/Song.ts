@@ -1,9 +1,10 @@
 import { CategoryEnum, DifficultyEnum, dxdata, Regions, Song as DataSong, TypeEnum } from '@gekichumai/dxdata';
 import Chart from './Chart';
 import _ from 'lodash';
-import { ALL_MUSIC, ALL_MUSIC_140 } from '@clansty/maibot-data';
+import { ALL_MUSIC, ALL_MUSIC_140, JACKET_EXIST_IDS } from '@clansty/maibot-data';
 import { LEVEL, LEVEL_EN } from './consts';
 import { MaiVersion } from './types';
+import { ASSET_TYPE, getAssetUrl } from '@clansty/maibot-utils/src/getAssetUrl';
 
 export default class Song implements DataSong {
 	songId: never;
@@ -64,6 +65,15 @@ export default class Song implements DataSong {
 	}
 
 	public get coverUrl() {
+		if (JACKET_EXIST_IDS.includes(this.id))
+			return getAssetUrl(ASSET_TYPE.JacketPng, this.id);
+		if (this.imageName)
+			return 'https://shama.dxrating.net/images/cover/v2/' + this.imageName;
+	}
+
+	public get coverAvif() {
+		if (JACKET_EXIST_IDS.includes(this.id))
+			return getAssetUrl(ASSET_TYPE.Jacket, this.id);
 		if (this.imageName)
 			return 'https://shama.dxrating.net/images/cover/v2/' + this.imageName;
 	}

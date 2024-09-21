@@ -1,5 +1,6 @@
 import { DifficultyEnum, VersionEnum } from '@gekichumai/dxdata';
 import { GameVariantPlateMusicList } from './types';
+import { ASSET_TYPE, getAssetUrl } from '@clansty/maibot-utils/src/getAssetUrl';
 
 export const LEVEL = ['绿', '黄', '红', '紫', '白'] as const;
 export const LEVEL_COLOR = ['rgb(34, 187, 91)', 'rgb(251, 156, 45)', 'rgb(246, 72, 97)', 'rgb(158, 69, 226)',
@@ -136,16 +137,15 @@ const LEVEL_CONST_TABLES_PROD = {
 	'14+': 'AgACAgUAAxkBAAIJFWZd-6OV_3ZnsSMRttAC5odBJCSFAAKyujEbBXPxVhurt-a0aMWVAQADAgADdwADNQQ',
 	'15': 'AgACAgUAAxkBAAII-2Zd-X1Day_Q0x1pYtuhZMXjrYc-AAKzujEbBXPxVktJKSiFJidsAQADAgADdwADNQQ'
 } as Record<typeof LEVELS[number], string>;
-export const LEVEL_CONST_TABLES = process.env.NODE_ENV === 'development' ? LEVEL_CONST_TABLES_DEV : LEVEL_CONST_TABLES_PROD;
 export const IMG_STD = 'https://shama.dxrating.net/images/type_sd.png';
 export const IMG_DX = 'https://shama.dxrating.net/images/type_dx.png';
 export const IMG_SONG_MISSING = 'https://cdn.0w.al/maimai-error.webp';
 export const IMG_MOON_CAKE = [
 	undefined,
-	'https://cdn.0w.al/UI_RSL_FC_Text_01.png',
-	'https://cdn.0w.al/UI_RSL_FCp_Text_01.png',
-	'https://cdn.0w.al/UI_RSL_AP_Text_01.png',
-	'https://cdn.0w.al/UI_RSL_APp_Text_01.png'
+	getAssetUrl(ASSET_TYPE.Base, 'UI_RSL_FC_Text_01'),
+	getAssetUrl(ASSET_TYPE.Base, 'UI_RSL_FCp_Text_01'),
+	getAssetUrl(ASSET_TYPE.Base, 'UI_RSL_AP_Text_01'),
+	getAssetUrl(ASSET_TYPE.Base, 'UI_RSL_APp_Text_01')
 ];
 export const VER_MUSIC_LIST = {
 	maimai: [
@@ -654,10 +654,10 @@ export const PLATE_MUSIC_LIST_CN: GameVariantPlateMusicList = {
 PLATE_MUSIC_LIST_CN['霸者'] = PLATE_MUSIC_LIST_CN['舞'];
 export const PLATE_MUSIC_LIST_145: GameVariantPlateMusicList = {
 	'真': [
-		8,   9,  17,  18,  22,  23,  24,  25,  27,  30,  31,  35,
-		38,  40,  42,  46,  47,  53,  56,  58,  61,  62,  63,  64,
-		65,  66,  67,  68,  69,  71,  73,  75,  76,  77,  78,  79,
-		80,  81,  82,  83,  84,  85, 100, 101, 102, 106, 107, 108,
+		8, 9, 17, 18, 22, 23, 24, 25, 27, 30, 31, 35,
+		38, 40, 42, 46, 47, 53, 56, 58, 61, 62, 63, 64,
+		65, 66, 67, 68, 69, 71, 73, 75, 76, 77, 78, 79,
+		80, 81, 82, 83, 84, 85, 100, 101, 102, 106, 107, 108,
 		109, 110, 111, 112, 113, 114, 116, 117, 118, 119, 120, 121,
 		122, 128, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139,
 		140, 141, 142, 143, 144, 145, 147, 152, 153, 154, 155, 157,
@@ -753,10 +753,10 @@ export const PLATE_MUSIC_LIST_145: GameVariantPlateMusicList = {
 		840, 841, 842, 844, 848, 849, 850, 852
 	],
 	'舞': [
-		8,   9,  17,  18,  22,  23,  24,  25,  27,  30,  31,  35,
-		38,  40,  42,  46,  47,  53,  56,  58,  61,  62,  63,  64,
-		65,  66,  67,  68,  69,  70,  71,  73,  75,  76,  77,  78,
-		79,  80,  81,  82,  83,  84,  85, 100, 101, 102, 106, 107,
+		8, 9, 17, 18, 22, 23, 24, 25, 27, 30, 31, 35,
+		38, 40, 42, 46, 47, 53, 56, 58, 61, 62, 63, 64,
+		65, 66, 67, 68, 69, 70, 71, 73, 75, 76, 77, 78,
+		79, 80, 81, 82, 83, 84, 85, 100, 101, 102, 106, 107,
 		108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119,
 		120, 121, 122, 128, 130, 131, 132, 133, 134, 135, 136, 137,
 		138, 139, 140, 141, 142, 143, 144, 145, 147, 152, 153, 154,
@@ -850,7 +850,7 @@ export const PLATE_MUSIC_LIST_145: GameVariantPlateMusicList = {
 		11291, 11292, 11293, 11294
 	],
 	'宙': [
-		1020,  1051, 10552, 10602, 11295, 11296, 11297,
+		1020, 1051, 10552, 10602, 11295, 11296, 11297,
 		11298, 11299, 11300, 11301, 11302, 11303, 11304,
 		11305, 11306, 11307, 11308, 11309, 11310, 11311,
 		11312, 11313, 11314, 11315, 11316, 11317, 11318,
@@ -863,7 +863,7 @@ export const PLATE_MUSIC_LIST_145: GameVariantPlateMusicList = {
 		11390
 	],
 	'星': [
-		11348,  1081,  1085, 10145, 10193, 10202, 11346,
+		11348, 1081, 1085, 10145, 10193, 10202, 11346,
 		11375, 11376, 11377, 11378, 11379, 11380, 11381,
 		11382, 11383, 11384, 11385, 11386, 11387, 11388,
 		11389, 11391, 11392, 11393, 11394, 11395, 11398,
@@ -914,6 +914,6 @@ export const PLATE_MUSIC_LIST_145: GameVariantPlateMusicList = {
 		11662, 11663, 11664, 11668
 	],
 	'全曲': [],
-	'霸者': [],
-}
+	'霸者': []
+};
 PLATE_MUSIC_LIST_145['霸者'] = PLATE_MUSIC_LIST_145['舞'];

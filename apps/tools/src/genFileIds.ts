@@ -1,8 +1,8 @@
 import * as fs from 'node:fs';
 import { ALL_MUSIC } from '@clansty/maibot-data';
 import stripAnsi from 'strip-ansi';
-import prodIds from '@clansty/maibot-data/src/fileIds-prod.json';
-import devIds from '@clansty/maibot-data/src/fileIds-dev.json';
+import prodIds from '@clansty/maibot-workers/src/bot/fileIds-prod.json';
+import devIds from '@clansty/maibot-workers/src/bot/fileIds-dev.json';
 
 function parseJsonObjects(content: string): any[] {
 	const lines: string[] = content.split('\n');

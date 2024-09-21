@@ -1,17 +1,18 @@
-import { Nameplate, UserData } from '@clansty/maibot-types';
+import { Nameplate } from '@clansty/maibot-types';
 import React from 'react';
 import DxRating from '@/components/DxRating';
 import { Kosugi_Maru } from 'next/font/google';
 import titles from '../data/titles.json';
 import Title from '@/components/Title';
+import { ASSET_TYPE, getAssetUrl } from '@clansty/maibot-utils/src/getAssetUrl';
 
 const pad = (id: number) => id.toString().padStart(6, '0');
 const pad2 = (id: number) => id.toString().padStart(2, '0');
-const icon = (id: number) => `https://maimai-assets.pages.dev/UI_Icon_${pad(id)}.avif`;
-const frame = (id: number) => `https://maimai-assets.pages.dev/UI_Frame_${pad(id)}.avif`;
-const plate = (id: number) => `https://maimai-assets.pages.dev/UI_Plate_${pad(id)}.avif`;
-const classRank = (id: number) => `https://maimai-assets.pages.dev/UI_FBR_Class_${pad2(id)}.avif`;
-const course = (id: number) => `https://maimai-assets.pages.dev/UI_DNM_DaniPlate_${pad2(id)}.avif`;
+const icon = (id: number) => getAssetUrl(ASSET_TYPE.Icon, id);
+const frame = (id: number) => getAssetUrl(ASSET_TYPE.Frame, id);
+const plate = (id: number) => getAssetUrl(ASSET_TYPE.Plate, id);
+const classRank = (id: number) => getAssetUrl(ASSET_TYPE.Base, `UI_FBR_Class_${pad2(id)}`);
+const course = (id: number) => getAssetUrl(ASSET_TYPE.Base, `UI_DNM_DaniPlate_${pad2(id)}`);
 
 const kosugiMaru = Kosugi_Maru({ subsets: ['latin'], weight: '400' });
 

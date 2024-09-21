@@ -41,13 +41,6 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     && apt-get install -y google-chrome-stable \
       --no-install-recommends
 
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store,sharing=locked \
-    --mount=type=secret,id=npmrc,target=/root/.npmrc \
-    pnpx puppeteer browsers install
-
 WORKDIR /app
 COPY --from=build /app/deploy /app
 

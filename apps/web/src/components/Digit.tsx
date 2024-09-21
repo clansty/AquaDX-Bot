@@ -1,12 +1,13 @@
 import React from 'react';
+import { ASSET_TYPE, getAssetUrl } from '@clansty/maibot-utils/src/getAssetUrl';
 
-const IMG_BLUE = 'https://cdn.0w.al/UI_Num_Score_1110000_Blue.png';
-const IMG_GOLD = 'https://cdn.0w.al/UI_Num_Score_1110000_Gold.png';
-const IMG_Red = 'https://cdn.0w.al/UI_Num_Score_1110000_Red.png';
+const IMG_BLUE = getAssetUrl(ASSET_TYPE.Base, 'UI_Num_Score_1110000_Blue');
+const IMG_GOLD = getAssetUrl(ASSET_TYPE.Base, 'UI_Num_Score_1110000_Gold');
+const IMG_Red = getAssetUrl(ASSET_TYPE.Base, 'UI_Num_Score_1110000_Red');
 
-const IMG_PERCENT_BLUE = 'https://cdn.0w.al/UI_RSL_Score_Per_Blue.png';
-const IMG_PERCENT_GOLD = 'https://cdn.0w.al/UI_RSL_Score_Per_Gold.png';
-const IMG_PERCENT_RED = 'https://cdn.0w.al/UI_RSL_Score_Per_Red.png';
+const IMG_PERCENT_BLUE = getAssetUrl(ASSET_TYPE.Base, 'UI_RSL_Score_Per_Blue');
+const IMG_PERCENT_GOLD = getAssetUrl(ASSET_TYPE.Base, 'UI_RSL_Score_Per_Gold');
+const IMG_PERCENT_RED = getAssetUrl(ASSET_TYPE.Base, 'UI_RSL_Score_Per_Red');
 
 const IMG_H = 472;
 const IMG_W = 344;

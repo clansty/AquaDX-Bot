@@ -4,10 +4,12 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "genFileIds": "tsx src/genFileIds.ts"
+    "genFileIds": "tsx src/genFileIds.ts",
+    "update-allmusic-web": "scp all-music.json daisy:/etc/nginx/aqua-data/mai2/00"
   },
   "devDependencies": {
     "@clansty/maibot-data": "workspace:^",
+    "@clansty/maibot-workers": "workspace:^",
     "@clansty/maibot-types": "workspace:^",
     "@types/node": "^22.5.5",
     "fast-xml-parser": "^4.4.1",

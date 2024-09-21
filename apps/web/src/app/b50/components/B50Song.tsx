@@ -30,7 +30,7 @@ const Component = ({ entry, score, song }: { entry: RatingListEntry, score: User
 			width: SIZE, height: SIZE, borderRightStyle: 'solid', borderRightWidth: BORDER_SIZE, boxSizing: 'content-box',
 			borderRightColor: LEVEL_COLOR[entry.level], backgroundColor: 'rgba(255, 255, 255, 0.85)'
 		}}>
-			<img src={song?.coverUrl || IMG_SONG_MISSING} alt="" width={SIZE} height={SIZE} style={{ objectFit: 'cover' }} />
+			<img src={song?.coverAvif || IMG_SONG_MISSING} alt="" width={SIZE} height={SIZE} style={{ objectFit: 'cover' }} />
 		</div>
 		<div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1, boxSizing: 'border-box' }}>
 			<div style={{

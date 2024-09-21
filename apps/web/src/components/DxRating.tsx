@@ -1,4 +1,5 @@
 import React from 'react';
+import { ASSET_TYPE, getAssetUrl } from '@clansty/maibot-utils/src/getAssetUrl';
 
 const getDxRatingPlateImage = (rating: number): string => {
 	let id = '';
@@ -13,7 +14,7 @@ const getDxRatingPlateImage = (rating: number): string => {
 		}
 	}
 
-	return `https://cdn.0w.al/UI_CMN_DXRating_${id}.png`;
+	return getAssetUrl(ASSET_TYPE.Base, `UI_CMN_DXRating_${id}`);
 };
 
 export default ({ score }: { score: number }) => {

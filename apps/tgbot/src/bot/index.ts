@@ -7,6 +7,7 @@ import { BotAdapter } from '../adapter/Bot';
 import fileIdsDev from './fileIds-dev.json';
 import fileIdsProd from './fileIds-prod.json';
 import { CloudflareKvAdapter } from '@clansty/maibot-types';
+import setMyCommands from './setMyCommands';
 
 const TG_MUSIC_IDS = (process.env.NODE_ENV === 'development' ? fileIdsDev : fileIdsProd) as Record<string | number, string>;
 
@@ -49,6 +50,8 @@ export const createBot = (env: Env) => {
 			};
 		}
 	});
+
+	setMyCommands(bot, env);
 
 	bot.catch(async ({ ctx, error }) => {
 		console.error('Error caught in bot.catch', error);
