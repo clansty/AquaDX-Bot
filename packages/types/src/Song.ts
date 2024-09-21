@@ -70,7 +70,7 @@ export default class Song implements DataSong {
 	public get basicInfo() {
 		let message = this.title + '\n\n' +
 			`作曲:\t${this.artist}\n` +
-			`BPM:\t${this.bpm}\n` +
+			(this.bpm ? `BPM:\t${this.bpm}\n` : '') +
 			`分类:\t${this.category}`;
 
 		if (this.id) {

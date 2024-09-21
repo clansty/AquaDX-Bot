@@ -55,7 +55,7 @@ export default class Chart implements Sheet {
 				trend = values[0] > values[values.length - 1] ? ' 📉' : ' 📈';
 		}
 
-		return `${LEVEL_EMOJI[LEVEL_EN.indexOf(this.difficulty)]} ${this.internalLevelValue.toFixed(1)}${trend} ${this.noteDesigner}`;
+		return `${LEVEL_EMOJI[LEVEL_EN.indexOf(this.difficulty)]} ${this.internalLevelValue.toFixed(1)}${trend} ${this.noteDesigner || ''}`;
 	}
 
 	get display() {
