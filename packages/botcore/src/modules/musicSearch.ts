@@ -24,16 +24,22 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 		const results = Song.search(event.data.trim().toLowerCase());
 		const answer = event.answer()
 			.withCacheTime(60);
-		await Promise.all(results.map(async song =>
-			musicToFile[song.id] ?
-				answer.addAudioResult(`search:${song.dxId?.toString()}` || song.title, musicToFile[song.id])
-					.setText(song.display)
-					.setButtons((await genSongInfoButtonsWithCachedLyrics(song)).buttons)
-				:
-				answer.addPhotoResult(`search:${song.dxId?.toString()}` || song.title, song.coverUrl)
-					.setTitle(song.title)
-					.setText(song.display)
-					.setButtons((await genSongInfoButtonsWithCachedLyrics(song)).buttons)
+		await Promise.all(results.map(async song => {
+				if (musicToFile[song.id]) {
+					answer.addAudioResult(`search:${song.dxId?.toString()}` || song.title, musicToFile[song.id])
+						.setText(song.display)
+						.setButtons((await genSongInfoButtonsWithCachedLyrics(song)).buttons);
+				} else if (song.coverUrl) {
+					answer.addPhotoResult(`search:${song.dxId?.toString()}` || song.title, song.coverUrl)
+						.setTitle(song.title)
+						.setText(song.display)
+						.setButtons((await genSongInfoButtonsWithCachedLyrics(song)).buttons);
+				} else {
+					answer.addTextResult(`search:${song.dxId?.toString()}` || song.title, song.title)
+						.setText(song.display)
+						.setButtons((await genSongInfoButtonsWithCachedLyrics(song)).buttons);
+				}
+			}
 		));
 		await answer.dispatch();
 	});
@@ -66,7 +72,7 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 		const { buttons, lyrics } = await genSongInfoButtonsWithCachedLyrics(song);
 		if (musicToFile[song.id]) {
 			req.addAudio(musicToFile[song.id]);
-		} else {
+		} else if (song.coverUrl) {
 			req.addPhoto(song.coverUrl);
 		}
 		const message = await req.setText(song.display).setButtons(buttons).dispatch();

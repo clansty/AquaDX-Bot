@@ -64,7 +64,8 @@ export default class Song implements DataSong {
 	}
 
 	public get coverUrl() {
-		return 'https://shama.dxrating.net/images/cover/v2/' + this.imageName;
+		if (this.imageName)
+			return 'https://shama.dxrating.net/images/cover/v2/' + this.imageName;
 	}
 
 	public get basicInfo() {
