@@ -25,4 +25,4 @@ for (const dir of await fsP.readdir(path.join(process.argv[2], 'title'))) {
 	}
 }
 
-await fsP.writeFile('./titles.json', JSON.stringify(original, null, 2));
+await fsP.writeFile('./titles.json', JSON.stringify(original, null, '\t'));
