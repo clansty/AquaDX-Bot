@@ -5,7 +5,16 @@ import { CommandEvent, KeywordEvent } from './MessageEvent';
 import { NoReportError } from '@clansty/maibot-core';
 import { Bot as BotClient, GroupMessageEvent, MessageElem, PrivateMessageEvent, TextElem } from 'qq-official-bot';
 
-export interface BotTypes extends BotTypesBase<{ isPrivate: boolean, id: string }, string, string, never> {
+export class ChatId {
+	constructor(public readonly isPrivate: boolean, public readonly id: string) {
+	}
+
+	public toString(): string {
+		return this.id;
+	}
+}
+
+export interface BotTypes extends BotTypesBase<ChatId, string, string, never> {
 }
 
 export class BotAdapter extends Bot<BotTypes> {
