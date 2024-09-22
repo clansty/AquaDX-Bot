@@ -24,13 +24,6 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile, enableO
 	});
 
 	bot.registerCommand('bind', async (event) => {
-		if (!event.isPrivate) {
-			await event.reply()
-				.setText('请在私聊中使用此命令')
-				.dispatch();
-			return true;
-		}
-
 		const ctx = getContext(event);
 		const profiles = await ctx.getProfiles();
 

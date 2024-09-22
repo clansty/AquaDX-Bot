@@ -3,7 +3,7 @@ import { CommandEventBase, KeywordEventBase } from './MessageEvent';
 import { CallbackQueryEventBase } from './CallbackQuery';
 import { InlineQueryEventBase, InlineQueryResultChosenEventBase } from './InlineQuery';
 
-export interface BotTypes<TChatId = string | number, TMessageId = unknown, TSendableFile = unknown, TInlineQueryAnswer = unknown> {
+export interface BotTypes<TChatId = unknown, TMessageId = unknown, TSendableFile = unknown, TInlineQueryAnswer = unknown> {
 	ChatId: TChatId;
 	MessageId: TMessageId;
 	SendableFile: TSendableFile;

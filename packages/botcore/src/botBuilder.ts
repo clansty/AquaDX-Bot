@@ -29,7 +29,7 @@ export const buildBot = <T extends BotTypes>(env: BuilderEnvBase<T>) => {
 		getContext: (event: EventBase<T>) => new UserContext(
 			env.env,
 			event.fromId,
-			() => env.bot.constructMessage('chatId' in event ? event.chatId as any : event.fromId),
+			() => 'reply' in event ? (event.reply as any)() : env.bot.constructMessage('chatId' in event ? event.chatId as any : event.fromId),
 			env.genImage
 		)
 	} satisfies BuilderEnv<T>;
