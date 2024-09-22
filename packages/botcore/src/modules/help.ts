@@ -29,8 +29,7 @@ ${enableOfficialServers ? `本 Bot 主要基于 AquaDX.Net 制作，同时支持
 输入 <b><code>难度</code>完成表</b> 来查询指定难度所有歌曲的完成情况，将生成图片发送，比如说 <b><code>13 完成表</code></b>
 使用 <b>/b50</b> 来生成 B50 成绩图
 
-本 Bot 使用的部分歌曲数据及信息来自 <a href="https://dxrating.net">DXRating.net</a>
-`;
+本 Bot 使用的部分歌曲数据及信息来自 <a href="https://dxrating.net">DXRating.net</a>`;
 
 	bot.registerInlineQuery(/^$/, async (event) => {
 		await event.answer()

@@ -56,11 +56,18 @@ export class BotAdapter extends Bot<BotTypes> {
 
 	private readonly ws: WebSocket;
 	private readonly logger = createLogg('BotAdapter').useGlobalConfig();
+	private selfId = 0;
 
 	public constructor(private readonly wsUrl: string) {
 		super();
 		this.ws = new WebSocket(wsUrl);
-		this.ws.onopen = () => this.logger.log('WS 连接成功');
+		this.ws.onopen = () => {
+			this.logger.log('WS 连接成功');
+			this.callApi('get_login_info').then((info) => {
+				this.selfId = info.user_id;
+				this.logger.withFields(info).log('获取到登录信息');
+			});
+		};
 		this.ws.onmessage = (e) => this.handleWebSocketMessage(e.data);
 	}
 
@@ -108,6 +115,10 @@ export class BotAdapter extends Bot<BotTypes> {
 	}
 
 	private async handleMessage(data: WSReceiveHandler['message']) {
+		const at = data.message.find(it => it.type === 'at');
+		// 忽略 @ 了别人的消息，防止和官方 bot 打架
+		if (at && at.data.qq.toString() !== this.selfId.toString()) return;
+
 		const text = data.message.find(it => it.type === 'text')?.data.text.trim();
 		if (!text) return;
 
