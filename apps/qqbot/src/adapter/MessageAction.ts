@@ -41,6 +41,15 @@ export class SendMessageAction extends SendMessageActionBase<BotTypes> {
 			};
 		}
 
+		if (this._replyToMessageId) {
+			params.message.push({
+				type: 'reply',
+				data: {
+					id: this._replyToMessageId.toString()
+				}
+			});
+		}
+
 		switch (this._fileType) {
 			case 'audio':
 				throw new Error('应该不会发这玩意');
@@ -52,7 +61,7 @@ export class SendMessageAction extends SendMessageActionBase<BotTypes> {
 					data: {
 						file: this._file,
 						name: '猫',
-						summary: '猫',
+						summary: '猫'
 					}
 				});
 				break;

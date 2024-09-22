@@ -154,7 +154,8 @@ export class SendMessageAction extends SendMessageActionBase<BotTypes> {
 			parse_mode: this._parseAsHtml ? 'HTML' as const : undefined,
 			reply_markup: {
 				inline_keyboard: inlineKeyboard
-			}
+			},
+			reply_parameters: this._replyToMessageId ? { message_id: this._replyToMessageId } : undefined
 		};
 
 		let message: Message;
