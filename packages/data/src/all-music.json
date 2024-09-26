@@ -29900,7 +29900,7 @@
 	},
 	"10225": {
 		"name": "sweet little sister",
-		"ver": "24501",
+		"ver": "24506",
 		"composer": "Silver Forest",
 		"genre": "東方Project",
 		"notes": [
@@ -29908,13 +29908,13 @@
 				"lv": 5
 			},
 			{
-				"lv": 7
+				"lv": 7.2
 			},
 			{
 				"lv": 10
 			},
 			{
-				"lv": 13.2
+				"lv": 13.4
 			}
 		]
 	},
@@ -43469,7 +43469,7 @@
 	},
 	"11678": {
 		"name": "RE:INCARNATED DRAGNER",
-		"ver": "24501",
+		"ver": "24507",
 		"composer": "黒沢ダイスケ × 小寺可南子",
 		"genre": "maimai",
 		"notes": [
@@ -43480,7 +43480,7 @@
 				"lv": 8
 			},
 			{
-				"lv": 11.6
+				"lv": 11.8
 			},
 			{
 				"lv": 13.8
@@ -43489,7 +43489,7 @@
 	},
 	"11679": {
 		"name": "Beginning together!",
-		"ver": "24501",
+		"ver": "24507",
 		"composer": "高瀬一矢 feat. R.I.N.A",
 		"genre": "maimai",
 		"notes": [
@@ -43500,16 +43500,16 @@
 				"lv": 7
 			},
 			{
-				"lv": 10.6
+				"lv": 10.7
 			},
 			{
-				"lv": 13.8
+				"lv": 13.7
 			}
 		]
 	},
 	"11680": {
 		"name": "Shining Ray ～僕らの絆～",
-		"ver": "24501",
+		"ver": "24507",
 		"composer": "伊藤和馬(Arte Refact) feat.konoco",
 		"genre": "maimai",
 		"notes": [
@@ -43517,19 +43517,19 @@
 				"lv": 5
 			},
 			{
-				"lv": 7
+				"lv": 7.2
 			},
 			{
-				"lv": 10
+				"lv": 10.5
 			},
 			{
-				"lv": 13.4
+				"lv": 13.3
 			}
 		]
 	},
 	"11681": {
 		"name": "DEVOTION",
-		"ver": "24501",
+		"ver": "24507",
 		"composer": "AJURIKA feat.SAK.",
 		"genre": "maimai",
 		"notes": [
@@ -43537,10 +43537,10 @@
 				"lv": 5
 			},
 			{
-				"lv": 7.6
+				"lv": 7.8
 			},
 			{
-				"lv": 11.6
+				"lv": 11.7
 			},
 			{
 				"lv": 14.3
@@ -44221,27 +44221,27 @@
 	},
 	"11717": {
 		"name": "LOSTPHANTASIA",
-		"ver": "24501",
-		"composer": "岸田教団 & THE明星ロケッツ",
+		"ver": "24506",
+		"composer": "岸田教団&THE明星ロケッツ",
 		"genre": "東方Project",
 		"notes": [
 			{
 				"lv": 2
 			},
 			{
-				"lv": 6
+				"lv": 6.5
 			},
 			{
-				"lv": 9.6
+				"lv": 9.8
 			},
 			{
-				"lv": 12.9
+				"lv": 12.7
 			}
 		]
 	},
 	"11718": {
 		"name": "Bad Apple!! feat.nomico (Tetsuya Komuro Remix)",
-		"ver": "24501",
+		"ver": "24506",
 		"composer": "Masayoshi Minoshima Remixed by 小室哲哉",
 		"genre": "東方Project",
 		"notes": [
@@ -44249,7 +44249,7 @@
 				"lv": 2
 			},
 			{
-				"lv": 6
+				"lv": 6.2
 			},
 			{
 				"lv": 9.8
@@ -44261,7 +44261,7 @@
 	},
 	"11720": {
 		"name": "Re:Unknown X",
-		"ver": "24501",
+		"ver": "24506",
 		"composer": "まらしぃ",
 		"genre": "東方Project",
 		"notes": [
@@ -44275,15 +44275,15 @@
 				"lv": 12.5
 			},
 			{
-				"lv": 14.7
+				"lv": 14.6
 			}
 		]
 	},
 	"11721": {
 		"name": "INFiNiTE ENERZY -Overdoze-",
-		"ver": "24501",
+		"ver": "24506",
 		"composer": "Reku Mochizuki",
-		"genre": "ゲーム＆バラエティ",
+		"genre": "ゲームバラエティ",
 		"notes": [
 			{
 				"lv": 5
@@ -44295,7 +44295,7 @@
 				"lv": 13
 			},
 			{
-				"lv": 14.3
+				"lv": 14
 			}
 		]
 	},
@@ -66394,6 +66394,28 @@
 		"notes": [
 			{
 				"lv": 13
+			}
+		]
+	},
+	"111437": {
+		"name": "[協]三妖精SAY YA!!!",
+		"ver": "24503",
+		"composer": "森羅万象",
+		"genre": "宴会場",
+		"notes": [
+			{
+				"lv": 13
+			}
+		]
+	},
+	"111488": {
+		"name": "[覚]スカーレット警察のゲットーパトロール24時",
+		"ver": "24503",
+		"composer": "七条レタスグループ",
+		"genre": "宴会場",
+		"notes": [
+			{
+				"lv": 12
 			}
 		]
 	},
