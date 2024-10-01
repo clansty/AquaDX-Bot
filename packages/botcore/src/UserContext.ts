@@ -117,7 +117,7 @@ export default class UserContext<T extends BotTypes> {
 			.addPhoto(data);
 		if (height / width > 2) {
 			messageToSent.filesAsDocument();
-		} else {
+		} else if (shareKw) {
 			inlineKeyboard.push([new MessageButtonSwitchInline('分享', shareKw)]);
 			isFromStart = false;
 		}
