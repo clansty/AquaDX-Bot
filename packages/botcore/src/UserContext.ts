@@ -2,7 +2,7 @@ import { UserProfile } from '@clansty/maibot-clients';
 import { Env, UserProfilesKVStorage } from '@clansty/maibot-types';
 import NoReportError from './utils/NoReportError';
 import XXH from 'xxhashjs';
-import { BotTypes, MessageButton, MessageButtonSwitchInline, SendMessageAction } from '@clansty/maibot-firm';
+import { BotTypes, MessageButton, MessageButtonSwitchInline, MessageButtonSwitchInlineOtherChat, SendMessageAction } from '@clansty/maibot-firm';
 
 export default class UserContext<T extends BotTypes> {
 	public constructor(
@@ -97,7 +97,7 @@ export default class UserContext<T extends BotTypes> {
 				.addPhoto(cached.fileId);
 
 			if (cached.type === 'image' && shareKw) {
-				inlineKeyboard.push([new MessageButtonSwitchInline('分享', shareKw)]);
+				inlineKeyboard.push([new MessageButtonSwitchInlineOtherChat('分享', shareKw)]);
 			} else if (cached?.type === 'document') {
 				reply.filesAsDocument();
 			}
@@ -118,7 +118,7 @@ export default class UserContext<T extends BotTypes> {
 		if (height / width > 2) {
 			messageToSent.filesAsDocument();
 		} else if (shareKw) {
-			inlineKeyboard.push([new MessageButtonSwitchInline('分享', shareKw)]);
+			inlineKeyboard.push([new MessageButtonSwitchInlineOtherChat('分享', shareKw)]);
 			isFromStart = false;
 		}
 		const messageSent = await messageToSent

@@ -139,6 +139,9 @@ export class MessageButtonSwitchInline implements MessageButton {
 	}
 }
 
+export class MessageButtonSwitchInlineOtherChat extends MessageButtonSwitchInline {
+}
+
 export class MessageButtonUrl implements MessageButton {
 	constructor(
 		public readonly text: string,

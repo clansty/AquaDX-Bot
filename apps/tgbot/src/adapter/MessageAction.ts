@@ -1,4 +1,4 @@
-import { SendMessageResult as SendMessageResultBase, EditMessageAction as EditMessageActionBase, SendMessageAction as SendMessageActionBase, MessageButtonUrl, MessageButtonCallback, MessageButtonSwitchInline, MessageButton } from '@clansty/maibot-firm';
+import { SendMessageResult as SendMessageResultBase, EditMessageAction as EditMessageActionBase, SendMessageAction as SendMessageActionBase, MessageButtonUrl, MessageButtonCallback, MessageButtonSwitchInline, MessageButton, MessageButtonSwitchInlineOtherChat } from '@clansty/maibot-firm';
 import { BotAdapter, BotTypes } from './Bot';
 import { InlineKeyboardButton, Message } from 'grammy/types';
 import { Context } from 'grammy';
@@ -41,6 +41,11 @@ export const convertMessageButtons = (buttons: MessageButton[][]): InlineKeyboar
 				inlineKeyboardRow.push({
 					text: button.text,
 					callback_data: button.callbackData
+				});
+			} else if (button instanceof MessageButtonSwitchInlineOtherChat) {
+				inlineKeyboardRow.push({
+					text: button.text,
+					switch_inline_query: button.callbackData
 				});
 			} else if (button instanceof MessageButtonSwitchInline) {
 				inlineKeyboardRow.push({
