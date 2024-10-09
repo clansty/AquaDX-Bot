@@ -21,7 +21,8 @@
   },
   "pnpm": {
     "patchedDependencies": {
-      "genius-lyrics@4.4.7": "patches/genius-lyrics@4.4.7.patch"
+      "genius-lyrics@4.4.7": "patches/genius-lyrics@4.4.7.patch",
+      "telegra.ph@1.0.1": "patches/telegra.ph@1.0.1.patch"
     }
   }
 }

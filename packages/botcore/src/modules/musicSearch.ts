@@ -22,6 +22,7 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 			return true;
 		}
 		const results = Song.search(event.data.trim().toLowerCase());
+		console.log(results);
 		const answer = event.answer()
 			.withCacheTime(60);
 		await Promise.all(results.map(async song => {
