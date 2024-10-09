@@ -5,6 +5,9 @@ compatibility_flags = ["nodejs_compat"]
 assets = { directory = ".worker-next/assets", binding = "ASSETS" }
 main = ".worker-next/index.mjs"
 
+[observability]
+enabled = true
+
 [[kv_namespaces]]
 binding = "NEXT_CACHE_WORKERS_KV"
 id = "8d9858ccb8714276803d569b5dc82f24"

@@ -69,6 +69,22 @@ export class BotAdapter extends Bot<BotTypes> {
 			});
 		};
 		this.ws.onmessage = (e) => this.handleWebSocketMessage(e.data);
+
+		setInterval(this.watchDog.bind(this), 5000);
+	}
+
+	private watchDogCounter: number = 0;
+
+	private watchDog() {
+		if (this.ws.readyState === WebSocket.OPEN) {
+			this.watchDogCounter = 0;
+			return;
+		}
+		this.watchDogCounter++;
+		if (this.watchDogCounter > 1) {
+			this.logger.error('连续两次 WS 连接断开，退出重启');
+			process.exit(1);
+		}
 	}
 
 	private readonly echoMap = new Map<string, { resolve: (result: any) => void; reject: (result: any) => void }>();

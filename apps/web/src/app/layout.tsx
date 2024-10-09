@@ -3,6 +3,7 @@ import { Quicksand, Noto_Sans_SC, Reddit_Mono } from 'next/font/google';
 import React from 'react';
 import './global.css';
 import Footer from '@/components/Footer';
+import PrismBackground from '@/components/PrismBackground';
 
 const quicksand = Quicksand({ subsets: ['latin'] });
 const notoSansSC = Noto_Sans_SC({ subsets: ['latin'] });
@@ -14,7 +15,7 @@ const redditMono = Reddit_Mono({
 
 export const metadata: Metadata = {
 	title: 'Maibot Web',
-	referrer: 'no-referrer',
+	referrer: 'no-referrer'
 };
 
 export default function RootLayout({
@@ -28,8 +29,10 @@ export default function RootLayout({
 			style={{
 				padding: 0, margin: 0,
 				background: '#51bcf3',
-				fontFamily: `${quicksand.style.fontFamily}, ${notoSansSC.style.fontFamily}`
+				fontFamily: `${quicksand.style.fontFamily}, ${notoSansSC.style.fontFamily}`,
+				position: 'relative'
 			}}>
+		<PrismBackground />
 		<div style={{ minHeight: 'calc(100vh - 154px)' }}>
 			{children}
 		</div>

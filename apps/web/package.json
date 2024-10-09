@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "tsx dirfix.ts && next dev",
     "build": "tsx dirfix.ts && next build",
     "start": "next start",
     "lint": "next lint",

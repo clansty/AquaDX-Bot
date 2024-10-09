@@ -81,6 +81,22 @@ export class BotAdapter extends Bot<BotTypes> {
 		this.client.on('message.private', this.handleMessage.bind(this));
 		this.client.start()
 			.then(() => this.logger.log('Bot 启动成功'));
+
+		setInterval(this.watchDog.bind(this), 5000);
+	}
+
+	private watchDogCounter: number = 0;
+
+	private watchDog() {
+		if (this.client.ws.readyState === WebSocket.OPEN) {
+			this.watchDogCounter = 0;
+			return;
+		}
+		this.watchDogCounter++;
+		if (this.watchDogCounter > 1) {
+			this.logger.error('连续两次 WS 连接断开，退出重启');
+			process.exit(1);
+		}
 	}
 
 	private async handleMessage(data: GroupMessageEvent | PrivateMessageEvent) {
