@@ -40,7 +40,7 @@ export default class Song implements DataSong {
 		} else {
 			// DXRating.net 中一些歌，比如说 LOSER 和俊达萌起床歌，没有 ID
 			let findId = Object.entries(allMusic).find(([id, dataFromAllMusic]) => dataFromAllMusic.name === data.title && Number(id) % 1e4 < 2e3);
-			if(!findId) {
+			if (!findId) {
 				findId = Object.entries(allMusic).find(([id, dataFromAllMusic]) => dataFromAllMusic.name?.toLowerCase() === data.title.toLowerCase() && Number(id) % 1e4 < 2e3);
 			}
 			if (findId) {
@@ -147,7 +147,8 @@ export default class Song implements DataSong {
 		const dataFromAllMusic = allMusic[id] || allMusic[id + 1e4];
 		if (!dataFromAllMusic) return null;
 
-		song = dxdata.songs.find(song => song.title.toLowerCase() === dataFromAllMusic.name.toLowerCase());
+		song = dxdata.songs.find(song => song.title === dataFromAllMusic.name) ||
+			dxdata.songs.find(song => song.title.toLowerCase() === dataFromAllMusic.name.toLowerCase());
 		if (song) return new this(song, dx, false, ver);
 
 		const sheets = dataFromAllMusic.notes.map((chart, index) => new Chart({
