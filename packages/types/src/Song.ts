@@ -39,7 +39,10 @@ export default class Song implements DataSong {
 			this.id %= 1e4;
 		} else {
 			// DXRating.net 中一些歌，比如说 LOSER 和俊达萌起床歌，没有 ID
-			const findId = Object.entries(allMusic).find(([id, dataFromAllMusic]) => dataFromAllMusic.name?.toLowerCase() === data.title.toLowerCase() && Number(id) % 1e4 < 2e3);
+			let findId = Object.entries(allMusic).find(([id, dataFromAllMusic]) => dataFromAllMusic.name === data.title && Number(id) % 1e4 < 2e3);
+			if(!findId) {
+				findId = Object.entries(allMusic).find(([id, dataFromAllMusic]) => dataFromAllMusic.name?.toLowerCase() === data.title.toLowerCase() && Number(id) % 1e4 < 2e3);
+			}
 			if (findId) {
 				this.id = Number(findId[0]) % 1e4;
 				// console.log('修复了 ID 丢失', data.title, this.id);
@@ -195,11 +198,12 @@ export default class Song implements DataSong {
 		for (const [id, data] of Object.entries(ALL_MUSIC)) {
 			// 移除自制谱
 			if (Number(id) % 1e4 > 2e3) continue;
+			if (Number(id) > 1e5) continue;
 			if (data.name?.toLowerCase().includes(kw)) {
 				results.push(this.fromId(Number(id), ver));
 			}
 		}
-		return _.uniqBy(results, 'id');
+		return _.uniqBy(results, (it) => `${it.id}_${it.title}`);
 	}
 
 	public static getByCondition(condition: (song: DataSong) => boolean, ver: MaiVersion = 145) {
