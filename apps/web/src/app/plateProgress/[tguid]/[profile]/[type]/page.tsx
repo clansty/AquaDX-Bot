@@ -3,9 +3,6 @@ import { notFound } from 'next/navigation';
 import PlateProgress from '@/app/plateProgress/components/PlateProgress';
 import getUserProfile from '@/utils/getUserProfile';
 
-// https://github.com/vercel/next.js/issues/53562
-export const runtime = 'edge';
-
 export default async ({ params }: { params: { tguid: string, type: string, profile: string } }) => {
 	let type = decodeURIComponent(params.type) as typeof PLATE_TYPE[number] | '';
 	let ver: typeof PLATE_VER[number] | typeof BA_VE;

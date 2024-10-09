@@ -4,10 +4,11 @@
     "dev:web": "pnpm run --filter=@clansty/maibot-web dev",
     "dev:bot": "pnpm run --filter=@clansty/maibot-workers dev",
     "dev": "pnpm run --filter=@clansty/maibot-workers --filter=@clansty/maibot-web --stream --parallel dev",
-    "deploy": "pnpm run --filter=@clansty/maibot-workers --filter=@clansty/maibot-onebot --filter=@clansty/maibot-qofbot --stream --parallel deploy && pnpm run deploy:docker",
+    "deploy": "pnpm run --filter=@clansty/maibot-workers --filter=@clansty/maibot-onebot --filter=@clansty/maibot-qofbot --filter=@clansty/maibot-web --stream --parallel \"/^deploy.*/\" && pnpm run deploy:docker",
     "deploy:docker": "curl -X POST -vL https://portainer.c5y.moe/api/stacks/webhooks/10d9fea3-43d2-46c3-811a-e65293d4d0cb",
     "deploy:tg": "pnpm run --filter=@clansty/maibot-workers deploy",
-    "deploy:qq": "pnpm run --filter=@clansty/maibot-onebot deploy",
+    "deploy:qq": "pnpm run --filter=@clansty/maibot-onebot --filter=@clansty/maibot-qofbot deploy",
+    "deploy:web": "pnpm run --filter=@clansty/maibot-web deploy",
     "tail": "pnpm run --filter=@clansty/maibot-workers tail"
   },
   "dependencies": {
@@ -15,7 +16,7 @@
   },
   "packageManager": "pnpm@9.6.0+sha512.38dc6fba8dba35b39340b9700112c2fe1e12f10b17134715a4aa98ccf7bb035e76fd981cf0bb384dfa98f8d6af5481c2bef2f4266a24bfa20c34eb7147ce0b5e",
   "devDependencies": {
-    "@types/lodash": "^4.17.7",
+    "@types/lodash": "^4.17.10",
     "typescript": "^5.5.4"
   },
   "pnpm": {

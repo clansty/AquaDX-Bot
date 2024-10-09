@@ -12,11 +12,17 @@ export default class AquaDx extends UserSource {
 	private async fetch(endpoint: string, query: Record<string, string>, method = 'GET', body?: any) {
 		const url = new URL(this.BASE_URL + endpoint);
 		url.search = new URLSearchParams(query).toString();
-		const req = await fetch(url, {
+		const init = {
 			method,
 			body: body ? JSON.stringify(body) : undefined,
 			headers: body ? { 'Content-Type': 'application/json' } : undefined
-		});
+		};
+		// @ts-ignore
+		if (typeof window !== 'undefined') {
+			// @ts-ignore
+			init.cache = 'no-store';
+		}
+		const req = await fetch(url, init);
 		if (!req.ok) {
 			console.error(await req.text());
 			throw new Error(`获取数据时出错: ${req.statusText}`);

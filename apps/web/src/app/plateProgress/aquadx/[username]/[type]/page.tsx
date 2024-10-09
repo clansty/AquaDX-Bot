@@ -4,9 +4,6 @@ import PlateProgress from '@/app/plateProgress/components/PlateProgress';
 import getUserProfile from '@/utils/getUserProfile';
 import getAquaDxUser from '@/utils/getAquaDxUser';
 
-// https://github.com/vercel/next.js/issues/53562
-export const runtime = 'edge';
-
 export default async ({ params }: { params: { username: string, type: string } }) => {
 	const profile = await getAquaDxUser(params.username);
 	let type = decodeURIComponent(params.type) as typeof PLATE_TYPE[number] | '';
