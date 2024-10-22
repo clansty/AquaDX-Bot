@@ -4,7 +4,7 @@ import type { WSReceiveHandler } from 'node-napcat-ts';
 import { NoReportError } from '@clansty/maibot-core';
 
 export class CommandEvent extends CommandEventBase<BotTypes> {
-	public constructor(protected bot: BotAdapter, protected data: WSReceiveHandler['message']) {
+	public constructor(protected bot: BotAdapter, public data: WSReceiveHandler['message']) {
 		super(bot);
 		this.text = data.message.filter(it => it.type === 'text').map(it => it.data.text).join('');
 		this.chatId = data.message_type === 'group' ? -data.group_id : data.user_id;
@@ -24,7 +24,7 @@ export class CommandEvent extends CommandEventBase<BotTypes> {
 }
 
 export class KeywordEvent extends KeywordEventBase<BotTypes> {
-	public constructor(protected bot: BotAdapter, protected data: WSReceiveHandler['message'], match: RegExpMatchArray) {
+	public constructor(protected bot: BotAdapter, public data: WSReceiveHandler['message'], match: RegExpMatchArray) {
 		super(bot);
 		this.text = data.message.filter(it => it.type === 'text').map(it => it.data.text).join('');
 		this.chatId = data.message_type === 'group' ? -data.group_id : data.user_id;

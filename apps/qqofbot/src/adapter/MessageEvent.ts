@@ -4,7 +4,7 @@ import { NoReportError } from '@clansty/maibot-core';
 import { GroupMessageEvent, MessageElem, PrivateMessageEvent, TextElem } from 'qq-official-bot';
 
 export class CommandEvent extends CommandEventBase<BotTypes> {
-	public constructor(protected bot: BotAdapter, protected data: GroupMessageEvent | PrivateMessageEvent) {
+	public constructor(protected bot: BotAdapter, public data: GroupMessageEvent | PrivateMessageEvent) {
 		super(bot);
 		this.text = (data.message as MessageElem[]).filter(it => it.type === 'text').map(it => (it as TextElem).text).join('').trim();
 		this.isPrivate = data.message_type === 'private';
@@ -28,7 +28,7 @@ export class CommandEvent extends CommandEventBase<BotTypes> {
 }
 
 export class KeywordEvent extends KeywordEventBase<BotTypes> {
-	public constructor(protected bot: BotAdapter, protected data: GroupMessageEvent | PrivateMessageEvent, match: RegExpMatchArray) {
+	public constructor(protected bot: BotAdapter, public data: GroupMessageEvent | PrivateMessageEvent, match: RegExpMatchArray) {
 		super(bot);
 		this.text = (data.message as MessageElem[]).filter(it => it.type === 'text').map(it => (it as TextElem).text).join('').trim();
 		this.isPrivate = data.message_type === 'private';

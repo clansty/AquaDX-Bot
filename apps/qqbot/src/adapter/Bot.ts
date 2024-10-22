@@ -1,10 +1,12 @@
 import { Bot, BotTypes as BotTypesBase, CallbackQueryEventBase, CommandEventBase, InlineQueryEventBase, InlineQueryResultChosenEventBase, KeywordEventBase } from '@clansty/maibot-firm';
 import { createLogg } from '@guiiai/logg';
-import type { Receive, WSReceiveHandler, WSSendParam, WSSendReturn } from 'node-napcat-ts';
+import { MessageHandler, Receive, WSReceiveHandler, WSSendParam, WSSendReturn } from 'node-napcat-ts';
 import _ from 'lodash';
 import { SendMessageAction } from './MessageAction';
 import { CommandEvent, KeywordEvent } from './MessageEvent';
 import { NoReportError } from '@clansty/maibot-core';
+import { Env } from '../types';
+import fusion from '../fusion';
 
 export interface BotTypes extends BotTypesBase<number, number, string, never> {
 }
@@ -58,9 +60,9 @@ export class BotAdapter extends Bot<BotTypes> {
 	private readonly logger = createLogg('BotAdapter').useGlobalConfig();
 	private selfId = 0;
 
-	public constructor(private readonly wsUrl: string) {
+	public constructor(private readonly env: Env) {
 		super();
-		this.ws = new WebSocket(wsUrl);
+		this.ws = new WebSocket(env.BOT_WS_URL);
 		this.ws.onopen = () => {
 			this.logger.log('WS 连接成功');
 			this.callApi('get_login_info').then((info) => {
@@ -132,11 +134,21 @@ export class BotAdapter extends Bot<BotTypes> {
 
 	private async handleMessage(data: WSReceiveHandler['message']) {
 		const at = data.message.find(it => it.type === 'at');
-		// 忽略 @ 了别人的消息，防止和官方 bot 打架
-		if (at && at.data.qq.toString() !== this.selfId.toString()) return;
-
 		const text = data.message.find(it => it.type === 'text')?.data.text.trim();
 		if (!text) return;
+
+		if ('group_id' in data && at && at.data.qq.toString() === this.env.OFFICIAL_BOT_UIN.toString()) {
+			// 检查融合模式
+			const fusionMode = await fusion.checkFusion(data.group_id, this.env);
+			if (!fusionMode) return;
+			this.logger
+				.withField('QQ', data.user_id)
+				.withField('用户', data.sender.nickname)
+				.withField('消息', text)
+				.log('因融合模式开启，处理官 Bot 的消息');
+		}
+		// 忽略 @ 了别人的消息，防止和官方 bot 打架
+		else if (at && at.data.qq.toString() !== this.selfId.toString()) return;
 
 		const firstWord = text.split(' ')[0];
 		try {
@@ -144,6 +156,7 @@ export class BotAdapter extends Bot<BotTypes> {
 				if (firstWord.toLowerCase() === '/' + command) {
 					this.logger
 						.withField('QQ', data.user_id)
+						.withField('用户', data.sender.nickname)
 						.withField('命令', command)
 						.withField('消息', text)
 						.log('处理命令');
@@ -157,7 +170,7 @@ export class BotAdapter extends Bot<BotTypes> {
 				if (exec) {
 					this.logger
 						.withField('QQ', data.user_id)
-						.withField('正则', keyword)
+						.withField('用户', data.sender.nickname)
 						.withField('消息', text)
 						.log('处理关键词');
 					const res = await handler(new KeywordEvent(this, data, exec));

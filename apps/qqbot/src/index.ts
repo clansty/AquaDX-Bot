@@ -6,6 +6,7 @@ import { buildBot } from '@clansty/maibot-core';
 import { Env } from './types';
 import { LevelKV } from '@clansty/maibot-adapters/src/LevelKV';
 import { Renderer } from './adapter/Renderer';
+import fusion from './fusion';
 
 fs.mkdirSync('data/cache', { recursive: true });
 fs.mkdirSync('data/db', { recursive: true });
@@ -30,12 +31,13 @@ process.on('uncaughtException', (error: any) => {
 env.KV = new LevelKV();
 const renderer = new Renderer();
 
-const bot = new BotAdapter(env.BOT_WS_URL);
+const bot = new BotAdapter(env);
 buildBot({
 	bot, env,
 	musicToFile: {},
 	genImage: renderer.renderHtml.bind(renderer),
 	enableOfficialServers: false
 });
+fusion.attachHandlers(bot, env);
 
 logger.log('初始化完成');

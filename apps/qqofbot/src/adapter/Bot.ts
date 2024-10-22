@@ -4,6 +4,8 @@ import { SendMessageAction } from './MessageAction';
 import { CommandEvent, KeywordEvent } from './MessageEvent';
 import { MESSAGE_TEMPLATE, NoReportError } from '@clansty/maibot-core';
 import { Bot as BotClient, GroupMessageEvent, MessageElem, PrivateMessageEvent, TextElem } from 'qq-official-bot';
+import fusion from '../fusion';
+import { Env } from '../types';
 
 export class ChatId {
 	constructor(public readonly isPrivate: boolean, public readonly id: string) {
@@ -65,10 +67,12 @@ export class BotAdapter extends Bot<BotTypes> {
 	public readonly client: BotClient;
 	private readonly logger = createLogg('BotAdapter').useGlobalConfig();
 
-	public constructor(private readonly appid: string, private readonly secret: string, private readonly sandbox: boolean) {
+	public constructor(private readonly env: Env) {
 		super();
 		this.client = new BotClient({
-			appid, secret, sandbox,
+			appid: env.BOT_APPID,
+			secret: env.BOT_SECRET,
+			sandbox: env.BOT_SANDBOX,
 			removeAt: true,
 			logLevel: 'info',
 			maxRetry: 10,
@@ -88,7 +92,7 @@ export class BotAdapter extends Bot<BotTypes> {
 	private watchDogCounter: number = 0;
 
 	private watchDog() {
-		if (this.client.ws.readyState === WebSocket.OPEN) {
+		if (this.client?.ws?.readyState === WebSocket.OPEN) {
 			this.watchDogCounter = 0;
 			return;
 		}
@@ -102,6 +106,15 @@ export class BotAdapter extends Bot<BotTypes> {
 	private async handleMessage(data: GroupMessageEvent | PrivateMessageEvent) {
 		const text = (data.message as MessageElem[]).filter(it => it.type === 'text').map(it => (it as TextElem).text).join('').trim();
 		if (!text) return;
+
+		console.log(data);
+		if ('group_id' in data && await fusion.checkFusion(data.group_id, this.env)) {
+			this.logger
+				.withField('QQ', data.user_id)
+				.withField('消息', text)
+				.log('融合模式开启，跳过处理消息');
+			return;
+		}
 
 		const firstWord = text.split(' ')[0];
 		try {
@@ -122,7 +135,6 @@ export class BotAdapter extends Bot<BotTypes> {
 				if (exec) {
 					this.logger
 						.withField('QQ', data.user_id)
-						.withField('正则', keyword)
 						.withField('消息', text)
 						.log('处理关键词');
 					const res = await handler(new KeywordEvent(this, data, exec));

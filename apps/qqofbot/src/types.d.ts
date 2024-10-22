@@ -6,4 +6,5 @@ export interface Env extends BotEnv {
 	BOT_SECRET: string;
 	BOT_SANDBOX: boolean;
 	LOG_LEVEL: keyof typeof LogLevel;
+	USER_BOT_ID: string;
 }
