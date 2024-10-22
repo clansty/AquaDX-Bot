@@ -12,10 +12,12 @@
     "build"
   ],
   "dependencies": {
+    "@deno/kv": "^0.8.3",
     "level": "^8.0.1",
     "puppeteer": "^23.4.0"
   },
   "devDependencies": {
+    "@clansty/maibot-adapters": "workspace:^",
     "@clansty/maibot-core": "workspace:^",
     "@clansty/maibot-firm": "workspace:^",
     "@clansty/maibot-types": "workspace:^",

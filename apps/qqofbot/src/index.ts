@@ -4,7 +4,7 @@ import YAML from 'yaml';
 import { BotAdapter } from './adapter/Bot';
 import { buildBot } from '@clansty/maibot-core';
 import { Env } from './types';
-import { LevelKV } from './adapter/LevelKV';
+import { LevelKV } from '@clansty/maibot-adapters';
 import { Renderer } from './adapter/Renderer';
 
 fs.mkdirSync('data/cache', { recursive: true });

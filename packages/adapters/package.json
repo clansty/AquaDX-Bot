@@ -1,0 +1,13 @@
+{
+  "name": "@clansty/maibot-adapters",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "devDependencies": {
+    "@clansty/maibot-types": "workspace:^",
+    "@deno/kv": "^0.8.3",
+    "level": "^8.0.1"
+  }
+}

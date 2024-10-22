@@ -1,0 +1,65 @@
+version: '3'
+
+volumes:
+  data:
+  data-official:
+  napcat-qq:
+  napcat-config:
+
+services:
+  denokv:
+    image: ghcr.io/denoland/denokv
+    init: true
+    volumes:
+      - denokv-data:/data
+    command: --sqlite-path /data/denokv.sqlite serve --access-token random-token
+    ports:
+      - "4512:4512"
+
+  napcat:
+    environment:
+      - ACCOUNT=3087530651
+      - WS_ENABLE=true
+      - NAPCAT_GID=1000
+      - NAPCAT_UID=1000
+    ports:
+      - "6097:6099"
+    mac_address: 02:42:AC:11:21:83
+    restart: unless-stopped
+    image: mlikiowa/napcat-docker
+    dns: 11.11.1.1
+    volumes:
+      - napcat-qq:/app/.config/QQ
+      - napcat-config:/app/napcat/config
+      - data:/app/data
+    labels:
+      - traefik.enable=false
+    stop_signal: SIGKILL
+
+  bot:
+    restart: unless-stopped
+    depends_on:
+      - napcat
+    image: gitea.c5y.moe/clansty/maibot-qq
+    stop_signal: SIGKILL
+    dns: 11.11.1.1
+    volumes:
+      - data:/app/data
+      - /home/clansty/aquadx-bot.yaml:/app/env.yaml:ro
+    labels:
+      - traefik.enable=false
+    cap_add:
+      - SYS_ADMIN
+
+  bot-official:
+    restart: unless-stopped
+    image: gitea.c5y.moe/clansty/maibot-qq-official
+    stop_signal: SIGKILL
+    dns: 11.11.1.1
+    volumes:
+      - data-official:/app/data
+      - /home/clansty/aquadx-bot.yaml:/app/env.yaml:ro
+    labels:
+      - traefik.enable=false
+    cap_add:
+      - SYS_ADMIN
