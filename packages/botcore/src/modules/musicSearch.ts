@@ -3,6 +3,7 @@ import { Song } from '@clansty/maibot-types/src';
 import LyricsHelper from '../utils/LyricsHelper';
 import { BotTypes, MessageButtonSwitchInline, MessageButtonUrl, SendMessageAction } from '@clansty/maibot-firm';
 import { BuilderEnv } from '../botBuilder';
+import { MESSAGE_TEMPLATE } from '../MessageTemplate';
 
 export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: BuilderEnv<T>) => {
 	const genSongInfoButtonsWithCachedLyrics = async (song: Song) => {
@@ -74,7 +75,15 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 		if (musicToFile[song.id]) {
 			req.addAudio(musicToFile[song.id]);
 		} else if (song.coverUrl) {
-			req.addPhoto(song.coverUrl);
+			const msgTitle = song.display.substring(0, song.display.indexOf('\n'));
+			const msgText = song.display.substring(song.display.indexOf('\n') + 1);
+			req
+				.addPhoto(song.coverUrl)
+				.setTemplatedMessage(MESSAGE_TEMPLATE.MusicInfo, {
+					title: msgTitle,
+					content: msgText,
+					image: song.coverUrl
+				});
 		}
 		const message = await req.setText(song.display).setButtons(buttons).dispatch();
 		// 异步获取歌词，只在 undefined 的时候

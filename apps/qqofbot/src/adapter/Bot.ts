@@ -2,7 +2,7 @@ import { Bot, BotTypes as BotTypesBase, CallbackQueryEventBase, CommandEventBase
 import { createLogg } from '@guiiai/logg';
 import { SendMessageAction } from './MessageAction';
 import { CommandEvent, KeywordEvent } from './MessageEvent';
-import { NoReportError } from '@clansty/maibot-core';
+import { MESSAGE_TEMPLATE, NoReportError } from '@clansty/maibot-core';
 import { Bot as BotClient, GroupMessageEvent, MessageElem, PrivateMessageEvent, TextElem } from 'qq-official-bot';
 
 export class ChatId {
@@ -14,7 +14,7 @@ export class ChatId {
 	}
 }
 
-export interface BotTypes extends BotTypesBase<ChatId, string, string, never> {
+export interface BotTypes extends BotTypesBase<ChatId, string, string, never, MESSAGE_TEMPLATE> {
 }
 
 export class BotAdapter extends Bot<BotTypes> {

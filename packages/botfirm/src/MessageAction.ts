@@ -93,6 +93,7 @@ export abstract class SendMessageAction<T extends BotTypes> extends Dispatchable
 
 	protected _file: T['SendableFile'] = null;
 	protected _fileType: 'audio' | 'document' | 'photo' = null;
+	protected _templatedMessage: TemplatedMessage<T> = null;
 
 	public addPhoto(file: T['SendableFile']) {
 		this._fileType = 'photo';
@@ -109,6 +110,11 @@ export abstract class SendMessageAction<T extends BotTypes> extends Dispatchable
 	public addDocument(file: T['SendableFile']) {
 		this._fileType = 'document';
 		this._file = file;
+		return this;
+	}
+
+	public setTemplatedMessage(template: T['MessageTemplateID'], values: Record<string, string>) {
+		this._templatedMessage = new TemplatedMessage(template, values);
 		return this;
 	}
 
@@ -146,6 +152,14 @@ export class MessageButtonUrl implements MessageButton {
 	constructor(
 		public readonly text: string,
 		public readonly url: string
+	) {
+	}
+}
+
+export class TemplatedMessage<T extends BotTypes> {
+	constructor(
+		public readonly template: T['MessageTemplateID'],
+		public readonly values: Record<string, string>
 	) {
 	}
 }

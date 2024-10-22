@@ -8,9 +8,9 @@ main = ".worker-next/index.mjs"
 [observability]
 enabled = true
 
-[[kv_namespaces]]
-binding = "NEXT_CACHE_WORKERS_KV"
-id = "8d9858ccb8714276803d569b5dc82f24"
+#[[kv_namespaces]]
+#binding = "NEXT_CACHE_WORKERS_KV"
+#id = "8d9858ccb8714276803d569b5dc82f24"
 
 # Automatically place your workloads in an optimal location to minimize latency.
 # If you are running back-end logic in a Pages Function, running it closer to your back-end infrastructure
