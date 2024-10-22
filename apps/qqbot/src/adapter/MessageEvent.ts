@@ -6,12 +6,13 @@ import { NoReportError } from '@clansty/maibot-core';
 export class CommandEvent extends CommandEventBase<BotTypes> {
 	public constructor(protected bot: BotAdapter, public data: WSReceiveHandler['message']) {
 		super(bot);
-		this.text = data.message.filter(it => it.type === 'text').map(it => it.data.text).join('');
+		this.text = data.message.filter(it => it.type === 'text').map(it => it.data.text).join('').trim();
 		this.chatId = data.message_type === 'group' ? -data.group_id : data.user_id;
 		this.fromId = data.sender.user_id;
 		this.messageId = data.message_id;
 		this.isPrivate = data.message_type === 'private';
 		this.params = this.text.split(' ').slice(1);
+		console.log(this.text, this.params);
 	}
 
 	public edit(): never {
