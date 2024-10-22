@@ -107,7 +107,6 @@ export class BotAdapter extends Bot<BotTypes> {
 		const text = (data.message as MessageElem[]).filter(it => it.type === 'text').map(it => (it as TextElem).text).join('').trim();
 		if (!text) return;
 
-		console.log(data);
 		if ('group_id' in data && await fusion.checkFusion(data.group_id, this.env)) {
 			this.logger
 				.withField('QQ', data.user_id)

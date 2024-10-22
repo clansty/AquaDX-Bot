@@ -12,7 +12,6 @@ export class CommandEvent extends CommandEventBase<BotTypes> {
 		this.messageId = data.message_id;
 		this.isPrivate = data.message_type === 'private';
 		this.params = this.text.split(' ').slice(1);
-		console.log(this.text, this.params);
 	}
 
 	public edit(): never {
