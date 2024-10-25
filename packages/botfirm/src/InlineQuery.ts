@@ -1,5 +1,6 @@
 import { Bot, BotTypes, EventBase } from './Bot';
-import { EditMessageAction, BaseTextMessageAction } from './MessageAction';
+import { EditMessageAction } from './MessageAction';
+import { BaseTextMessageAction } from './BaseTextMessageAction';
 
 export abstract class InlineQueryEventBase<T extends BotTypes> extends EventBase<T> {
 	protected constructor(public bot: Bot<T>) {

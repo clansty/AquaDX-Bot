@@ -72,11 +72,12 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 		if (!song) return;
 
 		const { buttons, lyrics } = await genSongInfoButtonsWithCachedLyrics(song);
+		const msgTitle = song.display.substring(0, song.display.indexOf('\n'));
+		const msgText = song.display.substring(song.display.indexOf('\n') + 1).trim();
+		const bundle = req.addBundledMessage();
 		if (musicToFile[song.id]) {
 			req.addAudio(musicToFile[song.id]);
 		} else if (song.coverUrl) {
-			const msgTitle = song.display.substring(0, song.display.indexOf('\n'));
-			const msgText = song.display.substring(song.display.indexOf('\n') + 1);
 			req
 				.addPhoto(song.coverUrl)
 				.setTemplatedMessage(MESSAGE_TEMPLATE.MusicInfo, {
@@ -84,7 +85,14 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 					content: msgText,
 					image: song.coverUrl
 				});
+			bundle.addNode().addPhoto(song.coverUrl);
 		}
+		bundle.setTitle(msgTitle).setPrompt(msgTitle).setDescription(song.basicInfo.substring(song.basicInfo.indexOf('\n') + 1)).setSummary('点击查看歌曲和谱面详情');
+		bundle.addNode().setText(msgText);
+		for (const sheet of song.sheets) {
+			bundle.addNode().setText(`${sheet.type === 'dx' ? 'DX ' : '标准'}谱面\n` + sheet.display.trim());
+		}
+
 		const message = await req.setText(song.display).setButtons(buttons).dispatch();
 		// 异步获取歌词，只在 undefined 的时候
 		if (!lyrics && bot.isEditMessageSupported) {

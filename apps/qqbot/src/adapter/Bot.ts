@@ -58,7 +58,7 @@ export class BotAdapter extends Bot<BotTypes> {
 
 	private readonly ws: WebSocket;
 	private readonly logger = createLogg('BotAdapter').useGlobalConfig();
-	private selfId = 0;
+	public selfId = 0;
 
 	public constructor(private readonly env: Env) {
 		super();

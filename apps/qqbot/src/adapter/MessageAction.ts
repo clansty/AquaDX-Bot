@@ -1,7 +1,8 @@
-import { SendMessageAction as SendMessageActionBase, SendMessageResult as SendMessageResultBase } from '@clansty/maibot-firm';
+import { BundledMessageBase, SendMessageAction as SendMessageActionBase, SendMessageResult as SendMessageResultBase } from '@clansty/maibot-firm';
 import { WSSendParam, WSSendReturn } from 'node-napcat-ts/dist/Interfaces';
 import { BotAdapter, BotTypes } from './Bot';
 import { NoReportError } from '@clansty/maibot-core';
+import { BundledMessage } from './BundledMessage';
 
 export class SendMessageResult extends SendMessageResultBase<BotTypes> {
 	public constructor(protected bot: BotAdapter, protected data: WSSendReturn['send_msg']) {
@@ -24,6 +25,11 @@ export class SendMessageResult extends SendMessageResultBase<BotTypes> {
 export class SendMessageAction extends SendMessageActionBase<BotTypes> {
 	public constructor(protected bot: BotAdapter, chatId: BotTypes['ChatId']) {
 		super(bot, chatId);
+	}
+
+	public override addBundledMessage(): BundledMessage {
+		this._bundledMessage = new BundledMessage(this.bot);
+		return this._bundledMessage as BundledMessage;
 	}
 
 	public async dispatch(): Promise<SendMessageResultBase<BotTypes>> {
@@ -74,6 +80,14 @@ export class SendMessageAction extends SendMessageActionBase<BotTypes> {
 					text: this._text
 				}
 			});
+		}
+
+		if (this._bundledMessage) {
+			// @ts-ignore
+			params = {
+				...params,
+				...(this._bundledMessage as BundledMessage).compose()
+			};
 		}
 
 		const ret = await this.bot.callApi('send_msg', params);
