@@ -1,7 +1,7 @@
 import genSongInfoButtons from '../utils/genSongInfoButtons';
 import { Song } from '@clansty/maibot-types/src';
 import LyricsHelper from '../utils/LyricsHelper';
-import { BotTypes, MessageButtonSwitchInline, MessageButtonUrl, SendMessageAction } from '@clansty/maibot-firm';
+import { BotTypes, BundledMessageBase, MessageButtonSwitchInline, MessageButtonUrl, SendMessageAction } from '@clansty/maibot-firm';
 import { BuilderEnv } from '../botBuilder';
 import { MESSAGE_TEMPLATE } from '../MessageTemplate';
 
@@ -68,6 +68,17 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 		return true;
 	});
 
+	const makeBundledMessageForSong = (bundle: BundledMessageBase<T>, song: Song) => {
+		const msgTitle = song.display.substring(0, song.display.indexOf('\n'));
+		const msgText = song.display.substring(song.display.indexOf('\n') + 1).trim();
+		bundle.addNode().addPhoto(song.coverUrl);
+		bundle.setTitle(msgTitle).setPrompt(msgTitle).setDescription(song.basicInfo.substring(song.basicInfo.indexOf('\n') + 1)).setSummary('点击查看歌曲和谱面详情');
+		bundle.addNode().setText(msgText);
+		for (const sheet of song.sheets) {
+			bundle.addNode().setText(`${sheet.type === 'dx' ? 'DX ' : '标准'}谱面\n` + sheet.display.trim());
+		}
+	};
+
 	const sendSong = async (req: SendMessageAction<T>, song: Song) => {
 		if (!song) return;
 
@@ -85,14 +96,9 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 					content: msgText,
 					image: song.coverUrl
 				});
-			bundle.addNode().addPhoto(song.coverUrl);
-		}
-		bundle.setTitle(msgTitle).setPrompt(msgTitle).setDescription(song.basicInfo.substring(song.basicInfo.indexOf('\n') + 1)).setSummary('点击查看歌曲和谱面详情');
-		bundle.addNode().setText(msgText);
-		for (const sheet of song.sheets) {
-			bundle.addNode().setText(`${sheet.type === 'dx' ? 'DX ' : '标准'}谱面\n` + sheet.display.trim());
 		}
 
+		makeBundledMessageForSong(bundle, song);
 		const message = await req.setText(song.display).setButtons(buttons).dispatch();
 		// 异步获取歌词，只在 undefined 的时候
 		if (!lyrics && bot.isEditMessageSupported) {
@@ -130,10 +136,18 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 			return true;
 		}
 		if (results.length > 1) {
-			await event.reply()
+			const req = event.reply()
 				.setText(`共找到 ${results.length} 个结果：\n\n` + results.map(song => (song.id ? song.id + '. ' : '') + song.title).join('\n'))
-				.addButtons(new MessageButtonSwitchInline('选择结果', kw))
-				.dispatch();
+				.addButtons(new MessageButtonSwitchInline('选择结果', kw));
+
+			const bundle = req.addBundledMessage();
+			bundle.setTitle(`共找到 ${results.length} 个结果`).setDescription(results.map(song => (song.id ? song.id + '. ' : '') + song.title).join('\n')).setSummary('点击展开').setPrompt(`歌曲搜索：${results.length} 个结果`);
+			for (const result of results) {
+				bundle.addNode().addPhoto(result.coverUrl);
+				makeBundledMessageForSong(bundle.addNode().addBundledMessage(), result);
+			}
+
+			await req.dispatch();
 			return true;
 		}
 

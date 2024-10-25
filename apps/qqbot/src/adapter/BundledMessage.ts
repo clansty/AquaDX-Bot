@@ -18,7 +18,7 @@ export class BundledMessage extends BundledMessageBase<BotTypes> {
 		return {
 			message: this._nodes.map(node => node.compose()),
 			source: this._title,
-			news: this._description.split('\n').filter(it => it).map(line => ({ text: line })),
+			news: this._description?.split('\n').filter(it => it).map(line => ({ text: line })),
 			summary: this._summary,
 			prompt: this._prompt
 		};
@@ -30,15 +30,22 @@ export class BundledMessageNode extends BundledMessageNodeBase<BotTypes> {
 		super(bot);
 	}
 
+	public addBundledMessage(): BundledMessage {
+		this._bundledMessage = new BundledMessage(this.bot);
+		return this._bundledMessage as BundledMessage;
+	}
+
 	public dispatch() {
 		return Promise.resolve({} as any);
 	}
 
 	public compose() {
-		const content = [];
+		let params = {
+			content: []
+		};
 
 		if (this._file) {
-			content.push({
+			params.content.push({
 				type: 'image',
 				data: {
 					file: this._file,
@@ -48,12 +55,18 @@ export class BundledMessageNode extends BundledMessageNodeBase<BotTypes> {
 			});
 		}
 		if (this._text) {
-			content.push({
+			params.content.push({
 				type: 'text',
 				data: {
 					text: this._text
 				}
 			});
+		}
+		if (this._bundledMessage) {
+			// @ts-ignore
+			params = (this._bundledMessage as BundledMessage).compose();
+			// @ts-ignore
+			params.content = params.message;
 		}
 
 		return {
@@ -61,7 +74,7 @@ export class BundledMessageNode extends BundledMessageNodeBase<BotTypes> {
 			data: {
 				nickname: 'AquaDX Bot',
 				user_id: this.bot.selfId,
-				content
+				...params
 			}
 		};
 	}

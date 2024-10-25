@@ -33,12 +33,15 @@ export abstract class BundledMessageBase<T extends BotTypes> {
 export abstract class BundledMessageNodeBase<T extends BotTypes> extends BaseTextMessageAction<T> {
 	protected _file: T['SendableFile'] = null;
 	protected _fileType: 'audio' | 'document' | 'photo' = null;
+	protected _bundledMessage: BundledMessageBase<T> = null;
 
 	public addPhoto(file: T['SendableFile']) {
 		this._fileType = 'photo';
 		this._file = file;
 		return this;
 	}
+
+	public abstract addBundledMessage(): BundledMessageBase<T>;
 }
 
 export class DummyBundledMessage<T extends BotTypes> extends BundledMessageBase<T> {
@@ -58,5 +61,10 @@ export class DummyBundledMessageNode<T extends BotTypes> extends BundledMessageN
 
 	public dispatch() {
 		return Promise.resolve({} as any);
+	}
+
+	public addBundledMessage() {
+		this._bundledMessage = new DummyBundledMessage(this.bot);
+		return this._bundledMessage;
 	}
 }
