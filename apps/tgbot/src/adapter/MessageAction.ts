@@ -128,13 +128,23 @@ export class EditMessageActionWithCtx extends EditMessageActionBase<BotTypes> {
 
 		let message: Message;
 		if (typeof this._text === 'string') {
-			message = await this.ctx.editMessageText(this._text, {
-				parse_mode: this._parseAsHtml ? 'HTML' as const : undefined,
-				reply_markup: {
-					inline_keyboard: inlineKeyboard
-				},
-				link_preview_options: { is_disabled: this._disableLinkPreview }
-			}) as any;
+			try {
+				message = await this.ctx.editMessageText(this._text, {
+					parse_mode: this._parseAsHtml ? 'HTML' as const : undefined,
+					reply_markup: {
+						inline_keyboard: inlineKeyboard
+					},
+					link_preview_options: { is_disabled: this._disableLinkPreview }
+				}) as any;
+			} catch {
+				message = await this.ctx.editMessageCaption({
+					caption: this._text,
+					parse_mode: this._parseAsHtml ? 'HTML' as const : undefined,
+					reply_markup: {
+						inline_keyboard: inlineKeyboard
+					}
+				}) as any;
+			}
 		} else {
 			message = await this.ctx.editMessageReplyMarkup({
 				reply_markup: {
