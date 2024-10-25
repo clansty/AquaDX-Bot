@@ -1,7 +1,7 @@
 import genSongInfoButtons from '../utils/genSongInfoButtons';
 import { Song } from '@clansty/maibot-types/src';
 import LyricsHelper from '../utils/LyricsHelper';
-import { BotTypes, BundledMessageBase, MessageButtonSwitchInline, MessageButtonUrl, SendMessageAction } from '@clansty/maibot-firm';
+import { BotTypes, BundledMessageBase, MessageButtonSwitchInline, MessageButtonUrl, MessageEventBase, SendMessageAction } from '@clansty/maibot-firm';
 import { BuilderEnv } from '../botBuilder';
 import { MESSAGE_TEMPLATE } from '../MessageTemplate';
 
@@ -120,8 +120,7 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 		return true;
 	});
 
-	bot.registerCommand(['search', 'maimai', 's'], async (event) => {
-		const kw = event.params.join(' ').trim();
+	const handleSearch = async (event: MessageEventBase<T>, kw: string) => {
 		if (!kw) {
 			await event.reply()
 				.setText('请输入要搜索的歌曲名')
@@ -154,5 +153,13 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 		const song = results[0];
 		await sendSong(event.reply(), song);
 		return true;
+	};
+
+	bot.registerCommand(['search', 'maimai', 's'], async (event) => {
+		return handleSearch(event, event.params.join(' ').trim());
+	});
+
+	bot.registerKeyword([/(.+)是什么歌$/, /^[\w\/]*查歌(.+)/], async (event) => {
+		return handleSearch(event, event.match[1].trim());
 	});
 }
