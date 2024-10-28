@@ -4,7 +4,7 @@
     "dev:web": "pnpm run --filter=@clansty/maibot-web dev",
     "dev:bot": "pnpm run --filter=@clansty/maibot-workers dev",
     "dev": "pnpm run --filter=@clansty/maibot-workers --filter=@clansty/maibot-web --parallel dev",
-    "deploy": "pnpm run --filter=@clansty/maibot-workers --filter=@clansty/maibot-onebot --filter=@clansty/maibot-qofbot --filter=@clansty/maibot-web --parallel \"/^deploy.*/\" && pnpm run deploy:docker",
+    "deploy": "pnpm run --filter=@clansty/maibot-workers --filter=@clansty/maibot-onebot --filter=@clansty/maibot-qofbot --filter=@clansty/maibot-web \"/^deploy.*/\" && pnpm run deploy:docker",
     "deploy:docker": "curl -X POST -vL https://portainer.c5y.moe/api/stacks/webhooks/10d9fea3-43d2-46c3-811a-e65293d4d0cb",
     "deploy:tg": "pnpm run --filter=@clansty/maibot-workers deploy",
     "deploy:qq": "pnpm run --filter=@clansty/maibot-onebot --filter=@clansty/maibot-qofbot deploy && pnpm run deploy:docker",

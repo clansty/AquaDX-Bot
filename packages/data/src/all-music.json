@@ -14510,7 +14510,7 @@
 	},
 	"1301": {
 		"name": "華の集落、秋のお届け",
-		"ver": "24501",
+		"ver": "24508",
 		"composer": "Umiai",
 		"genre": "maimai",
 		"notes": [
@@ -43901,61 +43901,81 @@
 	},
 	"11688": {
 		"name": "まっすぐ→→→ストリーム！",
-		"ver": "24501",
-		"composer": "本多友紀（Arte Refact）／歌：日向 千夏(CV：岡咲 美保)",
-		"genre": "オンゲキ＆CHUNITHM",
+		"ver": "24510",
+		"composer": "曲：本多友紀（Arte Refact）／歌：日向 千夏(CV：岡咲 美保)",
+		"genre": "オンゲキCHUNITHM",
 		"notes": [
 			{
 				"lv": 4
 			},
 			{
-				"lv": 7
+				"lv": 7.5
 			},
 			{
-				"lv": 10.6
+				"lv": 10.7
 			},
 			{
-				"lv": 13.4
+				"lv": 13.5
 			}
 		]
 	},
 	"11689": {
 		"name": "最っ高のエンタメだ!!",
-		"ver": "24501",
-		"composer": "7EVENDAYS⇔HOLIDAYS [井之原 小星(CV：ももの はるな)、柏木 咲姫(CV：石見 舞菜香)]",
-		"genre": "オンゲキ＆CHUNITHM",
+		"ver": "24510",
+		"composer": "曲：本田正樹(Dream Monster)／歌：7EVENDAYS⇔HOLIDAYS [井之原 小星(CV：ももの はるな)、柏木 咲姫(CV：石見 舞菜香)]",
+		"genre": "オンゲキCHUNITHM",
 		"notes": [
 			{
 				"lv": 5
 			},
 			{
-				"lv": 7
+				"lv": 7.2
 			},
 			{
-				"lv": 11
+				"lv": 11.2
 			},
 			{
 				"lv": 13.7
 			}
 		]
 	},
+	"11690": {
+		"name": "Baqeela",
+		"ver": "24510",
+		"composer": "owl＊tree",
+		"genre": "オンゲキCHUNITHM",
+		"notes": [
+			{
+				"lv": 3
+			},
+			{
+				"lv": 6.5
+			},
+			{
+				"lv": 10.8
+			},
+			{
+				"lv": 13.8
+			}
+		]
+	},
 	"11691": {
 		"name": "Ai C",
-		"ver": "24501",
+		"ver": "24510",
 		"composer": "Feryquitous",
-		"genre": "オンゲキ＆CHUNITHM",
+		"genre": "オンゲキCHUNITHM",
 		"notes": [
 			{
 				"lv": 5
 			},
 			{
-				"lv": 8
+				"lv": 8.2
 			},
 			{
 				"lv": 12
 			},
 			{
-				"lv": 14.1
+				"lv": 14
 			}
 		]
 	},
@@ -44532,19 +44552,19 @@
 		]
 	},
 	"11722": {
-		"name": "Make Up Your World",
-		"ver": "24501",
+		"name": "Make Up Your World feat. キョンシーのCiちゃん & らっぷびと",
+		"ver": "24509",
 		"composer": "t+pazolite & Srav3R",
-		"genre": "ゲーム＆バラエティ",
+		"genre": "ゲームバラエティ",
 		"notes": [
 			{
-				"lv": 0
+				"lv": 5
 			},
 			{
-				"lv": 0
+				"lv": 7.8
 			},
 			{
-				"lv": 0
+				"lv": 10.8
 			},
 			{
 				"lv": 13.4
@@ -44553,9 +44573,9 @@
 	},
 	"11723": {
 		"name": "BOOM! BOOM!! BOOM!!!",
-		"ver": "24501",
+		"ver": "24509",
 		"composer": "P*Light",
-		"genre": "ゲーム＆バラエティ",
+		"genre": "ゲームバラエティ",
 		"notes": [
 			{
 				"lv": 4
@@ -44564,18 +44584,18 @@
 				"lv": 7
 			},
 			{
-				"lv": 10
+				"lv": 10.5
 			},
 			{
-				"lv": 13.8
+				"lv": 13.6
 			}
 		]
 	},
 	"11724": {
 		"name": "Everybody Say HARDCORE TANO*C",
-		"ver": "24501",
+		"ver": "24509",
 		"composer": "DJ Noriken",
-		"genre": "ゲーム＆バラエティ",
+		"genre": "ゲームバラエティ",
 		"notes": [
 			{
 				"lv": 5
@@ -44584,7 +44604,7 @@
 				"lv": 8
 			},
 			{
-				"lv": 10.6
+				"lv": 10.7
 			},
 			{
 				"lv": 13.5
@@ -44593,15 +44613,15 @@
 	},
 	"11725": {
 		"name": "ミラクルポップ☆アドベンチャー!!!!!",
-		"ver": "24501",
+		"ver": "24509",
 		"composer": "DJ Genki",
-		"genre": "ゲーム＆バラエティ",
+		"genre": "ゲームバラエティ",
 		"notes": [
 			{
 				"lv": 6
 			},
 			{
-				"lv": 8
+				"lv": 8.5
 			},
 			{
 				"lv": 12.5
@@ -44613,35 +44633,35 @@
 	},
 	"11726": {
 		"name": "Trust",
-		"ver": "24501",
+		"ver": "24509",
 		"composer": "Massive New Krew feat. 光吉猛修",
-		"genre": "ゲーム＆バラエティ",
+		"genre": "ゲームバラエティ",
 		"notes": [
 			{
-				"lv": 0
+				"lv": 3
 			},
 			{
-				"lv": 0
+				"lv": 7
 			},
 			{
-				"lv": 0
+				"lv": 11.2
 			},
 			{
-				"lv": 13.8
+				"lv": 13.6
 			}
 		]
 	},
 	"11727": {
 		"name": "ラヴィ",
-		"ver": "24501",
+		"ver": "24508",
 		"composer": "すりぃ",
-		"genre": "niconico＆ボーカロイド",
+		"genre": "niconicoボーカロイド",
 		"notes": [
 			{
 				"lv": 4
 			},
 			{
-				"lv": 7
+				"lv": 7.5
 			},
 			{
 				"lv": 10.7
@@ -44653,15 +44673,15 @@
 	},
 	"11728": {
 		"name": "スティールユー",
-		"ver": "24501",
+		"ver": "24508",
 		"composer": "Omoi",
-		"genre": "niconico＆ボーカロイド",
+		"genre": "niconicoボーカロイド",
 		"notes": [
 			{
 				"lv": 3
 			},
 			{
-				"lv": 7.6
+				"lv": 7.8
 			},
 			{
 				"lv": 11
@@ -44673,18 +44693,18 @@
 	},
 	"11729": {
 		"name": "オシオキGIMMICK!!",
-		"ver": "24501",
+		"ver": "24508",
 		"composer": "Junky",
-		"genre": "niconico＆ボーカロイド",
+		"genre": "niconicoボーカロイド",
 		"notes": [
 			{
 				"lv": 3
 			},
 			{
-				"lv": 7
+				"lv": 7.5
 			},
 			{
-				"lv": 10.6
+				"lv": 10.7
 			},
 			{
 				"lv": 12.9
@@ -44985,6 +45005,26 @@
 			},
 			{
 				"lv": 0
+			},
+			{
+				"lv": 14.8
+			}
+		]
+	},
+	"11746": {
+		"name": "Divide et impera!",
+		"ver": "24508",
+		"composer": "BlackY a.k.a. WAiKURO survive",
+		"genre": "maimai",
+		"notes": [
+			{
+				"lv": 6
+			},
+			{
+				"lv": 8
+			},
+			{
+				"lv": 12.9
 			},
 			{
 				"lv": 14.8
