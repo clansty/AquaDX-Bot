@@ -77,6 +77,9 @@ export default <T extends BotTypes>({ bot, env, getContext, musicToFile }: Build
 		for (const sheet of song.sheets) {
 			bundle.addNode().setText(`${sheet.type === 'dx' ? 'DX ' : '标准'}谱面\n` + sheet.display.trim());
 		}
+		if (song.searchAcronyms?.length) {
+			bundle.addNode().setText('此歌曲有一些别名：\n\n' + song.searchAcronyms.join('\n'));
+		}
 	};
 
 	const sendSong = async (req: SendMessageAction<T>, song: Song) => {
