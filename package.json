@@ -14,7 +14,6 @@
   "dependencies": {
     "lodash": "^4.17.21"
   },
-  "packageManager": "pnpm@9.6.0+sha512.38dc6fba8dba35b39340b9700112c2fe1e12f10b17134715a4aa98ccf7bb035e76fd981cf0bb384dfa98f8d6af5481c2bef2f4266a24bfa20c34eb7147ce0b5e",
   "devDependencies": {
     "@types/lodash": "^4.17.10",
     "typescript": "^5.5.4"
@@ -24,5 +23,6 @@
       "genius-lyrics@4.4.7": "patches/genius-lyrics@4.4.7.patch",
       "telegra.ph@1.0.1": "patches/telegra.ph@1.0.1.patch"
     }
-  }
+  },
+  "packageManager": "pnpm@9.13.2+sha512.88c9c3864450350e65a33587ab801acf946d7c814ed1134da4a924f6df5a2120fd36b46aab68f7cd1d413149112d53c7db3a4136624cfd00ff1846a0c6cef48a"
 }

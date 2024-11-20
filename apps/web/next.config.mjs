@@ -2,22 +2,25 @@ const nextConfig = {
 	typescript: {
 		ignoreBuildErrors: true
 	},
+	experimental: {
+		forceSwcTransforms: true,
+	},
 	webpack: (config, { isServer, buildId }) => {
-		config.module.rules.push({
-			test: /\.ts$/,
-			/*
-			Using SWC cause the following error:
-			```
-			You may need an additional loader to handle the result of these loaders.
-			| import dxdataJson from "./dxdata.json";
-			|
-			> export const dxdata = dxdataJson as DXData;
-			|
-			| export const dxdataUpdateTime = dxdata.updateTime;
-			```
-			*/
-			use: 'esbuild-loader'
-		});
+		// 垃圾 nextjs build 不出来
+		// 不想修了
+		// 毁灭吧
+		config.module.rules.push(
+			{
+				test: /\.tsx?$/,
+				use: 'babel-loader'
+				// use: 'esbuild-loader'
+			},
+			{
+				test: /\.json$/,
+				type: 'javascript/auto',
+				use: 'json-loader'
+			}
+		);
 		return config;
 	}
 };
