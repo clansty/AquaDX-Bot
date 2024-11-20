@@ -1,0 +1,12 @@
+a {
+  @apply c-unset;
+  text-decoration: unset;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: #51bcf3;
+  font-family: Quicksand, "Noto Sans SC";
+  position: relative;
+}

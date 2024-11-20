@@ -1,5 +1,5 @@
-import React from 'react';
 import { ASSET_TYPE, getAssetUrl } from '@clansty/maibot-utils/src/getAssetUrl';
+import { component$ } from '@builder.io/qwik';
 
 const IMG_BLUE = getAssetUrl(ASSET_TYPE.Base, 'UI_Num_Score_1110000_Blue');
 const IMG_GOLD = getAssetUrl(ASSET_TYPE.Base, 'UI_Num_Score_1110000_Gold');
@@ -12,8 +12,8 @@ const IMG_PERCENT_RED = getAssetUrl(ASSET_TYPE.Base, 'UI_RSL_Score_Per_Red');
 const IMG_H = 472;
 const IMG_W = 344;
 
-const Percent = ({ color, width }: { color: 'blue' | 'gold' | 'red', width: number }) => {
-	const css: React.CSSProperties = {
+const Percent = component$(({ color, width }: { color: 'blue' | 'gold' | 'red', width: number }) => {
+	const css = {
 		width: width,
 		height: width,
 		backgroundSize: '120%',
@@ -28,9 +28,9 @@ const Percent = ({ color, width }: { color: 'blue' | 'gold' | 'red', width: numb
 		case 'red':
 			return <div style={{ ...css, backgroundImage: `url(${IMG_PERCENT_RED})` }} />;
 	}
-};
+});
 
-export default ({ color, digit, width }: { color: 'blue' | 'gold' | 'red', digit: '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '+' | '-' | ',' | '.' | '%', width: number }) => {
+export default component$(({ color, digit, width }: { color: 'blue' | 'gold' | 'red', digit: '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '+' | '-' | ',' | '.' | '%', width: number }) => {
 	if (digit === '%') return <Percent color={color} width={width} />;
 
 	let position: string;
@@ -80,7 +80,7 @@ export default ({ color, digit, width }: { color: 'blue' | 'gold' | 'red', digit
 	}
 
 	const height = width * IMG_H / IMG_W;
-	const css: React.CSSProperties = {
+	const css: any = {
 		width,
 		height,
 		backgroundSize: '400%',
@@ -101,4 +101,4 @@ export default ({ color, digit, width }: { color: 'blue' | 'gold' | 'red', digit
 		case 'red':
 			return <div style={{ ...css, backgroundImage: `url(${IMG_Red})` }} />;
 	}
-}
+});

@@ -1,8 +1,8 @@
 import { Rank, ScoreRenderType, TableContentRenderData, TableContentRenderRow, UserMusic } from '@clansty/maibot-types';
-import React from 'react';
 import { IMG_DX, IMG_MOON_CAKE, IMG_STD, LEVEL_COLOR, LEVEL_EN } from '@clansty/maibot-types';
 import { achievementToRank } from '@clansty/maibot-utils';
-import Link from 'next/link';
+import { Link } from '@builder.io/qwik-city';
+import { component$ } from '@builder.io/qwik';
 
 const getRankImage = (rank: Rank): string => {
 	return `https://shama.dxrating.net/images/rank/buddies-plus/${rank}.png`;
@@ -13,12 +13,12 @@ const BORDER_SIZE = '5px';
 const SD_DX_SIZE = '50px';
 
 export default ({ scoreType, data, showSdDx = true }: { scoreType: ScoreRenderType, data: TableContentRenderRow[], showSdDx?: boolean }) =>
-	<div className="flex flex-col gap-15px">
+	<div class="flex flex-col gap-15px">
 		{data.map(row => <Row data={row} scoreType={scoreType} key={row.levelValue} showSdDx={showSdDx} />)}
-	</div>
+	</div>;
 
 const Row = ({ scoreType, data, showSdDx }: { scoreType: ScoreRenderType, data: TableContentRenderRow, showSdDx: boolean }) =>
-	<div className="flex gap-10px">
+	<div class="flex gap-10px">
 		<div style={{ width: 100, flexShrink: 0, height: COVER_SIZE, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 25, fontWeight: 500, textShadow: '1px 1px 2px #fff' }}>
 			{data.levelValue}
 		</div>
@@ -30,7 +30,7 @@ const Row = ({ scoreType, data, showSdDx }: { scoreType: ScoreRenderType, data: 
 const Cell = ({ scoreType, data, showSdDx }: { scoreType: ScoreRenderType, data: TableContentRenderData, showSdDx: boolean }) =>
 	<Link href={`https://t.me/aquadxbot?start=song-${data.song.id}`}>
 		<div style={{
-			backgroundImage: `url(${data.song.coverUrl})`, height: '100%', width: '100%', backgroundSize: 'cover', position: 'relative',
+			backgroundImage: `url(${data.song.coverAvif})`, height: '100%', width: '100%', backgroundSize: 'cover', position: 'relative',
 			boxSizing: 'border-box', borderWidth: BORDER_SIZE, borderStyle: 'solid', borderColor: LEVEL_COLOR[LEVEL_EN.indexOf(data.chart.difficulty)]
 		}}>
 			{showSdDx && <img src={data.chart.type === 'dx' ? IMG_DX : IMG_STD} alt="" style={{ position: 'absolute', top: 1, left: 1, width: SD_DX_SIZE }} />}
@@ -41,14 +41,14 @@ const Cell = ({ scoreType, data, showSdDx }: { scoreType: ScoreRenderType, data:
 		</div>
 	</Link>;
 
-const DisplayScore = ({ scoreType, score }: { scoreType: ScoreRenderType, score: UserMusic }) => {
+const DisplayScore = component$(({ scoreType, score }: { scoreType: ScoreRenderType, score: UserMusic }) => {
 	switch (scoreType) {
 		case 'score':
 			return `${(score.achievement / 1e4).toFixed(4)}%`;
 		case 'rank':
-			return <img src={getRankImage(achievementToRank(score.achievement))} alt="" width={COVER_SIZE} />;
+			return <img src={getRankImage(achievementToRank(score.achievement))} alt="" style={{ width: COVER_SIZE }} />;
 		case 'combo':
 			if (!score.comboStatus) return;
-			return <img src={IMG_MOON_CAKE[score.comboStatus]} alt="" width={COVER_SIZE} />;
+			return <img src={IMG_MOON_CAKE[score.comboStatus]} alt="" style={{ width: COVER_SIZE }} />;
 	}
-};
+});

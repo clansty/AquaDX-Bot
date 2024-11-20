@@ -1,0 +1,16 @@
+.hideOnSmallScreen {
+  @media (max-width: 1060px) {
+    display: none;
+  }
+}
+
+.header {
+  @media (max-width: 1060px) {
+    justify-content: space-between;
+  }
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    gap: 40px;
+  }
+}

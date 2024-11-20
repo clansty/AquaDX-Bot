@@ -2,7 +2,6 @@ import { ProgressCalcResult } from '@clansty/maibot-types';
 import DifficultyTag from './DifficultyTag';
 import ProgressBar from './ProgressBar';
 import { LEVEL_COLOR } from '@clansty/maibot-types';
-import React from 'react';
 
 export default ({ progress }: { progress: ProgressCalcResult[] }) =>
 	<div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
@@ -15,4 +14,4 @@ export default ({ progress }: { progress: ProgressCalcResult[] }) =>
 					<ProgressBar color={LEVEL_COLOR[i]} progress={it.done / it.all} />
 					<div style={{ marginTop: '-.1em', fontSize: 22 }}>{it.done}/{it.all}</div>
 				</div>)}
-	</div>
+	</div>;

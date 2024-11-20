@@ -1,5 +1,5 @@
-import React from 'react';
 import { ASSET_TYPE, getAssetUrl } from '@clansty/maibot-utils/src/getAssetUrl';
+import { component$ } from '@builder.io/qwik';
 
 const getDxRatingPlateImage = (rating: number): string => {
 	let id = '';
@@ -17,14 +17,15 @@ const getDxRatingPlateImage = (rating: number): string => {
 	return getAssetUrl(ASSET_TYPE.Base, `UI_CMN_DXRating_${id}`);
 };
 
-export default ({ score }: { score: number }) => {
-	return <div className="relative inline-block">
-		<img src={getDxRatingPlateImage(score)} className="h-1.2em vertical-text-top" />
+export default component$(({ score }: { score: number }) => {
+	return <div class="relative inline-block">
+		<img src={getDxRatingPlateImage(score)} class="h-1.2em vertical-text-top" />
 		<div style={{ gridTemplateColumns: 'repeat(5, 1fr)', fontFamily: 'var(--font-reddit-mono), Reddit Mono' }}
-			className="absolute grid top-0 bottom-0 left-47% right-14% text-0.6em font-600 c-#fcd41b">
+			class="absolute grid top-0 bottom-0 left-47% right-14% text-0.6em font-600 c-#fcd41b">
+			{/* @ts-ignore */}
 			{Array.apply(undefined, { length: 5 - score.toString().length }).map(() => <span />)}
 			{score.toString().split('').map((digit, index) =>
-				<span key={index} className="flex items-center justify-center">{digit}</span>)}
+				<span key={index} class="flex items-center justify-center">{digit}</span>)}
 		</div>
 	</div>;
-};
+});

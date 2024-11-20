@@ -12,7 +12,7 @@ export class UserProfile {
 		public readonly dto: UserProfileDto) {
 	}
 
-	static async create(dto: UserProfileDto, env: Env) {
+	static async create(dto: UserProfileDto, env?: Env) {
 		let client: UserSource;
 		let userId: string | number;
 		switch (dto.type) {
