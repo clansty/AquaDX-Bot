@@ -7,6 +7,6 @@
   "dependencies": {
     "@clansty/maibot-data": "workspace:^",
     "@clansty/maibot-utils": "workspace:^",
-    "@gekichumai/dxdata": "https://gitpkg.now.sh/gekichumai/dxrating/packages/dxdata?86757053a1a2b076febec2c00500979c2e34e23d"
+    "@gekichumai/dxdata": "https://gitpkg.now.sh/gekichumai/dxrating/packages/dxdata?2be5e76ead90ab72ad10217618cabbedb0d227d8"
   }
 }
