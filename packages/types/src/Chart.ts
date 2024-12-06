@@ -26,11 +26,25 @@ export default class Chart implements Sheet {
 		const dataCopy = { ...data };
 		delete dataCopy.level;
 		Object.assign(this, dataCopy);
+		const level140 = this.multiverInternalLevelValue?.BUDDiES;
+		const level145 = this.multiverInternalLevelValue?.['BUDDiES PLUS'];
+		if (level140 && ver === 140) {
+			this.internalLevelValue = level140;
+		}
+		if (level145 && ver === 145) {
+			this.internalLevelValue = level145;
+		}
 		const valueFromAllMusic = dataFromAllMusic?.notes[LEVEL_EN.indexOf(data.difficulty)]?.lv;
-		if (valueFromAllMusic && this.internalLevelValue !== valueFromAllMusic) {
-			false && console.log('发现了定数错误', dataFromAllMusic.name, data.type, data.difficulty, '来自 DXRating.net 的定数:', data.internalLevelValue, '来自 all-music.json 的定数:', valueFromAllMusic);
+		if (this.regions && !Object.values(this.regions).some(Boolean)) {
+			// 删除曲
 			this.internalLevelValue = valueFromAllMusic;
 		}
+		if (valueFromAllMusic && this.internalLevelValue !== valueFromAllMusic) {
+			this.internalLevelValue = Math.max(valueFromAllMusic, this.internalLevelValue);
+		}
+		// if (this.internalLevelValue !== valueFromAllMusic) {
+		// 	console.log('发现了定数错误', dataFromAllMusic?.name, data.type, data.difficulty, '来自 DXRating.net 的定数:', data.internalLevelValue, '来自 all-music.json 的定数:', valueFromAllMusic);
+		// }
 		if (internalId && !this.internalId) {
 			this.internalId = internalId;
 		}
