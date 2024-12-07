@@ -45,7 +45,7 @@ const Component = ({ entry, score, song }: { entry: RatingListEntry, score: User
 			<div style={{ flexGrow: 1, backgroundColor: 'rgba(255, 255, 255, 0.8)', display: 'flex', justifyContent: 'left', alignItems: 'center', padding: '0 5px' }}>
 				<div style={{ flexGrow: 1 }}>
 					<ScoreDisplay score={entry.achievement} />
-					{chart && <div>
+					{chart && chart.internalLevelValue && <div>
 						{chart.internalLevelValue.toFixed(1)}
 						<span style={{ margin: '0 .3em' }}>→</span>
 						<span style={{ fontWeight: 700 }}>{computeRa(chart.internalLevelValue, entry.achievement)}</span>
