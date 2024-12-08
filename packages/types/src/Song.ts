@@ -207,11 +207,17 @@ export default class Song implements DataSong {
 		return _.uniqBy(results, (it) => `${it.id}_${it.title}`);
 	}
 
-	public static getByCondition(condition: (song: DataSong) => boolean, ver: MaiVersion = 145) {
-		return dxdata.songs.filter(condition).map(songRaw => new this(songRaw, undefined, false, ver));
+	public static getByCondition(condition: (song: Song) => boolean, ver: MaiVersion = 145, officialOnly = true) {
+		let tmp = Song.getAllSongs(ver);
+		if (officialOnly) {
+			tmp = tmp.filter(song => song.id < 2000);
+		}
+		tmp = tmp.filter(condition);
+		return tmp;
 	}
 
-	public static getAllIds = () => Object.keys(ALL_MUSIC).map(Number).map(it => it % 1e4);
+	public static allIds = _.uniq(Object.keys(ALL_MUSIC).map(Number).map(it => it % 1e4));
+	public static getAllSongs = (ver: MaiVersion = 145) => Song.allIds.map(id => Song.fromId(id, ver)).filter(it => it);
 
 	public getChart(difficulty: DifficultyEnum | number | typeof LEVEL[number], dx = this.dx) {
 		if (LEVEL.includes(difficulty as any)) {

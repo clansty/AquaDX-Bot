@@ -10,6 +10,7 @@
       <excludeFolder url="file://$MODULE_DIR$/apps/web/.wrangler" />
       <excludeFolder url="file://$MODULE_DIR$/apps/workers/.wrangler" />
       <excludeFolder url="file://$MODULE_DIR$/apps/web/.worker-next" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/web/server" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
